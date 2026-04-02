@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cinema Machina | Home</title>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@1,6..96,400..900&amp;family=Inter:wght@100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#C5A059",
+              "on-primary": "#412d00",
+              "background": "#0E0E0E",
+              "surface": "#0E0E0E",
+              "on-surface": "#e5e2e1",
+              "on-surface-variant": "#9a8f80",
+              "surface-container-low": "#131313",
+              "surface-container-high": "#201F1F",
+              "surface-container-lowest": "#080808",
+              "outline": "#4e4639",
+            },
+            fontFamily: {
+              "headline": ["Bodoni Moda", "serif"],
+              "serif": ["Bodoni Moda", "serif"],
+              "body": ["Inter", "sans-serif"],
+              "label": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24; }
+      .logo-monochrome { filter: grayscale(1) brightness(0.8) sepia(1) saturate(1.2) hue-rotate(10deg); }
+      .logo-invert { filter: brightness(0) invert(0.8); }
+      .transition-premium { transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
+      ::selection { background-color: #C5A059; color: #0E0E0E; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased font-body selection:bg-primary selection:text-surface">
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#0E0E0E]/80 backdrop-blur-xl border-b border-white/5">
+<div class="flex justify-between items-center px-6 md:px-16 py-6 max-w-[1440px] mx-auto">
+<a class="text-xl md:text-2xl font-serif italic text-stone-100 tracking-wider hover:opacity-70 transition-premium" href="index.html">Cinema Machina</a>
+<div class="hidden md:flex items-center gap-12">
+<a class="text-xs uppercase tracking-[0.2em] text-primary border-b border-primary/30 pb-1" href="index.html">Home</a>
+<a class="text-xs uppercase tracking-[0.2em] text-stone-400 hover:text-primary transition-premium" href="services.html">Services</a>
+<a class="text-xs uppercase tracking-[0.2em] text-stone-400 hover:text-primary transition-premium" href="about.html">About</a>
+<a class="text-xs uppercase tracking-[0.2em] text-stone-400 hover:text-primary transition-premium" href="contact.html">Contact</a>
+</div>
+<a class="bg-primary text-on-primary px-6 py-2.5 text-[10px] font-sans tracking-[0.2em] uppercase hover:bg-white hover:text-black transition-premium active:scale-95" href="https://wa.me/971507282195" target="_blank" rel="noopener noreferrer">WhatsApp Now</a>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="relative min-h-screen flex items-center pt-20 overflow-hidden bg-surface-container-lowest">
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-gradient-to-r from-surface-container-lowest via-surface-container-lowest/70 to-transparent z-10"></div>
+<img alt="Empty Premium Luxury Home Cinema" class="w-full h-full object-cover grayscale opacity-30 mix-blend-luminosity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMSEJze9STLH7KorJhmEz0Bic-zgnfxt1XS65n_pGVVebGNifWtsZIYcYUIrFzFxcz0BJFIRNzDFeZ6f4hfgAOHstOf9ztxsQ8eAS2B-RV4jeB1tYR309WPewuRCuHaFTGFKjTK4D26TEGrkt7ye5a5CXmLyrypEVZRDyjljHK0zGa-ND832c7wYtyLB3u5512mkWoB6lhqv7N9sp2MAOsBm9wB4SKELyXQvPXtxS7bx5HbUNrtVYlKGuCvZQ5xp3qsgXj9L0xcLQ"/>
+</div>
+<div class="relative z-20 max-w-[1440px] mx-auto px-6 md:px-16 w-full grid grid-cols-12">
+<div class="col-span-12 lg:col-span-10">
+<h1 class="font-serif text-5xl md:text-8xl italic text-on-surface mb-10 leading-[1.1] tracking-tight">
+                Your home cinema deserves better than <span class="text-primary">compressed streaming.</span>
+</h1>
+<p class="text-xl md:text-2xl text-on-surface-variant max-w-2xl mb-16 leading-relaxed font-light">
+                Cinema Machina is the UAE's premier playback specialist. We optimize Plex, Jellyfin, and high-performance hardware paths to deliver the bit-perfect cinematic experience your hardware was built for.
+            </p>
+<div class="flex flex-col sm:flex-row gap-8">
+<a class="bg-primary text-on-primary px-12 py-5 text-[10px] tracking-[0.3em] uppercase hover:bg-white hover:text-black transition-premium text-center shadow-2xl shadow-primary/10" href="contact.html">
+                    Book a Consultation
+                </a>
+<a class="border border-primary/40 text-primary px-12 py-5 text-[10px] tracking-[0.3em] uppercase hover:bg-primary/5 transition-premium text-center" href="https://wa.me/971507282195" target="_blank" rel="noopener noreferrer">
+                    WhatsApp Now
+                </a>
+</div>
+</div>
+</div>
+</header>
+<!-- Software Ecosystem Strip -->
+<section class="bg-surface-container-low py-16 border-y border-white/5">
+<div class="max-w-[1440px] mx-auto px-6 md:px-16 flex flex-col lg:flex-row items-center justify-between gap-12">
+<div class="flex flex-wrap items-center justify-center lg:justify-start gap-12 md:gap-20">
+<img alt="Plex" class="h-6 md:h-8 object-contain logo-monochrome opacity-60" src="https://lh3.googleusercontent.com/aida/ADBb0ujoke-Q9c7_Fkz1abO20jfERSz-jNRCa_k2yEPhQz3fQbuDSVNsHq4fiwQSuRQA1KoHmcN0FREwKUHmOHkvdrNrcj2qOcWBxRDcLG8gzS1vP8y5VGSnBWP-C0JJGAuwyOzd0j2AGg2j74CkNUQbCi3XplPJhbXRVPyEFpqZwkORJATfWbLIvrf87IcxdHUdcS98XyeqDX-T0Sdk5zVthCbeY6xCHsRNx-lUOAjWlP8y5I8CBqqP4rVhUKcBAM77_jUQY7Dbs_VYuw"/>
+<img alt="Jellyfin" class="h-6 md:h-8 object-contain logo-monochrome opacity-60" src="https://lh3.googleusercontent.com/aida/ADBb0uhNQOB80YZG09fVyyZZWhZRfq8yLCu0urHl4Em62Cpbvj_Hw92WJfmSgyDZPRFlhiMUN6-rdr3fDNqikjxzpezJ5j0r2C_du77ll5OhteFFuN6PL_NChzytP5hp4sRJKCcbYWAFGk5wkuYcWZF9k4SuuSoA9bjAII9lu9aOjDtFLRgLhrpBxvYr-1ldh9xk2PQNGV7kueFu2MtlzgdyESiAuHSQ_jSyjbtesZJqhTOE-ev8idzq4tO4ACct68jVfEzOsDhlYfWEeQ"/>
+<img alt="Kodi" class="h-6 md:h-8 object-contain logo-monochrome opacity-60" src="https://lh3.googleusercontent.com/aida/ADBb0uhAf4otC4AJTOXGfuXh-z0ZCbvVFi66fh4OTXIiprjnJ1ks3JaEiZ9yoVp5ndYTyAeUe5Sc5LITUVYaXF0IO9QuU8GLZxK3Gzn2u5TZH3FNCah7ulaGDTT-QVx4j3AxG7JWBdrUQAbXGgRrCqaCOtb0yulQgdi8n1A1qFD5RIlnEf_slK0QF8l4HOZ3BkMGnPH_gmZHqikxwVGBee1VccZhFdZEhdDxXxQfmjqOuBy6aEexP3twpcRW1coZMR8ZXxpQrSvlaD2MFw"/>
+</div>
+<div class="flex flex-wrap justify-center lg:justify-end gap-x-12 gap-y-4">
+<span class="flex items-center gap-3 text-[10px] font-sans tracking-[0.4em] text-primary/60 uppercase">
+<span class="w-1.5 h-1.5 bg-primary/40"></span> Playback Devices
+            </span>
+<span class="flex items-center gap-3 text-[10px] font-sans tracking-[0.4em] text-primary/60 uppercase">
+<span class="w-1.5 h-1.5 bg-primary/40"></span> Signal Integrity
+            </span>
+<span class="flex items-center gap-3 text-[10px] font-sans tracking-[0.4em] text-primary/60 uppercase">
+<span class="w-1.5 h-1.5 bg-primary/40"></span> Calibration
+            </span>
+</div>
+</div>
+</section>
+<!-- Audio & Video Formats Strip -->
+<section class="bg-surface-container-lowest py-10 border-b border-white/5">
+<div class="max-w-[1440px] mx-auto px-6 md:px-16">
+<div class="flex flex-col md:flex-row items-center justify-between gap-8">
+<span class="text-[10px] font-sans uppercase tracking-[0.4em] text-stone-600">Reference-Grade Format Compatibility</span>
+<div class="flex flex-wrap items-center justify-center gap-10 md:gap-12 opacity-40">
+<img alt="Dolby Atmos" class="h-4 md:h-5 object-contain logo-invert" src="https://lh3.googleusercontent.com/aida/ADBb0ujB0L4wtgITt3VVcNKA2uhHlz91jjBpSf1YM3aUT4rCyhgZJwlm3b9oCDohtRVJ3mxnI6IUgomB0UPLS7HkkZnrdM9zpGoFjtRn8FMScyednIRzSbyVe_fyhBq6v3B-mRKx_F0zshF9JCpr_Phzg-IxuchrV8cHEORgU6DnOcPNYY9SKXCFDe1_nBRu888e831irBOmutVReXx4M-1BHLzLqPhXWseKoF1A73lfQtT-MZh7rCNQ2BQXJ-Qao9AubaZxjDyyEG7w0g"/>
+<img alt="Dolby TrueHD" class="h-4 md:h-5 object-contain logo-invert" src="https://lh3.googleusercontent.com/aida/ADBb0uiVfxRL_NzLAf_k6O90CG7MxnGHFUjU5ackeeJ6VUF4FoxxdDtxXPGTr6V4S0ojgW8zeBAm3w1YjMrQtjloNIT95MzVxXhzCjAF6i82ABBJ3lQy6s179TLfKJLdL3NVh7HB60la3wIQWNngQDKRzFV__75QxS22vtisf0RlzcKgYv5bI58Sc_fF4y4Fd64d908O2IdG4UU0sYxjb_N1S2GOgTcBc29YmLqCm-DEkfqOSKw2WoVc2Q5liWlttb4JZdodY_yahPT1wg"/>
+<img alt="DTS-HD" class="h-4 md:h-5 object-contain logo-invert" src="https://lh3.googleusercontent.com/aida/ADBb0uhGj6o-A-B7n5S2fBgan38Fj0ONVe956_vLO08Qzweq985-j9LhF7LRB-T_k7D3jFhiiIBytyEt-VsCP4UZMxGdn4VksEJfeHFIQTKGXsqCNd0A0YxI9J8cMBB_1Wrc2FMgnSUpMyIhjtnPC2ezmgNG1_6a35g97UITjVpZ6nddzSpoZc7jbiV9vOKRoEqE9YvJiDqPepexPlVoCeD46rZTbGOjuHq7dvxV6nuEtRalL_q2i70HudSAJwJPDmsskkjlrGP7i2o_qw"/>
+<img alt="DTS:X" class="h-4 md:h-5 object-contain logo-invert" src="https://lh3.googleusercontent.com/aida/ADBb0ugipbbZHlkPekC6ZedcGd5QsZd9wkJF6sTeUHpkSWinN507-vpY2qx4pwaCDcMdusXVz-Mt1z2_fLjcxjYWw58syfVQSQsZbihpaPXthLX8ZymiCCeCMjKsfaXDV07s1ycO9VOeKER45HIFWfqQTtpluFT6O9dOeHVZuy3eCSjjWZCWWP-hrzAwqk-MgHx8EK_HtWfy4EXiwKYHyeQF3p-FjzFFyHXNCeC1FBIx5S9IhJ3Mf7nq-ObHckhmHMQ9bDsKyvGpzWrVAg"/>
+<img alt="HDR10+" class="h-4 md:h-5 object-contain logo-invert" src="https://lh3.googleusercontent.com/aida/ADBb0ugjLbT0ya7f8TPRJ4cW2v5mnXz-TqEttSiziAqRth9tX6IcTWMqjyQZ6GzTl98SnD2CwcmXCD2WYFJ4uPQ4tin3A3OoIjH0p8q9E7mjPrIt6rNKI5YBBI6Z2oxTE3PnVCza5Rn2OC_hav7-R1ZnXd6LrokIwkust5unzjaQJBoDol1ifrsWwWNrqvglL81Miija088nuMMLwldstexbNkqttBbu-stLFilaQRGlXpRV6MzhNK7mZnxYtVOe2NE4-LZ_MCoF7UPX1g"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Specialisms -->
+<section class="bg-surface py-24 md:py-40 px-6 md:px-16">
+<div class="max-w-[1440px] mx-auto">
+<div class="mb-24">
+<span class="text-primary font-sans text-[10px] uppercase tracking-[0.5em] block mb-8">Capabilities</span>
+<h2 class="font-serif text-5xl md:text-7xl italic text-on-surface leading-tight">Technical Specialisms</h2>
+<div class="mt-12 w-32 h-[1px] bg-primary/20"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5 border border-white/5">
+<!-- Card 1 -->
+<div class="group bg-surface-container-lowest p-10 md:p-12 hover:bg-surface-container-low transition-premium">
+<div class="aspect-video overflow-hidden mb-10 border border-white/5">
+<img alt="High-performance media server architecture" class="w-full h-full object-cover grayscale opacity-50 group-hover:scale-105 transition-premium duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSAIdynt9tMItTTPrnJv-FlfqSFyCTYUOEqZ7VvJrAU9g3UNtwbNykPa53SXPtJALKCjKyzovxWvnIFYtiVAnBzNRgMD0YdZ7bmffpJ90FKEYoPwcpjDx3QjR8-zfA6jmH-k9JasetzKsrwx1EBnnAEVzt7QiTGqczvc2gZIWgqPmbCHlYnJ9c48jvEkxF1SKl5wYMLwUUHatWrPaywK3lbVL8XKFZR5qFl_lNt74OdcToG-oJ5IBBF8VZR-XNf6dvdHC706wrE14"/>
+</div>
+<span class="text-primary font-serif italic text-3xl block mb-6">01.</span>
+<h3 class="text-on-surface font-sans text-xs uppercase tracking-[0.3em] mb-4 font-bold">Media Infrastructure</h3>
+<p class="text-on-surface-variant font-sans text-sm leading-relaxed font-light">Expert deployment of NAS hardware and server software architectures for high-bandwidth local streaming.</p>
+</div>
+<!-- Card 2 -->
+<div class="group bg-surface-container-lowest p-10 md:p-12 hover:bg-surface-container-low transition-premium">
+<div class="aspect-video overflow-hidden mb-10 border border-white/5">
+<img alt="High-performance playback hardware" class="w-full h-full object-cover grayscale opacity-50 group-hover:scale-105 transition-premium duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD165m4WloTfuo8RWEGZGnObNTJfI_8xIhhoJ3zaS_VcXCkXY3D3CoEL-Y7-79xY6a0_XrfYdBF8_H532BvFEqNs-z-0T4pgw_eIfJYMZQO-06oBoXZBceZfLp6LpH6B81a4zmeVFh6KidygxrT7PUE4G0duHJwyuhn6pmPDuEO4GGgT5tUyPZLO1-YvEyHM4MndBJj6WtOzcW85U8y8JTrIkHGsz-I48oT6269lJ563Ns1kcQfuuM1fH6rDbJggZJtDRCsufcRS9k"/>
+</div>
+<span class="text-primary font-serif italic text-3xl block mb-6">02.</span>
+<h3 class="text-on-surface font-sans text-xs uppercase tracking-[0.3em] mb-4 font-bold">Playback Devices</h3>
+<p class="text-on-surface-variant font-sans text-sm leading-relaxed font-light">Fine-tuning hardware players to ensure full metadata passthrough and native refresh rate matching.</p>
+</div>
+<!-- Card 3 -->
+<div class="group bg-surface-container-lowest p-10 md:p-12 hover:bg-surface-container-low transition-premium">
+<div class="aspect-video overflow-hidden mb-10 border border-white/5">
+<img alt="Signal path integrity detail" class="w-full h-full object-cover grayscale opacity-50 group-hover:scale-105 transition-premium duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcG4N4IgPJnaeq6EMC2I4IgEH5LhrqR-bwh6WjgrJ86WpFsUqL00G8dHhWTXuO0Uio70-uX7dp-YtgzaTQNW3UMRWdug2vnxfAWmN9zDPtSq7kacgdtngL5q8yxQS88rcWmXbkQiBY1Dr7v82M2YLlF9E-JoAzXX5vfnl3YrAfdIDzv0dtTv9sh48hk21yhsYcnLXDVZoDXWyr0_mSpSUZAzltSlKaPjX37C8diq2I0lhemrcAwi_mgualrkiTV4EXZX2Ll3dsliQ"/>
+</div>
+<span class="text-primary font-serif italic text-3xl block mb-6">03.</span>
+<h3 class="text-on-surface font-sans text-xs uppercase tracking-[0.3em] mb-4 font-bold">Signal Integrity</h3>
+<p class="text-on-surface-variant font-sans text-sm leading-relaxed font-light">Eliminating HDCP handshaking errors and verified bitstream passthrough for lossless audio formats.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Signal Path Integrity Detail -->
+<section class="bg-surface-container-lowest py-32 md:py-48 px-6 md:px-16 border-y border-white/5 overflow-hidden">
+<div class="max-w-[1440px] mx-auto grid grid-cols-12 gap-16 items-center">
+<div class="col-span-12 lg:col-span-6">
+<span class="text-primary font-sans text-[10px] uppercase tracking-[0.5em] block mb-8">The Philosophy</span>
+<h2 class="font-serif text-5xl md:text-7xl italic text-on-surface mb-10 leading-tight">Signal Integrity.</h2>
+<p class="text-xl text-on-surface-variant mb-16 leading-relaxed font-light max-w-xl">
+                True cinematic immersion is fragile. When you rely on standard streaming apps, you are at the mercy of dynamic compression—squashing the dynamic range of your audio and the nuances of your 4K image.
+            </p>
+<div class="space-y-12">
+<div class="flex gap-8 group">
+<span class="material-symbols-outlined text-4xl text-primary/40 group-hover:text-primary transition-premium">high_quality</span>
+<div>
+<h4 class="font-serif italic text-2xl text-primary mb-3">Bit-Perfect Playback</h4>
+<p class="text-on-surface-variant leading-relaxed text-sm font-light">Ensure every pixel and audio bit reaches your hardware exactly as the director intended, without intermediate processing.</p>
+</div>
+</div>
+<div class="flex gap-8 group">
+<span class="material-symbols-outlined text-4xl text-primary/40 group-hover:text-primary transition-premium">router</span>
+<div>
+<h4 class="font-serif italic text-2xl text-primary mb-3">Hardware-Path Mapping</h4>
+<p class="text-on-surface-variant leading-relaxed text-sm font-light">We architect the most efficient route from storage to display, eliminating bottlenecks and latency across your local network.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-6 relative">
+<div class="aspect-[4/5] bg-surface-container-high overflow-hidden border border-white/5 relative group">
+<img alt="Electronic signal waveform visual" class="w-full h-full object-cover grayscale opacity-40 mix-blend-screen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuByRxT727JOD2_yiZvvDtKT0bRn3-VHKE6qrStmgVlE9--PE5oSmfd03FSbHmq6dwJQBGv8jF8AV1FdByDMNY4DcwpRfzJuAKpkuORzJEwyXkDziQ2aPbeQTTSa2jYnIaw_uHkm7LbvlmW7qpiQEN3V_8Cn6ByR3KrX5imJ8EDfdiRNYzcToJ3mlVfpKX0Is_jRiNo6DW8D4ZGv5pvT37BzDCayN9ciY4FD-9Tp5QjpZ5U21v7EUNh0-jIECeRX1xLvACvN-6TCko4"/>
+<div class="absolute inset-0 bg-primary/5 mix-blend-overlay"></div>
+</div>
+<div class="absolute -bottom-8 -right-8 w-40 h-40 border-r border-b border-primary/20 hidden md:block"></div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full py-24 md:py-32 px-6 md:px-16 bg-[#080808] border-t border-white/5">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-20 max-w-[1440px] mx-auto">
+<div class="flex flex-col gap-8">
+<a class="text-xl font-serif italic text-stone-200 hover:opacity-70 transition-premium" href="index.html">Cinema Machina</a>
+<p class="font-sans text-[10px] uppercase tracking-[0.3em] text-stone-600 leading-loose max-w-xs">
+Premium playback optimisation for Plex, Jellyfin, Kodi, playback devices, HDMI chains, and luxury home cinema environments in the UAE.
+</p>
+</div>
+<div class="grid grid-cols-2 gap-8">
+<div class="flex flex-col gap-6">
+<a class="font-sans text-[10px] uppercase tracking-[0.2em] text-stone-500 hover:text-primary transition-premium" href="index.html">Home</a>
+<a class="font-sans text-[10px] uppercase tracking-[0.2em] text-stone-500 hover:text-primary transition-premium" href="services.html">Services</a>
+</div>
+<div class="flex flex-col gap-6">
+<a class="font-sans text-[10px] uppercase tracking-[0.2em] text-stone-500 hover:text-primary transition-premium" href="about.html">About</a>
+<a class="font-sans text-[10px] uppercase tracking-[0.2em] text-stone-500 hover:text-primary transition-premium" href="contact.html">Contact</a>
+</div>
+</div>
+<div class="flex flex-col gap-6">
+<span class="font-sans text-[10px] uppercase tracking-[0.4em] text-stone-500 block">Contact</span>
+<a class="font-sans text-[10px] tracking-[0.2em] text-stone-500 hover:text-primary transition-premium lowercase" href="mailto:cinemamachina.ae@gmail.com">cinemamachina.ae@gmail.com</a>
+<a class="font-sans text-[10px] uppercase tracking-[0.2em] text-stone-500 hover:text-primary transition-premium" href="tel:+971507282195">+971 50 728 2195</a>
+<a class="font-sans text-[10px] uppercase tracking-[0.2em] text-stone-500 hover:text-primary transition-premium" href="https://wa.me/971507282195" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+</div>
+</div>
+</footer>
+</body></html>
