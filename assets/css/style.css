@@ -675,17 +675,17 @@ p {
   align-items: center;
   gap: 0.625rem;
   flex-shrink: 0;
-  opacity: 0.45;
+  opacity: 0.7;
   transition: opacity 0.3s;
 }
 
-.ecosystem-strip__item:hover { opacity: 0.85; }
+.ecosystem-strip__item:hover { opacity: 1; }
 
 .ecosystem-strip__item img {
-  height: 18px;
+  height: 22px;
   width: auto;
   filter: brightness(0) invert(1);
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 .ecosystem-strip__item span {

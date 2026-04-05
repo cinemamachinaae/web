@@ -454,62 +454,56 @@
       <table class="format-table">
         <thead>
           <tr>
-            <th>Format</th>
-            <th>Type</th>
-            <th>Typical Use</th>
-            <th>Immersive / Object Support</th>
-            <th>Home Cinema Value</th>
+            <th style="width: 25%;">Format</th>
+            <th style="width: 15%;">Type</th>
+            <th style="width: 30%;">Immersive / Object Support</th>
+            <th style="width: 30%;">Home Cinema Value</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>AAC</td>
+            <td>AAC / MP3</td>
             <td>Lossy</td>
-            <td>Streaming / mobile / web</td>
-            <td>No object metadata</td>
-            <td>Convenience-first</td>
+            <td><span class="check-none"></span></td>
+            <td>Standard web/mobile compatibility</td>
           </tr>
           <tr>
-            <td>Dolby Digital</td>
+            <td>Dolby Digital / Plus</td>
             <td>Lossy</td>
-            <td>Streaming / broadcast / legacy AV</td>
-            <td>No native lossless object layer</td>
-            <td>Common but limited</td>
+            <td><span class="check-partial">~</span></td>
+            <td>Streaming standard. Lossy Atmos delivery.</td>
           </tr>
           <tr>
-            <td>DTS</td>
-            <td>Lossy</td>
-            <td>Legacy disc / older surround chains</td>
-            <td>No object metadata</td>
-            <td>Older surround format</td>
-          </tr>
-          <tr>
-            <td style="color:var(--bronze);">Dolby TrueHD</td>
+            <td>
+              <div class="format-badge-chip" style="margin-bottom: 0.25rem;"><img src="assets/logos/dolby-truehd.png" alt="Dolby TrueHD" /></div>
+            </td>
             <td>Lossless</td>
-            <td>Blu-ray / premium local playback</td>
-            <td>Atmos-capable on compatible chains</td>
-            <td>Reference-grade home cinema</td>
+            <td><span class="check-full">✦</span></td>
+            <td>Reference-grade. The industry standard for High-End Cinema.</td>
           </tr>
           <tr>
-            <td style="color:var(--bronze);">DTS-HD Master Audio</td>
+            <td>
+              <div class="format-badge-chip" style="margin-bottom: 0.25rem;"><img src="assets/logos/dts-hd-ma.png" alt="DTS-HD Master Audio" /></div>
+            </td>
             <td>Lossless</td>
-            <td>Blu-ray / premium local playback</td>
-            <td>Lossless home-cinema format with DTS core fallback</td>
-            <td>High-end lossless surround</td>
+            <td><span class="check-full">✦</span></td>
+            <td>Lossless home-cinema format with DTS core fallback.</td>
           </tr>
           <tr>
-            <td style="color:var(--bronze);">DTS:X</td>
-            <td>Immersive</td>
-            <td>Compatible premium chains</td>
+            <td>
+              <div class="format-badge-chip" style="margin-bottom: 0.25rem;"><img src="assets/logos/dolby-atmos.png" alt="Dolby Atmos" /></div>
+            </td>
             <td>Object-based</td>
-            <td>Premium spatial audio</td>
+            <td><span class="check-full">✦</span></td>
+            <td>Spatial audio with full metadata passthrough.</td>
           </tr>
           <tr>
-            <td style="color:var(--bronze);">Dolby Atmos</td>
-            <td>Immersive</td>
-            <td>Compatible premium chains</td>
+            <td>
+              <div class="format-badge-chip" style="margin-bottom: 0.25rem;"><img src="assets/logos/dts-x.png" alt="DTS:X" /></div>
+            </td>
             <td>Object-based</td>
-            <td>Premium spatial audio</td>
+            <td><span class="check-full">✦</span></td>
+            <td>Premium spatial audio without bitstream restrictions.</td>
           </tr>
         </tbody>
       </table>
