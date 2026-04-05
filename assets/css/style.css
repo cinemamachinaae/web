@@ -235,14 +235,14 @@ p {
 }
 
 .nav__logo img {
-  height: 42px;
+  height: 46px;
   width: auto;
   display: block;
 }
 
 @media (max-width: 768px) {
   .nav__logo img {
-    height: 34px;
+    height: 38px;
   }
 }
 
@@ -933,6 +933,7 @@ p {
   transition: border-color 0.25s;
   border-radius: 0;
   -webkit-appearance: none;
+  appearance: none;
 }
 
 .form-group input::placeholder,
@@ -1018,6 +1019,40 @@ p {
 }
 
 .gold-rule--center { margin: 1.5rem auto; }
+
+
+/* ── CODEC BADGES ─────────────────────────────────────────── */
+.codec-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  align-items: center;
+  justify-content: center;
+  margin: 3rem 0;
+}
+
+.codec-badge {
+  font-family: inherit;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bronze-light);
+  border: 1px solid rgba(226, 193, 155, 0.15);
+  padding: 0.5rem 1rem;
+  border-radius: 1px;
+  background: rgba(226, 193, 155, 0.02);
+  white-space: nowrap;
+  transition: all 0.4s var(--ease-out);
+  user-select: none;
+}
+
+.codec-badge:hover {
+  border-color: var(--bronze);
+  background: rgba(226, 193, 155, 0.06);
+  transform: translateY(-2px);
+  color: var(--text-primary);
+}
 
 /* ── AUDIO CODEC CHIPS ────────────────────────────────────── */
 .codec-grid {

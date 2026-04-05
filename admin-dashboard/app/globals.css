@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #0A0A0A;
+  --color-foreground: #E2C19B;
+  --color-surface: #121212;
+  --color-surface-hover: #1A1A1A;
+  --color-border: #1F1F1F;
+  --color-bronze: #E2C19B;
+  --color-bronze-dark: #C1A27B;
+  --color-bronze-light: #F0D4B8;
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@layer base {
+  :root {
+    --background: #0A0A0A;
+    --foreground: #E2C19B;
+    --surface: #121212;
+    --border: #1F1F1F;
+    --bronze: #E2C19B;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+@layer components {
+  .admin-card {
+    @apply bg-surface border border-border p-6 rounded-lg transition-all duration-200 hover:border-bronze/30;
+  }
+  
+  .sidebar-link {
+    @apply flex items-center gap-3 px-4 py-2.5 rounded-md text-sm font-medium transition-all duration-200;
+  }
+  
+  .sidebar-link-active {
+    @apply bg-bronze/10 text-bronze border-l-2 border-bronze rounded-none;
+  }
+  
+  .sidebar-link-inactive {
+    @apply text-foreground/60 hover:text-bronze hover:bg-bronze/5;
+  }
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--bronze);
+}

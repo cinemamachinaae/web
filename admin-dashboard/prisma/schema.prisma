@@ -1,0 +1,98 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model SiteSettings {
+  id             Int      @id @default(1)
+  title          String   @default("Cinema Machina")
+  tagline        String?
+  contactEmail   String   @default("cinemamachina.ae@gmail.com")
+  phoneNumber    String   @default("+971 50 728 2195")
+  vimeoUrl       String   @default("https://player.vimeo.com/video/1180098392")
+  primaryBronze  String   @default("#E2C19B")
+  secondaryBronze String?
+  updatedAt      DateTime @updatedAt
+}
+
+model BrandAsset {
+  id        String   @id @default(cuid())
+  name      String
+  assetPath String
+  assetType String   // LOGO, MARK, ICON
+  altText   String?
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
+
+model MediaAsset {
+  id           String   @id @default(cuid())
+  title        String
+  assetPath    String
+  altText      String?
+  category     String   // HERO, GALLERY, EDITORIAL
+  pageAssigned String?  // HOME, SERVICES, etc.
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+}
+
+model Ecosystem {
+  id          String   @id @default(cuid())
+  name        String
+  logoPath    String
+  description String?
+  sortOrder   Int      @default(0)
+  isActive    Boolean  @default(true)
+}
+
+model PageSection {
+  id        String   @id @default(cuid())
+  pageSlug  String   // home, services, about, why, contact
+  sectionKey String   // hero, ecosystem, signal-chain, etc.
+  sectionType String  // HERO, CONTENT, COMPARISON, CTA
+  title     String?
+  subtitle  String?
+  body      String?
+  ctaLabel  String?
+  ctaLink   String?
+  status    String   @default("DRAFT") // DRAFT, PUBLISHED
+  sortOrder Int      @default(0)
+  updatedAt DateTime @updatedAt
+}
+
+model ComparisonModule {
+  id          String   @id @default(cuid())
+  title       String
+  leftLabel   String?
+  leftImage   String?
+  rightLabel  String?
+  rightImage  String?
+  description String?
+  isActive    Boolean  @default(true)
+}
+
+model ChangeLog {
+  id          String   @id @default(cuid())
+  date        DateTime @default(now())
+  description String
+  version     String?
+}
+
+model VerificationLog {
+  id          String   @id @default(cuid())
+  date        DateTime @default(now())
+  testName    String
+  resultStatus String   // PASS, FAIL, WARNING
+  details     String?
+}
+
+model AnalyticsSnapshot {
+  id             String   @id @default(cuid())
+  snapshotDate   DateTime @default(now())
+  visitorsCount  Int      @default(0)
+  pageViews      Int      @default(0)
+  conversionRate Float    @default(0.0)
+}
