@@ -236,14 +236,14 @@ p {
 }
 
 .nav__logo img {
-  height: 64px;
+  height: 66px;
   width: auto;
   display: block;
 }
 
 @media (max-width: 768px) {
   .nav__logo img {
-    height: 52px;
+    height: 54px;
   }
 }
 
@@ -1085,19 +1085,19 @@ p {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 46px;
+  min-height: 48px;
   padding: 10px 18px;
   border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.13);
-  background: rgba(255,255,255,0.065);
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.07);
   box-shadow:
     inset 0 0 0 1px rgba(226,193,155,0.06),
-    0 10px 28px rgba(0,0,0,0.20);
+    0 12px 30px rgba(0,0,0,0.22);
   backdrop-filter: blur(8px);
 }
 
 .format-badge-chip img {
-  max-height: 26px;
+  max-height: 27px;
   width: auto;
   display: block;
 }

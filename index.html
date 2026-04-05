@@ -225,22 +225,26 @@
     }
 
     .ecosystem-strip__item img {
-      max-height: 30px;
+      max-height: 32px;
       width: auto;
-      opacity: 0.8;
-      filter: grayscale(1) brightness(1.8);
+      opacity: 0.85;
+      filter: grayscale(1) brightness(1.9);
       transition: all 0.3s;
     }
 
     .stat-card {
       background: var(--surface);
-      border: 1px solid rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
       padding: 2.25rem 2rem;
-      transition: border-color 0.4s;
+      transition: all 0.4s var(--ease-out);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     }
 
     .stat-card:hover {
       border-color: var(--bronze-dim);
+      background: var(--surface-2);
+      transform: translateY(-2px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
     }
 
     .comparison-col {
@@ -497,7 +501,7 @@
 </section>
 
 <!-- ═══════════════════ BITRATE SECTION (ELEVATED) ═══════════════════ -->
-<section class="bitrate-section section--tight" id="bitrate" style="background: var(--bg-warm);">
+<section class="bitrate-section section--tight" id="bitrate" style="background: var(--bg-warm); border-top: 1px solid var(--border);">
   <div class="container">
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:center;">
       <div class="reveal">

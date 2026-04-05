@@ -139,8 +139,8 @@
     .bar-fill-enhanced.tier-1 { background: #3d3428; }
     .bar-fill-enhanced.tier-2 { background: #5c4d38; }
     .bar-fill-enhanced.tier-3 { background: #8a7248; }
-    .bar-fill-enhanced.tier-4 { background: var(--bronze); }
-    .bar-fill-enhanced.tier-5 { background: var(--bronze-light); }
+    .bar-fill-enhanced.tier-4 { background: var(--bronze); box-shadow: 0 0 20px rgba(201,169,110,0.2); }
+    .bar-fill-enhanced.tier-5 { background: var(--bronze-light); box-shadow: 0 0 25px rgba(226,193,155,0.3); }
 
     .bar-value-enhanced {
       font-family: var(--font-display);
@@ -437,9 +437,9 @@
       
       <div class="reveal reveal-delay-2" style="position: sticky; top: 120px;">
         <h3 class="display-sm" style="margin-bottom:1.5rem;">5–6× more visual data.</h3>
-        <p>Netflix's 4K stream averages 15–18 Mbps. A lossless 4K remux—the format we optimize for—delivers 80–120 Mbps. The difference is visible on any calibrated display.</p>
-        <div class="highlight-box" style="margin-top:2.5rem;">
-          <p>Insufficient bitrate makes quality impossible. A properly configured system removes that ceiling.</p>
+        <p style="font-size: 0.9375rem; line-height: 1.6;">Netflix's 4K stream averages 15–18 Mbps. A lossless 4K remux—the format we optimize for—delivers 80–120 Mbps. The difference is visible on any calibrated display.</p>
+        <div class="highlight-box" style="margin-top:2.5rem; background: var(--surface);">
+          <p style="font-size: 0.9375rem;">Insufficient bitrate makes quality impossible. A properly configured system removes that ceiling.</p>
         </div>
       </div>
     </div>
