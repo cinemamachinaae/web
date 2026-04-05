@@ -235,14 +235,14 @@ p {
 }
 
 .nav__logo img {
-  height: 56px;
+  height: 58px;
   width: auto;
   display: block;
 }
 
 @media (max-width: 768px) {
   .nav__logo img {
-    height: 44px;
+    height: 46px;
   }
 }
 
@@ -1076,7 +1076,7 @@ p {
 .format-badges {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 14px;
   align-items: center;
 }
 
@@ -1084,19 +1084,19 @@ p {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 42px;
-  padding: 8px 14px;
+  min-height: 44px;
+  padding: 9px 16px;
   border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.12);
   background: rgba(255,255,255,0.05);
   box-shadow:
-    inset 0 0 0 1px rgba(226,193,155,0.05),
-    0 8px 24px rgba(0,0,0,0.18);
+    inset 0 0 0 1px rgba(226,193,155,0.04),
+    0 10px 28px rgba(0,0,0,0.18);
   backdrop-filter: blur(8px);
 }
 
 .format-badge-chip img {
-  max-height: 22px;
+  max-height: 24px;
   width: auto;
   display: block;
 }
@@ -1104,15 +1104,15 @@ p {
 .format-text-badge {
   display: inline-flex;
   align-items: center;
-  min-height: 42px;
-  padding: 8px 14px;
+  min-height: 44px;
+  padding: 9px 16px;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.05);
   font-size: 12px;
   letter-spacing: 0.06em;
-  color: rgba(255, 255, 255, 0.84);
   text-transform: uppercase;
+  color: rgba(255,255,255,0.86);
 }
 
 /* ── AUDIO CODEC CHIPS ────────────────────────────────────── */
@@ -1167,6 +1167,30 @@ p {
 }
 
 @media (max-width: 768px) {
+  section,
+  .section,
+  .content-section,
+  .editorial-section,
+  .comparison-section,
+  .technical-section {
+    min-height: auto !important;
+    padding-top: 64px !important;
+    padding-bottom: 64px !important;
+  }
+
+  .hero,
+  .hero-section {
+    min-height: 78svh !important;
+    padding-top: 96px !important;
+    padding-bottom: 72px !important;
+  }
+
+  .stack-lg,
+  .section-stack,
+  .content-stack {
+    gap: 24px !important;
+  }
+
   .nav__links, .nav__cta { display: none; }
   .nav__toggle { display: flex; }
   .nav__mobile { display: flex; }

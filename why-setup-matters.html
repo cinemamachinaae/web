@@ -198,33 +198,23 @@
     .format-table tbody tr:hover td { background: var(--surface); }
     .format-table tbody tr:last-child td { border-bottom: none; }
 
-    .check-full {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 22px; height: 22px;
-      background: rgba(201,169,110,0.12);
-      border: 1px solid var(--bronze-dim);
-      font-size: 0.75rem;
-      color: var(--bronze);
-    }
-
-    .check-partial {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 22px; height: 22px;
-      background: rgba(255,255,255,0.04);
-      font-size: 0.65rem;
-      color: var(--text-muted);
-    }
-
     .check-none {
       display: inline-block;
       width: 14px;
       height: 1px;
       background: var(--text-muted);
       opacity: 0.3;
+    }
+
+    .format-badge-chip--matrix {
+       background: rgba(226,193,155,0.05);
+       border-color: rgba(226,193,155,0.2);
+       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+       min-height: 38px;
+       padding: 6px 12px;
+    }
+    .format-badge-chip--matrix img {
+       max-height: 18px;
     }
 
     /* ── CONSISTENCY MODULE ── */
@@ -357,160 +347,96 @@
 </section>
 
 <!-- ═══ THE MYTH ═══ -->
-<section class="myth-section" id="myth">
+<section class="myth-section section--tight" id="myth" style="padding-bottom: 2rem;">
   <div class="container">
     <div class="reveal" style="margin-bottom:2rem;">
       <div class="section-label">
         <span class="label">The Plug-and-Play Myth</span>
       </div>
       <h2 class="display-md">It came with a remote.<br />It must be set up correctly.</h2>
-      <p class="lead" style="margin-top:1rem;">
-        This is the most expensive assumption in home cinema. The hardware is installed. The cables are connected. The remote works. And so most owners believe their system is performing correctly. It almost never is.
-      </p>
     </div>
 
     <div class="myth-grid">
       <div class="myth-item myth-item--myth reveal">
         <span class="myth-item__badge">The Myth</span>
-        <h3>"My £50,000 projector will look incredible with anything."</h3>
-        <p>High-end display hardware is designed to receive excellent source material. When the source, the playback device, and the signal chain are not configured correctly, even the finest projector cannot compensate. It outputs what it receives.</p>
-        <p style="margin-top:1rem;">Most AV integrators focus on hardware installation, not playback configuration. The system is installed — not optimised.</p>
+        <h3>"My high-end projector will look incredible with anything."</h3>
+        <p>Display hardware is only as good as the signal it receives. Without precise configuration, even a £50,000 system delivers a compromised result.</p>
       </div>
       <div class="myth-item myth-item--reality reveal reveal-delay-2">
         <span class="myth-item__badge">The Reality</span>
-        <h3>Output quality is determined by the whole chain — not the last link.</h3>
-        <p>Your projector, amplifier, and speakers can only process what they receive. If the source device is outputting compressed audio, incorrect colour space, wrong frame rate, or lossy HDR metadata — the entire investment is undermined.</p>
-        <p style="margin-top:1rem;">Cinema Machina addresses the chain at every link, ensuring that by the time the signal reaches your display, it carries exactly what it should.</p>
+        <h3>Performance begins before the display.</h3>
+        <p>If the source is compressed, the amplifier receives lossy audio, and the signal chain is unoptimized—the entire investment is undermined.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ EDITORIAL: BITRATE ═══ -->
-<section class="editorial-module" id="bitrate-chart">
+<!-- ═══ ELEVATED PROOF: BITRATE & AUDIO ═══ -->
+<section class="editorial-module section--tight" style="background: var(--bg-warm); padding-top: 4rem;">
   <div class="container">
-    <div class="editorial-module__header reveal">
-      <div class="section-label" style="justify-content:center;">
-        <span class="label">Video Bitrate Comparison</span>
-      </div>
-      <h2 class="display-md">What your screen<br />actually receives.</h2>
-      <p class="lead">
-        Bitrate is the single most measurable indicator of video quality. The gap between streaming and a properly configured local playback system is not subtle.
-      </p>
-    </div>
-
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:start;">
-      <div class="chart-container reveal">
-        <div class="chart-title">Illustrative Normalized Comparison</div>
-        <div class="bar-item-enhanced" style="margin-bottom: 1.5rem;">
-          <span class="bar-label-enhanced">Compressed streaming</span>
-          <div class="bar-track-enhanced"><div class="bar-fill-enhanced tier-2" data-width="18"></div></div>
-          <span class="bar-value-enhanced">18</span>
+    <div style="display:grid;grid-template-columns:1.2fr 0.8fr;gap:4rem;align-items:start;">
+      <div class="reveal">
+        <div class="section-label">
+          <span class="label">Technical Proof</span>
         </div>
-        <div class="bar-item-enhanced">
-          <span class="bar-label-enhanced">Configured higher-bitrate local playback</span>
-          <div class="bar-track-enhanced"><div class="bar-fill-enhanced tier-5" data-width="100"></div></div>
-          <span class="bar-value-enhanced">100</span>
+        <h2 class="display-md">What your screen<br />actually receives.</h2>
+        
+        <div class="chart-container" style="margin-top: 2.5rem;">
+          <div class="chart-title">Video Bitrate Comparison (Mbps)</div>
+          <div class="bar-item-enhanced" style="margin-bottom: 1.5rem;">
+            <span class="bar-label-enhanced">Streaming</span>
+            <div class="bar-track-enhanced"><div class="bar-fill-enhanced tier-2" style="width: 18%; background: var(--text-muted);"></div></div>
+            <span class="bar-value-enhanced" style="color: var(--text-muted);">18</span>
+          </div>
+          <div class="bar-item-enhanced">
+            <span class="bar-label-enhanced">Cinema Machina</span>
+            <div class="bar-track-enhanced"><div class="bar-fill-enhanced tier-5" style="width: 100%; background: var(--bronze);"></div></div>
+            <span class="bar-value-enhanced">100+</span>
+          </div>
         </div>
-        <div class="chart-annotation">
-          * Illustrative normalized comparison of visual data delivery. Streaming bitrates vary by encoding pass and network conditions, but generally process a fraction of the data found in a premium local chain.
+
+        <div class="format-table-wrapper" style="margin-top: 3rem;">
+          <table class="format-table">
+            <thead>
+              <tr>
+                <th style="width: 40%;">Format</th>
+                <th style="width: 30%;">Immersive</th>
+                <th style="width: 30%;">Cinema Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><div class="format-badge-chip format-badge-chip--matrix"><img src="assets/logos/dolby-truehd.png" alt="Dolby TrueHD" /></div></td>
+                <td style="color: var(--bronze);">Lossless ✦</td>
+                <td>Reference</td>
+              </tr>
+              <tr>
+                <td><div class="format-badge-chip format-badge-chip--matrix"><img src="assets/logos/dolby-atmos.png" alt="Dolby Atmos" /></div></td>
+                <td style="color: var(--bronze);">Object ✦</td>
+                <td>Spatial</td>
+              </tr>
+              <tr>
+                <td><div class="format-badge-chip format-badge-chip--matrix"><img src="assets/logos/dts-hd-ma.png" alt="DTS-HD" /></div></td>
+                <td style="color: var(--bronze);">Lossless ✦</td>
+                <td>Reference</td>
+              </tr>
+              <tr>
+                <td>Dolby Digital / Plus</td>
+                <td style="color: var(--text-muted);">Lossy ~</td>
+                <td>Legacy</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
-      <div class="reveal reveal-delay-2">
-        <h3 class="display-sm" style="margin-bottom:1.25rem;">
-          Your screen processes 5–6× more data with a configured local library.
-        </h3>
-        <p style="max-width:none;">
-          Netflix's 4K stream averages 15–17 Mbps in practice, with peaks around 20–25 Mbps. A lossless 4K remux — the format Cinema Machina helps you build and access — delivers 80–120 Mbps of video data per second.
-        </p>
-        <p style="margin-top:1rem;max-width:none;">
-          That difference isn't theoretical. It's visible on any calibrated high-end display or projector, particularly in dark scenes with subtle gradients, fast motion, and fine detail.
-        </p>
-        <div class="highlight-box" style="margin-top:2rem;">
-          <p>Bitrate alone doesn't guarantee quality — but insufficient bitrate makes quality impossible. A properly configured playback system removes that ceiling.</p>
+      
+      <div class="reveal reveal-delay-2" style="position: sticky; top: 120px;">
+        <h3 class="display-sm" style="margin-bottom:1.5rem;">5–6× more visual data.</h3>
+        <p>Netflix's 4K stream averages 15–18 Mbps. A lossless 4K remux—the format we optimize for—delivers 80–120 Mbps. The difference is visible on any calibrated display.</p>
+        <div class="highlight-box" style="margin-top:2.5rem;">
+          <p>Insufficient bitrate makes quality impossible. A properly configured system removes that ceiling.</p>
         </div>
-        <a href="services.html#media-library" class="btn btn-outline" style="margin-top:2rem;">
-          Media Library Services
-        </a>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ EDITORIAL: AUDIO FORMATS ═══ -->
-<section class="editorial-module" id="audio-formats">
-  <div class="container">
-    <div class="editorial-module__header reveal">
-      <div class="section-label" style="justify-content:center;">
-        <span class="label">Audio Format Availability</span>
-      </div>
-      <h2 class="display-md">The audio your processor<br />never receives.</h2>
-      <p class="lead">
-        Your Dolby Atmos processor is designed to decode lossless Dolby TrueHD. Most streaming services send it a compressed substitute. Here's the complete picture.
-      </p>
-    </div>
-
-    <div class="format-table-wrapper reveal">
-      <table class="format-table">
-        <thead>
-          <tr>
-            <th style="width: 25%;">Format</th>
-            <th style="width: 15%;">Type</th>
-            <th style="width: 30%;">Immersive / Object Support</th>
-            <th style="width: 30%;">Home Cinema Value</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>AAC / MP3</td>
-            <td>Lossy</td>
-            <td><span class="check-none"></span></td>
-            <td>Standard web/mobile compatibility</td>
-          </tr>
-          <tr>
-            <td>Dolby Digital / Plus</td>
-            <td>Lossy</td>
-            <td><span class="check-partial">~</span></td>
-            <td>Streaming standard. Lossy Atmos delivery.</td>
-          </tr>
-          <tr>
-            <td>
-              <div class="format-badge-chip" style="margin-bottom: 0.25rem;"><img src="assets/logos/dolby-truehd.png" alt="Dolby TrueHD" /></div>
-            </td>
-            <td>Lossless</td>
-            <td><span class="check-full">✦</span></td>
-            <td>Reference-grade. The industry standard for High-End Cinema.</td>
-          </tr>
-          <tr>
-            <td>
-              <div class="format-badge-chip" style="margin-bottom: 0.25rem;"><img src="assets/logos/dts-hd-ma.png" alt="DTS-HD Master Audio" /></div>
-            </td>
-            <td>Lossless</td>
-            <td><span class="check-full">✦</span></td>
-            <td>Lossless home-cinema format with DTS core fallback.</td>
-          </tr>
-          <tr>
-            <td>
-              <div class="format-badge-chip" style="margin-bottom: 0.25rem;"><img src="assets/logos/dolby-atmos.png" alt="Dolby Atmos" /></div>
-            </td>
-            <td>Object-based</td>
-            <td><span class="check-full">✦</span></td>
-            <td>Spatial audio with full metadata passthrough.</td>
-          </tr>
-          <tr>
-            <td>
-              <div class="format-badge-chip" style="margin-bottom: 0.25rem;"><img src="assets/logos/dts-x.png" alt="DTS:X" /></div>
-            </td>
-            <td>Object-based</td>
-            <td><span class="check-full">✦</span></td>
-            <td>Premium spatial audio without bitstream restrictions.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="highlight-box reveal" style="margin-top:2.5rem;">
-      <p>✦ = Full support &nbsp;&nbsp; ~ = Lossy / limited &nbsp;&nbsp; — = Not available. Streaming audio is compressed for bandwidth efficiency. Your processor is receiving a fraction of its design capability when connected to a streaming source.</p>
     </div>
   </div>
 </section>

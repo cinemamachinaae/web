@@ -447,11 +447,11 @@
 <div class="divider"></div>
 
 <!-- ═══════════════════ ECOSYSTEM STRIP ═══════════════════ -->
-<section class="section--tight">
-  <div class="container" style="margin-bottom:1.25rem;">
-    <span class="label" style="display:block;text-align:center;">Supported Ecosystems &amp; Platforms</span>
+<section class="section--tight" style="padding-top: 4rem;">
+  <div class="container" style="margin-bottom:1.5rem;">
+    <span class="label" style="display:block;text-align:center;">Verified Ecosystem Compatibility</span>
   </div>
-  <div class="ecosystem-strip">
+  <div class="ecosystem-strip" style="background: rgba(255,255,255,0.02); border-left: none; border-right: none;">
     <div class="ecosystem-strip__track" id="eco-track">
       <!-- Duplicated for infinite loop -->
       <div class="ecosystem-strip__item"><img src="assets/logos/plex.png" alt="Plex" /><span>Plex</span></div>
@@ -475,8 +475,45 @@
       <div class="ecosystem-strip__item"><span>Apple TV</span></div>
     </div>
   </div>
-  <div class="container" style="margin-top:1rem;text-align:center;">
-    <p style="font-size:0.75rem;max-width:none;color:var(--text-muted);letter-spacing:0.04em;">Representative supported ecosystems. Cinema Machina works across platforms — not limited to any single system.</p>
+</section>
+
+<!-- ═══════════════════ BITRATE SECTION (ELEVATED) ═══════════════════ -->
+<section class="bitrate-section section--tight" id="bitrate" style="background: var(--bg-warm);">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:center;">
+      <div class="reveal">
+        <div class="section-label">
+          <span class="label">Video Bitrate Reality</span>
+        </div>
+        <h2 class="display-md">The numbers<br />tell the story.</h2>
+        <p class="lead" style="margin-top:1rem;">
+          Bitrate determines how much visual data reaches your screen. Most viewers are watching a fraction of what their hardware can deliver.
+        </p>
+        <div class="gold-rule" style="margin-top:1.5rem;"></div>
+        <p style="font-size:0.875rem;max-width:none;">
+          A properly configured local playback system delivers 4–8× the data per frame compared to a premium streaming service — and your projector or display can see the difference.
+        </p>
+      </div>
+      <div class="bar-chart-premium reveal reveal-delay-2" style="background: var(--surface); padding: 2.5rem; border: 1px solid var(--border);">
+        <div class="bar-item" style="margin-bottom: 2rem;">
+          <span class="bar-label" style="text-align: left;">Compressed streaming</span>
+          <div class="bar-track" style="height: 8px;">
+            <div class="bar-fill low" data-width="18" style="width: 18%;"></div>
+          </div>
+          <span class="bar-value">~18 Mbps</span>
+        </div>
+        <div class="bar-item">
+          <span class="bar-label" style="text-align: left;">Cinema Machina Local Playback</span>
+          <div class="bar-track" style="height: 8px;">
+            <div class="bar-fill high" data-width="100" style="width: 100%;"></div>
+          </div>
+          <span class="bar-value">100+ Mbps</span>
+        </div>
+        <p style="font-size: 0.7rem; color: var(--text-muted); margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1rem;">
+          * Illustrative normalized comparison of visual data delivery for a 4K HDR source.
+        </p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -590,7 +627,27 @@
           <polygon points="16,4 20,12 28,13 22,19 24,27 16,23 8,27 10,19 4,13 12,12"/>
         </svg>
         <h3>Premium Viewing Refinement</h3>
-        <p>The final layer — HDR zone configuration, frame rate matching, tone mapping fine-tuning, and custom playback profiles that preserve director intent. This is where good becomes exceptional.</p>
+        <section class="section--tight">
+  <div class="container grid-2-1" style="align-items: center;">
+    <div class="reveal">
+      <div class="section-label">
+        <span class="label">Playback Chain Optimization</span>
+      </div>
+      <h2 class="display-sm">Performance begins<br />before the display.</h2>
+      <p style="margin-top:1.25rem;">
+        Even the world's finest projector cannot correct a compromised source. Cinema Machina optimizes every link in the playback chain—from server-grade storage to bit-perfect signal transport—to ensure your hardware receives exactly what the director intended.
+      </p>
+      <div class="gold-rule" style="margin:2rem 0;"></div>
+      <a href="why-setup-matters.html" class="btn btn-outline">The Case for Setup</a>
+    </div>
+    <div class="reveal reveal-delay-2">
+      <div class="img-frame" style="aspect-ratio: 4/5; border: 1px solid var(--border);">
+        <img src="assets/images/playback-chain.png" alt="Premium cinema playback chain" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+        <p>Custom playback profiles that preserve director intent. This is where good becomes exceptional.</p>
         <a href="services.html" class="service-card__link">
           Learn more <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
         </a>
@@ -653,45 +710,7 @@
   </div>
 </section>
 
-<!-- ═══════════════════ BITRATE SECTION ═══════════════════ -->
-<section class="bitrate-section" id="bitrate">
-  <div class="container">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(3rem,7vw,7rem);align-items:center;">
-      <div class="reveal">
-        <div class="section-label">
-          <span class="label">Video Bitrate Reality</span>
-        </div>
-        <h2 class="display-md">The numbers<br />tell the story.</h2>
-        <p class="lead" style="margin-top:1rem;">
-          Bitrate determines how much visual data reaches your screen. Most viewers are watching a fraction of what their hardware can deliver.
-        </p>
-        <div class="gold-rule" style="margin-top:2rem;"></div>
-        <p style="font-size:0.875rem;max-width:none;">
-          A properly configured local playback system delivers 4–8× the data per frame compared to a premium streaming service — and your projector or display can see the difference.
-        </p>
-      </div>
-      <div class="bar-chart reveal reveal-delay-2">
-        <div class="bar-item">
-          <span class="bar-label">Compressed streaming</span>
-          <div class="bar-track">
-            <div class="bar-fill low" data-width="18"></div>
-          </div>
-          <span class="bar-value">~18%</span>
-        </div>
-        <div class="bar-item" style="margin-top: 1rem;">
-          <span class="bar-label">Higher-bitrate local playback</span>
-          <div class="bar-track">
-            <div class="bar-fill high" data-width="100"></div>
-          </div>
-          <span class="bar-value">100%</span>
-        </div>
-        <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 1rem;">
-          * Illustrative normalized comparison of visual data delivery.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
+
 
 <div class="divider"></div>
 
