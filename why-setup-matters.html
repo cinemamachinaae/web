@@ -1,343 +1,699 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Why Setup Matters — Cinema Machina</title>
+  <meta name="description" content="Why great hardware alone isn't enough. The truth about playback configuration, bitrate, audio formats, and what stands between your system and a true cinema experience." />
+  <link rel="icon" type="image/png" href="assets/logos/cm-logo-square.png" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    /* ── MYTH SECTION ── */
+    .myth-section {
+      padding: var(--section-gap) 0;
+    }
 
-<html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=Inter:wght@100..900&amp;family=Noto+Serif:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              "on-surface-variant": "#d1c5b4",
-              "on-secondary": "#313030",
-              "secondary-fixed": "#e5e2e1",
-              "tertiary-container": "#8fa5d6",
-              "primary-container": "#c5a059",
-              "inverse-primary": "#775a19",
-              "tertiary-fixed": "#d8e2ff",
-              "surface-variant": "#353534",
-              "outline-variant": "#4e4639",
-              "on-tertiary": "#173059",
-              "on-primary-fixed-variant": "#5d4201",
-              "on-primary": "#412d00",
-              "primary": "#e9c176",
-              "outline": "#9a8f80",
-              "on-primary-container": "#4e3700",
-              "background": "#131313",
-              "on-tertiary-fixed-variant": "#304671",
-              "surface-tint": "#e9c176",
-              "surface-container-highest": "#353534",
-              "secondary": "#c8c6c5",
-              "on-secondary-fixed-variant": "#474746",
-              "on-secondary-container": "#b7b5b4",
-              "on-tertiary-container": "#233a65",
-              "surface": "#131313",
-              "on-surface": "#e5e2e1",
-              "on-secondary-fixed": "#1c1b1b",
-              "on-tertiary-fixed": "#001a41",
-              "surface-container-low": "#1c1b1b",
-              "surface-container-high": "#2a2a2a",
-              "inverse-surface": "#e5e2e1",
-              "on-primary-fixed": "#261900",
-              "tertiary-fixed-dim": "#b0c6f9",
-              "on-error": "#690005",
-              "on-background": "#e5e2e1",
-              "primary-fixed": "#ffdea5",
-              "on-error-container": "#ffdad6",
-              "error-container": "#93000a",
-              "surface-dim": "#131313",
-              "error": "#ffb4ab",
-              "inverse-on-surface": "#313030",
-              "secondary-fixed-dim": "#c8c6c5",
-              "primary-fixed-dim": "#e9c176",
-              "surface-container-lowest": "#0e0e0e",
-              "surface-container": "#201f1f",
-              "surface-bright": "#3a3939",
-              "secondary-container": "#474746",
-              "tertiary": "#b0c6f9"
-            },
-            fontFamily: {
-              "headline": ["Bodoni Moda", "serif"],
-              "body": ["Inter", "sans-serif"],
-              "label": ["Inter", "sans-serif"]
-            },
-            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
-          },
-        },
-      }
-    </script>
-<style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
-        }
-        body {
-            background-color: #0e0e0e;
-            color: #e5e2e1;
-            font-family: 'Inter', sans-serif;
-        }
-        .logo-silver {
-            filter: brightness(0) invert(0.9) contrast(0.5);
-        }
-        .text-reveal {
-            background: linear-gradient(to bottom, #e5e2e1 20%, #4e4639 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .premium-hover {
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .premium-hover:hover {
-            letter-spacing: 0.4em;
-            color: #e9c176;
-        }
-    </style>
-<title>Why Setup Matters | Cinema Machina</title>
+    .myth-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(3rem, 6vw, 7rem);
+      align-items: start;
+      margin-top: 2rem;
+    }
+
+    .myth-item {
+      padding: 2.5rem;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .myth-item::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+    }
+
+    .myth-item--myth::before { background: var(--text-muted); }
+    .myth-item--reality::before { background: var(--bronze); }
+
+    .myth-item__badge {
+      font-size: 0.5625rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--bronze);
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .myth-item--myth .myth-item__badge { color: var(--text-muted); }
+
+    .myth-item h3 {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .myth-item p { font-size: 0.875rem; max-width: none; }
+
+    /* ── EDITORIAL MODULES ── */
+    .editorial-module {
+      padding: var(--section-gap) 0;
+    }
+
+    .editorial-module:nth-child(even) { background: var(--bg-warm); }
+
+    .editorial-module__header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .editorial-module__header .lead {
+      margin: 1rem auto 0;
+      text-align: center;
+    }
+
+    /* ── ENHANCED BAR CHART ── */
+    .chart-container {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 2.5rem;
+    }
+
+    .chart-title {
+      font-family: var(--font-body);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--bronze);
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .bar-item-enhanced {
+      display: grid;
+      grid-template-columns: 150px 1fr auto;
+      gap: 1rem;
+      align-items: center;
+      padding: 0.5rem 0;
+    }
+
+    .bar-item-enhanced + .bar-item-enhanced {
+      border-top: 1px solid rgba(255,255,255,0.03);
+    }
+
+    .bar-label-enhanced {
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      text-align: right;
+    }
+
+    .bar-track-enhanced {
+      height: 8px;
+      background: var(--surface-2);
+      position: relative;
+    }
+
+    .bar-fill-enhanced {
+      height: 100%;
+      width: 0%;
+      transition: width 1.5s var(--ease-out);
+      position: relative;
+    }
+
+    .bar-fill-enhanced::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: -3px;
+      width: 2px;
+      height: 14px;
+      background: inherit;
+      opacity: 0.5;
+    }
+
+    .bar-fill-enhanced.tier-1 { background: #3d3428; }
+    .bar-fill-enhanced.tier-2 { background: #5c4d38; }
+    .bar-fill-enhanced.tier-3 { background: #8a7248; }
+    .bar-fill-enhanced.tier-4 { background: var(--bronze); }
+    .bar-fill-enhanced.tier-5 { background: var(--bronze-light); }
+
+    .bar-value-enhanced {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      color: var(--bronze);
+      white-space: nowrap;
+      text-align: right;
+      min-width: 70px;
+    }
+
+    .chart-annotation {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+    }
+
+    /* ── FORMAT AVAILABILITY TABLE ── */
+    .format-table-wrapper {
+      overflow-x: auto;
+    }
+
+    .format-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 560px;
+    }
+
+    .format-table thead th {
+      font-family: var(--font-body);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 1rem 1.25rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      color: var(--bronze);
+    }
+
+    .format-table thead th:first-child { text-align: left; }
+
+    .format-table tbody td {
+      padding: 0.9rem 1.25rem;
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .format-table tbody td:first-child { text-align: left; font-weight: 500; color: var(--text-primary); }
+
+    .format-table tbody tr:hover td { background: var(--surface); }
+    .format-table tbody tr:last-child td { border-bottom: none; }
+
+    .check-full {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px; height: 22px;
+      background: rgba(201,169,110,0.12);
+      border: 1px solid var(--bronze-dim);
+      font-size: 0.75rem;
+      color: var(--bronze);
+    }
+
+    .check-partial {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px; height: 22px;
+      background: rgba(255,255,255,0.04);
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+
+    .check-none {
+      display: inline-block;
+      width: 14px;
+      height: 1px;
+      background: var(--text-muted);
+      opacity: 0.3;
+    }
+
+    /* ── CONSISTENCY MODULE ── */
+    .consistency-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .consistency-card {
+      padding: 2.5rem 2rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      transition: border-color 0.35s, transform 0.45s var(--ease-out);
+    }
+
+    .consistency-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-4px);
+    }
+
+    .consistency-card__score {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 300;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .consistency-card__score--low { color: var(--text-muted); }
+    .consistency-card__score--mid { color: var(--bronze-dim); }
+    .consistency-card__score--high { color: var(--bronze); }
+
+    .consistency-card__label {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .consistency-card h4 {
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .consistency-card p { font-size: 0.8375rem; max-width: none; }
+
+    /* ── CLOSING ARGUMENT ── */
+    .closing-argument {
+      padding: var(--section-gap) 0;
+      background: var(--bg-warm);
+    }
+
+    .closing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(3rem, 6vw, 7rem);
+      align-items: center;
+    }
+
+    .closing-quote {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.45;
+      color: var(--text-primary);
+      border-left: 2px solid var(--bronze);
+      padding-left: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .myth-grid { grid-template-columns: 1fr; }
+      .consistency-grid { grid-template-columns: 1fr; }
+      .closing-grid { grid-template-columns: 1fr; }
+      .bar-item-enhanced { grid-template-columns: 100px 1fr 60px; }
+      .bar-label-enhanced { font-size: 0.75rem; }
+    }
+  </style>
 </head>
-<body class="selection:bg-primary selection:text-on-primary">
-<!-- TopNavBar -->
-<nav class="fixed top-0 w-full z-50 bg-[#0E0E0E]/80 backdrop-blur-xl border-b border-white/5">
-<div class="flex justify-between items-center px-6 md:px-16 py-6 max-w-[1440px] mx-auto">
-<a class="text-xl md:text-2xl font-serif italic text-stone-100 tracking-wider hover:opacity-70 transition-premium" href="index.html">Cinema Machina</a>
-<div class="hidden md:flex items-center gap-12">
-<a class="text-xs uppercase tracking-[0.2em] text-stone-400 hover:text-primary transition-premium" href="index.html">Home</a>
-<a class="text-xs uppercase tracking-[0.2em] text-stone-400 hover:text-primary transition-premium" href="services.html">Services</a>
-<a class="text-xs uppercase tracking-[0.2em] text-stone-400 hover:text-primary transition-premium" href="about.html">About</a>
-<a class="text-xs uppercase tracking-[0.2em] text-stone-400 hover:text-primary transition-premium" href="contact.html">Contact</a>
-</div>
-<a class="bg-primary text-on-primary px-6 py-2.5 text-[10px] font-sans tracking-[0.2em] uppercase hover:bg-white hover:text-black transition-premium active:scale-95" href="https://wa.me/971507282195" target="_blank" rel="noopener noreferrer">WhatsApp Now</a>
-</div>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav__logo">
+    <img src="assets/logos/cm-logo-horizontal.png" alt="Cinema Machina" />
+  </a>
+  <ul class="nav__links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="why-setup-matters.html">Why Setup Matters</a></li>
+  </ul>
+  <a href="contact.html" class="nav__cta">Book Consultation</a>
+  <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
-<main>
-<!-- Hero Section -->
-<section class="relative min-h-[90vh] flex items-center pt-32 overflow-hidden">
-<div class="absolute inset-0 z-0">
-<img class="w-full h-full object-cover opacity-40 scale-105" data-alt="Close up of a premium cinema projector lens with intricate glass elements and deep reflections in a dark room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkCkMjxeN3jWSwsIha0nKj4R5exbXdGemCHn-8nM2JtM2WltaaGf4-6DFnc_B1kvRnUhkx8zqGLUW6eTkyip_zQpaewd013IFGwreeZ34Jis5MwXFBE6qzL8UnfLTuzJeW1z6XA-fWuaLTHU4CHogGnU9DZol6jxVu9JGXe1MgAcN3FbTkOMrs_6HsJZygpEz1jmDkxZwAdus2xijgsVwJpfdtvTnFquU9SyEKeMsH32ge3ugKRxrHY2wflcZDoXMT2BoH3B3rL8A"/>
-<div class="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent"></div>
-</div>
-<div class="relative z-10 px-8 md:px-16 w-full max-w-screen-2xl mx-auto">
-<div class="max-w-4xl">
-<span class="text-primary font-label text-xs tracking-[0.5em] uppercase mb-8 block animate-pulse">Ref. Protocol 001 / Configuration</span>
-<h1 class="text-6xl md:text-9xl font-headline font-normal leading-[0.85] text-reveal mb-12">
-                        Premium playback is not <br/><span class="italic">plug-and-play.</span>
-</h1>
-<p class="text-lg md:text-xl text-on-surface-variant font-light max-w-2xl leading-relaxed">
-                        The finest hardware remains dormant without surgical configuration. In high-fidelity cinema, the difference between a display and a portal lies in the expert orchestration of the entire signal chain.
-                    </p>
-</div>
-</div>
+<nav class="nav__mobile" id="nav-mobile">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="about.html">About</a>
+  <a href="why-setup-matters.html">Why Setup Matters</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<!-- ═══ PAGE HERO ═══ -->
+<section class="page-hero">
+  <div class="page-hero__bg">
+    <img src="assets/images/why-setup-projector.jpg" alt="Premium 4K projector" loading="eager" />
+  </div>
+  <div class="page-hero__gradient"></div>
+  <div class="container page-hero__content">
+    <div class="reveal">
+      <div class="section-label">
+        <span class="label">The Case for Setup</span>
+      </div>
+      <h1 class="display-lg">
+        Great hardware is<br /><em>not enough.</em>
+      </h1>
+      <p class="lead" style="margin-top:1.25rem;">
+        The myth of plug-and-play has cost luxury cinema owners years of suboptimal performance. Here's why the configuration layer is the most important investment you haven't made.
+      </p>
+    </div>
+  </div>
 </section>
-<!-- The Myth of Plug and Play -->
-<section class="px-8 md:px-16 w-full max-w-screen-2xl mx-auto py-32 border-t border-white/5">
-<div class="grid grid-cols-12 gap-8 md:gap-16 items-center">
-<div class="col-span-12 lg:col-span-6 order-2 lg:order-1">
-<h2 class="font-headline text-5xl md:text-6xl mb-10 leading-tight">The Myth of <br/>"Plug and Play"</h2>
-<p class="text-on-surface-variant text-lg leading-relaxed mb-10">
-                        Convenience is the enemy of fidelity. A premium device like an Apple TV or Chromecast does not bypass a weak playback chain; it merely masks it. Reference-grade immersion requires bypassing generic operating system mixers and forcing bit-perfect alignment at every junction.
-                    </p>
-<div class="space-y-6">
-<div class="group flex items-start gap-6 p-4 rounded-lg hover:bg-white/5 transition-colors cursor-default">
-<span class="text-primary font-serif italic text-2xl mt-1">01</span>
-<div>
-<h4 class="text-sm font-label uppercase tracking-widest text-on-surface mb-2 group-hover:text-primary transition-colors">EDID Management</h4>
-<p class="text-xs text-on-surface-variant leading-relaxed uppercase tracking-tighter">Ensuring the display and source communicate exact capability profiles.</p>
-</div>
-</div>
-<div class="group flex items-start gap-6 p-4 rounded-lg hover:bg-white/5 transition-colors cursor-default">
-<span class="text-primary font-serif italic text-2xl mt-1">02</span>
-<div>
-<h4 class="text-sm font-label uppercase tracking-widest text-on-surface mb-2 group-hover:text-primary transition-colors">Frame-Rate Matching</h4>
-<p class="text-xs text-on-surface-variant leading-relaxed uppercase tracking-tighter">Eliminating temporal judder by synchronizing hardware cycles to original intent.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="col-span-12 lg:col-span-6 order-1 lg:order-2">
-<div class="relative aspect-square md:aspect-video lg:aspect-square overflow-hidden group rounded-sm">
-<img class="w-full h-full object-cover grayscale brightness-75 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-1000" data-alt="Refined luxury streaming device sitting on a textured dark stone surface with dramatic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtDdFj1anudgvSd9v1nbKZ44dqkG9lLB2Zl7qtxGT4MlYH9cM4lttrXBKwGUA1TY3ZOjJBE5jQepmO39EKgjJn_B3x_NB1Q_svm2tkMArwPjvKhVURrSRBnc1Aq7YUesocJFtS69TNB514575BsOUtg3TSwreOiQnLUi7JzsFlhSP06xUQHvly7jfZCzAMtILphIs0M05tqQa8Zg0Hhj0_u3JIk60ZBusXqpFg9qNoCsTTqsgpY7jSELd5xBmIaMrd2kVDhVNOGio"/>
-<div class="absolute inset-0 ring-1 ring-inset ring-white/10 group-hover:ring-primary/30 transition-all"></div>
-</div>
-</div>
-</div>
+
+<!-- ═══ THE MYTH ═══ -->
+<section class="myth-section" id="myth">
+  <div class="container">
+    <div class="reveal" style="margin-bottom:2rem;">
+      <div class="section-label">
+        <span class="label">The Plug-and-Play Myth</span>
+      </div>
+      <h2 class="display-md">It came with a remote.<br />It must be set up correctly.</h2>
+      <p class="lead" style="margin-top:1rem;">
+        This is the most expensive assumption in home cinema. The hardware is installed. The cables are connected. The remote works. And so most owners believe their system is performing correctly. It almost never is.
+      </p>
+    </div>
+
+    <div class="myth-grid">
+      <div class="myth-item myth-item--myth reveal">
+        <span class="myth-item__badge">The Myth</span>
+        <h3>"My £50,000 projector will look incredible with anything."</h3>
+        <p>High-end display hardware is designed to receive excellent source material. When the source, the playback device, and the signal chain are not configured correctly, even the finest projector cannot compensate. It outputs what it receives.</p>
+        <p style="margin-top:1rem;">Most AV integrators focus on hardware installation, not playback configuration. The system is installed — not optimised.</p>
+      </div>
+      <div class="myth-item myth-item--reality reveal reveal-delay-2">
+        <span class="myth-item__badge">The Reality</span>
+        <h3>Output quality is determined by the whole chain — not the last link.</h3>
+        <p>Your projector, amplifier, and speakers can only process what they receive. If the source device is outputting compressed audio, incorrect colour space, wrong frame rate, or lossy HDR metadata — the entire investment is undermined.</p>
+        <p style="margin-top:1rem;">Cinema Machina addresses the chain at every link, ensuring that by the time the signal reaches your display, it carries exactly what it should.</p>
+      </div>
+    </div>
+  </div>
 </section>
-<!-- Playback Path diagram -->
-<section class="bg-surface-container-lowest py-32 border-y border-white/5">
-<div class="max-w-screen-2xl mx-auto px-8 md:px-16 text-center">
-<span class="text-primary font-label text-[10px] tracking-[0.4em] uppercase mb-16 block">The Signal Architecture</span>
-<div class="flex flex-col md:flex-row justify-between items-center gap-12 relative">
-<!-- Flow Line -->
-<div class="hidden md:block absolute top-1/2 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-outline-variant/30 to-transparent -translate-y-1/2"></div>
-<!-- Nodes -->
-<div class="relative z-10 flex flex-col items-center gap-6 group">
-<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center border border-white/10 group-hover:border-primary/50 group-hover:shadow-[0_0_20px_rgba(233,193,118,0.2)] transition-all">
-<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">database</span>
-</div>
-<div class="text-center">
-<p class="text-[10px] tracking-widest uppercase font-bold text-on-surface">Source</p>
-<p class="text-[8px] tracking-widest uppercase text-outline mt-1">Lossless Media</p>
-</div>
-</div>
-<div class="relative z-10 flex flex-col items-center gap-6 group">
-<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center border border-white/10 group-hover:border-primary/50 group-hover:shadow-[0_0_20px_rgba(233,193,118,0.2)] transition-all">
-<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">apps</span>
-</div>
-<div class="text-center">
-<p class="text-[10px] tracking-widest uppercase font-bold text-on-surface">App Layer</p>
-<p class="text-[8px] tracking-widest uppercase text-outline mt-1">Bit-Perfect Out</p>
-</div>
-</div>
-<div class="relative z-10 flex flex-col items-center gap-6 group">
-<div class="w-20 h-20 rounded-full bg-surface-container-high flex items-center justify-center border-2 border-primary/30 shadow-[0_0_30px_rgba(233,193,118,0.1)] group-hover:border-primary group-hover:shadow-[0_0_40px_rgba(233,193,118,0.3)] transition-all">
-<span class="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform">developer_board</span>
-</div>
-<div class="text-center">
-<p class="text-[10px] tracking-widest uppercase font-bold text-primary">Device</p>
-<p class="text-[8px] tracking-widest uppercase text-primary/60 mt-1">Clock Sync</p>
-</div>
-</div>
-<div class="relative z-10 flex flex-col items-center gap-6 group">
-<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center border border-white/10 group-hover:border-primary/50 group-hover:shadow-[0_0_20px_rgba(233,193,118,0.2)] transition-all">
-<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">settings_input_hdmi</span>
-</div>
-<div class="text-center">
-<p class="text-[10px] tracking-widest uppercase font-bold text-on-surface">HDMI Chain</p>
-<p class="text-[8px] tracking-widest uppercase text-outline mt-1">FRL Protocol</p>
-</div>
-</div>
-<div class="relative z-10 flex flex-col items-center gap-6 group">
-<div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center border border-white/10 group-hover:border-primary/50 group-hover:shadow-[0_0_20px_rgba(233,193,118,0.2)] transition-all">
-<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">tv</span>
-</div>
-<div class="text-center">
-<p class="text-[10px] tracking-widest uppercase font-bold text-on-surface">Display</p>
-<p class="text-[8px] tracking-widest uppercase text-outline mt-1">EOTF Tracking</p>
-</div>
-</div>
-</div>
-</div>
+
+<!-- ═══ EDITORIAL: BITRATE ═══ -->
+<section class="editorial-module" id="bitrate-chart">
+  <div class="container">
+    <div class="editorial-module__header reveal">
+      <div class="section-label" style="justify-content:center;">
+        <span class="label">Video Bitrate Comparison</span>
+      </div>
+      <h2 class="display-md">What your screen<br />actually receives.</h2>
+      <p class="lead">
+        Bitrate is the single most measurable indicator of video quality. The gap between streaming and a properly configured local playback system is not subtle.
+      </p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:start;">
+      <div class="chart-container reveal">
+        <div class="chart-title">Video Bitrate — Peak (Mbps)</div>
+        <div class="bar-item-enhanced">
+          <span class="bar-label-enhanced">Netflix 4K</span>
+          <div class="bar-track-enhanced"><div class="bar-fill-enhanced tier-1" data-width="17"></div></div>
+          <span class="bar-value-enhanced">~17</span>
+        </div>
+        <div class="bar-item-enhanced">
+          <span class="bar-label-enhanced">Prime Video 4K</span>
+          <div class="bar-track-enhanced"><div class="bar-fill-enhanced tier-1" data-width="19"></div></div>
+          <span class="bar-value-enhanced">~19</span>
+        </div>
+        <div class="bar-item-enhanced">
+          <span class="bar-label-enhanced">Disney+ 4K</span>
+          <div class="bar-track-enhanced"><div class="bar-fill-enhanced tier-2" data-width="22"></div></div>
+          <span class="bar-value-enhanced">~22</span>
+        </div>
+        <div class="bar-item-enhanced">
+          <span class="bar-label-enhanced">Apple TV+ 4K</span>
+          <div class="bar-track-enhanced"><div class="bar-fill-enhanced tier-3" data-width="40"></div></div>
+          <span class="bar-value-enhanced">~40</span>
+        </div>
+        <div class="bar-item-enhanced">
+          <span class="bar-label-enhanced">UHD Blu-ray</span>
+          <div class="bar-track-enhanced"><div class="bar-fill-enhanced tier-4" data-width="75"></div></div>
+          <span class="bar-value-enhanced">~80</span>
+        </div>
+        <div class="bar-item-enhanced">
+          <span class="bar-label-enhanced">Remux (CM)</span>
+          <div class="bar-track-enhanced"><div class="bar-fill-enhanced tier-5" data-width="100"></div></div>
+          <span class="bar-value-enhanced">100+</span>
+        </div>
+        <div class="chart-annotation">
+          Data based on published encoder specifications and independent analysis. Streaming bitrates vary by encoding pass and network conditions.
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <h3 class="display-sm" style="margin-bottom:1.25rem;">
+          Your screen processes 5–6× more data with a configured local library.
+        </h3>
+        <p style="max-width:none;">
+          Netflix's 4K stream averages 15–17 Mbps in practice, with peaks around 20–25 Mbps. A lossless 4K remux — the format Cinema Machina helps you build and access — delivers 80–120 Mbps of video data per second.
+        </p>
+        <p style="margin-top:1rem;max-width:none;">
+          That difference isn't theoretical. It's visible on any calibrated high-end display or projector, particularly in dark scenes with subtle gradients, fast motion, and fine detail.
+        </p>
+        <div class="highlight-box" style="margin-top:2rem;">
+          <p>Bitrate alone doesn't guarantee quality — but insufficient bitrate makes quality impossible. A properly configured playback system removes that ceiling.</p>
+        </div>
+        <a href="services.html#media-library" class="btn btn-outline" style="margin-top:2rem;">
+          Media Library Services
+        </a>
+      </div>
+    </div>
+  </div>
 </section>
-<!-- Comparison Section (Convenience vs Configuration) -->
-<section class="px-8 md:px-16 w-full max-w-screen-2xl mx-auto py-32">
-<div class="grid grid-cols-12 gap-8">
-<div class="col-span-12 lg:col-span-4 lg:pr-12">
-<h2 class="font-headline text-4xl md:text-5xl mb-8">Convenience vs <br/><span class="italic text-primary">Configuration</span></h2>
-<p class="text-on-surface-variant text-sm leading-relaxed">The invisible cost of "plug and play" is the dilution of the artist's intent. We bridge the gap between standard operation and reference performance through strict adherence to mastered technical standards.</p>
-</div>
-<div class="col-span-12 lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-px bg-white/5 border border-white/5 overflow-hidden rounded-sm">
-<div class="bg-background p-12 group">
-<span class="text-[10px] tracking-[0.3em] uppercase text-outline block mb-8">Standard Convenience</span>
-<ul class="space-y-6">
-<li class="flex items-center gap-4 text-xs font-label uppercase tracking-widest text-on-surface-variant/60 group-hover:text-on-surface-variant transition-colors">
-<span class="w-1.5 h-1.5 rounded-full bg-white/10 group-hover:bg-white/20 transition-colors"></span> PCM Downmixing
-                            </li>
-<li class="flex items-center gap-4 text-xs font-label uppercase tracking-widest text-on-surface-variant/60 group-hover:text-on-surface-variant transition-colors">
-<span class="w-1.5 h-1.5 rounded-full bg-white/10 group-hover:bg-white/20 transition-colors"></span> 60Hz Pulldown Judder
-                            </li>
-<li class="flex items-center gap-4 text-xs font-label uppercase tracking-widest text-on-surface-variant/60 group-hover:text-on-surface-variant transition-colors">
-<span class="w-1.5 h-1.5 rounded-full bg-white/10 group-hover:bg-white/20 transition-colors"></span> Tone Mapping Artifacts
-                            </li>
-</ul>
-</div>
-<div class="bg-surface-container-lowest p-12 group">
-<span class="text-[10px] tracking-[0.3em] uppercase text-primary block mb-8">Machina Configuration</span>
-<ul class="space-y-6">
-<li class="flex items-center gap-4 text-xs font-label uppercase tracking-widest text-on-surface">
-<span class="w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_8px_rgba(233,193,118,0.5)] animate-pulse"></span> Audio Passthrough (Atmos)
-                            </li>
-<li class="flex items-center gap-4 text-xs font-label uppercase tracking-widest text-on-surface">
-<span class="w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_8px_rgba(233,193,118,0.5)] animate-pulse"></span> Integer Frame Matching
-                            </li>
-<li class="flex items-center gap-4 text-xs font-label uppercase tracking-widest text-on-surface">
-<span class="w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_8px_rgba(233,193,118,0.5)] animate-pulse"></span> HDR10+ Metadata Integrity
-                            </li>
-</ul>
-</div>
-</div>
-</div>
+
+<!-- ═══ EDITORIAL: AUDIO FORMATS ═══ -->
+<section class="editorial-module" id="audio-formats">
+  <div class="container">
+    <div class="editorial-module__header reveal">
+      <div class="section-label" style="justify-content:center;">
+        <span class="label">Audio Format Availability</span>
+      </div>
+      <h2 class="display-md">The audio your processor<br />never receives.</h2>
+      <p class="lead">
+        Your Dolby Atmos processor is designed to decode lossless Dolby TrueHD. Most streaming services send it a compressed substitute. Here's the complete picture.
+      </p>
+    </div>
+
+    <div class="format-table-wrapper reveal">
+      <table class="format-table">
+        <thead>
+          <tr>
+            <th>Format</th>
+            <th>Netflix</th>
+            <th>Disney+</th>
+            <th>Apple TV+</th>
+            <th>Prime Video</th>
+            <th>Local (CM)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Dolby TrueHD (Lossless)</td>
+            <td><span class="check-none"></span></td>
+            <td><span class="check-none"></span></td>
+            <td><span class="check-none"></span></td>
+            <td><span class="check-none"></span></td>
+            <td><span class="check-full">✦</span></td>
+          </tr>
+          <tr>
+            <td>Dolby Atmos (Lossless)</td>
+            <td><span class="check-none"></span></td>
+            <td><span class="check-none"></span></td>
+            <td><span class="check-none"></span></td>
+            <td><span class="check-none"></span></td>
+            <td><span class="check-full">✦</span></td>
+          </tr>
+          <tr>
+            <td>Dolby Atmos (Lossy EC3)</td>
+            <td><span class="check-partial">~</span></td>
+            <td><span class="check-partial">~</span></td>
+            <td><span class="check-partial">~</span></td>
+            <td><span class="check-partial">~</span></td>
+            <td><span class="check-full">✦</span></td>
+          </tr>
+          <tr>
+            <td>DTS-HD Master Audio</td>
+            <td><span class="check-none"></span></td>
+            <td><span class="check-none"></span></td>
+            <td><span class="check-none"></span></td>
+            <td><span class="check-none"></span></td>
+            <td><span class="check-full">✦</span></td>
+          </tr>
+          <tr>
+            <td>DTS:X (Lossless)</td>
+            <td><span class="check-none"></span></td>
+            <td><span class="check-none"></span></td>
+            <td><span class="check-none"></span></td>
+            <td><span class="check-none"></span></td>
+            <td><span class="check-full">✦</span></td>
+          </tr>
+          <tr>
+            <td>Dolby Digital (AC3)</td>
+            <td><span class="check-partial">~</span></td>
+            <td><span class="check-partial">~</span></td>
+            <td><span class="check-partial">~</span></td>
+            <td><span class="check-partial">~</span></td>
+            <td><span class="check-full">✦</span></td>
+          </tr>
+          <tr>
+            <td>PCM 7.1 / 9.1 Lossless</td>
+            <td><span class="check-none"></span></td>
+            <td><span class="check-none"></span></td>
+            <td><span class="check-none"></span></td>
+            <td><span class="check-none"></span></td>
+            <td><span class="check-full">✦</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="highlight-box reveal" style="margin-top:2.5rem;">
+      <p>✦ = Full support &nbsp;&nbsp; ~ = Lossy / limited &nbsp;&nbsp; — = Not available. Streaming audio is compressed for bandwidth efficiency. Your processor is receiving a fraction of its design capability when connected to a streaming source.</p>
+    </div>
+  </div>
 </section>
-<!-- Signal Integrity section -->
-<section class="relative bg-surface-container-low overflow-hidden">
-<div class="grid grid-cols-12 min-h-[600px]">
-<div class="col-span-12 lg:col-span-7 flex flex-col justify-center px-8 md:px-16 py-20 relative z-10">
-<h2 class="font-headline text-5xl md:text-7xl mb-10 leading-tight">Signal <span class="italic text-primary">Integrity</span></h2>
-<p class="text-on-surface-variant text-lg max-w-xl leading-relaxed mb-12">
-                        The invisible path still shapes the final experience. We scrutinize the HDMI handshake, managing HDCP protocols and clock-recovery issues that cause intermittent blackouts and audio dropouts in complex systems.
-                    </p>
-<div class="grid grid-cols-2 gap-8">
-<div class="group cursor-default">
-<span class="text-3xl font-headline text-primary mb-2 block group-hover:translate-x-2 transition-transform">100%</span>
-<p class="text-[10px] tracking-widest uppercase text-outline group-hover:text-on-surface transition-colors">Verified Passthrough</p>
-</div>
-<div class="group cursor-default">
-<span class="text-3xl font-headline text-primary mb-2 block group-hover:translate-x-2 transition-transform">0ms</span>
-<p class="text-[10px] tracking-widest uppercase text-outline group-hover:text-on-surface transition-colors">Processing Latency</p>
-</div>
-</div>
-</div>
-<div class="col-span-12 lg:col-span-5 relative group overflow-hidden">
-<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-[3000ms] group-hover:scale-110" data-alt="High-end AV processor rear panel detail showing gold-plated HDMI connectors and professional cabling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxUz6w518JiWilsthKTCywMa1z5CQVtY0Ebuwezk6KnZwcrIMeEh5gmLtPeqnfOi8uRF5W4bltXcmJEqUrQHlSbL2jxXrsiVqLaCm200A_uZwHnHjFk3qFzmQNBnHgIaj2Y3BzcGtrdI1SnwE3FYtAG7dzlSV6VXSf-0jog230HGMJOwWIDlBTpmv7CKgUsn09gdWtO3hds2y3JVi0mkreJBcZwn2yAzlFcqwL3SkG_uJPwF00o78GmMkwl9v8aOY-j_2bS-2dOGA"/>
-<div class="absolute inset-0 bg-primary/5 mix-blend-multiply group-hover:bg-transparent transition-colors"></div>
-</div>
-</div>
+
+<!-- ═══ EDITORIAL: PLAYBACK CONSISTENCY ═══ -->
+<section class="editorial-module" id="consistency">
+  <div class="container">
+    <div class="editorial-module__header reveal">
+      <div class="section-label" style="justify-content:center;">
+        <span class="label">Playback Consistency</span>
+      </div>
+      <h2 class="display-md">Reliability is part<br />of the experience.</h2>
+      <p class="lead">
+        A broken interface, a loading spinner, a buffering pause, an audio-sync drift — these are not minor annoyances. In a luxury home cinema, they break the experience entirely.
+      </p>
+    </div>
+
+    <div class="consistency-grid">
+      <div class="consistency-card reveal reveal-delay-1">
+        <span class="consistency-card__score consistency-card__score--low">01</span>
+        <span class="consistency-card__label">Streaming Platforms</span>
+        <h4>Platform-dependent consistency</h4>
+        <p>Performance depends on your ISP, the platform's CDN, server load, DRM handshakes, and the app version installed. All of these can and do fail without notice.</p>
+      </div>
+      <div class="consistency-card reveal reveal-delay-2">
+        <span class="consistency-card__score consistency-card__score--mid">02</span>
+        <span class="consistency-card__label">Default Local Playback</span>
+        <h4>Hardware reliability, software uncertainty</h4>
+        <p>A local library removes internet dependency — but default device configurations still introduce codec failures, HDR mismatch, and frame-pacing issues that feel like hardware problems but aren't.</p>
+      </div>
+      <div class="consistency-card reveal reveal-delay-3">
+        <span class="consistency-card__score consistency-card__score--high">03</span>
+        <span class="consistency-card__label">Cinema Machina Configured</span>
+        <h4>Verified consistency across all formats</h4>
+        <p>A properly configured local system plays every file in your library correctly, every time — with verified audio passthrough, correct HDR metadata, and consistent frame pacing regardless of the source format.</p>
+      </div>
+    </div>
+  </div>
 </section>
-<!-- Supported Formats strip -->
-<section class="w-full bg-background py-24 border-y border-white/5">
-<div class="max-w-screen-2xl mx-auto px-8 md:px-16 text-center">
-<span class="text-[10px] tracking-[0.4em] uppercase text-outline mb-16 block">Verified Playback Targets</span>
-<div class="flex flex-wrap justify-center items-center gap-12 md:gap-24">
-<img alt="Dolby Atmos" class="h-6 w-auto logo-silver object-contain hover:filter-none transition-all duration-700 opacity-60 hover:opacity-100" src="https://lh3.googleusercontent.com/aida/ADBb0ujB0L4wtgITt3VVcNKA2uhHlz91jjBpSf1YM3aUT4rCyhgZJwlm3b9oCDohtRVJ3mxnI6IUgomB0UPLS7HkkZnrdM9zpGoFjtRn8FMScyednIRzSbyVe_fyhBq6v3B-mRKx_F0zshF9JCpr_Phzg-IxuchrV8cHEORgU6DnOcPNYY9SKXCFDe1_nBRu888e831irBOmutVReXx4M-1BHLzLqPhXWseKoF1A73lfQtT-MZh7rCNQ2BQXJ-Qao9AubaZxjDyyEG7w0g"/>
-<img alt="Dolby TrueHD" class="h-8 w-auto logo-silver object-contain hover:filter-none transition-all duration-700 opacity-60 hover:opacity-100" src="https://lh3.googleusercontent.com/aida/ADBb0uiVfxRL_NzLAf_k6O90CG7MxnGHFUjU5ackeeJ6VUF4FoxxdDtxXPGTr6V4S0ojgW8zeBAm3w1YjMrQtjloNIT95MzVxXhzCjAF6i82ABBJ3lQy6s179TLfKJLdL3NVh7HB60la3wIQWNngQDKRzFV__75QxS22vtisf0RlzcKgYv5bI58Sc_fF4y4Fd64d908O2IdG4UU0sYxjb_N1S2GOgTcBc29YmLqCm-DEkfqOSKw2WoVc2Q5liWlttb4JZdodY_yahPT1wg"/>
-<img alt="DTS-HD Master Audio" class="h-8 w-auto logo-silver object-contain hover:filter-none transition-all duration-700 opacity-60 hover:opacity-100" src="https://lh3.googleusercontent.com/aida/ADBb0ugxaDQ71Ymwo_2pI8w_qNG9dP6I8EgumzPdyxWE6hzqV9zdtGwhD-J2D0QzhieJc3S9sebIsVytl_y2q-Ka8TjN36t5FGlbsv-kJ4vG9W4LHcCLCYHJ6SyvIjPjdUN4OQGwTtHJE2bu2jibELM00ecD7FKXU14WhBbt4c-lEpl36ih45yx2L-_99zqPYNeQaOrFrThNi0BU6AEu1ureOo76I1XLmMt2QoEoG9gUa2LCMcEmY7cBhKoxdBBlQYAp65zAC5QMROtlGg"/>
-<img alt="DTS:X" class="h-6 w-auto logo-silver object-contain hover:filter-none transition-all duration-700 opacity-60 hover:opacity-100" src="https://lh3.googleusercontent.com/aida/ADBb0ugipbbZHlkPekC6ZedcGd5QsZd9wkJF6sTeUHpkSWinN507-vpY2qx4pwaCDcMdusXVz-Mt1z2_fLjcxjYWw58syfVQSQsZbihpaPXthLX8ZymiCCeCMjKsfaXDV07s1ycO9VOeKER45HIFWfqQTtpluFT6O9dOeHVZuy3eCSjjWZCWWP-hrzAwqk-MgHx8EK_HtWfy4EXiwKYHyeQF3p-FjzFFyHXNCeC1FBIx5S9IhJ3Mf7nq-ObHckhmHMQ9bDsKyvGpzWrVAg"/>
-<img alt="HDR10+" class="h-6 w-auto logo-silver object-contain hover:filter-none transition-all duration-700 opacity-60 hover:opacity-100" src="https://lh3.googleusercontent.com/aida/ADBb0ugfnnri48p4y6UE_JRr8BOYc4n7JlKy3pvtXhbox1bhRcz-h7G1mQerzl5Xg3kugbCn8VnnpicRCOWOLgGOczgAZfKVnpmZygkpXQiuBASUeVFKdkdvvB0RB9wAE8jrzEtj4Z1uoy5_gGJ_-WDgns6SxKc9VDdOPBDFn1QsKUI8EHfaUMweF9ml9xeCViLsrHn046fP7WeYZ9kJJ62DzAV9BuMEH5CXYCRhsjtAA5us8HnlDOLQLJGKdF5IC2-oCAAW52CF9ywDRA"/>
-</div>
-</div>
+
+<!-- ═══ CLOSING ARGUMENT ═══ -->
+<section class="closing-argument" id="closing">
+  <div class="container">
+    <div class="closing-grid">
+      <div class="reveal">
+        <div class="section-label">
+          <span class="label">The Conclusion</span>
+        </div>
+        <h2 class="display-md">
+          Setup is not a luxury.<br />
+          It's the foundation.
+        </h2>
+        <p style="margin-top:1.25rem;max-width:none;">
+          Every element of your cinema system — projector, screen, processor, amplifier, speakers — was designed with maximum capability in mind. But that capability is only accessible when the playback chain delivers the right signal to each component in exactly the right format.
+        </p>
+        <p style="margin-top:1rem;max-width:none;">
+          Cinema Machina works at every layer of that chain to ensure every component is operating at design intent — not at whatever the default configuration allows.
+        </p>
+        <div class="gold-rule" style="margin:2rem 0;"></div>
+        <a href="contact.html" class="btn btn-primary">Book a Consultation</a>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <blockquote class="closing-quote">
+          "The finest projector in the world cannot correct what the source device sends incorrectly. Performance begins before the display."
+        </blockquote>
+        <div style="margin-top:3rem;">
+          <div class="img-frame" style="aspect-ratio:16/9;border:1px solid var(--border);">
+            <img src="assets/images/hero-home-theatre.jpg" alt="Premium home theatre setup" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
-<!-- Final CTA -->
-<section class="py-48 bg-surface-container-lowest text-center relative overflow-hidden">
-<div class="px-8 max-w-4xl mx-auto relative z-10">
-<h2 class="font-headline text-5xl md:text-7xl mb-12">Configure the chain, <br/><span class="italic text-primary">not just the device.</span></h2>
-<p class="text-on-surface-variant text-lg max-w-xl mx-auto mb-16 font-light">
-                    Transform your luxury equipment from a collection of parts into a singular, breathtaking instrument of cinema.
-                </p>
-<button class="px-16 py-5 bg-primary text-on-primary text-xs font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black hover:tracking-[0.4em] transition-all duration-700 shadow-2xl shadow-primary/20">
-                    Request Consultation
-                </button>
-</div>
-<!-- Background Decoration -->
-<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+<!-- ═══ CTA ═══ -->
+<section class="cta-full">
+  <div class="container cta-full__content">
+    <div class="reveal">
+      <div class="section-label" style="justify-content:center;">
+        <span class="label">Take Action</span>
+      </div>
+      <h2 class="display-md">
+        The investment is already made.<br />Let's unlock what it's capable of.
+      </h2>
+      <p class="lead" style="margin:1.25rem auto;text-align:center;">
+        Book a private consultation. We'll audit your system, identify where performance is being lost, and build a plan to restore it.
+      </p>
+      <div class="cta-full__actions">
+        <a href="contact.html" class="btn btn-primary">Book Your Consultation</a>
+        <a href="services.html" class="btn btn-outline">Explore Services</a>
+      </div>
+    </div>
+  </div>
 </section>
-</main>
-<!-- Footer -->
-<footer class="w-full py-24 md:py-32 px-6 md:px-16 bg-[#080808] border-t border-white/5">
-<div class="grid grid-cols-1 md:grid-cols-3 gap-20 max-w-[1440px] mx-auto">
-<div class="flex flex-col gap-8">
-<a class="text-xl font-serif italic text-stone-200 hover:opacity-70 transition-premium" href="index.html">Cinema Machina</a>
-<p class="font-sans text-[10px] uppercase tracking-[0.3em] text-stone-600 leading-loose max-w-xs">
-Premium playback optimisation for Plex, Jellyfin, Kodi, playback devices, HDMI chains, and luxury home cinema environments in the UAE.
-</p>
-</div>
-<div class="grid grid-cols-2 gap-8">
-<div class="flex flex-col gap-6">
-<a class="font-sans text-[10px] uppercase tracking-[0.2em] text-stone-500 hover:text-primary transition-premium" href="index.html">Home</a>
-<a class="font-sans text-[10px] uppercase tracking-[0.2em] text-stone-500 hover:text-primary transition-premium" href="services.html">Services</a>
-</div>
-<div class="flex flex-col gap-6">
-<a class="font-sans text-[10px] uppercase tracking-[0.2em] text-stone-500 hover:text-primary transition-premium" href="about.html">About</a>
-<a class="font-sans text-[10px] uppercase tracking-[0.2em] text-stone-500 hover:text-primary transition-premium" href="contact.html">Contact</a>
-</div>
-</div>
-<div class="flex flex-col gap-6">
-<span class="font-sans text-[10px] uppercase tracking-[0.4em] text-stone-500 block">Contact</span>
-<a class="font-sans text-[10px] tracking-[0.2em] text-stone-500 hover:text-primary transition-premium lowercase" href="mailto:cinemamachina.ae@gmail.com">cinemamachina.ae@gmail.com</a>
-<a class="font-sans text-[10px] uppercase tracking-[0.2em] text-stone-500 hover:text-primary transition-premium" href="tel:+971507282195">+971 50 728 2195</a>
-<a class="font-sans text-[10px] uppercase tracking-[0.2em] text-stone-500 hover:text-primary transition-premium" href="https://wa.me/971507282195" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-</div>
-</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <a href="index.html"><img src="assets/logos/cm-logo-horizontal.png" alt="Cinema Machina" /></a>
+        <p>Premium playback and media-environment specialist for luxury home cinema systems in the UAE.</p>
+      </div>
+      <div class="footer__nav">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="why-setup-matters.html">Why Setup Matters</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__contact">
+        <h4>Get In Touch</h4>
+        <div class="footer__contact-items">
+          <a href="https://wa.me/971507282195" class="footer__contact-link" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            <div>
+              <span>WhatsApp</span>
+              <strong>+971 50 728 2195</strong>
+            </div>
+          </a>
+          <a href="mailto:cinemamachina.ae@gmail.com" class="footer__contact-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <div>
+              <span>Email</span>
+              <strong>cinemamachina.ae@gmail.com</strong>
+            </div>
+          </a>
+          <a href="tel:+971507282195" class="footer__contact-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div>
+              <span>Location</span>
+              <strong>UAE — By Appointment</strong>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p>© 2025 Cinema Machina. All rights reserved.</p>
+      <p>Luxury Home Cinema Specialists &nbsp;·&nbsp; UAE</p>
+    </div>
+  </div>
 </footer>
-</body></html>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

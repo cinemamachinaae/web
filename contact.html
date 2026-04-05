@@ -1,305 +1,491 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Cinema Machina</title>
+  <meta name="description" content="Book a private Cinema Machina consultation for your luxury home cinema system in the UAE. Get in touch via WhatsApp, email, or our inquiry form." />
+  <link rel="icon" type="image/png" href="assets/logos/cm-logo-square.png" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    /* ── CONTACT LAYOUT ── */
+    .contact-hero {
+      position: relative;
+      min-height: 55vh;
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: clamp(3rem, 6vw, 5rem);
+      overflow: hidden;
+    }
 
-<html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Contact - Cinema Machina | Professional Playback Optimization</title>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..900;1,400..900&amp;family=Inter:wght@300;400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              "on-primary-fixed-variant": "#5d4201",
-              "error": "#ffb4ab",
-              "error-container": "#93000a",
-              "outline-variant": "#4e4639",
-              "tertiary-fixed-dim": "#b0c6f9",
-              "surface": "#131313",
-              "secondary-container": "#474746",
-              "primary-container": "#c5a059",
-              "on-surface-variant": "#d1c5b4",
-              "on-secondary-fixed-variant": "#474746",
-              "secondary": "#c8c6c5",
-              "on-surface": "#e5e2e1",
-              "primary-fixed": "#ffdea5",
-              "tertiary-fixed": "#d8e2ff",
-              "surface-container-highest": "#353534",
-              "on-tertiary": "#173059",
-              "surface-variant": "#353534",
-              "surface-container-high": "#2a2a2a",
-              "inverse-primary": "#775a19",
-              "secondary-fixed-dim": "#c8c6c5",
-              "on-primary": "#412d00",
-              "on-primary-fixed": "#261900",
-              "primary-fixed-dim": "#e9c176",
-              "on-primary-container": "#4e3700",
-              "inverse-surface": "#e5e2e1",
-              "on-secondary-fixed": "#1c1b1b",
-              "background": "#131313",
-              "on-tertiary-fixed-variant": "#304671",
-              "on-secondary": "#313030",
-              "tertiary-container": "#8fa5d6",
-              "surface-tint": "#e9c176",
-              "surface-dim": "#131313",
-              "tertiary": "#b0c6f9",
-              "on-background": "#e5e2e1",
-              "surface-container-low": "#1c1b1b",
-              "secondary-fixed": "#e5e2e1",
-              "on-error-container": "#ffdad6",
-              "surface-bright": "#3a3939",
-              "inverse-on-surface": "#313030",
-              "primary": "#e9c176",
-              "surface-container": "#201f1f",
-              "outline": "#9a8f80",
-              "on-tertiary-container": "#233a65",
-              "on-secondary-container": "#b7b5b4",
-              "on-tertiary-fixed": "#001a41",
-              "on-error": "#690005",
-              "surface-container-lowest": "#0e0e0e"
-            },
-            fontFamily: {
-              "headline": ["Bodoni Moda", "serif"],
-              "body": ["Inter", "sans-serif"],
-              "label": ["Inter", "sans-serif"]
-            },
-            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
-          },
-        },
-      }
-    </script>
-<style>
-      .font-serif { font-family: 'Bodoni Moda', serif; }
-      .font-sans { font-family: 'Inter', sans-serif; }
-      .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
-      .bronze-gradient {
-        background: linear-gradient(135deg, #E9C176 0%, #C5A059 100%);
-      }
-      .tonal-layer {
-        background-color: rgba(255, 255, 255, 0.03);
-      }
-      .hover-lift {
-        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      }
-      .hover-lift:hover {
-        transform: translateY(-4px);
-      }
-      @keyframes kenburns {
-        0% { transform: scale(1); }
-        100% { transform: scale(1.1); }
-      }
-    </style>
+    .contact-hero__bg {
+      position: absolute;
+      inset: 0;
+    }
+
+    .contact-hero__bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .contact-hero__gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(7,6,4,0.5) 0%,
+        rgba(7,6,4,0.4) 30%,
+        rgba(7,6,4,0.88) 75%,
+        rgba(7,6,4,1) 100%
+      );
+    }
+
+    .contact-hero__content {
+      position: relative;
+      z-index: 2;
+      padding-top: 8rem;
+    }
+
+    /* ── CONTACT BODY ── */
+    .contact-body {
+      padding: var(--section-gap) 0;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(3rem, 6vw, 7rem);
+      align-items: start;
+    }
+
+    /* ── ACTION ITEMS ── */
+    .contact-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    /* ── TRUST BLOCK ── */
+    .trust-block {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 2.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .trust-block h4 {
+      font-family: var(--font-body);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--bronze);
+      margin-bottom: 1.5rem;
+    }
+
+    .trust-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.875rem;
+    }
+
+    .trust-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.875rem;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+
+    .trust-list li::before {
+      content: '✦';
+      color: var(--bronze);
+      flex-shrink: 0;
+      font-size: 0.5rem;
+      margin-top: 0.4rem;
+    }
+
+    /* ── FORM PANEL ── */
+    .form-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: clamp(2rem, 4vw, 3.5rem);
+    }
+
+    .form-panel__header {
+      margin-bottom: 2.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .form-panel__header h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-panel__header p {
+      font-size: 0.875rem;
+      max-width: none;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 1rem 2rem;
+      background: var(--bronze);
+      color: var(--bg);
+      font-family: var(--font-body);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+      margin-top: 0.5rem;
+    }
+
+    .submit-btn:hover {
+      background: var(--bronze-light);
+      transform: translateY(-1px);
+    }
+
+    .submit-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    .form-note {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 1rem;
+      line-height: 1.6;
+    }
+
+    /* ── LOCATION ── */
+    .location-section {
+      padding: clamp(4rem, 8vw, 6rem) 0;
+      background: var(--bg-warm);
+      border-top: 1px solid var(--border);
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(3rem, 6vw, 7rem);
+      align-items: center;
+    }
+
+    .location-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .location-item h4 {
+      font-family: var(--font-body);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--bronze);
+      margin-bottom: 0.5rem;
+    }
+
+    .location-item p { font-size: 0.9rem; max-width: none; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .location-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
-<body class="bg-surface text-on-surface font-sans selection:bg-primary-container/30">
-<!-- TopNavBar -->
-<nav class="fixed top-0 w-full z-50 bg-[#0E0E0E]/80 backdrop-blur-xl border-b border-white/5">
-<div class="flex justify-between items-center px-6 md:px-16 py-6 max-w-[1440px] mx-auto">
-<a class="text-xl md:text-2xl font-serif italic text-stone-100 tracking-wider hover:opacity-70 transition-premium" href="index.html">Cinema Machina</a>
-<div class="hidden md:flex items-center gap-12">
-<a class="text-xs uppercase tracking-[0.2em] text-stone-400 hover:text-primary transition-premium" href="index.html">Home</a>
-<a class="text-xs uppercase tracking-[0.2em] text-stone-400 hover:text-primary transition-premium" href="services.html">Services</a>
-<a class="text-xs uppercase tracking-[0.2em] text-stone-400 hover:text-primary transition-premium" href="about.html">About</a>
-<a class="text-xs uppercase tracking-[0.2em] text-primary border-b border-primary/30 pb-1" href="contact.html">Contact</a>
-</div>
-<a class="bg-primary text-on-primary px-6 py-2.5 text-[10px] font-sans tracking-[0.2em] uppercase hover:bg-white hover:text-black transition-premium active:scale-95" href="https://wa.me/971507282195" target="_blank" rel="noopener noreferrer">WhatsApp Now</a>
-</div>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav__logo">
+    <img src="assets/logos/cm-logo-horizontal.png" alt="Cinema Machina" />
+  </a>
+  <ul class="nav__links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="why-setup-matters.html">Why Setup Matters</a></li>
+  </ul>
+  <a href="contact.html" class="nav__cta">Book Consultation</a>
+  <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
-<main>
-<!-- Section 1: Hero -->
-<section class="relative h-[85vh] min-h-[700px] flex items-center overflow-hidden">
-<div class="absolute inset-0 z-0">
-<img alt="Luxury Home Cinema Environment" class="w-full h-full object-cover scale-105 animate-[kenburns_20s_ease_infinite]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSWnL7Amw04S2HuF-D2Rby8Uj-TB14HM7zUetlzGY36_1_N5kcQbUyaG3IarPVu2MD4m4ojrk-ANErgDoLjoaNWo2K2WhZMeIxJXEWmMV2x3ryvYK84z09S8Mvljv1VlR3znj4_sJ4pni1LTWLn64WNpsEGKeedTGKZwN8mXrL6lt1GwVJhwFP9yw3gOXgJQnZ09RQoh8FKPsXCaooVshn1HwDrJGO2Xd5vV-zh_PW993nib0p-sz1myX7x3Bs4B4eYjvQnsxytyM"/>
-<div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/60 to-surface/20"></div>
-</div>
-<div class="relative z-10 max-w-[1440px] mx-auto px-6 lg:px-16 w-full pt-20">
-<div class="max-w-4xl space-y-8">
-<span class="text-primary text-[10px] uppercase tracking-[0.5em] font-bold block mb-4">Engineering Excellence</span>
-<h1 class="font-serif italic text-6xl md:text-8xl text-on-surface leading-[1.1] tracking-tight">
-                    Refine your playback <br/>environment.
-                </h1>
-<p class="text-on-surface-variant font-light text-xl md:text-2xl leading-relaxed max-w-2xl">
-                    Cinema Machina provides specialized consultation for Plex, Jellyfin, and Kodi environments. We optimize signal chains to ensure bit-perfect playback and cinematic visual accuracy.
-                </p>
-</div>
-</div>
+<nav class="nav__mobile" id="nav-mobile">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="about.html">About</a>
+  <a href="why-setup-matters.html">Why Setup Matters</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="contact-hero">
+  <div class="contact-hero__bg">
+    <img src="assets/images/contact-screening-room.jpg" alt="Private luxury screening room" loading="eager" />
+  </div>
+  <div class="contact-hero__gradient"></div>
+  <div class="container contact-hero__content">
+    <div class="reveal">
+      <div class="section-label">
+        <span class="label">Private Consultations</span>
+      </div>
+      <h1 class="display-lg">
+        Begin your<br /><em>consultation.</em>
+      </h1>
+      <p class="lead" style="margin-top:1rem;">
+        Cinema Machina works by private appointment. Tell us about your system and we'll be in touch to arrange a consultation tailored to your needs.
+      </p>
+    </div>
+  </div>
 </section>
-<!-- Section 2: Consultation Focus -->
-<section class="py-24 lg:py-32 bg-surface">
-<div class="max-w-[1440px] mx-auto px-6 lg:px-16 grid grid-cols-12 gap-12 lg:gap-24">
-<div class="col-span-12 lg:col-span-5 space-y-12">
-<div class="space-y-6">
-<span class="text-primary text-[10px] uppercase tracking-[0.4em] font-bold">Direct Access</span>
-<h2 class="font-serif italic text-4xl md:text-5xl text-on-surface">Precision in Every Signal Path</h2>
-</div>
-<p class="text-on-surface-variant font-light text-lg leading-relaxed">
-                    True cinematic immersion is compromised by misconfigured metadata, network bottlenecks, and improper HDR mapping. We audit your entire hardware and software ecosystem to restore the director's original vision.
-                </p>
-<div class="space-y-8 pt-8 border-t border-outline-variant/10">
-<div class="flex flex-col gap-8">
-<a class="group flex items-center gap-6 text-on-surface hover:text-primary transition-all duration-500" href="tel:+971507282195">
-<div class="w-12 h-12 flex items-center justify-center rounded-full border border-outline-variant/20 group-hover:border-primary/50 transition-colors">
-<span class="material-symbols-outlined text-xl">call</span>
-</div>
-<div class="flex flex-col">
-<span class="text-[9px] uppercase tracking-widest text-stone-500 mb-1">Direct Line</span>
-<span class="text-sm tracking-[0.2em] font-medium">+971 50 728 2195</span>
-</div>
-</a>
-<a class="group flex items-center gap-6 text-on-surface hover:text-primary transition-all duration-500" href="https://wa.me/971507282195" target="_blank">
-<div class="w-12 h-12 flex items-center justify-center rounded-full border border-outline-variant/20 group-hover:border-primary/50 transition-colors">
-<span class="material-symbols-outlined text-xl">chat</span>
-</div>
-<div class="flex flex-col">
-<span class="text-[9px] uppercase tracking-widest text-stone-500 mb-1">WhatsApp Business</span>
-<span class="text-sm tracking-[0.2em] font-medium">+971 50 728 2195</span>
-</div>
-</a>
-<a class="group flex items-center gap-6 text-on-surface hover:text-primary transition-all duration-500" href="mailto:cinemamachina.ae@gmail.com">
-<div class="w-12 h-12 flex items-center justify-center rounded-full border border-outline-variant/20 group-hover:border-primary/50 transition-colors">
-<span class="material-symbols-outlined text-xl">mail</span>
-</div>
-<div class="flex flex-col">
-<span class="text-[9px] uppercase tracking-widest text-stone-500 mb-1">Engineering Support</span>
-<span class="text-sm tracking-[0.1em] font-medium lowercase">cinemamachina.ae@gmail.com</span>
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="col-span-12 lg:col-span-7">
-<div class="tonal-layer p-8 lg:p-12 relative border border-white/5 shadow-2xl">
-<form action="mailto:cinemamachina.ae@gmail.com" class="space-y-10" enctype="text/plain" method="POST">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-12">
-<!-- Name -->
-<div class="flex flex-col gap-2">
-<label class="text-[10px] uppercase tracking-widest text-stone-500 font-medium">Client Name</label>
-<input class="bg-transparent border-0 border-b border-outline-variant/30 focus:border-primary focus:ring-0 text-on-surface text-base py-2 px-0 placeholder:text-stone-700 transition-all" name="name" placeholder="YOUR NAME" required="" type="text"/>
-</div>
-<!-- Phone -->
-<div class="flex flex-col gap-2">
-<label class="text-[10px] uppercase tracking-widest text-stone-500 font-medium">WhatsApp Contact</label>
-<input class="bg-transparent border-0 border-b border-outline-variant/30 focus:border-primary focus:ring-0 text-on-surface text-base py-2 px-0 placeholder:text-stone-700 transition-all" name="phone" placeholder="+971 -- --- ----" required="" type="tel"/>
-</div>
-<!-- Email -->
-<div class="flex flex-col gap-2">
-<label class="text-[10px] uppercase tracking-widest text-stone-500 font-medium">Email Address</label>
-<input class="bg-transparent border-0 border-b border-outline-variant/30 focus:border-primary focus:ring-0 text-on-surface text-base py-2 px-0 placeholder:text-stone-700 transition-all" name="email" placeholder="ADDRESS@DOMAIN.COM" required="" type="email"/>
-</div>
-<!-- Location -->
-<div class="flex flex-col gap-2">
-<label class="text-[10px] uppercase tracking-widest text-stone-500 font-medium">City / Emirate</label>
-<input class="bg-transparent border-0 border-b border-outline-variant/30 focus:border-primary focus:ring-0 text-on-surface text-base py-2 px-0 placeholder:text-stone-700 transition-all" name="location" placeholder="DUBAI, UAE" type="text"/>
-</div>
-<!-- Media Ecosystem -->
-<div class="flex flex-col gap-2">
-<label class="text-[10px] uppercase tracking-widest text-stone-500 font-medium">Primary Playback App</label>
-<select class="bg-surface border-0 border-b border-outline-variant/30 focus:border-primary focus:ring-0 text-on-surface text-base py-2 px-0 appearance-none transition-all cursor-pointer" name="apps_used">
-<option>Plex Media Server</option>
-<option>Jellyfin / Emby</option>
-<option>Kodi / CoreELEC</option>
-<option>Infuse (Apple TV)</option>
-<option>Zidoo / Home Theater 4.0</option>
-<option>Other / Multi-App</option>
-</select>
-</div>
-<!-- Player Device -->
-<div class="flex flex-col gap-2">
-<label class="text-[10px] uppercase tracking-widest text-stone-500 font-medium">Client Device</label>
-<select class="bg-surface border-0 border-b border-outline-variant/30 focus:border-primary focus:ring-0 text-on-surface text-base py-2 px-0 appearance-none transition-all cursor-pointer" name="player_device">
-<option>Nvidia Shield TV Pro</option>
-<option>Apple TV 4K</option>
-<option>Zidoo / Dune HD Player</option>
-<option>Sony / LG / Samsung Smart TV</option>
-<option>Custom HTPC / NAS</option>
-<option>Other</option>
-</select>
-</div>
-</div>
-<!-- Hardware details -->
-<div class="flex flex-col gap-2">
-<label class="text-[10px] uppercase tracking-widest text-stone-500 font-medium">Chain Hardware (Display, AVR, Projector Models)</label>
-<input class="bg-transparent border-0 border-b border-outline-variant/30 focus:border-primary focus:ring-0 text-on-surface text-base py-2 px-0 placeholder:text-stone-700 transition-all" name="hardware" placeholder="E.G. SONY A95L, DENON X4800H, JVC NZ8, KEF R-SERIES..." type="text"/>
-</div>
-<!-- Message -->
-<div class="flex flex-col gap-2">
-<label class="text-[10px] uppercase tracking-widest text-stone-500 font-medium">Playback Issues or Configuration Goals</label>
-<textarea class="bg-transparent border-0 border-b border-outline-variant/30 focus:border-primary focus:ring-0 text-on-surface text-base py-2 px-0 placeholder:text-stone-700 transition-all resize-none" name="message" placeholder="DESCRIBE JUDDER, AUDIO SYNC, HDR MAPPING OR NETWORKING ISSUES..." rows="3"></textarea>
-</div>
-<!-- CTA -->
-<button class="bronze-gradient w-full py-6 mt-6 text-on-primary text-[11px] uppercase tracking-[0.4em] font-bold hover:brightness-110 active:scale-[0.98] transition-all shadow-xl shadow-primary/10" type="submit">
-                            Submit Consultation Request
-                        </button>
-</form>
-</div>
-</div>
-</div>
+
+<!-- ═══ CONTACT BODY ═══ -->
+<section class="contact-body" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <!-- Left: Actions + Info -->
+      <div class="reveal">
+        <div class="section-label">
+          <span class="label">Reach Us Directly</span>
+        </div>
+        <h2 class="display-sm" style="margin-bottom:1.5rem;">
+          Prefer to talk first?
+        </h2>
+        <p style="max-width:none;margin-bottom:2rem;">
+          We're available via WhatsApp, email, and phone. For complex or multi-room systems, a brief call before the inquiry form can be the most efficient first step.
+        </p>
+
+        <div class="contact-actions">
+          <a href="https://wa.me/971507282195" class="contact-action" target="_blank" rel="noopener" id="whatsapp-cta">
+            <div class="contact-action__icon">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+              </svg>
+            </div>
+            <div class="contact-action__text">
+              <span>WhatsApp</span>
+              <strong>+971 50 728 2195</strong>
+            </div>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25" opacity="0.4">
+              <path d="M3 8h10M9 4l4 4-4 4"/>
+            </svg>
+          </a>
+
+          <a href="mailto:cinemamachina.ae@gmail.com" class="contact-action" id="email-cta">
+            <div class="contact-action__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" width="18" height="18">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+            <div class="contact-action__text">
+              <span>Email</span>
+              <strong>cinemamachina.ae@gmail.com</strong>
+            </div>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25" opacity="0.4">
+              <path d="M3 8h10M9 4l4 4-4 4"/>
+            </svg>
+          </a>
+
+          <a href="tel:+971507282195" class="contact-action" id="phone-cta">
+            <div class="contact-action__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" width="18" height="18">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.54a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+            </div>
+            <div class="contact-action__text">
+              <span>Phone</span>
+              <strong>+971 50 728 2195</strong>
+            </div>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25" opacity="0.4">
+              <path d="M3 8h10M9 4l4 4-4 4"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="trust-block">
+          <h4>What to expect</h4>
+          <ul class="trust-list">
+            <li>We respond to all enquiries within 24 hours</li>
+            <li>Your first conversation is always free and exploratory</li>
+            <li>No obligation, no sales pressure — we assess fit first</li>
+            <li>All consultations are private and by appointment only</li>
+            <li>We serve clients across the UAE — Dubai, Abu Dhabi, and beyond</li>
+            <li>Remote consultations available for initial discussions</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Right: Form -->
+      <div class="form-panel reveal reveal-delay-2">
+        <div class="form-panel__header">
+          <h3>Send an Enquiry</h3>
+          <p>Tell us about your system and what you're looking to improve. We'll review before getting back to you.</p>
+        </div>
+
+        <form class="contact-form" id="contact-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="first-name">First Name</label>
+              <input type="text" id="first-name" name="first_name" placeholder="Your first name" required />
+            </div>
+            <div class="form-group">
+              <label for="last-name">Last Name</label>
+              <input type="text" id="last-name" name="last_name" placeholder="Your last name" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required />
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone / WhatsApp</label>
+            <input type="tel" id="phone" name="phone" placeholder="+971 50 728 2195" />
+          </div>
+
+          <div class="form-group">
+            <label for="service">Primary Interest</label>
+            <select id="service" name="service">
+              <option value="" disabled selected>Select a service area</option>
+              <option value="library">Media Library &amp; Playback Setup</option>
+              <option value="devices">Playback Devices &amp; Platform Guidance</option>
+              <option value="signal">HDMI / Signal Chain Optimisation</option>
+              <option value="diagnostics">Playback Diagnostics</option>
+              <option value="refinement">Premium Viewing Refinement</option>
+              <option value="full">Full System Audit &amp; Optimisation</option>
+              <option value="other">Not Sure — Need Assessment</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="system">Tell us about your system</label>
+            <textarea id="system" name="system_description" placeholder="Describe your current setup — projector, receiver, playback devices, library software, and what you feel could be improved…"></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn" id="submit-btn">
+            Send Enquiry
+          </button>
+          <p class="form-note">
+            Your information is kept private and is not shared. We use it only to prepare for your consultation.
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
 </section>
-<!-- Section 3: Technical Focus Strip -->
-<section class="py-20 bg-surface-container-lowest border-y border-white/5">
-<div class="max-w-[1440px] mx-auto px-6 lg:px-16">
-<div class="grid grid-cols-2 md:grid-cols-4 gap-12">
-<div class="text-center space-y-3 group cursor-default">
-<div class="text-primary font-serif italic text-2xl group-hover:scale-110 transition-transform duration-500">Lossless Audio</div>
-<div class="text-[9px] uppercase tracking-[0.3em] text-stone-500">TrueHD &amp; DTS:X Passthrough</div>
-</div>
-<div class="text-center space-y-3 group cursor-default">
-<div class="text-primary font-serif italic text-2xl group-hover:scale-110 transition-transform duration-500">Frame Matching</div>
-<div class="text-[9px] uppercase tracking-[0.3em] text-stone-500">Judder-Free 24p Playback</div>
-</div>
-<div class="text-center space-y-3 group cursor-default">
-<div class="text-primary font-serif italic text-2xl group-hover:scale-110 transition-transform duration-500">HDR/DV Layering</div>
-<div class="text-[9px] uppercase tracking-[0.3em] text-stone-500">Dynamic Metadata Mapping</div>
-</div>
-<div class="text-center space-y-3 group cursor-default">
-<div class="text-primary font-serif italic text-2xl group-hover:scale-110 transition-transform duration-500">Network Path</div>
-<div class="text-[9px] uppercase tracking-[0.3em] text-stone-500">Jumbo Frame &amp; 10Gbps Core</div>
-</div>
-</div>
-</div>
+
+<!-- ═══ LOCATION / BY APPOINTMENT ═══ -->
+<section class="location-section" id="location">
+  <div class="container">
+    <div class="location-grid">
+      <div class="reveal">
+        <div class="section-label">
+          <span class="label">Service Area</span>
+        </div>
+        <h2 class="display-sm" style="margin-bottom:1.5rem;">
+          By appointment across the UAE.
+        </h2>
+        <p style="max-width:none;margin-bottom:2rem;">
+          Cinema Machina operates by private appointment — we come to you. We serve clients across Dubai, Abu Dhabi, Sharjah, and surrounding areas. Remote assessment and guidance is also available for initial consultations.
+        </p>
+        <div class="location-detail">
+          <div class="location-item">
+            <h4>Primary Territory</h4>
+            <p>Dubai · Abu Dhabi · Sharjah · Al Ain<br />and surrounding UAE emirates</p>
+          </div>
+          <div class="location-item">
+            <h4>Remote Consultations</h4>
+            <p>Available globally for initial assessment, guidance, and system configuration review via secure video call.</p>
+          </div>
+          <div class="location-item">
+            <h4>Response Time</h4>
+            <p>All enquiries receive a personal response within 24 hours. Urgent systems can be assessed within 48 hours in most cases.</p>
+          </div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="img-frame" style="aspect-ratio:3/4;border:1px solid var(--border);">
+          <img src="assets/images/contact-screening-room.jpg" alt="Luxury cinema consultation environment" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
-<!-- Section 4: Final CTA -->
-<section class="py-32 lg:py-48 bg-surface text-center relative overflow-hidden">
-<div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(233,193,118,0.03)_0%,transparent_70%)]"></div>
-<div class="relative z-10 max-w-4xl mx-auto px-6">
-<h2 class="font-serif italic text-5xl md:text-7xl text-on-surface mb-16">Ready for professional <br/>optimization?</h2>
-<div class="flex flex-col md:flex-row items-center justify-center gap-8">
-<a class="bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300 text-stone-100 px-12 py-6 text-[11px] font-bold uppercase tracking-[0.3em] w-full md:w-auto hover-lift" href="mailto:cinemamachina.ae@gmail.com">
-                    Email Engineering
-                </a>
-<a class="bronze-gradient text-on-primary px-12 py-6 text-[11px] font-bold uppercase tracking-[0.3em] w-full md:w-auto hover:brightness-110 transition-all shadow-xl shadow-primary/20 hover-lift" href="https://wa.me/971507282195" target="_blank">
-                    WhatsApp Consultation
-                </a>
-</div>
-</div>
-</section>
-</main>
-<!-- Footer -->
-<footer class="w-full py-24 md:py-32 px-6 md:px-16 bg-[#080808] border-t border-white/5">
-<div class="grid grid-cols-1 md:grid-cols-3 gap-20 max-w-[1440px] mx-auto">
-<div class="flex flex-col gap-8">
-<a class="text-xl font-serif italic text-stone-200 hover:opacity-70 transition-premium" href="index.html">Cinema Machina</a>
-<p class="font-sans text-[10px] uppercase tracking-[0.3em] text-stone-600 leading-loose max-w-xs">
-Premium playback optimisation for Plex, Jellyfin, Kodi, playback devices, HDMI chains, and luxury home cinema environments in the UAE.
-</p>
-</div>
-<div class="grid grid-cols-2 gap-8">
-<div class="flex flex-col gap-6">
-<a class="font-sans text-[10px] uppercase tracking-[0.2em] text-stone-500 hover:text-primary transition-premium" href="index.html">Home</a>
-<a class="font-sans text-[10px] uppercase tracking-[0.2em] text-stone-500 hover:text-primary transition-premium" href="services.html">Services</a>
-</div>
-<div class="flex flex-col gap-6">
-<a class="font-sans text-[10px] uppercase tracking-[0.2em] text-stone-500 hover:text-primary transition-premium" href="about.html">About</a>
-<a class="font-sans text-[10px] uppercase tracking-[0.2em] text-stone-500 hover:text-primary transition-premium" href="contact.html">Contact</a>
-</div>
-</div>
-<div class="flex flex-col gap-6">
-<span class="font-sans text-[10px] uppercase tracking-[0.4em] text-stone-500 block">Contact</span>
-<a class="font-sans text-[10px] tracking-[0.2em] text-stone-500 hover:text-primary transition-premium lowercase" href="mailto:cinemamachina.ae@gmail.com">cinemamachina.ae@gmail.com</a>
-<a class="font-sans text-[10px] uppercase tracking-[0.2em] text-stone-500 hover:text-primary transition-premium" href="tel:+971507282195">+971 50 728 2195</a>
-<a class="font-sans text-[10px] uppercase tracking-[0.2em] text-stone-500 hover:text-primary transition-premium" href="https://wa.me/971507282195" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-</div>
-</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <a href="index.html"><img src="assets/logos/cm-logo-horizontal.png" alt="Cinema Machina" /></a>
+        <p>Premium playback and media-environment specialist for luxury home cinema systems in the UAE.</p>
+      </div>
+      <div class="footer__nav">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="why-setup-matters.html">Why Setup Matters</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__contact">
+        <h4>Get In Touch</h4>
+        <div class="footer__contact-items">
+          <a href="https://wa.me/971507282195" class="footer__contact-link" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            <div>
+              <span>WhatsApp</span>
+              <strong>+971 50 728 2195</strong>
+            </div>
+          </a>
+          <a href="mailto:cinemamachina.ae@gmail.com" class="footer__contact-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <div>
+              <span>Email</span>
+              <strong>cinemamachina.ae@gmail.com</strong>
+            </div>
+          </a>
+          <a href="tel:+971507282195" class="footer__contact-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div>
+              <span>Location</span>
+              <strong>UAE — By Appointment</strong>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p>© 2025 Cinema Machina. All rights reserved.</p>
+      <p>Luxury Home Cinema Specialists &nbsp;·&nbsp; UAE</p>
+    </div>
+  </div>
 </footer>
-</body></html>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

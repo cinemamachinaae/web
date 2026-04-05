@@ -1,303 +1,556 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Cinema Machina</title>
+  <meta name="description" content="Cinema Machina is a premium playback and media-environment specialist working in the hidden layer between your hardware and the final image on screen." />
+  <link rel="icon" type="image/png" href="assets/logos/cm-logo-square.png" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    /* ── WHAT WE ARE / ARE NOT ── */
+    .identity-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-top: 3.5rem;
+    }
 
-<html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>About | Cinema Machina</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@1,6..96,400..900&amp;family=Inter:wght@300;400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              "on-primary-fixed-variant": "#5d4201",
-              "error": "#ffb4ab",
-              "error-container": "#93000a",
-              "outline-variant": "#4e4639",
-              "tertiary-fixed-dim": "#b0c6f9",
-              "surface": "#0E0E0E",
-              "secondary-container": "#1C1B1B",
-              "primary-container": "#c5a059",
-              "on-surface-variant": "#9a8f80",
-              "on-secondary-fixed-variant": "#474746",
-              "secondary": "#c8c6c5",
-              "on-surface": "#e5e2e1",
-              "primary-fixed": "#ffdea5",
-              "tertiary-fixed": "#d8e2ff",
-              "surface-container-highest": "#353534",
-              "on-tertiary": "#173059",
-              "surface-variant": "#1C1B1B",
-              "surface-container-high": "#201F1F",
-              "inverse-primary": "#775a19",
-              "secondary-fixed-dim": "#c8c6c5",
-              "on-primary": "#412d00",
-              "on-primary-fixed": "#261900",
-              "primary-fixed-dim": "#e9c176",
-              "on-primary-container": "#4e3700",
-              "inverse-surface": "#e5e2e1",
-              "on-secondary-fixed": "#1c1b1b",
-              "background": "#0E0E0E",
-              "on-tertiary-fixed-variant": "#304671",
-              "on-secondary": "#313030",
-              "tertiary-container": "#8fa5d6",
-              "surface-tint": "#e9c176",
-              "surface-dim": "#0E0E0E",
-              "tertiary": "#b0c6f9",
-              "on-background": "#e5e2e1",
-              "surface-container-low": "#131313",
-              "secondary-fixed": "#e5e2e1",
-              "on-error-container": "#ffdad6",
-              "surface-bright": "#3a3939",
-              "inverse-on-surface": "#313030",
-              "primary": "#C5A059",
-              "surface-container": "#1c1b1b",
-              "outline": "#4e4639",
-              "on-tertiary-container": "#233a65",
-              "on-secondary-container": "#b7b5b4",
-              "on-tertiary-fixed": "#001a41",
-              "on-error": "#690005",
-              "surface-container-lowest": "#080808"
-            },
-            fontFamily: {
-              "serif": ["Bodoni Moda", "serif"],
-              "sans": ["Inter", "sans-serif"],
-              "headline": ["Bodoni Moda", "serif"],
-              "body": ["Inter", "sans-serif"],
-              "label": ["Inter", "sans-serif"]
-            },
-            borderRadius: {"DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px"},
-          },
-        },
+    .identity-col {
+      padding: 3rem 2.5rem;
+      background: var(--surface);
+    }
+
+    .identity-col--not {
+      background: var(--bg-warm);
+      border: 1px solid var(--border);
+    }
+
+    .identity-col h3 {
+      font-size: 1.1rem;
+      margin-bottom: 1.75rem;
+      color: var(--text-secondary);
+    }
+
+    .identity-col h3 span { color: var(--bronze); }
+
+    .identity-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .identity-col li {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      display: flex;
+      gap: 0.875rem;
+      align-items: flex-start;
+    }
+
+    .identity-col li::before {
+      content: '✦';
+      color: var(--bronze);
+      flex-shrink: 0;
+      font-size: 0.5rem;
+      margin-top: 0.45rem;
+    }
+
+    .identity-col--not li::before {
+      content: '×';
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-top: 0;
+    }
+
+    /* ── HIDDEN LAYER ── */
+    .hidden-layer {
+      padding: var(--section-gap) 0;
+      background: var(--bg-warm);
+    }
+
+    .layer-diagram {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 3rem;
+      position: relative;
+    }
+
+    .layer-diagram::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--border);
+      z-index: 0;
+    }
+
+    .layer-node {
+      padding: 2.5rem 1.5rem;
+      border: 1px solid var(--border);
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      background: var(--bg-warm);
+      transition: border-color 0.35s, background 0.35s;
+    }
+
+    .layer-node + .layer-node { border-left: none; }
+
+    .layer-node:hover {
+      border-color: var(--border-hover);
+      background: var(--surface);
+    }
+
+    .layer-node--focus {
+      border-color: var(--border-hover);
+      background: var(--surface-2);
+    }
+
+    .layer-node__icon {
+      width: 48px;
+      height: 48px;
+      border: 1px solid var(--border-hover);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.25rem;
+      color: var(--bronze);
+    }
+
+    .layer-node--focus .layer-node__icon {
+      border-color: var(--bronze);
+      background: var(--bronze-glow);
+    }
+
+    .layer-node h4 {
+      font-size: 0.875rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+    }
+
+    .layer-node p {
+      font-size: 0.75rem;
+      max-width: none;
+      line-height: 1.6;
+    }
+
+    .layer-node__badge {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: var(--bronze);
+      color: var(--bg);
+      font-size: 0.5625rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.625rem;
+    }
+
+    /* ── PHILOSOPHY PULL QUOTE ── */
+    .pull-quote {
+      padding: var(--section-gap) 0;
+      text-align: center;
+    }
+
+    .pull-quote blockquote {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.4;
+      color: var(--text-primary);
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      padding: 0 2rem;
+    }
+
+    .pull-quote blockquote::before {
+      content: '"';
+      position: absolute;
+      top: -1.5rem;
+      left: 0;
+      font-size: 6rem;
+      line-height: 1;
+      color: var(--bronze-dim);
+      font-family: var(--font-display);
+    }
+
+    /* ── ABOUT IMAGE ── */
+    .about-image-block {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-image-block::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 40%;
+      background: linear-gradient(to bottom, transparent, var(--bg));
+    }
+
+    /* ── WAVEFORM SVG DECORATION ── */
+    .waveform-decoration {
+      width: 100%;
+      height: 80px;
+      margin: 2rem 0;
+      opacity: 0.25;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      .identity-grid { grid-template-columns: 1fr; gap: 1.5px; }
+      .layer-diagram {
+        grid-template-columns: repeat(2, 1fr);
       }
-    </script>
-<style>
-        body { font-family: 'Inter', sans-serif; background-color: #0E0E0E; color: #e5e2e1; }
-        .font-serif { font-family: 'Bodoni Moda', serif; }
-        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24; }
-        ::selection { background-color: #C5A059; color: #0E0E0E; }
-        .waveform-bg {
-            background-image: radial-gradient(circle at 1px 1px, rgba(197, 160, 89, 0.03) 1px, transparent 0);
-            background-size: 32px 32px;
-        }
-        .nav-link-active { color: #C5A059; border-bottom: 1px solid rgba(197, 160, 89, 0.3); }
-        .transition-premium { transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
-    </style>
+      .layer-diagram::after { display: none; }
+      .layer-node + .layer-node { border-left: 1px solid var(--border); }
+      .layer-node:nth-child(3), .layer-node:nth-child(4) {
+        border-top: none;
+      }
+      .layer-node:nth-child(4) { border-left: none; }
+    }
+  </style>
 </head>
-<body class="bg-surface text-on-surface antialiased selection:bg-primary selection:text-surface">
-<!-- TopAppBar -->
-<nav class="fixed top-0 w-full z-50 bg-[#0E0E0E]/80 backdrop-blur-xl border-b border-white/5">
-<div class="flex justify-between items-center px-6 md:px-16 py-6 max-w-[1440px] mx-auto">
-<a class="text-xl md:text-2xl font-serif italic text-stone-100 tracking-wider hover:opacity-70 transition-premium" href="index.html">Cinema Machina</a>
-<div class="hidden md:flex items-center gap-12">
-<a class="text-xs uppercase tracking-[0.2em] text-stone-400 hover:text-primary transition-premium" href="index.html">Home</a>
-<a class="text-xs uppercase tracking-[0.2em] text-stone-400 hover:text-primary transition-premium" href="services.html">Services</a>
-<a class="text-xs uppercase tracking-[0.2em] text-primary border-b border-primary/30 pb-1" href="about.html">About</a>
-<a class="text-xs uppercase tracking-[0.2em] text-stone-400 hover:text-primary transition-premium" href="contact.html">Contact</a>
-</div>
-<a class="bg-primary text-on-primary px-6 py-2.5 text-[10px] font-sans tracking-[0.2em] uppercase hover:bg-white hover:text-black transition-premium active:scale-95" href="https://wa.me/971507282195" target="_blank" rel="noopener noreferrer">WhatsApp Now</a>
-</div>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav__logo">
+    <img src="assets/logos/cm-logo-horizontal.png" alt="Cinema Machina" />
+  </a>
+  <ul class="nav__links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="why-setup-matters.html">Why Setup Matters</a></li>
+  </ul>
+  <a href="contact.html" class="nav__cta">Book Consultation</a>
+  <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
-<main class="pt-24 md:pt-32">
-<!-- Hero Section -->
-<section class="px-6 md:px-16 py-12 md:py-24 max-w-[1440px] mx-auto grid grid-cols-12 gap-8 items-center">
-<div class="col-span-12 md:col-span-7 lg:pr-20">
-<span class="text-primary font-sans text-[10px] md:text-xs uppercase tracking-[0.5em] block mb-8">Playback Specialist</span>
-<h1 class="text-5xl md:text-8xl font-serif italic text-primary leading-[1.1] mb-10">
-                Refining the hidden layer behind premium playback.
-            </h1>
-<div class="space-y-8">
-<p class="text-xl md:text-2xl text-on-surface font-sans font-light tracking-tight leading-relaxed max-w-xl">
-                    Premium systems deserve calibrated behaviour. We refine the signal-path between source and screen.
-                </p>
-<p class="text-base md:text-lg text-on-surface-variant font-sans font-light tracking-normal leading-relaxed max-w-xl">
-                    Cinema Machina is a boutique playback-optimisation specialist. While others focus on room aesthetics, we concentrate exclusively on signal-path integrity—optimizing the software environments and hardware handshakes that define your experience.
-                </p>
-</div>
-<div class="mt-16 w-32 h-[1px] bg-primary/20"></div>
-</div>
-<div class="col-span-12 md:col-span-5 relative mt-12 md:mt-0">
-<div class="aspect-[4/5] overflow-hidden bg-surface-container-low border border-white/5">
-<img alt="High-fidelity speaker driver detail" class="w-full h-full object-cover grayscale opacity-80 hover:scale-105 transition-premium duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGrrH6y72SmeCADtv5Nz47hjt_fi2J4-akXjxSL34MufdFrZxACawVbz7gnLYDM7PQZNGp0kRnmU0fxtU546F5VC31C1x4tiJcn-XA9GiWXYiK3zSPb6ZfISGRacdERP0KCLEfycyIX0B8bNf575Kw-JG3z1tPbF57S5h5cbXiBw5tZN_agEyMD_Pa7aLW3QmOtxEbERwVS6VP0_mpC3Y_cFrxts4ADZIY9RYkepFwEUJit6uBwhOPX5sTAGY7Zc96Zp0rj1cK5rg"/>
-</div>
-<div class="absolute -bottom-6 -left-6 w-32 h-32 border-l border-b border-primary/30 hidden md:block"></div>
-</div>
+<nav class="nav__mobile" id="nav-mobile">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="about.html">About</a>
+  <a href="why-setup-matters.html">Why Setup Matters</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<!-- ═══ PAGE HERO ═══ -->
+<section class="page-hero">
+  <div class="page-hero__bg">
+    <img src="assets/images/about-waveform.jpg" alt="Signal waveform and analyzer" loading="eager" />
+  </div>
+  <div class="page-hero__gradient"></div>
+  <div class="container page-hero__content">
+    <div class="reveal">
+      <div class="section-label">
+        <span class="label">About Cinema Machina</span>
+      </div>
+      <h1 class="display-lg">
+        A different kind of<br />
+        <em>cinema specialist.</em>
+      </h1>
+      <p class="lead" style="margin-top:1.25rem;">
+        We work in the space between your hardware and your final image — where most of the real performance lives.
+      </p>
+    </div>
+  </div>
 </section>
-<!-- Positioning Section -->
-<section class="px-6 md:px-16 py-24 bg-surface-container-lowest border-y border-white/5">
-<div class="max-w-[1440px] mx-auto">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-20 md:gap-32">
-<div class="space-y-12">
-<h2 class="text-[10px] uppercase tracking-[0.5em] text-primary mb-12">What We Are</h2>
-<ul class="space-y-12">
-<li class="flex gap-8 group">
-<span class="text-primary font-serif italic text-3xl group-hover:translate-x-1 transition-premium">01.</span>
-<div>
-<h4 class="font-sans text-xs uppercase tracking-[0.2em] text-on-surface font-bold mb-3">Technical Consultants</h4>
-<p class="text-on-surface-variant text-sm leading-relaxed max-w-sm">Specialists in software-layer optimization and signal-chain integrity for high-end residential cinema.</p>
-</div>
-</li>
-<li class="flex gap-8 group">
-<span class="text-primary font-serif italic text-3xl group-hover:translate-x-1 transition-premium">02.</span>
-<div>
-<h4 class="font-sans text-xs uppercase tracking-[0.2em] text-on-surface font-bold mb-3">Calibration Experts</h4>
-<p class="text-on-surface-variant text-sm leading-relaxed max-w-sm">Dedicated to ensuring your hardware performs exactly as the mastering engineers intended.</p>
-</div>
-</li>
-</ul>
-</div>
-<div class="space-y-12">
-<h2 class="text-[10px] uppercase tracking-[0.5em] text-stone-600 mb-12">What We Are Not</h2>
-<ul class="space-y-12">
-<li class="flex gap-8">
-<span class="text-stone-700 font-serif italic text-3xl">--</span>
-<div>
-<h4 class="font-sans text-xs uppercase tracking-[0.2em] text-stone-500 font-bold mb-3">Room Builders</h4>
-<p class="text-stone-600 text-sm leading-relaxed max-w-sm">We do not provide upholstery, interior design, or physical construction services. We focus on the performance.</p>
-</div>
-</li>
-<li class="flex gap-8">
-<span class="text-stone-700 font-serif italic text-3xl">--</span>
-<div>
-<h4 class="font-sans text-xs uppercase tracking-[0.2em] text-stone-500 font-bold mb-3">Hardware Resellers</h4>
-<p class="text-stone-600 text-sm leading-relaxed max-w-sm">We are brand-agnostic. Our focus is on extracting the maximum performance of your existing assets.</p>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
+
+<!-- ═══ WHAT WE ARE / ARE NOT ═══ -->
+<section class="section" id="identity">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">
+        <span class="label">Our Identity</span>
+      </div>
+      <h2 class="display-md">Understanding<br />Cinema Machina.</h2>
+      <p class="lead" style="margin-top:1rem;">
+        We are not dealers, installers, or integrators in the traditional sense. We exist to solve a problem that most of the industry doesn't address.
+      </p>
+    </div>
+
+    <div class="identity-grid reveal">
+      <div class="identity-col">
+        <h3>Cinema Machina <span>is</span></h3>
+        <ul>
+          <li>A premium playback and media-environment specialist</li>
+          <li>Experts in the configuration layer between hardware and final image</li>
+          <li>Platform-agnostic — we work across all major playback ecosystems</li>
+          <li>Specialists in both software precision and signal chain integrity</li>
+          <li>A private, by-appointment service for serious cinema owners</li>
+          <li>Focused on improving the quality of what reaches your screen</li>
+          <li>Trusted by luxury homeowners who expect cinematic perfection</li>
+        </ul>
+      </div>
+      <div class="identity-col identity-col--not">
+        <h3>Cinema Machina is <span style="color:var(--text-muted)">not</span></h3>
+        <ul>
+          <li>An AV hardware dealer or reseller</li>
+          <li>A general AV installation company</li>
+          <li>A streaming service or content platform</li>
+          <li>Limited to any one platform or software ecosystem</li>
+          <li>A display calibration service (though we work alongside calibrators)</li>
+          <li>A tech support hotline for consumer electronics</li>
+          <li>A one-time setup service — we support ongoing refinement</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </section>
-<!-- Methodology Section -->
-<section class="bg-surface py-24 md:py-40">
-<div class="max-w-[1440px] mx-auto px-6 md:px-16">
-<div class="grid grid-cols-12 gap-12 items-end mb-20 md:mb-32">
-<div class="col-span-12 md:col-span-7">
-<span class="text-primary font-sans text-[10px] uppercase tracking-[0.5em] block mb-8">Methodology</span>
-<h2 class="text-4xl md:text-7xl font-serif italic text-on-surface leading-tight">Scientific Verification</h2>
-</div>
-<div class="col-span-12 md:col-span-5">
-<p class="text-on-surface-variant font-sans font-light text-lg leading-relaxed max-w-md">
-                        Subjectivity has no place in a signal chain. Our process ensures bit-perfect reproduction through empirical measurement and technical audit.
-                    </p>
-</div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/5">
-<div class="p-12 md:p-16 bg-surface-container-lowest border-white/5 group hover:bg-surface-container transition-premium">
-<span class="text-primary font-serif italic text-5xl block mb-12">01.</span>
-<h3 class="text-on-surface font-sans text-xs uppercase tracking-[0.3em] mb-6 font-bold">Audit</h3>
-<p class="text-on-surface-variant font-sans text-sm leading-relaxed">
-                        A deep mapping of network topology, hardware EDID tables, and playback client configuration. We identify the specific bottleneck in your unique environment.
-                    </p>
-</div>
-<div class="p-12 md:p-16 bg-surface-container-lowest border-white/5 group hover:bg-surface-container transition-premium">
-<span class="text-primary font-serif italic text-5xl block mb-12">02.</span>
-<h3 class="text-on-surface font-sans text-xs uppercase tracking-[0.3em] mb-6 font-bold">Configure</h3>
-<p class="text-on-surface-variant font-sans text-sm leading-relaxed">
-                        Optimization of server-side transcoding logic, signal-path handshakes, and platform behaviour to ensure native frame-rate and bit-depth delivery.
-                    </p>
-</div>
-<div class="p-12 md:p-16 bg-surface-container-lowest border-white/5 group hover:bg-surface-container transition-premium">
-<span class="text-primary font-serif italic text-5xl block mb-12">03.</span>
-<h3 class="text-on-surface font-sans text-xs uppercase tracking-[0.3em] mb-6 font-bold">Verify</h3>
-<p class="text-on-surface-variant font-sans text-sm leading-relaxed">
-                        Final validation via oscilloscope-level signal analysis and pattern verification. We prove the improvement through data, not just observation.
-                    </p>
-</div>
-</div>
-</div>
+
+<!-- ═══ HIDDEN LAYER ═══ -->
+<section class="hidden-layer" id="hidden-layer">
+  <div class="container">
+    <div class="reveal" style="text-align:center;max-width:700px;margin:0 auto;">
+      <div class="section-label" style="justify-content:center;">
+        <span class="label">The Hidden Layer</span>
+      </div>
+      <h2 class="display-md">Between your hardware<br />and your cinema moment.</h2>
+      <p class="lead" style="margin:1rem auto 0;text-align:center;">
+        Most cinema systems are installed with precision hardware but leave the playback configuration to chance. This is the layer where Cinema Machina works — and where most performance is lost.
+      </p>
+    </div>
+
+    <!-- Waveform SVG decoration -->
+    <svg class="waveform-decoration reveal" viewBox="0 0 800 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 40 Q25 20 50 40 Q75 60 100 40 Q125 20 150 40 Q175 60 200 40 Q225 20 250 40 Q275 60 300 40 Q300 40 350 40 Q375 15 400 40 Q425 65 450 40 Q475 15 500 40 Q525 65 550 40 Q575 15 600 40 Q625 65 650 40 Q675 15 700 40 Q725 65 750 40 Q775 15 800 40" stroke="#c9a96e" stroke-width="1" opacity="0.6"/>
+      <path d="M0 40 Q12.5 30 25 40 Q37.5 50 50 40 Q62.5 30 75 40" stroke="#c9a96e" stroke-width="0.5" opacity="0.3" stroke-dasharray="2 4"/>
+    </svg>
+
+    <div class="layer-diagram reveal">
+      <div class="layer-node">
+        <div class="layer-node__icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round">
+            <rect x="2" y="5" width="16" height="11" rx="1"/>
+            <circle cx="10" cy="10.5" r="2.5"/>
+          </svg>
+        </div>
+        <h4>Media Source</h4>
+        <p>Files, NAS, server — the raw content and how it's structured</p>
+      </div>
+      <div class="layer-node layer-node--focus">
+        <div class="layer-node__badge">Cinema Machina</div>
+        <div class="layer-node__icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round">
+            <path d="M2 10 L5 5 L8 14 L11 6 L14 12 L17 8 L20 10"/>
+          </svg>
+        </div>
+        <h4>Playback &amp; Configuration</h4>
+        <p>Software, device settings, codec routing, metadata — the hidden layer</p>
+      </div>
+      <div class="layer-node layer-node--focus">
+        <div class="layer-node__badge">Cinema Machina</div>
+        <div class="layer-node__icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round">
+            <path d="M2 10h3l2-6 3.5 12 2.5-9 2 5 1.5-3H18"/>
+          </svg>
+        </div>
+        <h4>Signal Chain</h4>
+        <p>HDMI path, processor, audio routing, display negotiation</p>
+      </div>
+      <div class="layer-node">
+        <div class="layer-node__icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round">
+            <rect x="1" y="3" width="18" height="14" rx="1"/>
+            <path d="M7 17v2M13 17v2M5 19h10"/>
+          </svg>
+        </div>
+        <h4>Final Image</h4>
+        <p>What reaches your screen and speakers — the cinema moment</p>
+      </div>
+    </div>
+
+    <div class="highlight-box reveal" style="margin-top:3rem;max-width:700px;margin-left:auto;margin-right:auto;">
+      <p>
+        The middle two layers — playback configuration and signal chain — are where most of the real performance lives, and where almost no specialist operates. Cinema Machina exists specifically to address this gap.
+      </p>
+    </div>
+  </div>
 </section>
-<!-- Signal Integrity Section -->
-<section class="py-24 md:py-40 px-6 md:px-16 max-w-[1440px] mx-auto waveform-bg">
-<div class="grid grid-cols-12 gap-12 items-center">
-<div class="col-span-12 md:col-span-6 space-y-10">
-<h2 class="text-5xl md:text-7xl font-serif italic text-primary leading-tight">Signal Integrity.</h2>
-<p class="text-on-surface-variant font-sans text-xl leading-relaxed font-light max-w-lg">
-                    We treat the path between your source and display as a precision instrument. Most systems fail at the handshake or through subtle software degradation. We eliminate the friction.
-                </p>
-<div class="flex flex-wrap gap-4 pt-6">
-<span class="px-5 py-2.5 bg-white/5 border border-white/10 text-[9px] font-sans uppercase tracking-[0.3em] text-stone-400">Platform Behaviour</span>
-<span class="px-5 py-2.5 bg-white/5 border border-white/10 text-[9px] font-sans uppercase tracking-[0.3em] text-stone-400">Playback Devices</span>
-<span class="px-5 py-2.5 bg-white/5 border border-white/10 text-[9px] font-sans uppercase tracking-[0.3em] text-stone-400">HDMI Handshaking</span>
-</div>
-</div>
-<div class="col-span-12 md:col-span-6">
-<div class="aspect-video bg-surface-container-low overflow-hidden relative border border-white/5">
-<img alt="Electronic signal waveform visual" class="w-full h-full object-cover grayscale opacity-40 mix-blend-screen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuByRxT727JOD2_yiZvvDtKT0bRn3-VHKE6qrStmgVlE9--PE5oSmfd03FSbHmq6dwJQBGv8jF8AV1FdByDMNY4DcwpRfzJuAKpkuORzJEwyXkDziQ2aPbeQTTSa2jYnIaw_uHkm7LbvlmW7qpiQEN3V_8Cn6ByR3KrX5imJ8EDfdiRNYzcToJ3mlVfpKX0Is_jRiNo6DW8D4ZGv5pvT37BzDCayN9ciY4FD-9Tp5QjpZ5U21v7EUNh0-jIECeRX1xLvACvN-6TCko4"/>
-<div class="absolute inset-0 bg-gradient-to-r from-surface to-transparent md:hidden"></div>
-</div>
-</div>
-</div>
+
+<!-- ═══ PULL QUOTE ═══ -->
+<section class="pull-quote" id="philosophy">
+  <div class="container">
+    <div class="reveal">
+      <span class="label" style="display:block;text-align:center;margin-bottom:2rem;">Our Philosophy</span>
+      <blockquote>
+        Every compromise in the playback chain is a compromise on the director's intention. We eliminate the compromises.
+      </blockquote>
+      <div class="gold-rule gold-rule--center" style="margin-top:2.5rem;"></div>
+    </div>
+  </div>
 </section>
-<!-- Technical Specs Section -->
-<section class="py-24 md:py-40 px-6 md:px-16 max-w-[1440px] mx-auto">
-<div class="grid grid-cols-12 gap-4 md:gap-6">
-<div class="col-span-12 md:col-span-8 bg-surface-container-lowest p-10 md:p-16 min-h-[450px] flex flex-col justify-end relative overflow-hidden group border border-white/5">
-<img alt="Professional AV processor internal" class="absolute inset-0 w-full h-full object-cover opacity-10 grayscale group-hover:scale-105 transition-premium duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtOO11cQoxJFlmvKp292r91utwUexQMqrHCMuybx_E0hDPMBPhgMdnbeOhj3GfUdsMsvYRXKFuWUdgxtPdFDh7AbsxTRGek2V9pCSISZaFGgPijwZ5aPy2ftE8m1S1YKL3uDRnifJ5Y8DKsmuN8FgzIldr_aXl9o5vncDjKoRk2Bl4UM0I8RWekbptTUEU_Jve9x3EeCSRzkn1j2mMGQx09gy6tvJd6mgoZR8_ASFfbtaHBRHUU9ZbR9P2nNcF9cjUXp2-lRtDulg"/>
-<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent"></div>
-<div class="relative z-10">
-<span class="material-symbols-outlined text-primary text-5xl mb-8">settings_input_hdmi</span>
-<h4 class="text-3xl md:text-4xl font-serif italic mb-6">Architecture of Playback</h4>
-<p class="max-w-md text-on-surface-variant font-sans text-sm leading-relaxed font-light">
-                        Resolution negotiation that respects native refresh rates and color spaces. We bypass the "good enough" defaults of consumer hardware to reach professional mastering standards.
-                    </p>
-</div>
-</div>
-<div class="col-span-12 md:col-span-4 bg-surface-container-high overflow-hidden relative border border-white/5 group">
-<img alt="Projector lens optics" class="w-full h-full object-cover grayscale opacity-50 group-hover:scale-110 transition-premium duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7gvGURSekHoLJHm4tiF3xdF5Ygm4zovLOnO13ihnPGxxZp87m9bF2FZj5oK4bcqxd0qh2CxLI-V2VUFLyFM4sMgdQb-iqeeYmmL1K-uK3NzHYW_4W7vvPTgTQC1iKxRR3pp0wI1hd3H4V9eU8TChjRnLxKsjvgXlG55QqvrEjbZ2WbpIp9jF8C5mHztJvccK33faqfcy1nfB_07KY82qEXFoPm2MyE-IPSLaehGqlz9KmNBUDihv-rhkRnIc4dcgz0oWdtvCiJ5I"/>
-<div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-premium"></div>
-</div>
-<div class="col-span-12 md:col-span-12 bg-surface-container-low p-10 border border-white/5 flex flex-col md:flex-row items-start md:items-center justify-between gap-10">
-<div>
-<h5 class="text-on-surface-variant font-sans uppercase tracking-[0.4em] text-[10px] mb-4 font-semibold">Service Coverage</h5>
-<p class="text-3xl md:text-4xl font-serif italic text-primary">Dubai / Abu Dhabi / Sharjah</p>
-</div>
-<div class="md:text-right">
-<span class="text-stone-600 font-sans text-[10px] uppercase tracking-[0.4em] block mb-2">Refinement Est. 2024</span>
-<div class="text-stone-400 font-sans text-xs italic tracking-wide">Professional Cinema Standards Only</div>
-</div>
-</div>
-</div>
+
+<!-- ═══ 3-STEP PROCESS ═══ -->
+<section class="section bg-warm" id="process">
+  <div class="container">
+    <div class="reveal" style="margin-bottom:3.5rem;text-align:center;">
+      <div class="section-label" style="justify-content:center;">
+        <span class="label">How We Work</span>
+      </div>
+      <h2 class="display-md">Audit. Configure. Verify.</h2>
+      <p class="lead" style="margin:1rem auto 0;text-align:center;">
+        Every Cinema Machina engagement follows the same rigorous three-phase approach — regardless of the size or complexity of your system.
+      </p>
+    </div>
+
+    <div class="step-process reveal">
+      <div class="step">
+        <div class="step__num">1</div>
+        <h3>Audit</h3>
+        <p>
+          We begin by understanding your system completely — hardware, software, library, signal chain, and your playback expectations. We document what you have, what it's doing, and where it's falling short of its potential.
+        </p>
+        <ul class="service-module__list" style="margin-top:1.5rem;">
+          <li>Complete system and library inventory</li>
+          <li>Signal chain trace and handshake verification</li>
+          <li>Codec and format capability mapping</li>
+          <li>Playback performance baseline</li>
+        </ul>
+      </div>
+      <div class="step">
+        <div class="step__num">2</div>
+        <h3>Configure</h3>
+        <p>
+          Based on the audit, we configure every layer — library structure, device settings, software parameters, codec routing, signal chain — with precision. No unnecessary changes. Every decision is documented and explained.
+        </p>
+        <ul class="service-module__list" style="margin-top:1.5rem;">
+          <li>Library restructure and metadata resolution</li>
+          <li>Device firmware and application configuration</li>
+          <li>HDMI chain and audio routing optimisation</li>
+          <li>HDR and frame rate profile build</li>
+        </ul>
+      </div>
+      <div class="step">
+        <div class="step__num">3</div>
+        <h3>Verify</h3>
+        <p>
+          We test against a reference library of known-good files — across video formats, HDR standards, and audio codecs — to confirm that every path is performing correctly before we consider the engagement complete.
+        </p>
+        <ul class="service-module__list" style="margin-top:1.5rem;">
+          <li>Reference file playback testing across all formats</li>
+          <li>Audio passthrough verification per codec</li>
+          <li>HDR and tone-mapping confirmation</li>
+          <li>Full written system documentation provided</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </section>
-<!-- CTA Section -->
-<section class="py-32 md:py-56 bg-surface-container-lowest text-center px-6 border-t border-white/5">
-<h2 class="text-4xl md:text-7xl font-serif italic mb-16 leading-tight max-w-4xl mx-auto">Premium systems deserve refined behaviour.</h2>
-<div class="flex flex-col md:flex-row justify-center items-center gap-12">
-<a class="w-full md:w-auto px-16 py-5 bg-primary text-on-primary font-sans text-[10px] uppercase tracking-[0.3em] hover:bg-white hover:text-black transition-premium active:scale-95" href="contact.html">
-                Consultation Request
-            </a>
-<a class="text-primary font-sans text-[10px] uppercase tracking-[0.3em] border-b border-primary/20 pb-1 hover:border-primary transition-premium" href="services.html">
-                View Technical Specs
-            </a>
-</div>
+
+<!-- ═══ WAVEFORM IMAGE SECTION ═══ -->
+<section class="section" id="signal-integrity">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(3rem,6vw,7rem);align-items:center;">
+      <div class="reveal">
+        <div class="section-label">
+          <span class="label">Signal Integrity</span>
+        </div>
+        <h2 class="display-md">The signal doesn't<br />lie. But it can hide.</h2>
+        <p style="margin-top:1.25rem;max-width:none;">
+          A correctly configured system doesn't just feel better — it measures better. Frame pacing is consistent. Audio sync is exact. Codec handshakes complete without fallback. HDR metadata reaches the display without modification.
+        </p>
+        <p style="margin-top:1rem;max-width:none;">
+          Cinema Machina works with measurement tools and reference material to verify performance — not just assume it. If we can't confirm it, we don't call it done.
+        </p>
+        <div class="gold-rule" style="margin:2rem 0;"></div>
+        <a href="contact.html" class="btn btn-outline">Book a Consultation</a>
+      </div>
+      <div class="about-image-block reveal reveal-delay-2">
+        <div class="img-frame" style="aspect-ratio:1/1;border:1px solid var(--border);">
+          <img src="assets/images/about-waveform.jpg" alt="Audio waveform analysis" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
-</main>
-<!-- Footer -->
-<footer class="w-full py-24 md:py-32 px-6 md:px-16 bg-[#080808] border-t border-white/5">
-<div class="grid grid-cols-1 md:grid-cols-3 gap-20 max-w-[1440px] mx-auto">
-<div class="flex flex-col gap-8">
-<a class="text-xl font-serif italic text-stone-200 hover:opacity-70 transition-premium" href="index.html">Cinema Machina</a>
-<p class="font-sans text-[10px] uppercase tracking-[0.3em] text-stone-600 leading-loose max-w-xs">
-Premium playback optimisation for Plex, Jellyfin, Kodi, playback devices, HDMI chains, and luxury home cinema environments in the UAE.
-</p>
-</div>
-<div class="grid grid-cols-2 gap-8">
-<div class="flex flex-col gap-6">
-<a class="font-sans text-[10px] uppercase tracking-[0.2em] text-stone-500 hover:text-primary transition-premium" href="index.html">Home</a>
-<a class="font-sans text-[10px] uppercase tracking-[0.2em] text-stone-500 hover:text-primary transition-premium" href="services.html">Services</a>
-</div>
-<div class="flex flex-col gap-6">
-<a class="font-sans text-[10px] uppercase tracking-[0.2em] text-stone-500 hover:text-primary transition-premium" href="about.html">About</a>
-<a class="font-sans text-[10px] uppercase tracking-[0.2em] text-stone-500 hover:text-primary transition-premium" href="contact.html">Contact</a>
-</div>
-</div>
-<div class="flex flex-col gap-6">
-<span class="font-sans text-[10px] uppercase tracking-[0.4em] text-stone-500 block">Contact</span>
-<a class="font-sans text-[10px] tracking-[0.2em] text-stone-500 hover:text-primary transition-premium lowercase" href="mailto:cinemamachina.ae@gmail.com">cinemamachina.ae@gmail.com</a>
-<a class="font-sans text-[10px] uppercase tracking-[0.2em] text-stone-500 hover:text-primary transition-premium" href="tel:+971507282195">+971 50 728 2195</a>
-<a class="font-sans text-[10px] uppercase tracking-[0.2em] text-stone-500 hover:text-primary transition-premium" href="https://wa.me/971507282195" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-</div>
-</div>
+
+<!-- ═══ CTA ═══ -->
+<section class="cta-full" style="background:var(--bg-warm);">
+  <div class="container cta-full__content">
+    <div class="reveal">
+      <div class="section-label" style="justify-content:center;">
+        <span class="label">Work With Us</span>
+      </div>
+      <h2 class="display-md">
+        Private consultations.<br />Serious results.
+      </h2>
+      <p class="lead" style="margin:1.25rem auto;text-align:center;">
+        Cinema Machina takes a limited number of engagements at any given time. Enquire now and we'll assess your setup and propose a tailored approach.
+      </p>
+      <div class="cta-full__actions">
+        <a href="contact.html" class="btn btn-primary">Begin Your Consultation</a>
+        <a href="services.html" class="btn btn-outline">Explore Services</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <a href="index.html"><img src="assets/logos/cm-logo-horizontal.png" alt="Cinema Machina" /></a>
+        <p>Premium playback and media-environment specialist for luxury home cinema systems in the UAE.</p>
+      </div>
+      <div class="footer__nav">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="why-setup-matters.html">Why Setup Matters</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__contact">
+        <h4>Get In Touch</h4>
+        <div class="footer__contact-items">
+          <a href="https://wa.me/971507282195" class="footer__contact-link" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            <div>
+              <span>WhatsApp</span>
+              <strong>+971 50 728 2195</strong>
+            </div>
+          </a>
+          <a href="mailto:cinemamachina.ae@gmail.com" class="footer__contact-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <div>
+              <span>Email</span>
+              <strong>cinemamachina.ae@gmail.com</strong>
+            </div>
+          </a>
+          <a href="tel:+971507282195" class="footer__contact-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div>
+              <span>Location</span>
+              <strong>UAE — By Appointment</strong>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p>© 2025 Cinema Machina. All rights reserved.</p>
+      <p>Luxury Home Cinema Specialists &nbsp;·&nbsp; UAE</p>
+    </div>
+  </div>
 </footer>
-</body></html>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
