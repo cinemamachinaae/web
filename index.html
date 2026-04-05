@@ -549,8 +549,21 @@
       <h2 class="display-md">Precision playback.<br />In action.</h2>
     </div>
     <div class="reveal reveal-delay-1">
-      <div class="image-frame--hero" style="border:1px solid var(--border); box-shadow: 0 30px 60px rgba(0,0,0,0.4);">
-        <img src="assets/images/homepage-demo-master.png" alt="High-fidelity cinematic playback demo" loading="lazy" />
+      <div class="video-wrapper video-wrapper--interactive">
+        <div class="vimeo-shell" id="cinema-vimeo-shell">
+          <iframe
+            id="cinema-machina-vimeo"
+            src="https://player.vimeo.com/video/1180098392?muted=1&amp;controls=0&amp;playsinline=1&amp;dnt=1"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen
+            loading="lazy"
+            title="Cinema Machina — Premium Playback Demo"
+          ></iframe>
+          <button class="vimeo-overlay" id="vimeo-overlay" aria-label="Play Cinema Machina demo">
+            <span class="play-btn">Play Film</span>
+            <span class="play-caption">Experience Playback</span>
+          </button>
+        </div>
       </div>
     </div>
   </div>

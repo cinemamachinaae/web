@@ -129,18 +129,19 @@
   window.addEventListener('scroll', onScroll, { passive: true });
 })();
 
-/* ── VIMEO AUTOPLAY / TWO-STATE ──────────────────────────────── */
+/* -- VIMEO INTERACTIVE PLAYER ------------------------------ */
 (function initVimeo() {
-  const vimeoWrap = document.getElementById('vimeo-container');
   const overlay = document.getElementById('vimeo-overlay');
-  const iframe = document.getElementById('cinema-machina-vimeo');
+  const iframe  = document.getElementById('cinema-machina-vimeo');
 
-  if (!vimeoWrap || !overlay || !iframe) return;
+  if (!overlay || !iframe) return;
 
   overlay.addEventListener('click', () => {
-    // Switch to active playable state with sound and controls
-    iframe.src = "https://player.vimeo.com/video/1180098392?autoplay=1&muted=0&loop=0&controls=1&title=0&byline=0&portrait=0&playsinline=1&dnt=1";
+    // Switch to full-controls, unmuted, autoplay state
+    iframe.src = 'https://player.vimeo.com/video/1180098392?autoplay=1&muted=0&controls=1&playsinline=1&dnt=1';
     overlay.classList.add('is-hidden');
+    // Remove from DOM after fade so it doesn't block player interaction
+    setTimeout(() => overlay.remove(), 500);
   });
 })();
 

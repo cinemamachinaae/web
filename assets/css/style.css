@@ -712,78 +712,93 @@ p {
   white-space: nowrap;
 }
 
-/* ── VIDEO SECTION ────────────────────────────────────────── */
+/* -- VIDEO SECTION ----------------------------------------- */
 .video-section {
   padding: var(--section-gap) 0;
   background: var(--bg-warm);
 }
 
+/* Legacy wrapper kept for any other uses */
 .video-wrapper {
   position: relative;
   width: 100%;
-  padding-top: 56.25%;
-  overflow: hidden;
-  background: #000;
 }
 
-.video-wrapper iframe {
-  position: absolute;
-  inset: 0;
+/* Premium two-state interactive Vimeo shell */
+.video-wrapper--interactive {
+  position: relative;
+}
+
+.vimeo-shell {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #050505;
+  box-shadow: 0 18px 60px rgba(0,0,0,0.5);
+  border: 1px solid var(--border);
+}
+
+.vimeo-shell iframe {
   width: 100%;
-  height: 100%;
-  border: none;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  display: block;
 }
 
 .vimeo-overlay {
   position: absolute;
   inset: 0;
-  z-index: 2;
+  border: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.18), rgba(0,0,0,0.52));
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
-  background: rgba(10,10,10,0.4);
-  transition: opacity 0.4s var(--ease-out), background 0.4s;
+  gap: 12px;
+  cursor: pointer;
+  transition: background 0.4s var(--ease-out);
 }
 
 .vimeo-overlay:hover {
-  background: rgba(10,10,10,0.2);
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.35));
 }
 
-.vimeo-overlay .play-btn {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: rgba(226,193,155,0.15);
-  border: 1px solid var(--bronze);
-  display: flex;
+.play-btn {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--bronze);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  transition: transform 0.4s var(--ease-out), background 0.4s;
+  min-height: 48px;
+  padding: 0 28px;
+  border-radius: 999px;
+  background: var(--bronze);
+  color: #0a0805;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: none;
+  transition: background 0.3s, transform 0.3s var(--ease-out);
 }
 
 .vimeo-overlay:hover .play-btn {
-  transform: scale(1.05);
-  background: rgba(226,193,155,0.25);
-  color: #fff;
+  background: var(--bronze-light);
+  transform: scale(1.03);
 }
 
-.vimeo-overlay .play-text {
+.play-caption {
+  color: rgba(255,255,255,0.72);
   font-family: var(--font-body);
-  font-size: 0.75rem;
+  font-size: 0.625rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #fff;
 }
 
 .vimeo-overlay.is-hidden {
   opacity: 0;
   pointer-events: none;
 }
+
 
 /* ── COMPARISON TABLE ─────────────────────────────────────── */
 .comparison-table {
@@ -1117,16 +1132,16 @@ p {
   display: block;
 }
 
-/* ── PER-LOGO OPTICAL NORMALIZATION (FINAL) ────────────── */
-/* Format / codec logos — Dolby marks are wide wordmarks, keep very tight */
-.logo--vision      { max-height: 15px !important; }
-.logo--atmos       { max-height: 15px !important; }
-.logo--truehd      { max-height: 14px !important; }
-.logo--dtshdma     { max-height: 14px !important; }
-.logo--dtsx        { max-height: 14px !important; }
-.logo--hdr10       { max-height: 15px !important; }
-.logo--dolby-digital   { max-height: 13px !important; }
-.logo--dolbydigital    { max-height: 13px !important; } /* alias */
+/* -- PER-LOGO OPTICAL NORMALIZATION (USER SPEC) ------------ */
+/* Format / codec logos */
+.logo--vision      { max-height: 18px !important; }
+.logo--atmos       { max-height: 18px !important; }
+.logo--truehd      { max-height: 16px !important; }
+.logo--dtshdma     { max-height: 16px !important; }
+.logo--dtsx        { max-height: 16px !important; }
+.logo--hdr10       { max-height: 16px !important; }
+.logo--dolby-digital   { max-height: 15px !important; }
+.logo--dolbydigital    { max-height: 15px !important; }
 
 /* Ecosystem / device logos */
 .logo--plex     { max-height: 18px !important; }
@@ -1136,18 +1151,22 @@ p {
 .logo--shield   { max-height: 18px !important; }
 .logo--zidoo    { max-height: 18px !important; }
 .logo--dune     { max-height: 18px !important; }
-.logo--synology { max-height: 24px !important; }  /* wider mark needs more height */
+.logo--synology { max-height: 20px !important; }
 .logo--coreelec { max-height: 18px !important; }
 
-/* ── DARK LOGO CONTRAST CORRECTIONS ──────────────────── */
-/* Logos that are dark / near-black — full invert for legibility on dark BG */
-.logo--appletv,
+/* -- DARK LOGO CONTRAST CORRECTIONS ----------------------- */
+/* Apple TV: keep colored treatment — just boost brightness */
+.logo--appletv {
+  filter: brightness(1.8) contrast(1.05);
+}
+
+/* Full-invert dark logos (near-black marks on dark background) */
 .logo--synology,
 .logo--coreelec,
 .logo--kodi,
 .logo--zidoo,
 .logo--dune {
-  filter: brightness(0) invert(1) brightness(0.9);
+  filter: brightness(0) invert(1) brightness(0.88);
 }
 
 /* For chips explicitly flagged for full invert treatment */
@@ -1155,6 +1174,7 @@ p {
 .logo-chip--invert img {
   filter: brightness(1.8) contrast(1.05);
 }
+
 
 /* ── ABOUT PAGE CARD LUXURY SYSTEM ───────────────────────── */
 .about-logic-card,
