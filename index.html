@@ -454,9 +454,9 @@
   <div class="ecosystem-strip">
     <div class="ecosystem-strip__track" id="eco-track">
       <!-- Duplicated for infinite loop -->
-      <div class="ecosystem-strip__item"><span>Plex</span></div>
-      <div class="ecosystem-strip__item"><span>Jellyfin</span></div>
-      <div class="ecosystem-strip__item"><span>Kodi</span></div>
+      <div class="ecosystem-strip__item"><img src="assets/logos/plex.png" alt="Plex" /><span>Plex</span></div>
+      <div class="ecosystem-strip__item"><img src="assets/logos/jellyfin.png" alt="Jellyfin" /><span>Jellyfin</span></div>
+      <div class="ecosystem-strip__item"><img src="assets/logos/kodi.png" alt="Kodi" /><span>Kodi</span></div>
       <div class="ecosystem-strip__item"><span>CoreELEC</span></div>
       <div class="ecosystem-strip__item"><span>Zidoo</span></div>
       <div class="ecosystem-strip__item"><span>Dune HD</span></div>
@@ -464,9 +464,9 @@
       <div class="ecosystem-strip__item"><span>Nvidia Shield</span></div>
       <div class="ecosystem-strip__item"><span>Apple TV</span></div>
       <!-- Duplicate -->
-      <div class="ecosystem-strip__item"><span>Plex</span></div>
-      <div class="ecosystem-strip__item"><span>Jellyfin</span></div>
-      <div class="ecosystem-strip__item"><span>Kodi</span></div>
+      <div class="ecosystem-strip__item"><img src="assets/logos/plex.png" alt="Plex" /><span>Plex</span></div>
+      <div class="ecosystem-strip__item"><img src="assets/logos/jellyfin.png" alt="Jellyfin" /><span>Jellyfin</span></div>
+      <div class="ecosystem-strip__item"><img src="assets/logos/kodi.png" alt="Kodi" /><span>Kodi</span></div>
       <div class="ecosystem-strip__item"><span>CoreELEC</span></div>
       <div class="ecosystem-strip__item"><span>Zidoo</span></div>
       <div class="ecosystem-strip__item"><span>Dune HD</span></div>
@@ -708,35 +708,58 @@
       </p>
     </div>
 
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;">
-      <div class="reveal">
-        <p class="label" style="margin-bottom:1.5rem;color:var(--text-muted);">Streaming Services</p>
-        <div class="codec-grid">
-          <div class="codec-chip">Dolby Digital</div>
-          <div class="codec-chip">Dolby Digital+</div>
-          <div class="codec-chip">Atmos (Lossy)</div>
-          <div class="codec-chip" style="opacity:.35">TrueHD</div>
-          <div class="codec-chip" style="opacity:.35">DTS-HD MA</div>
-          <div class="codec-chip" style="opacity:.35">DTS:X</div>
-          <div class="codec-chip" style="opacity:.35">PCM 7.1</div>
-          <div class="codec-chip" style="opacity:.35">Auro-3D</div>
-        </div>
-        <p style="font-size:0.75rem;margin-top:1.25rem;color:var(--text-muted);">Faded = unavailable or severely limited</p>
-      </div>
-      <div class="reveal reveal-delay-2">
-        <p class="label" style="margin-bottom:1.5rem;">Cinema Machina Configured</p>
-        <div class="codec-grid">
-          <div class="codec-chip premium">Dolby TrueHD</div>
-          <div class="codec-chip premium">Atmos (Lossless)</div>
-          <div class="codec-chip premium">DTS-HD MA</div>
-          <div class="codec-chip premium">DTS:X</div>
-          <div class="codec-chip premium">PCM 7.1 / 9.1</div>
-          <div class="codec-chip premium">Auro-3D</div>
-          <div class="codec-chip premium">FLAC</div>
-          <div class="codec-chip premium">Bit-Perfect Out</div>
-        </div>
-        <p style="font-size:0.75rem;margin-top:1.25rem;color:var(--bronze-dim);">Full lossless passthrough — zero processing loss</p>
-      </div>
+    <div class="reveal">
+      <table class="comparison-table" aria-label="Format capability matrix">
+        <thead>
+          <tr>
+            <th style="width: 30%;">Format</th>
+            <th style="width: 35%;">Streaming Services</th>
+            <th style="width: 35%;">Cinema Machina Configured</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="format-badge-chip" style="margin-bottom: 0.5rem; display: inline-flex;"><img src="assets/logos/dolby-atmos.png" alt="Dolby Atmos" /></div>
+              <div style="font-size: 0.75rem; color: var(--text-muted); max-width: 250px;">Object-based spatial audio</div>
+            </td>
+            <td>Lossy delivery only<br><span style="font-size: 0.75rem; color: var(--text-muted);">(Compressed bed-channel)</span></td>
+            <td class="check">Full Lossless Delivery<br><span style="font-size: 0.75rem; color: var(--bronze-dim);">Bit-perfect passthrough</span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="format-badge-chip" style="margin-bottom: 0.5rem; display: inline-flex;"><img src="assets/logos/dolby-truehd.png" alt="Dolby TrueHD" /></div>
+              <div style="font-size: 0.75rem; color: var(--text-muted); max-width: 250px;">Lossless</div>
+            </td>
+            <td class="cross">Unavailable</td>
+            <td class="check">Full Lossless Passthrough</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="format-badge-chip" style="margin-bottom: 0.5rem; display: inline-flex;"><img src="assets/logos/dts-hd-ma.png" alt="DTS-HD Master Audio" /></div>
+              <div style="font-size: 0.75rem; color: var(--text-muted); max-width: 250px;">Lossless home-cinema format with DTS core fallback</div>
+            </td>
+            <td class="cross">Unavailable</td>
+            <td class="check">Full Lossless Passthrough</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="format-badge-chip" style="margin-bottom: 0.5rem; display: inline-flex;"><img src="assets/logos/dts-x.png" alt="DTS:X" /></div>
+              <div style="font-size: 0.75rem; color: var(--text-muted); max-width: 250px;">Object-based spatial audio</div>
+            </td>
+            <td class="cross">Unavailable</td>
+            <td class="check">Full Lossless Passthrough</td>
+          </tr>
+          <tr>
+            <td>
+              <div style="font-weight: 500; font-family: var(--font-body); font-size: 0.875rem; color: var(--text-primary); margin-bottom: 0.5rem; padding-left: 0.5rem; margin-top: 0.25rem;">Dolby Digital</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted); padding-left: 0.5rem;">Lossy</div>
+            </td>
+            <td class="check" style="color: var(--text-primary);">Standard delivery format</td>
+            <td class="check">Supported</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
