@@ -1102,7 +1102,27 @@ p {
 .gold-rule--center { margin: 1.5rem auto; }
 
 
-/* ── FORMAT BADGES ────────────────────────────────────────── */
+/* ============================================================
+   LOGO NORMALIZATION SYSTEM
+   Separate optical rules by context:
+   1) codec badge chips
+   2) device badge chips
+   3) ecosystem strip
+   ============================================================ */
+
+:root {
+  --logo-fit: contain;
+
+  /* shared badge geometry */
+  --chip-height: 46px;
+  --chip-pad-y: 10px;
+  --chip-pad-x: 18px;
+
+  /* default fallback caps */
+  --logo-chip-max-h: 16px;
+  --logo-strip-max-h: 14px;
+}
+
 .format-badges {
   display: flex;
   flex-wrap: wrap;
@@ -1114,8 +1134,8 @@ p {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 46px;
-  padding: 10px 18px;
+  min-height: var(--chip-height);
+  padding: var(--chip-pad-y) var(--chip-pad-x);
   border-radius: 999px;
   border: 1px solid rgba(255,255,255,0.14);
   background: rgba(255,255,255,0.07);
@@ -1128,52 +1148,101 @@ p {
 .format-badge-chip img,
 .ecosystem-strip__item img,
 .logo-chip img {
-  width: auto;
   display: block;
+  width: auto;
+  height: auto;
+  object-fit: var(--logo-fit);
+  max-width: 100%;
+  flex: 0 0 auto;
 }
 
-/* -- PER-LOGO OPTICAL NORMALIZATION (USER SPEC) ------------ */
-/* Format / codec logos */
-.logo--vision      { max-height: 18px !important; }
-.logo--atmos       { max-height: 18px !important; }
-.logo--truehd      { max-height: 16px !important; }
-.logo--dtshdma     { max-height: 16px !important; }
-.logo--dtsx        { max-height: 16px !important; }
-.logo--hdr10       { max-height: 16px !important; }
-.logo--dolby-digital   { max-height: 15px !important; }
-.logo--dolbydigital    { max-height: 15px !important; }
+/* ---------- CONTEXT 1: BADGE CHIPS ---------- */
 
-/* Ecosystem / device logos */
-.logo--plex     { max-height: 18px !important; }
-.logo--jellyfin { max-height: 18px !important; }
-.logo--kodi     { max-height: 18px !important; }
-.logo--appletv  { max-height: 18px !important; }
-.logo--shield   { max-height: 18px !important; }
-.logo--zidoo    { max-height: 18px !important; }
-.logo--dune     { max-height: 18px !important; }
-.logo--synology { max-height: 20px !important; }
-.logo--coreelec { max-height: 18px !important; }
+.format-badge-chip img {
+  max-height: var(--logo-chip-max-h);
+}
 
-/* -- DARK LOGO CONTRAST CORRECTIONS ----------------------- */
-/* Apple TV: keep colored treatment — just boost brightness */
+/* device badges in chips (Targeting optical weight balance) */
+.format-badge-chip .logo--plex        { width: 54px; max-height: 16px !important; }
+.format-badge-chip .logo--jellyfin    { width: 58px; max-height: 16px !important; }
+.format-badge-chip .logo--kodi        { width: 44px; max-height: 18px !important; }
+.format-badge-chip .logo--appletv     { width: 34px; max-height: 22px !important; } /* square cap push */
+.format-badge-chip .logo--shield      { width: 52px; max-height: 16px !important; }
+.format-badge-chip .logo--zidoo       { width: 44px; max-height: 16px !important; }
+.format-badge-chip .logo--dune        { width: 46px; max-height: 16px !important; }
+.format-badge-chip .logo--synology    { width: 42px; max-height: 24px !important; } /* square cap push */
+.format-badge-chip .logo--coreelec    { width: 42px; max-height: 16px !important; }
+
+/* codec badges in chips (Balanced row) */
+.format-badge-chip .logo--vision         { width: 84px; max-height: 14px !important; }
+.format-badge-chip .logo--atmos          { width: 84px; max-height: 14px !important; }
+.format-badge-chip .logo--truehd         { width: 58px; max-height: 15px !important; }
+.format-badge-chip .logo--dtshdma        { width: 64px; max-height: 15px !important; }
+.format-badge-chip .logo--dtsx           { width: 72px; max-height: 15px !important; }
+.format-badge-chip .logo--hdr10          { width: 74px; max-height: 16px !important; }
+.format-badge-chip .logo--dolbydigital,
+.format-badge-chip .logo--dolby-digital  { width: 58px; max-height: 15px !important; }
+
+/* ---------- CONTEXT 2: ECOSYSTEM STRIP ---------- */
+
+.ecosystem-strip__item img {
+  max-height: var(--logo-strip-max-h);
+  opacity: 0.88;
+}
+
+.ecosystem-strip__item .logo--plex        { width: 46px; max-height: 14px !important; }
+.ecosystem-strip__item .logo--jellyfin    { width: 50px; max-height: 14px !important; }
+.ecosystem-strip__item .logo--kodi        { width: 38px; max-height: 14px !important; }
+.ecosystem-strip__item .logo--appletv     { width: 26px; max-height: 18px !important; }
+.ecosystem-strip__item .logo--shield      { width: 44px; max-height: 14px !important; }
+.ecosystem-strip__item .logo--zidoo       { width: 38px; max-height: 14px !important; }
+.ecosystem-strip__item .logo--dune        { width: 40px; max-height: 14px !important; }
+.ecosystem-strip__item .logo--synology    { width: 32px; max-height: 20px !important; }
+.ecosystem-strip__item .logo--coreelec    { width: 34px; max-height: 14px !important; }
+
+/* ---------- CONTRAST CORRECTION ---------- */
+
 .logo--appletv {
-  filter: brightness(1.8) contrast(1.05);
+  filter: brightness(1.35) contrast(1.02);
 }
 
-/* Full-invert dark logos (near-black marks on dark background) */
 .logo--synology,
 .logo--coreelec,
 .logo--kodi,
 .logo--zidoo,
 .logo--dune {
-  filter: brightness(0) invert(1) brightness(0.88);
+  filter: brightness(0) invert(1) brightness(0.82);
 }
 
-/* For chips explicitly flagged for full invert treatment */
-.format-badge-chip--invert img,
-.logo-chip--invert img {
-  filter: brightness(1.8) contrast(1.05);
+/* ---------- RESPONSIVE TUNING ---------- */
+
+@media (max-width: 768px) {
+  .format-badge-chip {
+    min-height: 42px;
+    padding: 9px 15px;
+  }
+
+  .format-badge-chip .logo--vision,
+  .format-badge-chip .logo--atmos {
+    width: 84px;
+  }
+
+  .format-badge-chip .logo--hdr10 {
+    width: 68px;
+  }
+
+  .format-badge-chip .logo--dtsx {
+    width: 66px;
+  }
+
+  .format-badge-chip .logo--dtshdma,
+  .format-badge-chip .logo--truehd,
+  .format-badge-chip .logo--dolbydigital,
+  .format-badge-chip .logo--dolby-digital {
+    width: 54px;
+  }
 }
+
 
 
 /* ── ABOUT PAGE CARD LUXURY SYSTEM ───────────────────────── */
