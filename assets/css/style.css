@@ -1096,16 +1096,43 @@ p {
   backdrop-filter: blur(8px);
 }
 
-.format-badge-chip img {
-  max-height: 27px;
+.format-badge-chip img,
+.ecosystem-strip__item img {
   width: auto;
   display: block;
 }
 
-.format-badge-chip img {
-  max-height: 24px;
-  width: auto;
-  display: block;
+/* ── PER-LOGO OPTICAL NORMALIZATION ──────────────────────── */
+/* Format / codec logos */
+.logo--vision  { max-height: 22px; }
+.logo--atmos   { max-height: 22px; }
+.logo--truehd  { max-height: 20px; }
+.logo--dtshdma { max-height: 20px; }
+.logo--dtsx    { max-height: 20px; }
+.logo--hdr10   { max-height: 20px; }
+.logo--dolby-digital { max-height: 18px; }
+
+/* Hardware / software ecosystem logos */
+.logo--plex     { max-height: 18px; }
+.logo--jellyfin { max-height: 18px; }
+.logo--kodi     { max-height: 18px; }
+.logo--appletv  { max-height: 18px; }
+.logo--shield   { max-height: 18px; }
+.logo--zidoo    { max-height: 18px; }
+.logo--dune     { max-height: 18px; }
+.logo--synology { max-height: 15px; }
+.logo--coreelec { max-height: 17px; }
+
+/* ── ABOUT PAGE CARD LUXURY SYSTEM ───────────────────────── */
+.about-logic-card,
+.about-process-card,
+.editorial-card,
+.layer-node {
+  border: 1px solid rgba(255,255,255,0.10) !important;
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.025)) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(226,193,155,0.04),
+    0 14px 32px rgba(0,0,0,0.18) !important;
 }
 
 .format-text-badge {
