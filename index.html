@@ -496,9 +496,18 @@
         Watch how proper configuration transforms what your system is capable of delivering.
       </p>
     </div>
-    <div class="video-wrapper reveal" id="vimeo-container" style="max-width:960px;margin:0 auto;border:1px solid var(--border);">
+    <div class="video-wrapper reveal" id="vimeo-container" style="max-width:960px;margin:0 auto;border:1px solid var(--border); cursor: pointer;">
+      <div id="vimeo-overlay" class="vimeo-overlay">
+        <div class="play-btn">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        </div>
+        <span class="play-text">Experience Playback</span>
+      </div>
       <iframe
-        src="https://player.vimeo.com/video/1180098392?autoplay=1&muted=1&loop=1&background=1&playsinline=1&quality=1080p"
+        id="cinema-machina-vimeo"
+        src="https://player.vimeo.com/video/1180098392?autoplay=1&muted=1&loop=1&background=1&playsinline=1&quality=1080p&dnt=1"
         allow="autoplay; fullscreen; picture-in-picture"
         allowfullscreen
         title="Cinema Machina Demo"

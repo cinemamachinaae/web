@@ -719,6 +719,57 @@ p {
   border: none;
 }
 
+.vimeo-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background: rgba(10,10,10,0.4);
+  transition: opacity 0.4s var(--ease-out), background 0.4s;
+}
+
+.vimeo-overlay:hover {
+  background: rgba(10,10,10,0.2);
+}
+
+.vimeo-overlay .play-btn {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(226,193,155,0.15);
+  border: 1px solid var(--bronze);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bronze);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: transform 0.4s var(--ease-out), background 0.4s;
+}
+
+.vimeo-overlay:hover .play-btn {
+  transform: scale(1.05);
+  background: rgba(226,193,155,0.25);
+  color: #fff;
+}
+
+.vimeo-overlay .play-text {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.vimeo-overlay.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
 /* ── COMPARISON TABLE ─────────────────────────────────────── */
 .comparison-table {
   width: 100%;

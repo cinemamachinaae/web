@@ -105,24 +105,19 @@
   window.addEventListener('scroll', onScroll, { passive: true });
 })();
 
-/* ── VIMEO AUTOPLAY ────────────────────────────────────────── */
+/* ── VIMEO AUTOPLAY / TWO-STATE ──────────────────────────────── */
 (function initVimeo() {
   const vimeoWrap = document.getElementById('vimeo-container');
-  if (!vimeoWrap) return;
+  const overlay = document.getElementById('vimeo-overlay');
+  const iframe = document.getElementById('cinema-machina-vimeo');
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      const iframe = vimeoWrap.querySelector('iframe');
-      if (!iframe) return;
-      if (entry.isIntersecting) {
-        iframe.contentWindow.postMessage('{"method":"play"}', '*');
-      } else {
-        iframe.contentWindow.postMessage('{"method":"pause"}', '*');
-      }
-    });
-  }, { threshold: 0.3 });
+  if (!vimeoWrap || !overlay || !iframe) return;
 
-  observer.observe(vimeoWrap);
+  overlay.addEventListener('click', () => {
+    // Switch to active playable state with sound and controls
+    iframe.src = "https://player.vimeo.com/video/1180098392?autoplay=1&muted=0&loop=0&controls=1&title=0&byline=0&portrait=0&playsinline=1&dnt=1";
+    overlay.classList.add('is-hidden');
+  });
 })();
 
 /* ── CONTACT FORM ───────────────────────────────────────────── */
