@@ -91,25 +91,29 @@
     }
 
     .layer-node {
-      padding: 2.5rem 1.5rem;
+      padding: 3rem 2rem;
       border: 1px solid var(--border);
       text-align: center;
       position: relative;
       z-index: 1;
-      background: var(--bg-warm);
-      transition: border-color 0.35s, background 0.35s;
+      background: var(--surface);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      transition: all 0.4s var(--ease-out);
     }
 
     .layer-node + .layer-node { border-left: none; }
 
     .layer-node:hover {
-      border-color: var(--border-hover);
-      background: var(--surface);
+      border-color: var(--bronze-dim);
+      background: var(--surface-2);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.25);
     }
 
     .layer-node--focus {
-      border-color: var(--border-hover);
+      border-color: var(--bronze-dim);
       background: var(--surface-2);
+      box-shadow: inset 0 0 0 1px rgba(201,169,110,0.05), 0 15px 40px rgba(0,0,0,0.2);
     }
 
     .layer-node__icon {
@@ -249,7 +253,7 @@
 <!-- ═══ PAGE HERO ═══ -->
 <section class="page-hero">
   <div class="page-hero__bg">
-    <img src="assets/images/about-hero-master.png" alt="Signal intelligence and technical hidden layer" loading="eager" />
+    <img src="assets/images/about-hero-master-v3.png" alt="Signal intelligence and technical hidden layer" loading="eager" />
   </div>
   <div class="page-hero__gradient"></div>
   <div class="container page-hero__content">

@@ -224,6 +224,25 @@
       margin-top: 3rem;
     }
 
+    .ecosystem-strip__item img {
+      max-height: 30px;
+      width: auto;
+      opacity: 0.8;
+      filter: grayscale(1) brightness(1.8);
+      transition: all 0.3s;
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 2.25rem 2rem;
+      transition: border-color 0.4s;
+    }
+
+    .stat-card:hover {
+      border-color: var(--bronze-dim);
+    }
+
     .comparison-col {
       padding: 2.5rem;
     }
@@ -520,36 +539,18 @@
 <div class="divider"></div>
 
 <!-- ═══════════════════ VIMEO DEMO ═══════════════════ -->
-<section class="video-section" id="demo">
+<section class="section--tight" id="demo">
   <div class="container">
-    <div class="video-section__header reveal">
+    <div class="reveal" style="text-align:center;max-width:700px;margin:0 auto 3rem;">
       <div class="section-label" style="justify-content:center;">
-        <span class="label">See The Difference</span>
+        <span class="label">The Output</span>
       </div>
-      <h2 class="display-md">
-        Precision playback.<br />In action.
-      </h2>
-      <p class="lead video-section__header .lead">
-        Watch how proper configuration transforms what your system is capable of delivering.
-      </p>
+      <h2 class="display-md">Precision playback.<br />In action.</h2>
     </div>
-    <div class="video-wrapper reveal" id="vimeo-container" style="max-width:960px;margin:0 auto;border:1px solid var(--border); cursor: pointer;">
-      <div id="vimeo-overlay" class="vimeo-overlay">
-        <div class="play-btn">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M8 5v14l11-7z" />
-          </svg>
-        </div>
-        <span class="play-text">Experience Playback</span>
+    <div class="reveal reveal-delay-1">
+      <div class="image-frame--hero" style="border:1px solid var(--border); box-shadow: 0 30px 60px rgba(0,0,0,0.4);">
+        <img src="assets/images/homepage-demo-master.png" alt="High-fidelity cinematic playback demo" loading="lazy" />
       </div>
-      <iframe
-        id="cinema-machina-vimeo"
-        src="https://player.vimeo.com/video/1180098392?autoplay=1&muted=1&loop=1&background=1&playsinline=1&quality=1080p&dnt=1"
-        allow="autoplay; fullscreen; picture-in-picture"
-        allowfullscreen
-        title="Cinema Machina Demo"
-        loading="lazy"
-      ></iframe>
     </div>
   </div>
 </section>
