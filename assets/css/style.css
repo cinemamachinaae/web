@@ -697,10 +697,10 @@ p {
 .ecosystem-strip__item:hover { opacity: 1; }
 
 .ecosystem-strip__item img {
-  height: 22px;
+  max-height: 22px; /* default; overridden per-logo by .logo-- classes */
   width: auto;
-  filter: brightness(0) invert(1);
-  opacity: 0.9;
+  opacity: 0.88;
+  /* No blanket filter — per-logo .logo-- classes handle individual corrections */
 }
 
 .ecosystem-strip__item span {
@@ -1099,7 +1099,7 @@ p {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 48px;
+  min-height: 46px;
   padding: 10px 18px;
   border-radius: 999px;
   border: 1px solid rgba(255,255,255,0.14);
@@ -1111,31 +1111,50 @@ p {
 }
 
 .format-badge-chip img,
-.ecosystem-strip__item img {
+.ecosystem-strip__item img,
+.logo-chip img {
   width: auto;
   display: block;
 }
 
-/* ── PER-LOGO OPTICAL NORMALIZATION ──────────────────────── */
-/* Format / codec logos */
-.logo--vision  { max-height: 22px; }
-.logo--atmos   { max-height: 22px; }
-.logo--truehd  { max-height: 20px; }
-.logo--dtshdma { max-height: 20px; }
-.logo--dtsx    { max-height: 20px; }
-.logo--hdr10   { max-height: 20px; }
-.logo--dolby-digital { max-height: 18px; }
+/* ── PER-LOGO OPTICAL NORMALIZATION (FINAL) ────────────── */
+/* Format / codec logos — Dolby marks are wide wordmarks, keep very tight */
+.logo--vision      { max-height: 15px !important; }
+.logo--atmos       { max-height: 15px !important; }
+.logo--truehd      { max-height: 14px !important; }
+.logo--dtshdma     { max-height: 14px !important; }
+.logo--dtsx        { max-height: 14px !important; }
+.logo--hdr10       { max-height: 15px !important; }
+.logo--dolby-digital   { max-height: 13px !important; }
+.logo--dolbydigital    { max-height: 13px !important; } /* alias */
 
-/* Hardware / software ecosystem logos */
-.logo--plex     { max-height: 18px; }
-.logo--jellyfin { max-height: 18px; }
-.logo--kodi     { max-height: 18px; }
-.logo--appletv  { max-height: 18px; }
-.logo--shield   { max-height: 18px; }
-.logo--zidoo    { max-height: 18px; }
-.logo--dune     { max-height: 18px; }
-.logo--synology { max-height: 15px; }
-.logo--coreelec { max-height: 17px; }
+/* Ecosystem / device logos */
+.logo--plex     { max-height: 18px !important; }
+.logo--jellyfin { max-height: 18px !important; }
+.logo--kodi     { max-height: 18px !important; }
+.logo--appletv  { max-height: 18px !important; }
+.logo--shield   { max-height: 18px !important; }
+.logo--zidoo    { max-height: 18px !important; }
+.logo--dune     { max-height: 18px !important; }
+.logo--synology { max-height: 24px !important; }  /* wider mark needs more height */
+.logo--coreelec { max-height: 18px !important; }
+
+/* ── DARK LOGO CONTRAST CORRECTIONS ──────────────────── */
+/* Logos that are dark / near-black — full invert for legibility on dark BG */
+.logo--appletv,
+.logo--synology,
+.logo--coreelec,
+.logo--kodi,
+.logo--zidoo,
+.logo--dune {
+  filter: brightness(0) invert(1) brightness(0.9);
+}
+
+/* For chips explicitly flagged for full invert treatment */
+.format-badge-chip--invert img,
+.logo-chip--invert img {
+  filter: brightness(1.8) contrast(1.05);
+}
 
 /* ── ABOUT PAGE CARD LUXURY SYSTEM ───────────────────────── */
 .about-logic-card,

@@ -225,11 +225,8 @@
     }
 
     .ecosystem-strip__item img {
-      max-height: 32px;
-      width: auto;
-      opacity: 0.85;
-      filter: grayscale(1) brightness(1.9);
       transition: all 0.3s;
+      /* Sizing and filters controlled by global per-logo .logo-- classes */
     }
 
     .stat-card {
@@ -732,7 +729,7 @@
         <tbody>
           <tr>
             <td>
-              <div class="format-badge-chip" style="margin-bottom: 0.5rem; display: inline-flex;"><img src="assets/logos/dolby-atmos.png" alt="Dolby Atmos" /></div>
+              <div class="format-badge-chip" style="margin-bottom: 0.5rem; display: inline-flex;"><img src="assets/logos/dolby-atmos.png" alt="Dolby Atmos" class="logo--atmos" /></div>
               <div style="font-size: 0.75rem; color: var(--text-muted); max-width: 250px;">Object-based spatial audio</div>
             </td>
             <td>Lossy delivery only<br><span style="font-size: 0.75rem; color: var(--text-muted);">(Compressed bed-channel)</span></td>
@@ -740,7 +737,7 @@
           </tr>
           <tr>
             <td>
-              <div class="format-badge-chip" style="margin-bottom: 0.5rem; display: inline-flex;"><img src="assets/logos/dolby-truehd.png" alt="Dolby TrueHD" /></div>
+              <div class="format-badge-chip" style="margin-bottom: 0.5rem; display: inline-flex;"><img src="assets/logos/dolby-truehd.png" alt="Dolby TrueHD" class="logo--truehd" /></div>
               <div style="font-size: 0.75rem; color: var(--text-muted); max-width: 250px;">Lossless</div>
             </td>
             <td class="cross">Unavailable</td>
@@ -748,7 +745,7 @@
           </tr>
           <tr>
             <td>
-              <div class="format-badge-chip" style="margin-bottom: 0.5rem; display: inline-flex;"><img src="assets/logos/dts-hd-ma.png" alt="DTS-HD Master Audio" /></div>
+              <div class="format-badge-chip" style="margin-bottom: 0.5rem; display: inline-flex;"><img src="assets/logos/dts-hd-ma.png" alt="DTS-HD Master Audio" class="logo--dtshdma" /></div>
               <div style="font-size: 0.75rem; color: var(--text-muted); max-width: 250px;">Lossless home-cinema format with DTS core fallback</div>
             </td>
             <td class="cross">Unavailable</td>
@@ -756,7 +753,7 @@
           </tr>
           <tr>
             <td>
-              <div class="format-badge-chip" style="margin-bottom: 0.5rem; display: inline-flex;"><img src="assets/logos/dts-x.png" alt="DTS:X" /></div>
+              <div class="format-badge-chip" style="margin-bottom: 0.5rem; display: inline-flex;"><img src="assets/logos/dts-x.png" alt="DTS:X" class="logo--dtsx" /></div>
               <div style="font-size: 0.75rem; color: var(--text-muted); max-width: 250px;">Object-based spatial audio</div>
             </td>
             <td class="cross">Unavailable</td>
@@ -764,8 +761,8 @@
           </tr>
           <tr>
             <td>
-              <div style="font-weight: 500; font-family: var(--font-body); font-size: 0.875rem; color: var(--text-primary); margin-bottom: 0.5rem; padding-left: 0.5rem; margin-top: 0.25rem;">Dolby Digital</div>
-              <div style="font-size: 0.75rem; color: var(--text-muted); padding-left: 0.5rem;">Lossy</div>
+              <div class="format-badge-chip" style="margin-bottom: 0.5rem; display: inline-flex;"><img src="assets/logos/dolby-digital.png" alt="Dolby Digital" class="logo--dolbydigital" /></div>
+              <div style="font-size: 0.75rem; color: var(--text-muted); max-width: 250px;">Lossy</div>
             </td>
             <td class="check" style="color: var(--text-primary);">Standard delivery format</td>
             <td class="check">Supported</td>
