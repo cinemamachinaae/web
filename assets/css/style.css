@@ -235,14 +235,14 @@ p {
 }
 
 .nav__logo img {
-  height: 58px;
+  height: 62px;
   width: auto;
   display: block;
 }
 
 @media (max-width: 768px) {
   .nav__logo img {
-    height: 46px;
+    height: 50px;
   }
 }
 
