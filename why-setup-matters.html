@@ -401,39 +401,19 @@
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:start;">
       <div class="chart-container reveal">
-        <div class="chart-title">Video Bitrate — Peak (Mbps)</div>
-        <div class="bar-item-enhanced">
-          <span class="bar-label-enhanced">Netflix 4K</span>
-          <div class="bar-track-enhanced"><div class="bar-fill-enhanced tier-1" data-width="17"></div></div>
-          <span class="bar-value-enhanced">~17</span>
+        <div class="chart-title">Illustrative Normalized Comparison</div>
+        <div class="bar-item-enhanced" style="margin-bottom: 1.5rem;">
+          <span class="bar-label-enhanced">Compressed streaming</span>
+          <div class="bar-track-enhanced"><div class="bar-fill-enhanced tier-2" data-width="18"></div></div>
+          <span class="bar-value-enhanced">~18%</span>
         </div>
         <div class="bar-item-enhanced">
-          <span class="bar-label-enhanced">Prime Video 4K</span>
-          <div class="bar-track-enhanced"><div class="bar-fill-enhanced tier-1" data-width="19"></div></div>
-          <span class="bar-value-enhanced">~19</span>
-        </div>
-        <div class="bar-item-enhanced">
-          <span class="bar-label-enhanced">Disney+ 4K</span>
-          <div class="bar-track-enhanced"><div class="bar-fill-enhanced tier-2" data-width="22"></div></div>
-          <span class="bar-value-enhanced">~22</span>
-        </div>
-        <div class="bar-item-enhanced">
-          <span class="bar-label-enhanced">Apple TV+ 4K</span>
-          <div class="bar-track-enhanced"><div class="bar-fill-enhanced tier-3" data-width="40"></div></div>
-          <span class="bar-value-enhanced">~40</span>
-        </div>
-        <div class="bar-item-enhanced">
-          <span class="bar-label-enhanced">UHD Blu-ray</span>
-          <div class="bar-track-enhanced"><div class="bar-fill-enhanced tier-4" data-width="75"></div></div>
-          <span class="bar-value-enhanced">~80</span>
-        </div>
-        <div class="bar-item-enhanced">
-          <span class="bar-label-enhanced">Remux (CM)</span>
+          <span class="bar-label-enhanced">Higher-bitrate local playback</span>
           <div class="bar-track-enhanced"><div class="bar-fill-enhanced tier-5" data-width="100"></div></div>
-          <span class="bar-value-enhanced">100+</span>
+          <span class="bar-value-enhanced">100%</span>
         </div>
         <div class="chart-annotation">
-          Data based on published encoder specifications and independent analysis. Streaming bitrates vary by encoding pass and network conditions.
+          * Illustrative normalized comparison of visual data delivery. Streaming bitrates vary by encoding pass and network conditions, but generally process a fraction of the data found in a premium local chain.
         </div>
       </div>
       <div class="reveal reveal-delay-2">
@@ -475,69 +455,61 @@
         <thead>
           <tr>
             <th>Format</th>
-            <th>Netflix</th>
-            <th>Disney+</th>
-            <th>Apple TV+</th>
-            <th>Prime Video</th>
-            <th>Local (CM)</th>
+            <th>Type</th>
+            <th>Typical Use</th>
+            <th>Immersive / Object Support</th>
+            <th>Home Cinema Value</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Dolby TrueHD (Lossless)</td>
-            <td><span class="check-none"></span></td>
-            <td><span class="check-none"></span></td>
-            <td><span class="check-none"></span></td>
-            <td><span class="check-none"></span></td>
-            <td><span class="check-full">✦</span></td>
+            <td>AAC</td>
+            <td>Lossy</td>
+            <td>Streaming, mobile, web</td>
+            <td><span class="check-none"></span> No object metadata</td>
+            <td>Convenience-first</td>
           </tr>
           <tr>
-            <td>Dolby Atmos (Lossless)</td>
-            <td><span class="check-none"></span></td>
-            <td><span class="check-none"></span></td>
-            <td><span class="check-none"></span></td>
-            <td><span class="check-none"></span></td>
-            <td><span class="check-full">✦</span></td>
+            <td>Dolby Digital</td>
+            <td>Lossy</td>
+            <td>Broadcast, streaming, legacy AV</td>
+            <td><span class="check-none"></span> No native lossless layer</td>
+            <td>Common but limited</td>
           </tr>
           <tr>
-            <td>Dolby Atmos (Lossy EC3)</td>
-            <td><span class="check-partial">~</span></td>
-            <td><span class="check-partial">~</span></td>
-            <td><span class="check-partial">~</span></td>
-            <td><span class="check-partial">~</span></td>
-            <td><span class="check-full">✦</span></td>
+            <td>DTS</td>
+            <td>Lossy</td>
+            <td>Disc, legacy playback</td>
+            <td><span class="check-none"></span> No object metadata</td>
+            <td>Older surround format</td>
           </tr>
           <tr>
-            <td>DTS-HD Master Audio</td>
-            <td><span class="check-none"></span></td>
-            <td><span class="check-none"></span></td>
-            <td><span class="check-none"></span></td>
-            <td><span class="check-none"></span></td>
-            <td><span class="check-full">✦</span></td>
+            <td style="color:var(--bronze);">Dolby TrueHD</td>
+            <td>Lossless</td>
+            <td>Blu-ray, premium local playback</td>
+            <td><span class="check-full">✦</span> Atmos-capable (compatible chains)</td>
+            <td>Reference-grade home cinema</td>
           </tr>
           <tr>
-            <td>DTS:X (Lossless)</td>
-            <td><span class="check-none"></span></td>
-            <td><span class="check-none"></span></td>
-            <td><span class="check-none"></span></td>
-            <td><span class="check-none"></span></td>
-            <td><span class="check-full">✦</span></td>
+            <td style="color:var(--bronze);">DTS-HD Master Audio</td>
+            <td>Lossless</td>
+            <td>Blu-ray, premium local playback</td>
+            <td><span class="check-partial">~</span> No object metadata by itself</td>
+            <td>High-end lossless surround</td>
           </tr>
           <tr>
-            <td>Dolby Digital (AC3)</td>
-            <td><span class="check-partial">~</span></td>
-            <td><span class="check-partial">~</span></td>
-            <td><span class="check-partial">~</span></td>
-            <td><span class="check-partial">~</span></td>
-            <td><span class="check-full">✦</span></td>
+            <td style="color:var(--bronze);">DTS:X</td>
+            <td>Immersive format</td>
+            <td>Compatible premium chains</td>
+            <td><span class="check-full">✦</span> Object-based metadata</td>
+            <td>Premium spatial audio</td>
           </tr>
           <tr>
-            <td>PCM 7.1 / 9.1 Lossless</td>
-            <td><span class="check-none"></span></td>
-            <td><span class="check-none"></span></td>
-            <td><span class="check-none"></span></td>
-            <td><span class="check-none"></span></td>
-            <td><span class="check-full">✦</span></td>
+            <td style="color:var(--bronze);">Dolby Atmos</td>
+            <td>Immersive format</td>
+            <td>Compatible premium chains</td>
+            <td><span class="check-full">✦</span> Object-based metadata</td>
+            <td>Premium spatial audio</td>
           </tr>
         </tbody>
       </table>
@@ -624,13 +596,13 @@
 <!-- ═══ CODEC AUTHENTICITY ═══ -->
 <section style="padding-top: 4rem;">
   <div class="container">
-    <div class="codec-strip reveal">
-      <span class="codec-badge">Dolby Vision</span>
-      <span class="codec-badge">HDR10+</span>
-      <span class="codec-badge">Dolby TrueHD</span>
-      <span class="codec-badge">DTS-HD MA</span>
-      <span class="codec-badge">DTS:X</span>
-      <span class="codec-badge">Dolby Atmos</span>
+    <div class="format-badges reveal" aria-label="Supported premium playback formats">
+      <img src="assets/logos/dolby-vision-horizontal.png" alt="Dolby Vision" />
+      <img src="assets/logos/hdr10-plus.png" alt="HDR10+" />
+      <span class="format-text-badge">Dolby TrueHD</span>
+      <img src="assets/logos/dts-hd-ma.png" alt="DTS-HD Master Audio" />
+      <img src="assets/logos/dts-x.png" alt="DTS:X" />
+      <img src="assets/logos/dolby-atmos.png" alt="Dolby Atmos" />
     </div>
   </div>
 </section>

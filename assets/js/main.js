@@ -72,7 +72,7 @@
 
 /* ── BAR CHART ANIMATION ───────────────────────────────────── */
 (function initBars() {
-  const bars = document.querySelectorAll('.bar-fill[data-width]');
+  const bars = document.querySelectorAll('.bar-fill[data-width], .bar-fill-enhanced[data-width]');
   if (!bars.length) return;
 
   const observer = new IntersectionObserver((entries) => {
