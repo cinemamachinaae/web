@@ -235,14 +235,14 @@ p {
 }
 
 .nav__logo img {
-  height: 50px;
+  height: 54px;
   width: auto;
   display: block;
 }
 
 @media (max-width: 768px) {
   .nav__logo img {
-    height: 40px;
+    height: 42px;
   }
 }
 
@@ -1078,28 +1078,40 @@ p {
   flex-wrap: wrap;
   gap: 12px;
   align-items: center;
-  justify-content: center; /* keep centered */
-  margin: 2rem 0; /* from old codec-strip */
 }
 
-.format-badges img {
-  height: 24px;
+.format-badge-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: inset 0 0 0 1px rgba(226, 193, 155, 0.04);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.format-badge-chip img {
+  max-height: 22px;
   width: auto;
-  opacity: 0.92;
+  display: block;
 }
 
 .format-text-badge {
   display: inline-flex;
   align-items: center;
-  min-height: 24px;
-  padding: 4px 10px;
-  border: 1px solid rgba(255,255,255,0.12);
+  min-height: 42px;
+  padding: 8px 14px;
   border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.04);
   font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  color: rgba(255,255,255,0.82);
-  background: rgba(255,255,255,0.03);
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.84);
+  text-transform: uppercase;
 }
 
 /* ── AUDIO CODEC CHIPS ────────────────────────────────────── */
