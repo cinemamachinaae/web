@@ -495,16 +495,30 @@ p {
 }
 
 /* ── SCROLL REVEAL ────────────────────────────────────────── */
+/* Default: always visible. JS will opt-in to animation by adding .js-ready to <html>. */
 .reveal {
-  opacity: 0;
-  transform: translateY(28px);
   transition: opacity 0.85s var(--ease-out),
               transform 0.85s var(--ease-out);
 }
 
-.reveal.visible {
+/* Only hide if JS is confirmed running and has set up the observer */
+.js-ready .reveal {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+.js-ready .reveal.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Fallback: reduced motion users get no animation */
+@media (prefers-reduced-motion: reduce) {
+  .js-ready .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 .reveal-delay-1 { transition-delay: 0.1s; }

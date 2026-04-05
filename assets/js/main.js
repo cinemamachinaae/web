@@ -58,6 +58,16 @@
   const items = document.querySelectorAll('.reveal');
   if (!items.length) return;
 
+  // Tell CSS that JS is running — enables the hide-then-reveal animation.
+  // Without this flag, all .reveal elements remain fully visible (safe default).
+  document.documentElement.classList.add('js-ready');
+
+  // Safety fallback: if IntersectionObserver doesn't fire within 3s
+  // (e.g. headless browsers, screenshot tools, SSR crawlers), reveal everything.
+  const fallbackTimer = setTimeout(() => {
+    items.forEach(el => el.classList.add('visible'));
+  }, 3000);
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -65,9 +75,23 @@
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+  }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
 
-  items.forEach(el => observer.observe(el));
+  items.forEach(el => {
+    // Immediately reveal elements already visible in viewport on load
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      el.classList.add('visible');
+    } else {
+      observer.observe(el);
+    }
+  });
+
+  // Clear fallback timer if all items revealed normally
+  document.addEventListener('scroll', () => {
+    const anyHidden = [...items].some(el => !el.classList.contains('visible'));
+    if (!anyHidden) clearTimeout(fallbackTimer);
+  }, { once: true, passive: true });
 })();
 
 /* ── BAR CHART ANIMATION ───────────────────────────────────── */
