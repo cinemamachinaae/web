@@ -1485,3 +1485,261 @@ p {
   .bar-label { font-size: 0.75rem; }
 }
 
+
+/* ============================================================
+   FINAL VISUAL REFINEMENT PASS vR2
+   Mobile comparison cards, Synology scale, footer, CTA spacing
+   ============================================================ */
+
+/* ---------- INLINE FEATURE ICONS (desktop table) ---------- */
+
+.feature-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.feature-icon {
+  width: 15px;
+  height: 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #e2c19b;
+  opacity: 0.72;
+  flex: 0 0 auto;
+}
+
+.feature-icon svg {
+  width: 15px;
+  height: 15px;
+  display: block;
+}
+
+.comparison-table--devices tbody th {
+  line-height: 1.45;
+}
+
+/* ---------- MOBILE DEVICE COMPARISON CARDS ---------- */
+
+.comparison-mobile-cards {
+  display: none;
+  margin-top: 1.5rem;
+}
+
+.comparison-device-card {
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.02));
+  box-shadow:
+    inset 0 0 0 1px rgba(226,193,155,0.04),
+    0 14px 40px rgba(0,0,0,0.18);
+  padding: 22px 20px;
+  margin-bottom: 14px;
+}
+
+.comparison-device-card:last-child {
+  margin-bottom: 0;
+}
+
+.comparison-device-card__head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.format-badge-chip--device-head {
+  min-height: 38px !important;
+  padding: 6px 12px !important;
+  background: rgba(255,255,255,0.05) !important;
+  border-color: rgba(255,255,255,0.10) !important;
+}
+
+.comparison-device-card__title {
+  color: rgba(255,255,255,0.92);
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.45;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.comparison-device-card__rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.comparison-device-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.055);
+}
+
+.comparison-device-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.comparison-device-row__label {
+  color: rgba(255,255,255,0.66);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.device-fit {
+  color: rgba(255,255,255,0.50);
+  font-size: 12px;
+  font-style: italic;
+  text-align: right;
+  max-width: 160px;
+}
+
+@media (max-width: 768px) {
+  .comparison-table-shell {
+    display: none !important;
+  }
+
+  .comparison-mobile-cards {
+    display: block;
+  }
+}
+
+
+/* ---------- SYNOLOGY SCALE FINAL BOOST ---------- */
+
+.format-badge-chip .logo--synology {
+  width: 116px !important;
+  max-height: 36px !important;
+  filter: brightness(0) invert(1) brightness(0.96) !important;
+}
+
+.ecosystem-strip__item .logo--synology {
+  width: 72px !important;
+  max-height: 26px !important;
+  filter: brightness(0) invert(1) brightness(0.94) !important;
+}
+
+.format-badge-chip--device-head .logo--synology {
+  width: 112px !important;
+  max-height: 34px !important;
+  filter: brightness(0) invert(1) brightness(0.96) !important;
+}
+
+@media (max-width: 768px) {
+  .format-badge-chip .logo--synology {
+    width: 124px !important;
+    max-height: 40px !important;
+  }
+
+  .ecosystem-strip__item .logo--synology {
+    width: 80px !important;
+    max-height: 30px !important;
+  }
+}
+
+
+/* ---------- FOOTER BRAND LOCKUP ---------- */
+
+.footer__brand img {
+  height: 32px !important;
+  opacity: 0.96 !important;
+}
+
+@media (max-width: 768px) {
+  .footer__brand img {
+    height: 34px !important;
+  }
+}
+
+
+/* ---------- CTA SECTIONS — BREATHING SPACE ---------- */
+
+.cta-full,
+.cta-full--take-action {
+  padding: clamp(5rem, 10vw, 9rem) 0;
+}
+
+.cta-full .format-badges,
+.cta-full .badge-row {
+  margin-bottom: 2.5rem;
+  margin-top: 0;
+}
+
+.cta-full .section-label {
+  margin-bottom: 1.25rem;
+}
+
+.cta-full h2 {
+  margin-bottom: 1.25rem;
+}
+
+.cta-full .lead {
+  margin-bottom: 2rem;
+}
+
+.cta-full__actions {
+  margin-top: 2.5rem;
+}
+
+@media (max-width: 768px) {
+  .cta-full,
+  .cta-full--take-action {
+    padding-top: 72px !important;
+    padding-bottom: 72px !important;
+  }
+
+  .cta-full .format-badges,
+  .cta-full .badge-row {
+    margin-bottom: 32px !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+  }
+
+  .cta-full__actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .cta-full__actions .btn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+
+/* ---------- COMMISSION YOUR SYSTEM LOGO ROW ---------- */
+
+.comparison-section .format-badges,
+.comparison-col .format-badges {
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 2.5rem;
+  margin-bottom: 0;
+}
+
+.comparison-col--good .format-badges + .format-badges {
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .comparison-col {
+    padding: 1.75rem 1.5rem;
+  }
+
+  .comparison-col .format-badges {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
+
