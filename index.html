@@ -6,7 +6,7 @@
   <title>Cinema Machina — Premium Playback & Media Environment Specialists, UAE</title>
   <meta name="description" content="Cinema Machina delivers premium playback configuration, media library refinement, and signal-path optimisation for luxury home cinema systems in the UAE." />
   <link rel="icon" type="image/png" href="assets/logos/cm-logo-square.png" />
-  <link rel="stylesheet" href="assets/css/style.css?v=2.3" />
+  <link rel="stylesheet" href="assets/css/style.css?v=2.4" />
   <style>
     /* ── PAGE-SPECIFIC OVERRIDES ── */
     .hero { min-height: 100vh; }
@@ -435,14 +435,19 @@
     <p class="lead hero__lead">
       Cinema Machina transforms luxury home cinema systems through precision playback configuration, media library refinement, and signal-path optimisation — so every frame performs at its true potential.
     </p>
-    <div class="hero__actions">
-      <a href="contact.html" class="btn btn-primary">Book a Consultation</a>
-      <a href="why-setup-matters.html" class="btn btn-outline">Why Setup Matters</a>
+    <div class="hero__actions hero__actions--stack-safe reveal reveal-delay-2">
+      <div class="hero__button-row">
+        <a href="contact.html" class="btn btn--primary btn--hero">Book a Consultation</a>
+        <a href="why-setup-matters.html" class="btn btn--secondary btn--hero">Why Setup Matters</a>
+      </div>
+
+      <div class="hero__scroll-wrap">
+        <a href="#intro" class="hero__scroll-link" aria-label="Scroll to next section" onclick="document.getElementById('intro').scrollIntoView({behavior:'smooth'}); return false;">
+          <span class="hero__scroll-label">Scroll</span>
+          <span class="hero__scroll-line" aria-hidden="true"></span>
+        </a>
+      </div>
     </div>
-  </div>
-  <div class="hero__scroll" onclick="document.getElementById('intro').scrollIntoView({behavior:'smooth'})">
-    <span>Scroll</span>
-    <div class="hero__scroll-line"></div>
   </div>
 </section>
 
