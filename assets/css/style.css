@@ -1162,26 +1162,26 @@ p {
   max-height: var(--logo-chip-max-h);
 }
 
-/* device badges in chips (Targeting optical weight balance) */
+/* device badges in chips (Final Visibility Pass) */
 .format-badge-chip .logo--plex        { width: 54px; max-height: 16px !important; }
 .format-badge-chip .logo--jellyfin    { width: 58px; max-height: 16px !important; }
-.format-badge-chip .logo--kodi        { width: 44px; max-height: 18px !important; }
-.format-badge-chip .logo--appletv     { width: 34px; max-height: 22px !important; } /* square cap push */
-.format-badge-chip .logo--shield      { width: 52px; max-height: 16px !important; }
+.format-badge-chip .logo--kodi        { width: 38px; max-height: 16px !important; }
+.format-badge-chip .logo--appletv     { width: 26px; max-height: 17px !important; }
+.format-badge-chip .logo--shield      { width: 56px; max-height: 17px !important; }
 .format-badge-chip .logo--zidoo       { width: 44px; max-height: 16px !important; }
 .format-badge-chip .logo--dune        { width: 46px; max-height: 16px !important; }
-.format-badge-chip .logo--synology    { width: 42px; max-height: 24px !important; } /* square cap push */
-.format-badge-chip .logo--coreelec    { width: 42px; max-height: 16px !important; }
+.format-badge-chip .logo--synology    { width: 42px; max-height: 22px !important; }
+.format-badge-chip .logo--coreelec    { width: 44px; max-height: 17px !important; }
 
-/* codec badges in chips (Balanced row) */
-.format-badge-chip .logo--vision         { width: 84px; max-height: 14px !important; }
-.format-badge-chip .logo--atmos          { width: 84px; max-height: 14px !important; }
-.format-badge-chip .logo--truehd         { width: 58px; max-height: 15px !important; }
+/* codec badges in chips (Optimized Balance) */
+.format-badge-chip .logo--vision         { width: 84px; max-height: 15px !important; }
+.format-badge-chip .logo--atmos          { width: 84px; max-height: 15px !important; }
+.format-badge-chip .logo--truehd         { width: 54px; max-height: 14px !important; }
 .format-badge-chip .logo--dtshdma        { width: 64px; max-height: 15px !important; }
-.format-badge-chip .logo--dtsx           { width: 72px; max-height: 15px !important; }
-.format-badge-chip .logo--hdr10          { width: 74px; max-height: 16px !important; }
+.format-badge-chip .logo--dtsx           { width: 70px; max-height: 15px !important; }
+.format-badge-chip .logo--hdr10          { width: 72px; max-height: 15px !important; }
 .format-badge-chip .logo--dolbydigital,
-.format-badge-chip .logo--dolby-digital  { width: 58px; max-height: 15px !important; }
+.format-badge-chip .logo--dolby-digital  { width: 56px; max-height: 14px !important; }
 
 /* ---------- CONTEXT 2: ECOSYSTEM STRIP ---------- */
 
@@ -1191,28 +1191,34 @@ p {
 }
 
 .ecosystem-strip__item .logo--plex        { width: 46px; max-height: 14px !important; }
-.ecosystem-strip__item .logo--jellyfin    { width: 50px; max-height: 14px !important; }
-.ecosystem-strip__item .logo--kodi        { width: 38px; max-height: 14px !important; }
-.ecosystem-strip__item .logo--appletv     { width: 26px; max-height: 18px !important; }
-.ecosystem-strip__item .logo--shield      { width: 44px; max-height: 14px !important; }
-.ecosystem-strip__item .logo--zidoo       { width: 38px; max-height: 14px !important; }
-.ecosystem-strip__item .logo--dune        { width: 40px; max-height: 14px !important; }
-.ecosystem-strip__item .logo--synology    { width: 32px; max-height: 20px !important; }
-.ecosystem-strip__item .logo--coreelec    { width: 34px; max-height: 14px !important; }
+.ecosystem-strip__item .logo--jellyfin    { width: 50px; max-height: 15px !important; }
+.ecosystem-strip__item .logo--kodi        { width: 34px; max-height: 14px !important; }
+.ecosystem-strip__item .logo--appletv     { width: 22px; max-height: 15px !important; }
+.ecosystem-strip__item .logo--shield      { width: 48px; max-height: 15px !important; }
+.ecosystem-strip__item .logo--zidoo       { width: 40px; max-height: 14px !important; }
+.ecosystem-strip__item .logo--dune        { width: 42px; max-height: 14px !important; }
+.ecosystem-strip__item .logo--synology    { width: 34px; max-height: 18px !important; }
+.ecosystem-strip__item .logo--coreelec    { width: 38px; max-height: 15px !important; }
 
-/* ---------- CONTRAST CORRECTION ---------- */
+/* ---------- CONTRAST TREATMENT ---------- */
 
-.logo--appletv {
-  filter: brightness(1.35) contrast(1.02);
+.logo--appletv,
+.logo--shield,
+.logo--jellyfin {
+  filter: brightness(0) invert(1) brightness(0.92) !important;
 }
 
-.logo--synology,
+.logo--synology {
+  filter: brightness(0) invert(1) brightness(0.88) !important;
+}
+
 .logo--coreelec,
 .logo--kodi,
 .logo--zidoo,
 .logo--dune {
-  filter: brightness(0) invert(1) brightness(0.82);
+  filter: brightness(0) invert(1) brightness(0.84) !important;
 }
+
 
 /* ---------- RESPONSIVE TUNING ---------- */
 
