@@ -6,7 +6,7 @@
   <title>Cinema Machina — Premium Playback & Media Environment Specialists, UAE</title>
   <meta name="description" content="Cinema Machina delivers premium playback configuration, media library refinement, and signal-path optimisation for luxury home cinema systems in the UAE." />
   <link rel="icon" type="image/png" href="assets/logos/cm-logo-square.png" />
-  <link rel="stylesheet" href="assets/css/style.css?v=2.5" />
+  <link rel="stylesheet" href="assets/css/style.css?v=2.6" />
   <style>
     /* ── PAGE-SPECIFIC OVERRIDES ── */
     .hero { min-height: 100vh; }
@@ -97,21 +97,32 @@
       50% { opacity: 0.8; transform: scaleY(0.6); }
     }
 
-    /* ── HERO MOBILE OVERLAP FIX ── */
+    /* ── HERO MOBILE STABILIZATION ── */
     @media (max-width: 768px) {
-      .hero__content { padding-bottom: 5rem; }
-      .hero__scroll {
-        bottom: 1rem;
-        opacity: 0.6;
+      .hero__actions--stack-safe {
+        margin-top: 1.5rem !important;
+        gap: 16px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 1.5rem !important;
       }
-      .hero__actions {
-        margin-top: 2rem;
-        margin-bottom: 0;
-        gap: 12px;
+
+      .hero__button-row {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+        width: 100% !important;
       }
-      .hero__actions .btn {
-        width: 100%;
-        justify-content: center;
+
+      .btn--hero {
+        width: 100% !important;
+        min-width: 0 !important;
+        min-height: 56px !important;
+        justify-content: center !important;
+      }
+
+      .hero__scroll-wrap {
+        margin-top: 1.5rem !important;
       }
     }
 
@@ -719,7 +730,7 @@
           <div class="format-badge-chip"><img src="assets/logos/dune-hd.png" alt="Dune HD" class="logo--dune" /></div>
           <div class="format-badge-chip"><img src="assets/logos/nvidia-shield.png" alt="Nvidia Shield" class="logo--shield" /></div>
           <div class="format-badge-chip"><img src="assets/logos/apple-tv.png" alt="Apple TV" class="logo--appletv" /></div>
-          <div class="format-badge-chip"><img src="assets/logos/synology.png" alt="Synology" class="logo--synology" /></div>
+          <div class="format-badge-chip format-badge-chip--synology-wrap"><img src="assets/logos/synology.png" alt="Synology" class="logo--synology" /></div>
           <div class="format-badge-chip"><img src="assets/logos/coreelec.png" alt="CoreELEC" class="logo--coreelec" /></div>
         </div>
         <div class="format-badges reveal" aria-label="Reference-grade format compatibility" style="margin-top: 2rem; justify-content: flex-start;">

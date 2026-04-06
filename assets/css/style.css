@@ -2074,3 +2074,92 @@ p {
   }
 }
 
+
+/* ============================================================
+   MOBILE STABILIZATION & LOGO REFINEMENT PASS vR2.1
+   ============================================================ */
+
+/* 1. format-table mobile horizontal scroll fix */
+@media (max-width: 768px) {
+  .format-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 1rem; /* space for scroll bar */
+  }
+
+  .format-table {
+    min-width: 500px; /* ensure content doesn't squash */
+  }
+
+  .format-table th, 
+  .format-table td {
+    white-space: nowrap;
+    padding: 14px 12px;
+  }
+}
+
+/* 2. Synology chip proportion fix */
+.format-badge-chip .logo--synology {
+  transform: scale(2.4) !important; /* aggressive scale to beat internal padding */
+  transform-origin: center center;
+  max-width: 110px !important;
+}
+
+.format-badge-chip--synology-wrap {
+  min-width: 130px !important; /* give it proper width */
+  overflow: hidden; /* keep scale within boundaries */
+}
+
+@media (max-width: 768px) {
+  .format-badge-chip .logo--synology {
+    transform: scale(2.6) !important;
+  }
+  
+  .format-badge-chip--synology-wrap {
+    min-width: 140px !important;
+  }
+}
+
+/* 3. Homepage Hero Button & Spacing Stabilization */
+@media (max-width: 768px) {
+  .hero__actions--stack-safe {
+    margin-top: 1.5rem;
+    gap: 14px;
+    padding: 0 1.5rem;
+  }
+
+  .hero__button-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .btn--hero {
+    width: 100% !important;
+    min-width: unset !important;
+    padding: 16px 24px !important;
+    font-size: 14px !important;
+    letter-spacing: 0.15em !important;
+    height: auto !important;
+    min-height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* ensure scroll indicator has enough breathing room below large buttons */
+  .hero__scroll-wrap {
+    margin-top: 1.5rem;
+  }
+}
+
+/* 4. Comparison Table: Feature logo alignment */
+.feature-brand {
+  min-width: 32px;
+}
+
+.feature-brand__img {
+  max-height: 15px;
+  width: auto;
+}
