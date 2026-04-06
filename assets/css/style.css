@@ -1603,8 +1603,34 @@ p {
 .feature-label {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
+
+.feature-brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: auto;
+  flex: 0 0 auto;
+}
+
+.feature-brand__img {
+  display: block;
+  width: auto;
+  height: 14px; /* standard height */
+  object-fit: contain;
+  opacity: 0.82;
+  filter: brightness(0) invert(1);
+}
+
+/* optical balancing per brand logo */
+.feature-brand__img.logo--dv        { height: 13px; }
+.feature-brand__img.logo--hdr10plus { height: 16px; margin-left: -2px; }
+.feature-brand__img.logo--atmos      { height: 14px; }
+.feature-brand__img.logo--truehd     { height: 14px; }
+.feature-brand__img.logo--dtshdma    { height: 13px; }
+.feature-brand__img.logo--dtsx       { height: 13px; }
 
 .feature-icon {
   width: 16px;
