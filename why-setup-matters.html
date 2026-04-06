@@ -6,7 +6,7 @@
   <title>Why Setup Matters — Cinema Machina</title>
   <meta name="description" content="Why great hardware alone isn't enough. The truth about playback configuration, bitrate, audio formats, and what stands between your system and a true cinema experience." />
   <link rel="icon" type="image/png" href="assets/logos/cm-logo-square.png" />
-  <link rel="stylesheet" href="assets/css/style.css?v=2.6" />
+  <link rel="stylesheet" href="assets/css/style.css?v=2.7" />
   <style>
     /* ── MYTH SECTION ── */
     .myth-section {
@@ -431,6 +431,60 @@
             </tbody>
           </table>
         </div>
+
+        <!-- Mobile Audio Cards -->
+        <div class="audio-format-cards">
+          <div class="audio-format-card">
+            <div class="audio-format-card__head">
+              <img src="assets/logos/dolby-truehd.png" alt="Dolby TrueHD" class="audio-format-card__logo" />
+              <span class="audio-format-card__spec">Lossless ✦</span>
+            </div>
+            <div class="audio-format-card__row">
+              <span class="audio-format-card__label">Cinema Value</span>
+              <span class="audio-format-card__value">Reference</span>
+            </div>
+          </div>
+          <div class="audio-format-card">
+            <div class="audio-format-card__head">
+              <img src="assets/logos/dolby-atmos.png" alt="Dolby Atmos" class="audio-format-card__logo" />
+              <span class="audio-format-card__spec">Object ✦</span>
+            </div>
+            <div class="audio-format-card__row">
+              <span class="audio-format-card__label">Cinema Value</span>
+              <span class="audio-format-card__value">Spatial Immersive</span>
+            </div>
+          </div>
+          <div class="audio-format-card">
+            <div class="audio-format-card__head">
+              <img src="assets/logos/dts-hd-ma.png" alt="DTS-HD MA" class="audio-format-card__logo" />
+              <span class="audio-format-card__spec">Lossless ✦</span>
+            </div>
+            <div class="audio-format-card__row">
+              <span class="audio-format-card__label">Cinema Value</span>
+              <span class="audio-format-card__value">Reference</span>
+            </div>
+          </div>
+          <div class="audio-format-card">
+            <div class="audio-format-card__head">
+              <img src="assets/logos/dts-x.png" alt="DTS:X" class="audio-format-card__logo" />
+              <span class="audio-format-card__spec">Object ✦</span>
+            </div>
+            <div class="audio-format-card__row">
+              <span class="audio-format-card__label">Cinema Value</span>
+              <span class="audio-format-card__value">Spatial Immersive</span>
+            </div>
+          </div>
+          <div class="audio-format-card">
+            <div class="audio-format-card__head">
+              <img src="assets/logos/dolby-digital.png" alt="Dolby Digital" class="audio-format-card__logo" />
+              <span class="audio-format-card__spec" style="color: var(--text-muted);">Lossy ~</span>
+            </div>
+            <div class="audio-format-card__row">
+              <span class="audio-format-card__label">Cinema Value</span>
+              <span class="audio-format-card__value">Legacy Support</span>
+            </div>
+          </div>
+        </div>
       </div>
       
       <div class="reveal reveal-delay-2" style="position: sticky; top: 120px;">
@@ -585,12 +639,9 @@
             <tr>
               <th>
                 <span class="feature-label">
-                  <span class="feature-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M13 3L4 14h6l-1 7 9-11h-6l1-7z"></path>
-                    </svg>
+                  <span class="feature-brand">
+                    <img src="assets/logos/hdr10.png" alt="HDR10" class="feature-brand__img logo--hdr10" />
                   </span>
-                  HDR10
                 </span>
               </th>
               <td><span class="comparison-status comparison-status--available">Available</span></td>
@@ -703,13 +754,13 @@
           </div>
           <div class="comparison-device-card__rows">
             <div class="comparison-device-row"><div class="comparison-device-row__label">Max official output</div><span class="comparison-status comparison-status--available">4K60</span></div>
-            <div class="comparison-device-row"><div class="comparison-device-row__label">Dolby Vision</div><span class="comparison-status comparison-status--available">Available</span></div>
-            <div class="comparison-device-row"><div class="comparison-device-row__label">HDR10+</div><span class="comparison-status comparison-status--available">Available</span></div>
-            <div class="comparison-device-row"><div class="comparison-device-row__label">HDR10</div><span class="comparison-status comparison-status--available">Available</span></div>
-            <div class="comparison-device-row"><div class="comparison-device-row__label">Dolby Atmos</div><span class="comparison-status comparison-status--available">Available</span></div>
-            <div class="comparison-device-row"><div class="comparison-device-row__label">Dolby TrueHD</div><span class="comparison-status comparison-status--unavailable">Unavailable</span></div>
-            <div class="comparison-device-row"><div class="comparison-device-row__label">DTS-HD MA</div><span class="comparison-status comparison-status--unavailable">Unavailable</span></div>
-            <div class="comparison-device-row"><div class="comparison-device-row__label">DTS:X</div><span class="comparison-status comparison-status--unavailable">Unavailable</span></div>
+            <div class="comparison-device-row"><div class="comparison-device-row__label"><span class="feature-brand"><img src="assets/logos/dolby-vision-horizontal.png" alt="Dolby Vision" class="feature-brand__img logo--dv" /></span></div><span class="comparison-status comparison-status--available">Available</span></div>
+            <div class="comparison-device-row"><div class="comparison-device-row__label"><span class="feature-brand"><img src="assets/logos/hdr10-plus.png" alt="HDR10+" class="feature-brand__img logo--hdr10plus" /></span></div><span class="comparison-status comparison-status--available">Available</span></div>
+            <div class="comparison-device-row"><div class="comparison-device-row__label"><span class="feature-brand"><img src="assets/logos/hdr10.png" alt="HDR10" class="feature-brand__img logo--hdr10" /></span></div><span class="comparison-status comparison-status--available">Available</span></div>
+            <div class="comparison-device-row"><div class="comparison-device-row__label"><span class="feature-brand"><img src="assets/logos/dolby-atmos.png" alt="Dolby Atmos" class="feature-brand__img logo--atmos" /></span></div><span class="comparison-status comparison-status--available">Available</span></div>
+            <div class="comparison-device-row"><div class="comparison-device-row__label"><span class="feature-brand"><img src="assets/logos/dolby-truehd.png" alt="Dolby TrueHD" class="feature-brand__img logo--truehd" /></span></div><span class="comparison-status comparison-status--unavailable">Unavailable</span></div>
+            <div class="comparison-device-row"><div class="comparison-device-row__label"><span class="feature-brand"><img src="assets/logos/dts-hd-ma.png" alt="DTS-HD MA" class="feature-brand__img logo--dtshdma" /></span></div><span class="comparison-status comparison-status--unavailable">Unavailable</span></div>
+            <div class="comparison-device-row"><div class="comparison-device-row__label"><span class="feature-brand"><img src="assets/logos/dts-x.png" alt="DTS:X" class="feature-brand__img logo--dtsx" /></span></div><span class="comparison-status comparison-status--unavailable">Unavailable</span></div>
             <div class="comparison-device-row"><div class="comparison-device-row__label">High-bitrate local playback</div><span class="comparison-status comparison-status--unavailable">Limited</span></div>
             <div class="comparison-device-row"><div class="comparison-device-row__label">Best fit</div><span class="device-fit">Premium streaming</span></div>
           </div>
@@ -722,13 +773,13 @@
           </div>
           <div class="comparison-device-card__rows">
             <div class="comparison-device-row"><div class="comparison-device-row__label">Max official output</div><span class="comparison-status comparison-status--available">4K60</span></div>
-            <div class="comparison-device-row"><div class="comparison-device-row__label">Dolby Vision</div><span class="comparison-status comparison-status--available">Available</span></div>
-            <div class="comparison-device-row"><div class="comparison-device-row__label">HDR10+</div><span class="comparison-status comparison-status--unavailable">Unavailable</span></div>
-            <div class="comparison-device-row"><div class="comparison-device-row__label">HDR10</div><span class="comparison-status comparison-status--available">Available</span></div>
-            <div class="comparison-device-row"><div class="comparison-device-row__label">Dolby Atmos</div><span class="comparison-status comparison-status--available">Available</span></div>
-            <div class="comparison-device-row"><div class="comparison-device-row__label">Dolby TrueHD</div><span class="comparison-status comparison-status--available">Available</span></div>
-            <div class="comparison-device-row"><div class="comparison-device-row__label">DTS-HD MA</div><span class="comparison-status comparison-status--available">Available</span></div>
-            <div class="comparison-device-row"><div class="comparison-device-row__label">DTS:X</div><span class="comparison-status comparison-status--available">Available</span></div>
+            <div class="comparison-device-row"><div class="comparison-device-row__label"><span class="feature-brand"><img src="assets/logos/dolby-vision-horizontal.png" alt="Dolby Vision" class="feature-brand__img logo--dv" /></span></div><span class="comparison-status comparison-status--available">Available</span></div>
+            <div class="comparison-device-row"><div class="comparison-device-row__label"><span class="feature-brand"><img src="assets/logos/hdr10-plus.png" alt="HDR10+" class="feature-brand__img logo--hdr10plus" /></span></div><span class="comparison-status comparison-status--unavailable">Unavailable</span></div>
+            <div class="comparison-device-row"><div class="comparison-device-row__label"><span class="feature-brand"><img src="assets/logos/hdr10.png" alt="HDR10" class="feature-brand__img logo--hdr10" /></span></div><span class="comparison-status comparison-status--available">Available</span></div>
+            <div class="comparison-device-row"><div class="comparison-device-row__label"><span class="feature-brand"><img src="assets/logos/dolby-atmos.png" alt="Dolby Atmos" class="feature-brand__img logo--atmos" /></span></div><span class="comparison-status comparison-status--available">Available</span></div>
+            <div class="comparison-device-row"><div class="comparison-device-row__label"><span class="feature-brand"><img src="assets/logos/dolby-truehd.png" alt="Dolby TrueHD" class="feature-brand__img logo--truehd" /></span></div><span class="comparison-status comparison-status--available">Available</span></div>
+            <div class="comparison-device-row"><div class="comparison-device-row__label"><span class="feature-brand"><img src="assets/logos/dts-hd-ma.png" alt="DTS-HD MA" class="feature-brand__img logo--dtshdma" /></span></div><span class="comparison-status comparison-status--available">Available</span></div>
+            <div class="comparison-device-row"><div class="comparison-device-row__label"><span class="feature-brand"><img src="assets/logos/dts-x.png" alt="DTS:X" class="feature-brand__img logo--dtsx" /></span></div><span class="comparison-status comparison-status--available">Available</span></div>
             <div class="comparison-device-row"><div class="comparison-device-row__label">High-bitrate local playback</div><span class="comparison-status comparison-status--available">Strong</span></div>
             <div class="comparison-device-row"><div class="comparison-device-row__label">Best fit</div><span class="device-fit">Hybrid streaming + local</span></div>
           </div>
@@ -743,7 +794,7 @@
             <div class="comparison-device-row"><div class="comparison-device-row__label">Max official output</div><span class="comparison-status comparison-status--available">4K60-class</span></div>
             <div class="comparison-device-row"><div class="comparison-device-row__label"><span class="feature-brand"><img src="assets/logos/dolby-vision-horizontal.png" alt="Dolby Vision" class="feature-brand__img logo--dv" /></span></div><span class="comparison-status comparison-status--available">Available</span></div>
             <div class="comparison-device-row"><div class="comparison-device-row__label"><span class="feature-brand"><img src="assets/logos/hdr10-plus.png" alt="HDR10+" class="feature-brand__img logo--hdr10plus" /></span></div><span class="comparison-status comparison-status--available">Available</span></div>
-            <div class="comparison-device-row"><div class="comparison-device-row__label">HDR10</div><span class="comparison-status comparison-status--available">Available</span></div>
+            <div class="comparison-device-row"><div class="comparison-device-row__label"><span class="feature-brand"><img src="assets/logos/hdr10.png" alt="HDR10" class="feature-brand__img logo--hdr10" /></span></div><span class="comparison-status comparison-status--available">Available</span></div>
             <div class="comparison-device-row"><div class="comparison-device-row__label"><span class="feature-brand"><img src="assets/logos/dolby-atmos.png" alt="Dolby Atmos" class="feature-brand__img logo--atmos" /></span></div><span class="comparison-status comparison-status--available">Available</span></div>
             <div class="comparison-device-row"><div class="comparison-device-row__label"><span class="feature-brand"><img src="assets/logos/dolby-truehd.png" alt="Dolby TrueHD" class="feature-brand__img logo--truehd" /></span></div><span class="comparison-status comparison-status--available">Available</span></div>
             <div class="comparison-device-row"><div class="comparison-device-row__label"><span class="feature-brand"><img src="assets/logos/dts-hd-ma.png" alt="DTS-HD MA" class="feature-brand__img logo--dtshdma" /></span></div><span class="comparison-status comparison-status--available">Available</span></div>
@@ -762,7 +813,7 @@
             <div class="comparison-device-row"><div class="comparison-device-row__label">Max official output</div><span class="comparison-status comparison-status--available">8K60</span></div>
             <div class="comparison-device-row"><div class="comparison-device-row__label"><span class="feature-brand"><img src="assets/logos/dolby-vision-horizontal.png" alt="Dolby Vision" class="feature-brand__img logo--dv" /></span></div><span class="comparison-status comparison-status--available">Available</span></div>
             <div class="comparison-device-row"><div class="comparison-device-row__label"><span class="feature-brand"><img src="assets/logos/hdr10-plus.png" alt="HDR10+" class="feature-brand__img logo--hdr10plus" /></span></div><span class="comparison-status comparison-status--available">Available</span></div>
-            <div class="comparison-device-row"><div class="comparison-device-row__label">HDR10</div><span class="comparison-status comparison-status--available">Available</span></div>
+            <div class="comparison-device-row"><div class="comparison-device-row__label"><span class="feature-brand"><img src="assets/logos/hdr10.png" alt="HDR10" class="feature-brand__img logo--hdr10" /></span></div><span class="comparison-status comparison-status--available">Available</span></div>
             <div class="comparison-device-row"><div class="comparison-device-row__label"><span class="feature-brand"><img src="assets/logos/dolby-atmos.png" alt="Dolby Atmos" class="feature-brand__img logo--atmos" /></span></div><span class="comparison-status comparison-status--available">Available</span></div>
             <div class="comparison-device-row"><div class="comparison-device-row__label"><span class="feature-brand"><img src="assets/logos/dolby-truehd.png" alt="Dolby TrueHD" class="feature-brand__img logo--truehd" /></span></div><span class="comparison-status comparison-status--available">Available</span></div>
             <div class="comparison-device-row"><div class="comparison-device-row__label"><span class="feature-brand"><img src="assets/logos/dts-hd-ma.png" alt="DTS-HD MA" class="feature-brand__img logo--dtshdma" /></span></div><span class="comparison-status comparison-status--verify">Verify by model</span></div>

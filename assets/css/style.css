@@ -2075,91 +2075,201 @@ p {
 }
 
 
+
 /* ============================================================
-   MOBILE STABILIZATION & LOGO REFINEMENT PASS vR2.1
+   FINAL PRODUCTION-GRADE POLISH vR3.0
    ============================================================ */
 
-/* 1. format-table mobile horizontal scroll fix */
+/* 1. HOMEPAGE MOBILE HERO CTA REPAIR */
 @media (max-width: 768px) {
-  .format-table-wrapper {
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 1rem; /* space for scroll bar */
-  }
-
-  .format-table {
-    min-width: 500px; /* ensure content doesn't squash */
-  }
-
-  .format-table th, 
-  .format-table td {
-    white-space: nowrap;
-    padding: 14px 12px;
-  }
-}
-
-/* 2. Synology chip proportion fix */
-.format-badge-chip .logo--synology {
-  transform: scale(2.4) !important; /* aggressive scale to beat internal padding */
-  transform-origin: center center;
-  max-width: 110px !important;
-}
-
-.format-badge-chip--synology-wrap {
-  min-width: 130px !important; /* give it proper width */
-  overflow: hidden; /* keep scale within boundaries */
-}
-
-@media (max-width: 768px) {
-  .format-badge-chip .logo--synology {
-    transform: scale(2.6) !important;
-  }
-  
-  .format-badge-chip--synology-wrap {
-    min-width: 140px !important;
-  }
-}
-
-/* 3. Homepage Hero Button & Spacing Stabilization */
-@media (max-width: 768px) {
+  .hero__actions,
   .hero__actions--stack-safe {
-    margin-top: 1.5rem;
-    gap: 14px;
-    padding: 0 1.5rem;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 14px !important;
+    width: 100% !important;
+    margin-top: 1.5rem !important;
   }
 
   .hero__button-row {
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .btn--hero {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
     width: 100% !important;
-    min-width: unset !important;
-    padding: 16px 24px !important;
-    font-size: 14px !important;
-    letter-spacing: 0.15em !important;
-    height: auto !important;
-    min-height: 56px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
   }
 
-  /* ensure scroll indicator has enough breathing room below large buttons */
+  .hero__button-row .btn,
+  .hero__actions .btn,
+  .hero__actions--stack-safe .btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    min-height: 54px !important;
+    padding: 0 18px !important;
+    text-align: center !important;
+    text-decoration: none !important;
+    opacity: 1 !important;
+    font-size: 14px !important;
+    letter-spacing: 0.12em !important;
+    text-transform: uppercase !important;
+    font-family: var(--font-body) !important;
+  }
+
   .hero__scroll-wrap {
-    margin-top: 1.5rem;
+    margin-top: 1.5rem !important;
+  }
+
+  .hero__scroll-link {
+    display: inline-flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 8px !important;
   }
 }
 
-/* 4. Comparison Table: Feature logo alignment */
+/* 2. AUDIO FORMAT AVAILABILITY MOBILE FIX (Cards vs Table) */
+.audio-format-cards {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .format-table-wrapper {
+    display: none !important;
+  }
+  
+  .audio-format-cards {
+    display: grid;
+    gap: 16px;
+    margin-top: 2rem;
+  }
+  
+  .audio-format-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  }
+  
+  .audio-format-card__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .audio-format-card__logo {
+    max-height: 20px;
+    width: auto;
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
+  }
+  
+  .audio-format-card__spec {
+    font-size: 13px;
+    color: var(--bronze);
+    letter-spacing: 0.05em;
+  }
+  
+  .audio-format-card__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    margin-top: 10px;
+  }
+  
+  .audio-format-card__label {
+    color: var(--text-muted);
+  }
+  
+  .audio-format-card__value {
+    color: rgba(255, 255, 255, 0.82);
+    font-weight: 500;
+  }
+}
+
+/* 3. SYNOLOGY CHIP BALANCE FIX */
+.format-badge-chip--synology-wrap,
+.format-badge-chip:has(.logo--synology) {
+  min-height: 44px !important;
+  padding: 10px 16px !important;
+  min-width: 140px !important; /* tight consistent width */
+  display: inline-flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.format-badge-chip .logo--synology,
+.logo-chip .logo--synology {
+  width: 108px !important;
+  max-height: 28px !important;
+  transform: none !important; /* remove previous scale-compensation now that asset is being trimmed */
+  filter: brightness(0) invert(1) brightness(0.96) !important;
+}
+
+@media (max-width: 768px) {
+  .format-badge-chip .logo--synology,
+  .logo-chip .logo--synology {
+    width: 112px !important;
+    max-height: 29px !important;
+  }
+  
+  .format-badge-chip--synology-wrap {
+    min-width: 150px !important;
+  }
+}
+
+/* 4. PLATFORM EXPECTATIONS FINAL POLISH */
+.comparison-table-shell thead th {
+  padding-top: 28px;
+  padding-bottom: 24px;
+}
+
 .feature-brand {
-  min-width: 32px;
+  min-width: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .feature-brand__img {
-  max-height: 15px;
+  max-height: 16px;
   width: auto;
+  opacity: 0.94;
+}
+
+/* normalization for all feature logos */
+.feature-brand__img.logo--dv       { max-height: 14px; }
+.feature-brand__img.logo--hdr10plus { max-height: 18px; }
+.feature-brand__img.logo--hdr10     { max-height: 15px; }
+.feature-brand__img.logo--atmos     { max-height: 15px; }
+.feature-brand__img.logo--truehd    { max-height: 15px; }
+.feature-brand__img.logo--dtshdma   { max-height: 14px; }
+.feature-brand__img.logo--dtsx      { max-height: 14px; }
+
+/* 5. FOOTER BRAND SCALE */
+.footer__brand img,
+.footer-brand img,
+.footer-logo img {
+  height: 38px !important;
+  width: auto !important;
+  opacity: 0.98 !important;
+  transition: opacity 0.3s ease;
+}
+
+.footer__brand img:hover {
+  opacity: 1 !important;
+}
+
+@media (max-width: 768px) {
+  .footer__brand img,
+  .footer-brand img,
+  .footer-logo img {
+    height: 34px !important;
+  }
 }
