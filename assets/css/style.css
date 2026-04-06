@@ -2240,7 +2240,7 @@ p {
 .feature-brand__img {
   max-height: 16px;
   width: auto;
-  opacity: 0.94;
+  opacity: 0.94;  filter: brightness(0) invert(1) brightness(0.92) !important;
 }
 
 /* normalization for all feature logos */
