@@ -657,16 +657,17 @@ p {
 .hero__copy::before {
   content: "";
   position: absolute;
-  inset: -20px -22px;
-  background: linear-gradient(
-    180deg,
-    rgba(8,8,8,0.10) 0%,
-    rgba(8,8,8,0.26) 50%,
-    rgba(8,8,8,0.14) 100%
+  inset: -30px -40px;
+  background: radial-gradient(
+    circle at center,
+    rgba(0,0,0,0.45) 0%,
+    rgba(0,0,0,0.25) 50%,
+    transparent 100%
   );
-  border-radius: 22px;
+  border-radius: 40px;
   pointer-events: none;
   z-index: -1;
+  filter: blur(10px);
 }
 
 .hero h1,
@@ -679,8 +680,9 @@ p {
   letter-spacing: -0.02em;
   color: var(--text-primary);
   text-shadow:
-    0 2px 10px rgba(0,0,0,0.22),
-    0 12px 34px rgba(0,0,0,0.38);
+    0 4px 16px rgba(0,0,0,0.45),
+    0 16px 42px rgba(0,0,0,0.52),
+    0 0 80px rgba(0,0,0,0.2);
 }
 
 .hero__lead,
@@ -1879,7 +1881,7 @@ p {
 .format-badge-chip .logo--synology,
 .logo-chip .logo--synology {
   width: auto !important;
-  height: 28px !important; /* Increased for better visual presence */
+  height: 30px !important; /* Bumped for better optical mass */
   max-width: 140px;
   transform: none !important;
 }
@@ -2304,93 +2306,55 @@ p {
   }
 }
 
-/* ============================================================
-   SECTION-SPECIFIC LOGO NORMALIZATION
-   ============================================================ */
+/* ---------- SECTION-SPECIFIC LOGO NORMALIZATION (Final vR6) ---------- */
 
-/* Homepage comparison block — configured playback chips */
-.comparison-col--good .format-badge-chip .logo--vision { height: 21px !important; }
-.comparison-col--good .format-badge-chip .logo--atmos { height: 21px !important; }
-.comparison-col--good .format-badge-chip .logo--truehd { height: 24px !important; }
-.comparison-col--good .format-badge-chip .logo--dtshdma { height: 23px !important; }
-.comparison-col--good .format-badge-chip .logo--dtsx { height: 23px !important; }
-.comparison-col--good .format-badge-chip .logo--hdr10 { height: 20px !important; }
+/* Homepage comparison block — Streaming vs Configured Excellence */
+.comparison-col--good .format-badge-chip .logo--vision { height: 18px !important; }
+.comparison-col--good .format-badge-chip .logo--atmos { height: 18px !important; }
+.comparison-col--good .format-badge-chip .logo--truehd { height: 18px !important; }
+.comparison-col--good .format-badge-chip .logo--dtshdma { height: 18px !important; }
+.comparison-col--good .format-badge-chip .logo--dtsx { height: 18px !important; }
+.comparison-col--good .format-badge-chip .logo--hdr10 { height: 18px !important; }
 
-.comparison-col--good .format-badge-chip .logo--zidoo { height: 17px !important; }
-.comparison-col--good .format-badge-chip .logo--dune { height: 16px !important; }
-.comparison-col--good .format-badge-chip .logo--shield { height: 18px !important; }
-.comparison-col--good .format-badge-chip .logo--appletv { height: 17px !important; }
-.comparison-col--good .format-badge-chip .logo--coreelec { height: 17px !important; }
+/* Homepage audio-format table — "Not all audio is created equal" */
+.format-table .format-badge-chip .logo--atmos { height: 16px !important; }
+.format-table .format-badge-chip .logo--dtsx { height: 16px !important; }
+.format-table .format-badge-chip .logo--truehd { height: 18px !important; }
+.format-table .format-badge-chip .logo--dtshdma { height: 18px !important; }
 
-/* Audio Format Availability table chips */
-.audio-comparison-table .format-badge-chip .logo--atmos,
-.format-table .format-badge-chip .logo--atmos {
-  height: 21px !important;
-}
+/* Why Setup Matters comparison feature logos (first column grid) */
+.feature-brand__img.logo--dv { height: 21px !important; }
+.feature-brand__img.logo--hdr10plus { height: 20px !important; }
+.feature-brand__img.logo--hdr10 { height: 18px !important; }
+.feature-brand__img.logo--atmos { height: 20px !important; }
+.feature-brand__img.logo--truehd { height: 25px !important; }
+.feature-brand__img.logo--dtshdma { height: 24px !important; }
+.feature-brand__img.logo--dtsx { height: 23px !important; }
 
-.audio-comparison-table .format-badge-chip .logo--dtsx,
-.format-table .format-badge-chip .logo--dtsx {
-  height: 23px !important;
-}
-
-.audio-comparison-table .format-badge-chip .logo--truehd,
-.format-table .format-badge-chip .logo--truehd {
-  height: 24px !important;
-}
-
-.audio-comparison-table .format-badge-chip .logo--dtshdma,
-.format-table .format-badge-chip .logo--dtshdma {
-  height: 23px !important;
-}
-
-/* Why Setup Matters black-strip badge row */
-.section--black-strip {
-  background: #080808;
-  border-top: 1px solid rgba(255,255,255,0.05);
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-  padding: 2.5rem 0;
-  margin-top: 4rem;
-}
-
+/* Why Setup Matters — black strip / bottom badges */
 .cta-full .format-badges .format-badge-chip,
-.take-action .format-badges .format-badge-chip,
-.section--black-strip .format-badges .format-badge-chip {
-  min-height: 42px !important;
-  padding: 8px 14px !important;
+section[style*="padding-top: 4rem"] .format-badges .format-badge-chip {
+  min-height: 40px !important;
+  padding: 7px 13px !important;
 }
 
 .cta-full .format-badges .logo--vision,
-.take-action .format-badges .logo--vision,
-.section--black-strip .format-badges .logo--vision { height: 16px !important; }
+section[style*="padding-top: 4rem"] .format-badges .logo--vision { height: 16px !important; }
 
 .cta-full .format-badges .logo--atmos,
-.take-action .format-badges .logo--atmos,
-.section--black-strip .format-badges .logo--atmos { height: 16px !important; }
+section[style*="padding-top: 4rem"] .format-badges .logo--atmos { height: 16px !important; }
 
 .cta-full .format-badges .logo--truehd,
-.take-action .format-badges .logo--truehd,
-.section--black-strip .format-badges .logo--truehd { height: 16px !important; }
+section[style*="padding-top: 4rem"] .format-badges .logo--truehd { height: 15px !important; }
 
 .cta-full .format-badges .logo--dtshdma,
-.take-action .format-badges .logo--dtshdma,
-.section--black-strip .format-badges .logo--dtshdma { height: 16px !important; }
+section[style*="padding-top: 4rem"] .format-badges .logo--dtshdma { height: 15px !important; }
 
 .cta-full .format-badges .logo--dtsx,
-.take-action .format-badges .logo--dtsx,
-.section--black-strip .format-badges .logo--dtsx { height: 16px !important; }
+section[style*="padding-top: 4rem"] .format-badges .logo--dtsx { height: 15px !important; }
 
 .cta-full .format-badges .logo--hdr10,
-.take-action .format-badges .logo--hdr10,
-.section--black-strip .format-badges .logo--hdr10 { height: 16px !important; }
-
-/* Why Setup Matters comparison feature logos (first column) */
-.feature-brand__img.logo--dv { height: 21px !important; }
-.feature-brand__img.logo--hdr10plus { height: 23px !important; }
-.feature-brand__img.logo--hdr10 { height: 20px !important; }
-.feature-brand__img.logo--atmos { height: 21px !important; }
-.feature-brand__img.logo--truehd { height: 32px !important; }
-.feature-brand__img.logo--dtshdma { height: 30px !important; }
-.feature-brand__img.logo--dtsx { height: 30px !important; }
+section[style*="padding-top: 4rem"] .format-badges .logo--hdr10 { height: 15px !important; }
 
 @media (max-width: 768px) {
   .feature-brand__img.logo--dv { height: 18px !important; }
