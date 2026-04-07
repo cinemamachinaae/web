@@ -1155,10 +1155,10 @@ p {
   backdrop-filter: blur(8px);
 }
 
-/* 1. Optical Sizing System Tokens */
+/* 1. Optical Sizing System Tokens (vR5 - Normalized) */
 :root {
-  --logo-scale-standard: 1;
-  --logo-scale-dense: 1.18;
+  --logo-scale-standard: 1.00;
+  --logo-scale-dense: 1.22;
   --logo-scale-whitespace: 1.45;
 }
 
@@ -1172,27 +1172,28 @@ p {
   object-fit: contain;
   max-width: 100%;
   flex: 0 0 auto;
+  transition: transform 0.3s var(--ease-out);
 }
 
-/* 2. Optical Multiplier Mapping (vR4) */
-/* Ecosystem / Platforms */
+/* 2. Optical Multiplier Mapping (vR5 Unified) */
+/* Ecosystem / Platforms (Standard unless specified) */
 .logo--zidoo          { --logo-multiplier: 1.00; }
 .logo--dune           { --logo-multiplier: 1.02; }
 .logo--shield         { --logo-multiplier: 1.04; }
 .logo--appletv        { --logo-multiplier: 1.12; }
 .logo--coreelec       { --logo-multiplier: 1.10; }
-.logo--synology       { --logo-multiplier: 1.45; } /* Whitespace-heavy */
+.logo--synology       { --logo-multiplier: 1.18; } /* Trimmed to 3.5:1 core */
 .logo--plex           { --logo-multiplier: 1.00; }
 .logo--jellyfin       { --logo-multiplier: 1.00; }
 .logo--kodi           { --logo-multiplier: 1.00; }
 
-/* Codecs / Formats */
-.logo--vision         { --logo-multiplier: 1.18; }
-.logo--dv             { --logo-multiplier: 1.18; }
-.logo--atmos          { --logo-multiplier: 1.14; }
-.logo--truehd         { --logo-multiplier: 1.22; }
+/* Codecs / Formats (Dense / Mass-compensated) */
+.logo--vision         { --logo-multiplier: 1.20; }
+.logo--dv             { --logo-multiplier: 1.20; }
+.logo--atmos          { --logo-multiplier: 1.18; }
+.logo--truehd         { --logo-multiplier: 1.30; }
 .logo--dtshdma        { --logo-multiplier: 1.28; }
-.logo--dtsx           { --logo-multiplier: 1.26; }
+.logo--dtsx           { --logo-multiplier: 1.28; }
 .logo--hdr10plus      { --logo-multiplier: 1.24; }
 .logo--hdr10          { --logo-multiplier: 1.18; }
 .logo--dolbydigital   { --logo-multiplier: 1.18; }
@@ -1639,23 +1640,25 @@ p {
   height: 20px; /* default lift */
 }
 
-.feature-brand__img.logo--dv        { height: 38px; }
-.feature-brand__img.logo--hdr10plus { height: 42px; margin-left: -2px; }
-.feature-brand__img.logo--hdr10     { height: 34px; }
-.feature-brand__img.logo--atmos      { height: 38px; }
-.feature-brand__img.logo--truehd     { height: 40px; }
-.feature-brand__img.logo--dtshdma    { height: 38px; }
-.feature-brand__img.logo--dtsx       { height: 38px; }
+/* Use the new feature-logo classes if needed, or maintain consistency with --logo-multiplier */
+.feature-brand__img.logo--vision    { height: 20px; }
+.feature-brand__img.logo--dv        { height: 20px; }
+.feature-brand__img.logo--hdr10plus { height: 20px; margin-left: -1px; }
+.feature-brand__img.logo--hdr10     { height: 18px; }
+.feature-brand__img.logo--atmos      { height: 20px; }
+.feature-brand__img.logo--truehd     { height: 24px; }
+.feature-brand__img.logo--dtshdma    { height: 23px; }
+.feature-brand__img.logo--dtsx       { height: 23px; }
 
 @media (max-width: 768px) {
-  .feature-brand__img { height: 20px; }
-  .feature-brand__img.logo--dv        { height: 26px; }
-  .feature-brand__img.logo--hdr10plus { height: 28px; }
-  .feature-brand__img.logo--hdr10     { height: 24px; }
-  .feature-brand__img.logo--atmos      { height: 26px; }
-  .feature-brand__img.logo--truehd     { height: 28px; }
-  .feature-brand__img.logo--dtshdma    { height: 26px; }
-  .feature-brand__img.logo--dtsx       { height: 26px; }
+  .feature-brand__img.logo--vision    { height: 17px; }
+  .feature-brand__img.logo--dv        { height: 17px; }
+  .feature-brand__img.logo--hdr10plus { height: 18px; }
+  .feature-brand__img.logo--hdr10     { height: 16px; }
+  .feature-brand__img.logo--atmos      { height: 17px; }
+  .feature-brand__img.logo--truehd     { height: 21px; }
+  .feature-brand__img.logo--dtshdma    { height: 20px; }
+  .feature-brand__img.logo--dtsx       { height: 20px; }
 }
 
 .feature-icon {
@@ -1818,11 +1821,11 @@ p {
 
 
 /* ---------- SYNOLOGY SCALE FINAL BOOST (Optical compensation for padding) ---------- */
-/* Based on asset measurement (500x500 box, ~120px visible logo core) 
-   Scaling factor of ~4.1 needed to match same-family visual weight of Zidoo/Kodi */
+/* Based on asset measurement (500x140 trimmed) 
+   Correction and visual balance now handled by central multiplier and chip rules */
 
 .logo--synology {
-  transform: scale(4.2); /* Optical correction for excessive vertical whitespace */
+  transform: scale(1.1); /* Reduced scale now that asset is trimmed to 3.5:1 */
   transform-origin: center center;
 }
 
