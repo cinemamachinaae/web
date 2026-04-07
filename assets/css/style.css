@@ -2367,324 +2367,129 @@ section[style*="padding-top: 4rem"] .format-badges .logo--hdr10 { height: 15px !
 }
 
 /* ============================================================
-   FINAL POLISH PASS
-   - Hero editorial serif treatment
-   - Hidden-layer paragraph alignment
-   - Homepage comparison chip normalization
-   - Homepage audio-format table normalization
-   - Why Setup Matters feature-logo normalization
-   - Black strip codec row normalization
+   FINAL PRODUCTION POLISH
    ============================================================ */
 
-/* ============================================================
-   1) HOMEPAGE HERO — EDITORIAL SERIF TREATMENT
-   ============================================================ */
-
-.hero__title--editorial,
-.hero__title.hero__title--editorial {
+/* 1) HERO EDITORIAL TREATMENT */
+.hero__title--editorial {
   font-family: var(--font-display);
   font-weight: 300;
   font-size: clamp(2.8rem, 6.8vw, 6.35rem);
   line-height: 0.92;
   letter-spacing: -0.035em;
-  max-width: 11ch;
-  margin: 0 auto;
-  text-wrap: balance;
-  color: var(--text-primary);
-  text-shadow:
-    0 2px 10px rgba(0, 0, 0, 0.18),
-    0 14px 36px rgba(0, 0, 0, 0.34);
-}
-
-.hero__title--editorial em,
-.hero__title.hero__title--editorial em {
-  font-style: italic;
-  font-weight: 300;
-  letter-spacing: -0.03em;
-  color: var(--text-primary);
-}
-
-.hero__lead,
-.hero__body,
-.hero p {
-  max-width: 760px;
-  margin-left: auto;
-  margin-right: auto;
-  color: rgba(245, 239, 228, 0.94);
-  text-shadow:
-    0 2px 8px rgba(0, 0, 0, 0.26),
-    0 10px 28px rgba(0, 0, 0, 0.32);
-  position: relative;
-  z-index: 2;
-}
-
-.hero__content,
-.hero__copy {
-  position: relative;
-}
-
-.hero__content::before,
-.hero__copy::before {
-  content: "";
-  position: absolute;
-  inset: -18px -22px;
-  background: linear-gradient(
-    180deg,
-    rgba(10, 10, 10, 0.08) 0%,
-    rgba(10, 10, 10, 0.24) 48%,
-    rgba(10, 10, 10, 0.12) 100%
-  );
-  border-radius: 24px;
-  pointer-events: none;
-  z-index: 1;
-}
-
-@media (max-width: 768px) {
-  .hero__title--editorial,
-  .hero__title.hero__title--editorial {
-    font-size: clamp(2.5rem, 12vw, 4.3rem);
-    line-height: 0.95;
-    max-width: 10ch;
-  }
-
-  .hero__lead,
-  .hero__body,
-  .hero p {
-    max-width: 92%;
-    line-height: 1.58;
-  }
-
-  .hero__content::before,
-  .hero__copy::before {
-    inset: -12px -12px;
-    border-radius: 18px;
-  }
-}
-
-/* ============================================================
-   2) HIDDEN-LAYER PARAGRAPH ALIGNMENT
-   ============================================================ */
-
-.hidden-layer-copy {
-  max-width: 58ch;
-  margin-top: 1.25rem;
-  margin-left: 0;
-  margin-right: 0;
-  text-wrap: pretty;
-}
-
-@media (min-width: 1100px) {
-  .hidden-layer-copy {
-    max-width: 54ch;
-  }
-}
-
-/* Optional centered variant if needed later
-.hidden-layer-copy {
-  max-width: 58ch;
-  margin: 1.25rem auto 0;
+  max-width: 12ch;
+  margin: 0 auto 2rem;
   text-align: center;
-}
-*/
-
-/* ============================================================
-   3) HOMEPAGE COMPARISON BLOCK — CONFIGURED PLAYBACK CHIPS
-   ============================================================ */
-
-.comparison-col--good .format-badge-chip {
-  min-height: 44px;
-  padding: 8px 16px;
+  text-shadow: 0 4px 15px rgba(0,0,0,0.4);
 }
 
-.comparison-col--good .format-badge-chip .logo--vision { height: 18px !important; width: auto !important; }
-.comparison-col--good .format-badge-chip .logo--atmos { height: 18px !important; width: auto !important; }
-.comparison-col--good .format-badge-chip .logo--truehd { height: 17px !important; width: auto !important; }
-.comparison-col--good .format-badge-chip .logo--dtshdma { height: 17px !important; width: auto !important; }
-.comparison-col--good .format-badge-chip .logo--dtsx { height: 17px !important; width: auto !important; }
-.comparison-col--good .format-badge-chip .logo--hdr10 { height: 17px !important; width: auto !important; }
-
-.comparison-col--good .format-badge-chip .logo--zidoo { height: 17px !important; width: auto !important; }
-.comparison-col--good .format-badge-chip .logo--dune { height: 15px !important; width: auto !important; }
-.comparison-col--good .format-badge-chip .logo--shield { height: 17px !important; width: auto !important; }
-.comparison-col--good .format-badge-chip .logo--appletv { height: 16px !important; width: auto !important; }
-.comparison-col--good .format-badge-chip .logo--coreelec { height: 16px !important; width: auto !important; }
-
-.comparison-col--good .format-badge-chip--synology-wrap {
-  min-width: 180px;
-  padding-inline: 20px;
+.hero--emphasis {
+  font-weight: 500;
+  color: var(--text-primary);
+  text-shadow: 0 0 20px rgba(201,169,110,0.25);
 }
 
-.comparison-col--good .format-badge-chip--synology-wrap .logo--synology {
-  height: 20px !important;
-  width: auto !important;
-  object-fit: contain;
+.hero__title--editorial em {
+  font-style: italic;
+  font-family: var(--font-display);
 }
 
-/* ============================================================
-   4) HOMEPAGE AUDIO FORMAT TABLE + MOBILE CARDS
-   ============================================================ */
-
-.format-table .format-badge-chip,
-.format-badge-chip--matrix {
-  min-height: 38px;
-  padding: 6px 12px;
+.hero__body {
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  max-width: 760px;
+  margin: 0 auto;
 }
 
-.format-table .format-badge-chip .logo--atmos,
-.format-badge-chip--matrix .logo--atmos {
-  height: 15px !important;
-  width: auto !important;
+/* 2) HIDDEN-LAYER PARAGRAPH ALIGNMENT */
+.hidden-layer-copy {
+  max-width: 68ch;
+  margin: 1.5rem auto 0;
+  text-align: center;
+  line-height: 1.75;
+  color: var(--text-secondary);
 }
-
-.format-table .format-badge-chip .logo--dtsx,
-.format-badge-chip--matrix .logo--dtsx {
-  height: 15px !important;
-  width: auto !important;
-}
-
-.format-table .format-badge-chip .logo--truehd,
-.format-badge-chip--matrix .logo--truehd {
-  height: 17px !important;
-  width: auto !important;
-}
-
-.format-table .format-badge-chip .logo--dtshdma,
-.format-badge-chip--matrix .logo--dtshdma {
-  height: 17px !important;
-  width: auto !important;
-}
-
-.format-table .format-badge-chip .logo--dolby-digital,
-.format-table .format-badge-chip .logo--dolbydigital,
-.format-badge-chip--matrix .logo--dolby-digital,
-.format-badge-chip--matrix .logo--dolbydigital {
-  height: 15px !important;
-  width: auto !important;
-}
-
-/* Mobile audio cards */
-.audio-format-card__logo.logo--atmos,
-.audio-format-card__logo.logo--dtsx {
-  height: 15px !important;
-  width: auto !important;
-}
-
-.audio-format-card__logo.logo--truehd,
-.audio-format-card__logo.logo--dtshdma {
-  height: 17px !important;
-  width: auto !important;
-}
-
-.audio-format-card__logo.logo--dolby-digital,
-.audio-format-card__logo.logo--dolbydigital {
-  height: 15px !important;
-  width: auto !important;
-}
-
-/* ============================================================
-   5) WHY SETUP MATTERS — DEVICE COMPARISON FEATURE LOGOS
-   ============================================================ */
-
-.feature-brand {
-  display: inline-flex;
-  align-items: center;
-  min-height: 28px;
-}
-
-.feature-brand__img {
-  width: auto;
-  object-fit: contain;
-  display: block;
-}
-
-.feature-brand__img.logo--dv { height: 21px !important; }
-.feature-brand__img.logo--hdr10plus { height: 20px !important; }
-.feature-brand__img.logo--hdr10 { height: 18px !important; }
-.feature-brand__img.logo--atmos { height: 20px !important; }
-.feature-brand__img.logo--truehd { height: 25px !important; }
-.feature-brand__img.logo--dtshdma { height: 24px !important; }
-.feature-brand__img.logo--dtsx { height: 22px !important; }
 
 @media (max-width: 768px) {
-  .feature-brand__img.logo--dv { height: 18px !important; }
-  .feature-brand__img.logo--hdr10plus { height: 17px !important; }
-  .feature-brand__img.logo--hdr10 { height: 16px !important; }
-  .feature-brand__img.logo--atmos { height: 17px !important; }
-  .feature-brand__img.logo--truehd { height: 20px !important; }
-  .feature-brand__img.logo--dtshdma { height: 19px !important; }
-  .feature-brand__img.logo--dtsx { height: 18px !important; }
+  .hidden-layer-copy {
+    text-align: left;
+    max-width: 100%;
+  }
 }
 
-/* ============================================================
-   6) WHY SETUP MATTERS — BLACK STRIP CODEC ROW
-   ============================================================ */
-
-.section--black-strip {
-  padding: 2.25rem 0;
+/* 3) LOGO NORMALIZATION — HOMEPAGE COMPARISON */
+.comparison-col--good .format-badge-chip .logo--vision,
+.comparison-col--good .format-badge-chip .logo--atmos {
+  height: 16px !important;
 }
 
-.section--black-strip .format-badges {
-  justify-content: center;
-  align-items: center;
-  gap: 1rem 1rem;
+.comparison-col--good .format-badge-chip .logo--synology {
+  height: 20px !important;
+  transform: scale(1.15); /* Optical rebalance */
 }
 
+/* 4) LOGO NORMALIZATION — AUDIO FORMAT TABLE */
+.format-table .format-badge-chip .logo--atmos,
+.format-table .format-badge-chip .logo--dtsx {
+  height: 14px !important;
+}
+
+/* 5) LOGO NORMALIZATION — WHY SETUP MATTERS FEATURE LOGOS */
+.feature-brand__img.logo--truehd,
+.feature-brand__img.logo--dtshdma {
+  height: 26px !important;
+}
+
+.feature-brand__img.logo--dtsx {
+  height: 22px !important;
+}
+
+/* 6) LOGO NORMALIZATION — BLACK STRIP BADGES */
 .section--black-strip .format-badge-chip {
-  min-height: 40px !important;
-  padding: 7px 13px !important;
+  min-height: 34px !important;
+  padding: 5px 10px !important;
 }
 
-.section--black-strip .logo--vision { height: 16px !important; width: auto !important; }
-.section--black-strip .logo--atmos { height: 16px !important; width: auto !important; }
-.section--black-strip .logo--truehd { height: 15px !important; width: auto !important; }
-.section--black-strip .logo--dtshdma { height: 15px !important; width: auto !important; }
-.section--black-strip .logo--dtsx { height: 15px !important; width: auto !important; }
-.section--black-strip .logo--hdr10 { height: 15px !important; width: auto !important; }
-
-/* Contact page — service area image balance */
-.location-grid {
-  align-items: start;
+.section--black-strip .format-badge-chip img {
+  height: 14px !important;
 }
 
+/* 7) CONTACT PAGE IMAGE BALANCE */
 .location-grid .image-frame--support {
-  max-width: 560px;
+  max-width: 500px;
   margin-left: auto;
+  border: 1px solid var(--border);
 }
 
 .location-grid .image-frame--support img {
   display: block;
   width: 100%;
-  max-height: 540px;
+  max-height: 420px;
   object-fit: cover;
-  object-position: center;
 }
 
 @media (max-width: 1100px) {
   .location-grid .image-frame--support {
     max-width: 100%;
-    margin-left: 0;
+    margin: 2rem 0 0;
   }
-
-  .location-grid .image-frame--support img {
-    max-height: 460px;
-  }
-}
-
-@media (max-width: 768px) {
   .location-grid .image-frame--support img {
     max-height: 360px;
   }
 }
 
-/* Contact form status and UX */
+/* 8) FORM STATUS & UX */
 .form-status {
-  margin: 0 0 1rem;
-  font-size: 0.875rem;
-  color: var(--bronze);
+  padding: 0.75rem 0;
+  font-size: 0.9rem;
+  min-height: 2.5rem;
+  transition: opacity 0.3s ease;
 }
 
-.submit-btn[disabled] {
-  opacity: 0.65;
+.form-status.success { color: #88ff88; }
+.form-status.error { color: #ff8888; }
+
+.submit-btn:disabled {
+  opacity: 0.5;
   cursor: not-allowed;
 }
 

@@ -502,49 +502,51 @@
 </footer>
 
 <script>
-  (() => {
-    const form = document.getElementById('contact-form');
-    const button = document.getElementById('submit-btn');
-    const status = document.getElementById('form-status');
+  (function() {
+    const contactForm = document.getElementById('contact-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const formStatus = document.getElementById('form-status');
 
-    if (!form || !button || !status) return;
+    if (!contactForm || !submitBtn || !formStatus) return;
 
-    form.addEventListener('submit', async (e) => {
+    contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      status.textContent = '';
-      button.disabled = true;
-      button.textContent = 'Sending...';
+      // Reset status
+      formStatus.textContent = '';
+      formStatus.className = 'form-status';
+      
+      // Show loading state
+      const originalBtnText = submitBtn.textContent;
+      submitBtn.textContent = 'Sending...';
+      submitBtn.disabled = true;
 
-      const payload = {
-        first_name: form.first_name.value.trim(),
-        last_name: form.last_name.value.trim(),
-        email: form.email.value.trim(),
-        phone: form.phone.value.trim(),
-        service: form.service.value,
-        system_description: form.system_description.value.trim(),
-      };
+      const formData = new FormData(contactForm);
+      const data = Object.fromEntries(formData.entries());
 
       try {
-        const res = await fetch('/api/contact', {
+        const response = await fetch('/api/contact', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
+          body: JSON.stringify(data)
         });
 
-        const data = await res.json();
+        const result = await response.json();
 
-        if (!res.ok || !data.ok) {
-          throw new Error(data.error || 'Something went wrong.');
+        if (response.ok) {
+          formStatus.textContent = "Thank you. Your enquiry has been sent. We'll be in touch shortly.";
+          formStatus.classList.add('success');
+          contactForm.reset();
+        } else {
+          throw new Error(result.error || 'Failed to send enquiry.');
         }
-
-        status.textContent = 'Thank you. Your enquiry has been sent successfully.';
-        form.reset();
-      } catch (err) {
-        status.textContent = 'Sorry, your enquiry could not be sent right now. Please email cinemamachina.ae@gmail.com directly.';
+      } catch (error) {
+        console.error('Submission error:', error);
+        formStatus.textContent = 'Sorry, there was an error. Please email cinemamachina.ae@gmail.com directly.';
+        formStatus.classList.add('error');
       } finally {
-        button.disabled = false;
-        button.textContent = 'Send Enquiry';
+        submitBtn.textContent = originalBtnText;
+        submitBtn.disabled = false;
       }
     });
   })();
