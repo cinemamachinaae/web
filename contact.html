@@ -395,9 +395,12 @@
             <textarea id="system" name="system_description" placeholder="Describe your current setup — projector, receiver, playback devices, library software, and what you feel could be improved…"></textarea>
           </div>
 
+          <p class="form-status" id="form-status" aria-live="polite"></p>
+
           <button type="submit" class="submit-btn" id="submit-btn">
             Send Enquiry
           </button>
+
           <p class="form-note">
             Your information is kept private and is not shared. We use it only to prepare for your consultation.
           </p>
@@ -437,7 +440,7 @@
         </div>
       </div>
       <div class="reveal reveal-delay-2">
-        <div class="image-frame--support" style="border:1px solid var(--border);">
+        <div class="image-frame--support">
           <img src="assets/images/contact-consultation-master.png" alt="Luxury cinema consultation environment" loading="lazy" />
         </div>
       </div>
@@ -497,6 +500,55 @@
     </div>
   </div>
 </footer>
+
+<script>
+  (() => {
+    const form = document.getElementById('contact-form');
+    const button = document.getElementById('submit-btn');
+    const status = document.getElementById('form-status');
+
+    if (!form || !button || !status) return;
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      status.textContent = '';
+      button.disabled = true;
+      button.textContent = 'Sending...';
+
+      const payload = {
+        first_name: form.first_name.value.trim(),
+        last_name: form.last_name.value.trim(),
+        email: form.email.value.trim(),
+        phone: form.phone.value.trim(),
+        service: form.service.value,
+        system_description: form.system_description.value.trim(),
+      };
+
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+
+        const data = await res.json();
+
+        if (!res.ok || !data.ok) {
+          throw new Error(data.error || 'Something went wrong.');
+        }
+
+        status.textContent = 'Thank you. Your enquiry has been sent successfully.';
+        form.reset();
+      } catch (err) {
+        status.textContent = 'Sorry, your enquiry could not be sent right now. Please email cinemamachina.ae@gmail.com directly.';
+      } finally {
+        button.disabled = false;
+        button.textContent = 'Send Enquiry';
+      }
+    });
+  })();
+</script>
 
 <script src="assets/js/main.js"></script>
 </body>
