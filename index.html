@@ -401,6 +401,8 @@
   <a href="contact.html">Contact</a>
 </nav>
 
+<script src="https://player.vimeo.com/api/player.js"></script>
+
 <!-- ═══════════════════ HERO ═══════════════════ -->
 <section class="hero" id="hero">
   <div class="hero__bg">
@@ -438,9 +440,6 @@
 <section class="section--tight" id="demo">
   <div class="container">
     <div class="reveal" style="text-align:center;max-width:700px;margin:0 auto 3rem;">
-      <div class="section-label" style="justify-content:center;">
-        <span class="label">The Output</span>
-      </div>
       <h2 class="display-md">Precision playback.<br />In action.</h2>
     </div>
     <div class="reveal reveal-delay-1">
@@ -448,15 +447,22 @@
         <div class="vimeo-shell" id="cinema-vimeo-shell">
           <iframe
             id="cinema-machina-vimeo"
-            src="https://player.vimeo.com/video/1180098392?muted=1&amp;controls=0&amp;playsinline=1&amp;dnt=1"
+            src="https://player.vimeo.com/video/1180098392?background=1&amp;autoplay=1&amp;muted=1&amp;loop=1&amp;controls=0&amp;playsinline=1"
             allow="autoplay; fullscreen; picture-in-picture"
             loading="lazy"
             title="Cinema Machina — Premium Playback Demo"
           ></iframe>
           <button class="vimeo-overlay" id="vimeo-overlay" aria-label="Play Cinema Machina demo">
             <span class="play-btn">Play Film</span>
-            <span class="play-caption">Experience Playback</span>
           </button>
+          <div class="vimeo-controls">
+            <button class="control-btn" id="vimeo-mute" aria-label="Mute/Unmute">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M11 5L6 9H2v6h4l5 4V5zM19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+            </button>
+            <button class="control-btn" id="vimeo-fullscreen" aria-label="Fullscreen">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+            </button>
+          </div>
         </div>
       </div>
     </div>

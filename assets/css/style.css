@@ -2400,7 +2400,121 @@ section[style*="padding-top: 4rem"] .format-badges .logo--hdr10 { height: 15px !
   margin: 0 auto;
 }
 
-/* 2) HIDDEN-LAYER PARAGRAPH ALIGNMENT */
+/* ============================================================
+   FINAL PRODUCTION POLISH
+   ============================================================ */
+
+/* 1) HERO EDITORIAL STYLE */
+.hero__title--editorial {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(2.8rem, 6.5vw, 6rem);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
+  text-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.hero--emphasis {
+  color: var(--bronze);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+.hero__body {
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  position: relative;
+  z-index: 2;
+  background: rgba(0,0,0,0.2);
+  padding: 0.5rem 1rem;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+/* 2) PREMIUM VIMEO CONTROLS */
+.vimeo-shell {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #000;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.vimeo-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(2px);
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  transition: opacity 0.4s ease;
+}
+
+.vimeo-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.vimeo-shell:hover .vimeo-controls {
+  opacity: 1;
+}
+
+.vimeo-controls {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  gap: 0.75rem;
+  z-index: 20;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.control-btn {
+  background: rgba(15,15,15,0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--bronze);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.control-btn:hover {
+  background: var(--bronze);
+  color: var(--bg-dark);
+}
+
+.play-btn {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid var(--bronze);
+  padding: 1rem 2.5rem;
+  background: rgba(20, 18, 15, 0.4);
+  color: var(--bronze);
+  transition: all 0.3s ease;
+}
+
+.vimeo-overlay:hover .play-btn {
+  background: var(--bronze);
+  color: #000;
+}
+
+/* 3) HIDDEN-LAYER PARAGRAPH ALIGNMENT */
 .hidden-layer-copy {
   max-width: 68ch;
   margin: 1.5rem auto 0;
@@ -2416,64 +2530,74 @@ section[style*="padding-top: 4rem"] .format-badges .logo--hdr10 { height: 15px !
   }
 }
 
-/* 3) LOGO NORMALIZATION — HOMEPAGE COMPARISON */
+/* 4) LOGO NORMALIZATION — HOMEPAGE COMPARISON */
 .comparison-col--good .format-badge-chip .logo--vision,
 .comparison-col--good .format-badge-chip .logo--atmos {
   height: 16px !important;
 }
 
 .comparison-col--good .format-badge-chip .logo--synology {
-  height: 20px !important;
-  transform: scale(1.15); /* Optical rebalance */
+  height: 22px !important;
+  transform: scale(1.1);
 }
 
-/* 4) LOGO NORMALIZATION — AUDIO FORMAT TABLE */
+/* 5) LOGO NORMALIZATION — AUDIO FORMAT TABLE */
 .format-table .format-badge-chip .logo--atmos,
 .format-table .format-badge-chip .logo--dtsx {
-  height: 14px !important;
+  height: 15px !important;
 }
 
-/* 5) LOGO NORMALIZATION — WHY SETUP MATTERS FEATURE LOGOS */
-.feature-brand__img.logo--truehd,
-.feature-brand__img.logo--dtshdma {
-  height: 26px !important;
+.format-table .format-badge-chip .logo--truehd,
+.format-table .format-badge-chip .logo--dtshdma {
+  height: 18px !important;
 }
 
-.feature-brand__img.logo--dtsx {
-  height: 22px !important;
+/* 6) WHY SETUP MATTERS — BLACK STRIP & TABLES */
+.section--black-strip {
+  padding: 4rem 0 !important;
 }
 
-/* 6) LOGO NORMALIZATION — BLACK STRIP BADGES */
 .section--black-strip .format-badge-chip {
-  min-height: 34px !important;
-  padding: 5px 10px !important;
+  min-height: 38px !important;
+  padding: 8px 16px !important;
+  margin: 0.5rem !important;
 }
 
 .section--black-strip .format-badge-chip img {
-  height: 14px !important;
+  height: 15px !important;
 }
 
-/* 7) CONTACT PAGE IMAGE BALANCE */
-.location-grid .image-frame--support {
+.feature-brand__img.logo--truehd,
+.feature-brand__img.logo--dtshdma {
+  height: 28px !important;
+}
+
+.feature-brand__img.logo--dtsx {
+  height: 24px !important;
+}
+
+/* 7) IMAGE FOOTPRINT REDUCTIONS */
+.closing-argument .image-frame--support {
+  max-width: 440px;
+  margin-left: auto;
+}
+
+.about-image-block .image-frame--hero {
   max-width: 500px;
   margin-left: auto;
-  border: 1px solid var(--border);
 }
 
-.location-grid .image-frame--support img {
-  display: block;
-  width: 100%;
-  max-height: 420px;
-  object-fit: cover;
+.location-grid .image-frame--support {
+  max-width: 480px;
+  margin-left: auto;
 }
 
 @media (max-width: 1100px) {
+  .closing-argument .image-frame--support,
+  .about-image-block .image-frame--hero,
   .location-grid .image-frame--support {
     max-width: 100%;
     margin: 2rem 0 0;
-  }
-  .location-grid .image-frame--support img {
-    max-height: 360px;
   }
 }
 
