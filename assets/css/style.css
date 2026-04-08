@@ -2401,10 +2401,230 @@ section[style*="padding-top: 4rem"] .format-badges .logo--hdr10 { height: 15px !
 }
 
 /* ============================================================
-   FINAL PRODUCTION POLISH
+   NORMALIZED RESPONSIVE ARCHITECTURE
+   - Global section spacing
+   - Hero system consolidation
+   - Card & Grid systems
+   - Table & Comparison normalization
+   - Image & Illustration control
    ============================================================ */
 
-/* 1) HERO EDITORIAL STYLE */
+/* 1) SECTION SPACING & LAYOUT */
+section {
+  padding: clamp(4rem, 8vw, 8rem) 0;
+}
+
+.section--tight {
+  padding: clamp(2.5rem, 5vw, 5rem) 0;
+}
+
+.section--black-strip {
+  padding: 4rem 0 !important;
+  background: #050505;
+}
+
+.container {
+  width: min(100% - 3rem, 1200px);
+  margin-inline: auto;
+}
+
+/* 2) HERO SYSTEM (GLOBAL) */
+.page-hero {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: #000;
+}
+
+.page-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.page-hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.6;
+}
+
+.page-hero__gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.8));
+  z-index: 2;
+}
+
+.page-hero__content {
+  position: relative;
+  z-index: 3;
+  padding-top: 4rem;
+}
+
+/* 3) MODULE: SERVICE / FEATURE GRIDS */
+.module-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(3rem, 6vw, 7rem);
+  align-items: center;
+}
+
+.module-grid--reverse {
+  direction: rtl;
+}
+
+.module-grid--reverse > * {
+  direction: ltr;
+}
+
+.image-frame--hero,
+.image-frame--support {
+  border: 1px solid var(--border);
+  background: var(--bg-dark);
+  overflow: hidden;
+}
+
+.image-frame--hero img,
+.image-frame--support img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 1.2s var(--ease-out);
+}
+
+.image-frame--hero:hover img,
+.image-frame--support:hover img {
+  transform: scale(1.05);
+}
+
+/* 4) MODULE: CARDS (GLOBAL) */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.premium-card {
+  padding: 2.5rem 2rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  transition: all 0.4s var(--ease-out);
+}
+
+.premium-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-5px);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.65);
+}
+
+.premium-card__num {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--bronze-dim);
+  line-height: 1;
+  margin-bottom: 1.25rem;
+}
+
+/* 5) TABLES & COMPARISON (GLOBAL) */
+.comparison-table-shell {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: 1.25rem;
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+}
+
+.comparison-table thead th {
+  background: rgba(255,255,255,0.02);
+  color: var(--bronze);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* 6) RESPONSIVE ADAPTATION */
+@media (max-width: 900px) {
+  .module-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .module-grid--reverse {
+    direction: ltr;
+  }
+}
+
+@media (max-width: 600px) {
+  .premium-card {
+    padding: 2rem 1.5rem;
+  }
+}
+
+/* 7) LOGO NORMALIZATION — RE-PASS */
+.logo--synology {
+  height: clamp(20px, 2.5vw, 24px) !important;
+  transform: scale(1.15) translateY(-2px);
+}
+
+.logo--vision, .logo--atmos, .logo--dtsx {
+  height: clamp(14px, 1.8vw, 17px) !important;
+}
+
+.logo--truehd, .logo--dtshdma {
+  height: clamp(18px, 2.2vw, 21px) !important;
+}
+
+/* 8) FINAL POLISH: FOOTPRINT REDUCTION (Refined) */
+.about-image-block, .closing-argument, .location-section {
+  --image-max-w: 480px;
+}
+
+.about-image-block .image-frame--hero,
+.closing-argument .image-frame--support,
+.location-section .image-frame--support {
+  max-width: var(--image-max-w);
+  margin-inline: auto 0;
+}
+
+@media (max-width: 1100px) {
+  .about-image-block .image-frame--hero,
+  .closing-argument .image-frame--support,
+  .location-section .image-frame--support {
+    max-width: 100%;
+    margin-top: 2.5rem;
+  }
+}
+
+/* 9) FOOTER UNIFICATION */
+.footer__bottom {
+  border-top: 1px solid var(--border);
+  padding: 2rem 0;
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
+
+/* 10) HERO EDITORIAL STYLE */
 .hero__title--editorial {
   font-family: var(--font-display);
   font-weight: 300;
@@ -2412,7 +2632,6 @@ section[style*="padding-top: 4rem"] .format-badges .logo--hdr10 { height: 15px !
   line-height: 0.95;
   letter-spacing: -0.04em;
   color: var(--text-primary);
-  text-shadow: 0 4px 12px rgba(0,0,0,0.4);
 }
 
 .hero--emphasis {
@@ -2422,17 +2641,7 @@ section[style*="padding-top: 4rem"] .format-badges .logo--hdr10 { height: 15px !
   letter-spacing: -0.02em;
 }
 
-.hero__body {
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-  position: relative;
-  z-index: 2;
-  background: rgba(0,0,0,0.2);
-  padding: 0.5rem 1rem;
-  display: inline-block;
-  border-radius: 4px;
-}
-
-/* 2) PREMIUM VIMEO CONTROLS */
+/* 11) PREMIUM VIMEO CONTROLS */
 .vimeo-shell {
   position: relative;
   width: 100%;
@@ -2462,10 +2671,6 @@ section[style*="padding-top: 4rem"] .format-badges .logo--hdr10 { height: 15px !
   pointer-events: none;
 }
 
-.vimeo-shell:hover .vimeo-controls {
-  opacity: 1;
-}
-
 .vimeo-controls {
   position: absolute;
   bottom: 1.5rem;
@@ -2477,13 +2682,17 @@ section[style*="padding-top: 4rem"] .format-badges .logo--hdr10 { height: 15px !
   transition: opacity 0.3s ease;
 }
 
+.vimeo-shell:hover .vimeo-controls {
+  opacity: 1;
+}
+
 .control-btn {
   background: rgba(15,15,15,0.6);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255,255,255,0.1);
   color: var(--bronze);
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -2497,24 +2706,24 @@ section[style*="padding-top: 4rem"] .format-badges .logo--hdr10 { height: 15px !
   color: var(--bg-dark);
 }
 
-.play-btn {
+.play-btn-large {
   font-family: var(--font-display);
   font-size: 1.5rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   border: 1px solid var(--bronze);
-  padding: 1rem 2.5rem;
+  padding: 1.25rem 3rem;
   background: rgba(20, 18, 15, 0.4);
   color: var(--bronze);
   transition: all 0.3s ease;
 }
 
-.vimeo-overlay:hover .play-btn {
+.vimeo-overlay:hover .play-btn-large {
   background: var(--bronze);
   color: #000;
 }
 
-/* 3) HIDDEN-LAYER PARAGRAPH ALIGNMENT */
+/* 12) HIDDEN-LAYER PARAGRAPH */
 .hidden-layer-copy {
   max-width: 68ch;
   margin: 1.5rem auto 0;
@@ -2530,90 +2739,134 @@ section[style*="padding-top: 4rem"] .format-badges .logo--hdr10 { height: 15px !
   }
 }
 
-/* 4) LOGO NORMALIZATION — HOMEPAGE COMPARISON */
-.comparison-col--good .format-badge-chip .logo--vision,
-.comparison-col--good .format-badge-chip .logo--atmos {
-  height: 16px !important;
+/* 13) SERVICE MODULES (REUSABLE) */
+.service-module {
+  padding: var(--section-gap) 0;
+  position: relative;
 }
 
-.comparison-col--good .format-badge-chip .logo--synology {
-  height: 22px !important;
-  transform: scale(1.1);
+.service-module:nth-child(even) { background: var(--bg-warm); }
+
+.service-module__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(3rem, 6vw, 7rem);
+  align-items: center;
 }
 
-/* 5) LOGO NORMALIZATION — AUDIO FORMAT TABLE */
-.format-table .format-badge-chip .logo--atmos,
-.format-table .format-badge-chip .logo--dtsx {
-  height: 15px !important;
+.service-module:nth-child(even) .service-module__inner {
+  direction: rtl;
 }
 
-.format-table .format-badge-chip .logo--truehd,
-.format-table .format-badge-chip .logo--dtshdma {
-  height: 18px !important;
+.service-module:nth-child(even) .service-module__inner > * {
+  direction: ltr;
 }
 
-/* 6) WHY SETUP MATTERS — BLACK STRIP & TABLES */
-.section--black-strip {
-  padding: 4rem 0 !important;
+.service-module__image {
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  position: relative;
 }
 
-.section--black-strip .format-badge-chip {
-  min-height: 38px !important;
-  padding: 8px 16px !important;
-  margin: 0.5rem !important;
+.service-module__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-.section--black-strip .format-badge-chip img {
-  height: 15px !important;
+.service-module__list {
+  list-style: none;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
 }
 
-.feature-brand__img.logo--truehd,
-.feature-brand__img.logo--dtshdma {
-  height: 28px !important;
+.service-module__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.875rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
 }
 
-.feature-brand__img.logo--dtsx {
-  height: 24px !important;
+.service-module__list li::before {
+  content: '✦';
+  color: var(--bronze);
+  flex-shrink: 0;
+  font-size: 0.5rem;
+  margin-top: 0.45rem;
 }
 
-/* 7) IMAGE FOOTPRINT REDUCTIONS */
-.closing-argument .image-frame--support {
-  max-width: 440px;
-  margin-left: auto;
+/* 14) MYTH vs REALITY (REUSABLE) */
+.myth-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 3rem;
 }
 
-.about-image-block .image-frame--hero {
-  max-width: 500px;
-  margin-left: auto;
+.myth-item {
+  padding: 2.5rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  position: relative;
+  overflow: hidden;
 }
 
-.location-grid .image-frame--support {
-  max-width: 480px;
-  margin-left: auto;
+.myth-item::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
 }
 
-@media (max-width: 1100px) {
-  .closing-argument .image-frame--support,
-  .about-image-block .image-frame--hero,
-  .location-grid .image-frame--support {
-    max-width: 100%;
-    margin: 2rem 0 0;
+.myth-item--myth::before { background: var(--text-muted); }
+.myth-item--reality::before { background: var(--bronze); }
+
+.myth-item__badge {
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--bronze);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+/* 15) ENHANCED FORMAT TABLES */
+.format-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.format-table th {
+  padding: 1.25rem;
+  border-bottom: 2px solid var(--border);
+  color: var(--bronze);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.format-table td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+}
+
+.format-table td:first-child {
+  text-align: left;
+  font-weight: 500;
+}
+
+/* 16) RESPONSIVE CLEANUP */
+@media (max-width: 768px) {
+  .service-module__inner,
+  .myth-grid,
+  .identity-grid {
+    grid-template-columns: 1fr;
   }
 }
-
-/* 8) FORM STATUS & UX */
-.form-status {
-  padding: 0.75rem 0;
-  font-size: 0.9rem;
-  min-height: 2.5rem;
-  transition: opacity 0.3s ease;
-}
-
-.form-status.success { color: #88ff88; }
-.form-status.error { color: #ff8888; }
-
-.submit-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-

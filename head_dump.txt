@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cinema Machina — Premium Playback & Media Environment Specialists, UAE</title>
+  <meta name="description" content="Cinema Machina delivers premium playback configuration, media library refinement, and signal-path optimisation for luxury home cinema systems in the UAE." />
+  <link rel="icon" type="image/png" href="assets/logos/cm-logo-square.png" />
+  <link rel="stylesheet" href="assets/css/style.css?v=2.9" />
+
+    /* ── VIDEO SECTION CUSTOM ── */
+    .video-section__header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .video-section__header .lead {
+      margin: 1.25rem auto 0;
+      text-align: center;
+    }
+
+
+    .comparison-col--bad {
+      background: var(--surface);
+    }
+
+    .comparison-col--good {
+      background: var(--surface-2);
+      border: 1px solid var(--border-hover);
+      position: relative;
+    }
+
+    .comparison-col--good::before {
+      content: 'Cinema Machina';
+      position: absolute;
+      top: 0; right: 0;
+      background: var(--bronze);
+      color: var(--bg);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+    }
+
+    .comparison-col h3 {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      color: var(--text-secondary);
+    }
+
+    .comparison-col--good h3 { color: var(--bronze-light); }
+
+    .comparison-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.875rem;
+    }
+
+    .comparison-col li {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .comparison-col li::before {
+      content: '—';
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+
+    .comparison-col--good li::before {
+      content: '✦';
+      color: var(--bronze);
+      font-size: 0.6rem;
+      margin-top: 0.4rem;
+    }
+
+    /* ── BITRATE SECTION ── */
+    .bitrate-section {
+      padding: var(--section-gap) 0;
+    }
+
+    /* ── AUDIO CODECS ── */
+    .codec-section {
+      padding: var(--section-gap) 0;
+      background: var(--bg-warm);
+    }
+
+    /* ── CTA FULL ── */
+    .cta-full {
+      padding: clamp(5rem, 10vw, 8rem) 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-full::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 50% 100%, rgba(201,169,110,0.07) 0%, transparent 70%);
+    }
+
+    .cta-full__content { position: relative; z-index: 1; }
+
+    .cta-full h2 { margin-bottom: 1rem; }
+
+    .cta-full .lead {
+      margin: 0 auto 2.5rem;
+      text-align: center;
+    }
+
+    .cta-full__actions {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ── STAT ROW ── */
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+
+    .stat-row .stat-block + .stat-block {
+      border-left: none;
+    }
+
+    @media (max-width: 768px) {
+      .comparison-grid { grid-template-columns: 1fr; gap: 1.5px; }
+      .stat-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .stat-row .stat-block:nth-child(2) { border-left: none; }
+      .stat-row .stat-block:nth-child(3) { border-top: none; }
+      .stat-row .stat-block:nth-child(4) { border-top: none; border-left: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════ NAVIGATION ═══════════════════ -->
+<nav class="nav" id="nav">
