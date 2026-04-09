@@ -729,9 +729,9 @@ p {
 /* Stagger animations – Progressive Enhancement */
 .js-ready .hero__word {
   opacity: 0;
-  transform: translateY(20px);
-  filter: blur(10px);
-  animation: heroReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform: translateY(12px);
+  filter: blur(4px);
+  animation: heroReveal 1.4s var(--ease-out) forwards;
 }
 
 @keyframes heroReveal {
@@ -742,32 +742,30 @@ p {
   }
 }
 
-.js-ready .hero__word:nth-child(1) { animation-delay: 0.1s; }
-.js-ready .hero__word:nth-child(2) { animation-delay: 0.2s; }
-.js-ready .hero__word:nth-child(3) { animation-delay: 0.3s; }
-.js-ready .hero__word:nth-child(4) { animation-delay: 0.4s; }
-.js-ready .hero__word:nth-child(5) { animation-delay: 0.5s; }
-.js-ready .hero__word:nth-child(6) { animation-delay: 0.6s; }
-.js-ready .hero__word:nth-child(7) { animation-delay: 0.7s; }
+/* Stagger by groups – Refined and less busy */
+.js-ready .hero__word-group:nth-child(1) .hero__word:nth-child(1) { animation-delay: 0.1s; }
+.js-ready .hero__word-group:nth-child(1) .hero__word:nth-child(2) { animation-delay: 0.15s; }
+.js-ready .hero__word-group:nth-child(1) .hero__word:nth-child(3) { animation-delay: 0.3s; }
+.js-ready .hero__word-group:nth-child(3) .hero__word:nth-child(1) { animation-delay: 0.45s; }
+.js-ready .hero__word-group:nth-child(3) .hero__word:nth-child(2) { animation-delay: 0.6s; }
 
 /* Premium Accent Styling */
 .hero__word--accent {
-  font-family: var(--font-serif);
+  font-family: var(--font-display);
   font-style: italic;
-  font-weight: 600;
-  color: var(--bronze);
+  font-weight: 500;
+  color: var(--bronze-light);
   position: relative;
-  z-index: 1;
 }
 
 .js-ready .hero__word--accent {
-  animation: heroReveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards,
-             accentLustre 8s ease-in-out infinite alternate;
+  animation: heroReveal 1.6s var(--ease-out) forwards,
+             bronzeLustre 12s ease-in-out infinite alternate;
 }
 
-@keyframes accentLustre {
+@keyframes bronzeLustre {
   0% { color: var(--bronze); filter: brightness(1); }
-  50% { color: #dcb38a; filter: brightness(1.15); }
+  50% { color: var(--bronze-light); filter: brightness(1.2); }
   100% { color: var(--bronze); filter: brightness(1); }
 }
 
@@ -952,10 +950,12 @@ p {
 .ecosystem-strip__item:hover { opacity: 1; }
 
 .ecosystem-strip__item img {
-  max-height: 22px; /* default; overridden per-logo by .logo-- classes */
+  --logo-multiplier: 1.0;
+  height: calc(var(--height-ecosystem-desktop) * var(--logo-multiplier));
+  max-height: none;
   width: auto;
   opacity: 0.88;
-  /* No blanket filter — per-logo .logo-- classes handle individual corrections */
+  display: block;
 }
 
 .ecosystem-strip__item span {
@@ -2187,7 +2187,7 @@ p {
 }
 
 @media (max-width: 768px) {
-  .table-responsive-wrapper { display: block; margin-bottom: 2rem; }
+  .table-responsive-wrapper, .format-table-wrapper { display: none; }
   .audio-format-cards { display: grid; }
   .vimeo-controls { 
     padding: 1rem;
@@ -2607,27 +2607,25 @@ p {
   padding-bottom: 24px;
 }
 
-.feature-brand {
-  min-width: 38px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.feature-brand__img {
-  max-height: 16px;
+/* Unified Optical Logo Scaling Logic */
+[class*="logo--"] {
+  --logo-multiplier: 1.0;
+  --logo-base-height: 22px;
+  height: calc(var(--logo-base-height) * var(--logo-multiplier));
+  max-height: none !important;
   width: auto;
-  opacity: 0.94;  filter: brightness(0) invert(1) brightness(0.92) !important;
 }
 
-/* normalization for all feature logos */
-.feature-brand__img.logo--dv       { max-height: 14px; }
-.feature-brand__img.logo--hdr10plus { max-height: 18px; }
-.feature-brand__img.logo--hdr10     { max-height: 15px; }
-.feature-brand__img.logo--atmos     { max-height: 15px; }
-.feature-brand__img.logo--truehd    { max-height: 15px; }
-.feature-brand__img.logo--dtshdma   { max-height: 14px; }
-.feature-brand__img.logo--dtsx      { max-height: 14px; }
+/* Section-specific base heights */
+.ecosystem-strip__item img { --logo-base-height: var(--height-ecosystem-desktop); }
+.format-badge-chip img      { --logo-base-height: var(--height-format-desktop); }
+.device-head__logo-img     { --logo-base-height: 24px; }
+.feature-brand__img        { --logo-base-height: 18px; }
+
+@media (max-width: 768px) {
+  [class*="logo--"] { --logo-base-height: 20px; }
+  .feature-brand__img { --logo-base-height: 14px; }
+}
 
 /* Cleaned duplicate footer scale */
 
