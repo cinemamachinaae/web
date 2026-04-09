@@ -143,68 +143,88 @@
   const progress = shell.querySelector('.vimeo-progress');
   const timeDisplay = shell.querySelector('.vimeo-time');
 
-  if (!iframe || !poster) return;
+  // Verify core elements exist before proceeding
+  if (!iframe || !poster || !typeof Vimeo === 'undefined') {
+    if (poster) poster.classList.add('is-hidden'); // Fallback visibility
+    return;
+  }
 
-  // Initialize Vimeo Player
-  const player = new Vimeo.Player(iframe);
-  let duration = 0;
+  try {
+    // Initialize Vimeo Player
+    const player = new Vimeo.Player(iframe);
+    let duration = 0;
 
-  player.getDuration().then(d => duration = d);
+    player.getDuration().then(d => {
+      duration = d;
+      if (timeDisplay) timeDisplay.textContent = `0:00 / ${formatTime(duration)}`;
+    }).catch(() => {});
 
-  const formatTime = (s) => {
-    const min = Math.floor(s / 60);
-    const sec = Math.floor(s % 60);
-    return `${min}:${sec < 10 ? '0' : ''}${sec}`;
-  };
+    const formatTime = (s) => {
+      const min = Math.floor(s / 60);
+      const sec = Math.floor(s % 60);
+      return `${min}:${sec < 10 ? '0' : ''}${sec}`;
+    };
 
-  const updateTime = (data) => {
-    const current = data.seconds;
-    timeDisplay.textContent = `${formatTime(current)} / ${formatTime(duration)}`;
-    progress.value = (current / duration) * 100;
-  };
+    const updateTime = (data) => {
+      const current = data.seconds;
+      if (timeDisplay) timeDisplay.textContent = `${formatTime(current)} / ${formatTime(duration)}`;
+      if (progress) progress.value = (current / duration) * 100;
+    };
 
-  player.on('timeupdate', updateTime);
+    player.on('timeupdate', updateTime);
 
-  const startPlayback = () => {
-    player.play();
-    player.setMuted(false);
-    poster.classList.add('is-hidden');
-    toggleBtn.textContent = 'Pause';
-    muteBtn.textContent = 'Mute';
-  };
+    const startPlayback = () => {
+      player.play().catch(() => {});
+      player.setMuted(false).catch(() => {});
+      poster.classList.add('is-hidden');
+      if (toggleBtn) toggleBtn.textContent = 'Pause';
+      if (muteBtn) muteBtn.textContent = 'Mute';
+    };
 
-  playBtn.addEventListener('click', startPlayback);
+    if (playBtn) playBtn.addEventListener('click', startPlayback);
 
-  toggleBtn.addEventListener('click', () => {
-    player.getPaused().then(paused => {
-      if (paused) {
-        player.play();
-        toggleBtn.textContent = 'Pause';
-      } else {
-        player.pause();
-        toggleBtn.textContent = 'Play';
-      }
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', () => {
+        player.getPaused().then(paused => {
+          if (paused) {
+            player.play().catch(() => {});
+            toggleBtn.textContent = 'Pause';
+          } else {
+            player.pause().catch(() => {});
+            toggleBtn.textContent = 'Play';
+          }
+        });
+      });
+    }
+
+    if (muteBtn) {
+      muteBtn.addEventListener('click', () => {
+        player.getMuted().then(muted => {
+          player.setMuted(!muted).catch(() => {});
+          muteBtn.textContent = muted ? 'Mute' : 'Unmute';
+        });
+      });
+    }
+
+    if (fsBtn) fsBtn.addEventListener('click', () => player.requestFullscreen().catch(() => {}));
+
+    if (progress) {
+      progress.addEventListener('input', () => {
+        if (duration > 0) {
+          const seekTime = (progress.value / 100) * duration;
+          player.setCurrentTime(seekTime).catch(() => {});
+        }
+      });
+    }
+
+    player.on('ended', () => {
+      poster.classList.remove('is-hidden');
+      if (progress) progress.value = 0;
     });
-  });
 
-  muteBtn.addEventListener('click', () => {
-    player.getMuted().then(muted => {
-      player.setMuted(!muted);
-      muteBtn.textContent = muted ? 'Mute' : 'Unmute';
-    });
-  });
-
-  fsBtn.addEventListener('click', () => player.requestFullscreen());
-
-  progress.addEventListener('input', () => {
-    const seekTime = (progress.value / 100) * duration;
-    player.setCurrentTime(seekTime);
-  });
-
-  player.on('ended', () => {
-    poster.classList.remove('is-hidden');
-    progress.value = 0;
-  });
+  } catch (e) {
+    console.warn('Vimeo player failed to initialize:', e);
+  }
 })();
 
 /* ── CONTACT FORM ───────────────────────────────────────────── */
