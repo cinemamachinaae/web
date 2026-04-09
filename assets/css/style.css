@@ -246,7 +246,7 @@ p {
 }
 
 .nav__logo img {
-  height: 66px;
+  height: 68px; /* High-end visibility */
   width: auto;
   display: block;
 }
@@ -1701,7 +1701,7 @@ p {
 .feature-brand__img.logo--dv        { height: 26px; }
 .feature-brand__img.logo--hdr10plus { height: 26px; margin-left: -1px; }
 .feature-brand__img.logo--hdr10     { height: 24px; }
-.feature-brand__img.logo--atmos      { height: 26px; }
+.feature-brand__img.logo--atmos      { height: 20px; } /* Optically balanced */
 .feature-brand__img.logo--truehd     { height: 26px; }
 .feature-brand__img.logo--dtshdma    { height: 26px; }
 .feature-brand__img.logo--dtsx       { height: 26px; }
@@ -2302,7 +2302,7 @@ p {
   .footer__brand img,
   .footer-brand img,
   .footer-logo img {
-    height: 34px !important;
+    height: 38px !important; /* Increased for mobile presence */
   }
 }
 
@@ -2365,3 +2365,17 @@ section[style*="padding-top: 4rem"] .format-badges .logo--hdr10 { height: 15px !
   .feature-brand__img.logo--dtshdma { height: 20px !important; }
   .feature-brand__img.logo--dtsx { height: 20px !important; }
 }
+
+/* ── MOBILE TABLE RESPONSIVENESS ── */
+.table-responsive-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 0 -1.25rem;
+  padding: 0 1.25rem;
+}
+
+.table-responsive-wrapper table {
+  min-width: 600px; /* Force scroll on narrow screens */
+}
+

@@ -137,7 +137,7 @@
   if (!overlay || !iframe) return;
 
   overlay.addEventListener('click', () => {
-    // Switch to full-controls, unmuted, autoplay state
+    // Switch to full-controls, unmuted, autoplay state for the demo film
     iframe.src = 'https://player.vimeo.com/video/1180098392?autoplay=1&muted=0&controls=1&playsinline=1&dnt=1';
     overlay.classList.add('is-hidden');
     // Remove from DOM after fade so it doesn't block player interaction
