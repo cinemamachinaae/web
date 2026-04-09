@@ -304,7 +304,6 @@ function initVimeo() {
     }
   });
 }
-}
 
 // Initialize on DOM load
 document.addEventListener("DOMContentLoaded", initVimeo);
