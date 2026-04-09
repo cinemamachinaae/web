@@ -305,8 +305,27 @@ function initVimeo() {
   });
 }
 
-// Initialize on DOM load
-document.addEventListener("DOMContentLoaded", initVimeo);
+// Initialize with retry logic for CDN availability
+function startVimeo() {
+  if (typeof Vimeo !== "undefined") {
+    initVimeo();
+  } else {
+    // Retry every 100ms for up to 5 seconds
+    let attempts = 0;
+    const interval = setInterval(() => {
+      attempts++;
+      if (typeof Vimeo !== "undefined") {
+        initVimeo();
+        clearInterval(interval);
+      } else if (attempts > 50) {
+        clearInterval(interval);
+        console.warn("Vimeo SDK failed to load within timeout.");
+      }
+    }, 100);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", startVimeo);
 
 
 /* ── CONTACT FORM ───────────────────────────────────────────── */
