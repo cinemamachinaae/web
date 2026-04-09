@@ -131,98 +131,37 @@
 
 /* -- VIMEO INTERACTIVE PLAYER ------------------------------ */
 (function initVimeo() {
-  const shell = document.getElementById('cinema-vimeo-shell');
   const overlay = document.getElementById('vimeo-overlay');
-  const iframe = document.getElementById('cinema-machina-vimeo');
-  const muteBtn = document.getElementById('vimeo-mute');
-  const fsBtn = document.getElementById('vimeo-fullscreen');
+  const iframe  = document.getElementById('cinema-machina-vimeo');
 
-  if (!iframe || !window.Vimeo) return;
+  if (!overlay || !iframe) return;
 
-  const player = new Vimeo.Player(iframe);
-
-  // Play Overlay Logic
-  if (overlay) {
-    overlay.addEventListener('click', () => {
-      player.play().then(() => {
-        player.setMuted(false);
-        overlay.classList.add('hidden');
-        setTimeout(() => overlay.remove(), 600);
-      }).catch(err => console.error('Play error:', err));
-    });
-  }
-
-  // Mute Toggle
-  if (muteBtn) {
-    muteBtn.addEventListener('click', () => {
-      player.getMuted().then(muted => {
-        player.setMuted(!muted);
-        muteBtn.querySelector('svg').style.color = !muted ? 'var(--text-muted)' : 'var(--bronze)';
-      });
-    });
-  }
-
-  // Fullscreen
-  if (fsBtn) {
-    fsBtn.addEventListener('click', () => {
-      iframe.requestFullscreen?.() || iframe.webkitRequestFullscreen?.() || iframe.msRequestFullscreen?.();
-    });
-  }
-
-  // Premium Fallback: Autoplay detection
-  player.on('play', () => {
-    if (overlay && !overlay.classList.contains('hidden')) {
-      overlay.classList.add('hidden');
-    }
+  overlay.addEventListener('click', () => {
+    // Switch to full-controls, unmuted, autoplay state for the demo film
+    iframe.src = 'https://player.vimeo.com/video/1180098392?autoplay=1&muted=0&controls=1&playsinline=1&dnt=1';
+    overlay.classList.add('is-hidden');
+    // Remove from DOM after fade so it doesn't block player interaction
+    setTimeout(() => overlay.remove(), 500);
   });
 })();
 
 /* ── CONTACT FORM ───────────────────────────────────────────── */
 (function initForm() {
   const form = document.querySelector('.contact-form');
-  const status = document.getElementById('form-status');
-  if (!form || !status) return;
+  if (!form) return;
 
-  form.addEventListener('submit', async function(e) {
+  form.addEventListener('submit', function(e) {
     e.preventDefault();
     const btn = form.querySelector('button[type="submit"]');
     const originalText = btn.textContent;
-    
-    // Clear status
-    status.textContent = '';
-    status.className = 'form-status';
-    
-    // Loading State
-    btn.textContent = 'Sending Enquiry...';
+    btn.textContent = 'Sending…';
     btn.disabled = true;
 
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
-
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-
-      const result = await response.json();
-
-      if (response.ok) {
-        status.textContent = 'Enquiry sent successfully. We will be in touch shortly.';
-        status.classList.add('success');
-        form.reset();
-        btn.textContent = 'Sent';
-      } else {
-        throw new Error(result.error || 'Failed to send enquiry.');
-      }
-    } catch (err) {
-      console.error('Form error:', err);
-      status.textContent = err.message || 'Something went wrong. Please try again.';
-      status.classList.add('error');
-      btn.textContent = originalText;
-      btn.disabled = false;
-    }
+    setTimeout(() => {
+      btn.textContent = 'Message Sent — We\'ll be in touch';
+      btn.style.background = 'var(--surface-2)';
+      btn.style.color = 'var(--bronze)';
+    }, 1500);
   });
 })();
 
