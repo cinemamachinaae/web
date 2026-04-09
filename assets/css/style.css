@@ -710,6 +710,67 @@ p {
   overflow: hidden;
 }
 
+.hero__title {
+  margin-bottom: 2rem;
+  letter-spacing: -0.04em;
+  font-weight: 700;
+  line-height: 1.05;
+  color: var(--text);
+  opacity: 1; /* Visible by default */
+}
+
+/* Fail-safe visibility */
+.hero__word {
+  display: inline-block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger animations – Progressive Enhancement */
+.js-ready .hero__word {
+  opacity: 0;
+  transform: translateY(20px);
+  filter: blur(10px);
+  animation: heroReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes heroReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.js-ready .hero__word:nth-child(1) { animation-delay: 0.1s; }
+.js-ready .hero__word:nth-child(2) { animation-delay: 0.2s; }
+.js-ready .hero__word:nth-child(3) { animation-delay: 0.3s; }
+.js-ready .hero__word:nth-child(4) { animation-delay: 0.4s; }
+.js-ready .hero__word:nth-child(5) { animation-delay: 0.5s; }
+.js-ready .hero__word:nth-child(6) { animation-delay: 0.6s; }
+.js-ready .hero__word:nth-child(7) { animation-delay: 0.7s; }
+
+/* Premium Accent Styling */
+.hero__word--accent {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 600;
+  color: var(--bronze);
+  position: relative;
+  z-index: 1;
+}
+
+.js-ready .hero__word--accent {
+  animation: heroReveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards,
+             accentLustre 8s ease-in-out infinite alternate;
+}
+
+@keyframes accentLustre {
+  0% { color: var(--bronze); filter: brightness(1); }
+  50% { color: #dcb38a; filter: brightness(1.15); }
+  100% { color: var(--bronze); filter: brightness(1); }
+}
+
 .hero__bg {
   position: absolute;
   inset: 0;
@@ -1773,14 +1834,14 @@ p {
   filter: brightness(0) invert(1);
 }
 
-.feature-brand__img.logo--vision    { height: 26px; }
-.feature-brand__img.logo--dv        { height: 26px; }
-.feature-brand__img.logo--hdr10plus { height: 26px; margin-left: -1px; }
-.feature-brand__img.logo--hdr10     { height: 24px; }
-.feature-brand__img.logo--atmos      { height: 16px; } /* Normalized */
-.feature-brand__img.logo--truehd     { height: 26px; }
-.feature-brand__img.logo--dtshdma    { height: 26px; }
-.feature-brand__img.logo--dtsx       { height: 26px; }
+.feature-brand__img.logo--vision    { height: 22px; }
+.feature-brand__img.logo--dv        { height: 22px; }
+.feature-brand__img.logo--hdr10plus { height: 22px; margin-left: -1px; }
+.feature-brand__img.logo--hdr10     { height: 20px; }
+.feature-brand__img.logo--atmos      { height: 16px; }
+.feature-brand__img.logo--truehd     { height: 22px; }
+.feature-brand__img.logo--dtshdma    { height: 22px; }
+.feature-brand__img.logo--dtsx       { height: 22px; }
 
 @media (max-width: 768px) {
   .feature-brand__img { height: 24px; }
@@ -2151,12 +2212,12 @@ p {
   opacity: 1;
 }
 
-@media (max-width: 768px) {
-  .comparison-brand-logo { height: 40px; }
-  .footer-brand-logo { height: 36px; }
+.comparison-mobile-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
 }
-
-
 
 .comparison-device-card {
   border: 1px solid rgba(255,255,255,0.10);
@@ -2169,7 +2230,7 @@ p {
 }
 
 .comparison-device-card + .comparison-device-card {
-  margin-top: 16px;
+  margin-top: 0;
 }
 
 .comparison-device-card__head {
@@ -2218,7 +2279,13 @@ p {
   }
 
   .comparison-mobile-cards {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .comparison-device-card + .comparison-device-card {
+    margin-top: 0px;
   }
 
   .device-head__title,
