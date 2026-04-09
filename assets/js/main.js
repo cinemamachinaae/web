@@ -135,7 +135,6 @@ function initVimeo() {
   const iframe = document.getElementById("cinema-machina-vimeo");
   const controls = document.getElementById("vimeo-controls");
   const surfaceToggle = document.getElementById("vimeo-surface-toggle");
-  const surfaceIcon = document.getElementById("vimeo-surface-toggle-icon");
 
   if (!shell || !iframe || !controls || typeof Vimeo === "undefined") return;
 
@@ -160,7 +159,7 @@ function initVimeo() {
     if (timeDisplay) timeDisplay.textContent = `${formatTime(current)} / ${formatTime(total)}`;
   };
 
-  // Idle state management
+  // Idle state management (0.5s per user request)
   const resetIdleTimer = () => {
     shell.classList.remove("is-idle");
     clearTimeout(idleTimer);
@@ -168,11 +167,12 @@ function initVimeo() {
       player.getPaused().then((paused) => {
         if (!paused) shell.classList.add("is-idle");
       });
-    }, 2800);
+    }, 500);
   };
 
   shell.addEventListener("mousemove", resetIdleTimer);
   shell.addEventListener("touchstart", resetIdleTimer, { passive: true });
+  shell.addEventListener("keydown", resetIdleTimer);
 
   // Core Playback Toggle
   const togglePlayback = () => {
@@ -180,35 +180,61 @@ function initVimeo() {
       if (paused) {
         player.play();
         shell.classList.add("is-playing");
-        if (playBtn) playBtn.textContent = "Pause";
-        if (surfaceIcon) surfaceIcon.textContent = "Pause";
+        updatePlayIcons(true);
         resetIdleTimer();
       } else {
         player.pause();
         shell.classList.remove("is-playing");
-        if (playBtn) playBtn.textContent = "Play";
-        if (surfaceIcon) surfaceIcon.textContent = "Play";
+        updatePlayIcons(false);
       }
     });
   };
 
+  const updatePlayIcons = (isPlaying) => {
+    if (playBtn) {
+      playBtn.querySelector(".play-path").style.display = isPlaying ? "none" : "block";
+      playBtn.querySelector(".pause-path").style.display = isPlaying ? "block" : "none";
+    }
+  };
+
+  const updateMuteIcons = (isMuted) => {
+    if (muteBtn) {
+      muteBtn.querySelector(".mute-off").style.display = isMuted ? "none" : "block";
+      muteBtn.querySelector(".mute-on").style.display = isMuted ? "block" : "none";
+    }
+  };
+
   // Event Listeners
-  surfaceToggle.addEventListener("click", togglePlayback);
-  if (playBtn) playBtn.addEventListener("click", togglePlayback);
+  surfaceToggle.addEventListener("click", (e) => {
+    e.stopPropagation();
+    togglePlayback();
+  });
+  
+  shell.addEventListener("click", () => {
+    togglePlayback();
+  });
+
+  if (playBtn) {
+    playBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      togglePlayback();
+    });
+  }
 
   if (muteBtn) {
-    muteBtn.addEventListener("click", () => {
+    muteBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
       player.getMuted().then((muted) => {
         player.setMuted(!muted);
-        muteBtn.textContent = muted ? "Mute" : "Unmute";
+        updateMuteIcons(!muted);
       });
     });
   }
 
   if (fsBtn) {
-    fsBtn.addEventListener("click", () => {
+    fsBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
       player.requestFullscreen().catch(() => {
-        // Fallback for browsers with restricted FS API
         if (iframe.requestFullscreen) iframe.requestFullscreen();
       });
     });
@@ -231,12 +257,12 @@ function initVimeo() {
       const seekTime = (progress.value / 100) * duration;
       player.setCurrentTime(seekTime);
     });
+    progress.addEventListener("click", (e) => e.stopPropagation());
   }
 
   player.on("ended", () => {
     shell.classList.remove("is-playing");
-    if (playBtn) playBtn.textContent = "Replay";
-    if (surfaceIcon) surfaceIcon.textContent = "Replay";
+    updatePlayIcons(false);
   });
 
   // Keyboard Shortcuts (Accessibility)
@@ -246,7 +272,10 @@ function initVimeo() {
       togglePlayback();
     }
     if (e.key.toLowerCase() === "m") {
-      player.getMuted().then(m => player.setMuted(!m));
+      player.getMuted().then(m => {
+        player.setMuted(!m);
+        updateMuteIcons(!m);
+      });
     }
     if (e.key.toLowerCase() === "f") {
       player.requestFullscreen();
