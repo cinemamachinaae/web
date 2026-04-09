@@ -451,7 +451,7 @@
       </div>
 
       <div class="hero__scroll-wrap">
-        <a href="#intro" class="hero__scroll-link" aria-label="Scroll to next section" onclick="document.getElementById('intro').scrollIntoView({behavior:'smooth'}); return false;">
+        <a href="#demo" class="hero__scroll-link" aria-label="Scroll to next section">
           <span class="hero__scroll-label">Scroll</span>
           <span class="hero__scroll-line" aria-hidden="true"></span>
         </a>
@@ -460,7 +460,7 @@
   </div>
 </section>
 
-<!-- ═══════════════════ VIMEO DEMO (ELEVATED POSITION) ═══════════════════ -->
+<!-- ═══════════════════ VIMEO DEMO ═══════════════════ -->
 <section class="section--tight" id="demo">
   <div class="container">
     <div class="reveal section-center-header">
@@ -557,7 +557,7 @@
         <span class="label">The Cinema Machina Approach</span>
         <h2 class="display-md">We Believe in the Power of a “Well-Set-Up”.<br />No Compromise When It Comes to the Cinema Experience.</h2>
       </div>
-      <p class="text-center mx-auto intro-p" style="max-width: 800px; margin-left: auto; margin-right: auto; text-align: center;">
+      <p class="intro-p introduction-text">
         Great hardware alone can’t deliver the finest results. Source quality, playback software, device configuration, and the signal path all work together. Cinema Machina specializes in optimizing that hidden layer, bringing the entire system into perfect alignment.
       </p>
     </div>
@@ -583,11 +583,8 @@
   </div>
 </section>
 
-<!-- Intro section -->
-
-<div class="divider"></div>
-
-<section class="section--tight">
+<!-- ═══════════════════ ECOSYSTEM ═══════════════════ -->
+<section class="section--tight" id="ecosystem">
   <div class="container mb-3">
     <span class="label text-center d-block">Verified Ecosystem Compatibility</span>
   </div>
@@ -616,7 +613,7 @@
   </div>
 </section>
 
-<!-- ═══════════════════ BITRATE SECTION (ELEVATED) ═══════════════════ -->
+<!-- ═══════════════════ BITRATE ═══════════════════ -->
 <section class="bitrate-section section--tight" id="bitrate" style="background: var(--bg-warm); border-top: 1px solid var(--border);">
   <div class="container">
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:center;">
@@ -637,14 +634,14 @@
         <div class="bar-item" style="margin-bottom: 2rem;">
           <span class="bar-label" style="text-align: left;">Compressed streaming</span>
           <div class="bar-track" style="height: 8px;">
-            <div class="bar-fill low" data-width="18" style="width: 18%;"></div>
+            <div class="bar-fill low" data-width="18" style="width: 0%;"></div>
           </div>
           <span class="bar-value">~18 Mbps</span>
         </div>
         <div class="bar-item">
           <span class="bar-label" style="text-align: left;">Cinema Machina Local Playback</span>
           <div class="bar-track" style="height: 8px;">
-            <div class="bar-fill high" data-width="100" style="width: 100%;"></div>
+            <div class="bar-fill high" data-width="100" style="width: 0%;"></div>
           </div>
           <span class="bar-value">100+ Mbps</span>
         </div>
@@ -656,11 +653,7 @@
   </div>
 </section>
 
-<div class="divider"></div>
-
-<!-- VIMEO DEMO (OLD POSITION REMOVED) -->
-
-<!-- ═══════════════════ SERVICES OVERVIEW ═══════════════════ -->
+<!-- ═══════════════════ SERVICES ═══════════════════ -->
 <section class="services-overview" id="services">
   <div class="container">
     <div class="reveal" style="margin-bottom:3.5rem;">
@@ -742,8 +735,6 @@
   </div>
 </section>
 
-<div class="divider"></div>
-
 <!-- ═══════════════════ COMPARISON ═══════════════════ -->
 <section class="comparison-section" id="comparison">
   <div class="container">
@@ -785,7 +776,7 @@
           <li>Full editions — theatrical, extended, 4K remasters</li>
           <li>Cinema-mode UI with frame rate matching</li>
         </ul>
-        <div class="format-badges reveal" aria-label="Reference-grade format compatibility">
+        <div class="format-badges reveal" aria-label="Reference-grade platform compatibility">
           <div class="format-badge-chip"><img src="assets/logos/zidoo.png" alt="Zidoo" class="logo--zidoo" /></div>
           <div class="format-badge-chip"><img src="assets/logos/dune-hd.png" alt="Dune HD" class="logo--dune" /></div>
           <div class="format-badge-chip"><img src="assets/logos/nvidia-shield.png" alt="Nvidia Shield" class="logo--shield" /></div>
@@ -793,18 +784,35 @@
           <div class="format-badge-chip format-badge-chip--synology-wrap"><img src="assets/logos/synology.png" alt="Synology" class="logo--synology" /></div>
           <div class="format-badge-chip"><img src="assets/logos/coreelec.png" alt="CoreELEC" class="logo--coreelec" /></div>
         </div>
-        <div class="format-badges reveal" aria-label="Reference-grade format compatibility" style="margin-top: 2rem; justify-content: flex-start;">
-          <div class="format-badge-chip"><img src="assets/logos/dolby-vision-horizontal.png" alt="Dolby Vision" class="logo--vision" /></div>
-          <div class="format-badge-chip"><img src="assets/logos/dolby-atmos.png" alt="Dolby Atmos" class="logo--atmos" /></div>
-          <div class="format-badge-chip"><img src="assets/logos/dolby-truehd.png" alt="Dolby TrueHD" class="logo--truehd" /></div>
-          <div class="format-badge-chip"><img src="assets/logos/dts-hd-ma.png" alt="DTS-HD Master Audio" class="logo--dtshdma" /></div>
-          <div class="format-badge-chip"><img src="assets/logos/dts-x.png" alt="DTS:X" class="logo--dtsx" /></div>
-          <div class="format-badge-chip"><img src="assets/logos/hdr10-plus.png" alt="HDR10+" class="logo--hdr10" /></div>
-        </div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- ═══════════════════ CODEC ═══════════════════ -->
+<section class="codec-section section--tight" id="codec" style="background: var(--bg-warm); border-top: 1px solid var(--border);">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">
+        <span class="label">Format Mastering</span>
+      </div>
+      <h2 class="display-md">Codec authenticity.</h2>
+      <p class="lead" style="margin-top:1rem;">
+        Immersive audio and advanced HDR standards only deliver their promise when the playback device is configured for bit-perfect passthrough.
+      </p>
+
+      <div class="format-badges reveal" aria-label="Reference-grade format compatibility" style="margin-top: 3rem; justify-content: center;">
+        <div class="format-badge-chip"><img src="assets/logos/dolby-vision-horizontal.png" alt="Dolby Vision" class="logo--vision" /></div>
+        <div class="format-badge-chip"><img src="assets/logos/dolby-atmos.png" alt="Dolby Atmos" class="logo--atmos" /></div>
+        <div class="format-badge-chip"><img src="assets/logos/dolby-truehd.png" alt="Dolby TrueHD" class="logo--truehd" /></div>
+        <div class="format-badge-chip"><img src="assets/logos/dts-hd-ma.png" alt="DTS-HD Master Audio" class="logo--dtshdma" /></div>
+        <div class="format-badge-chip"><img src="assets/logos/dts-x.png" alt="DTS:X" class="logo--dtsx" /></div>
+        <div class="format-badge-chip"><img src="assets/logos/hdr10-plus.png" alt="HDR10+" class="logo--hdr10plus" /></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══════════════════ CTA FULL ═══════════════════ -->
 <section class="cta-full" id="cta">
   <div class="container cta-full__content">

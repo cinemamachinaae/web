@@ -842,24 +842,22 @@ p {
   opacity: 1;
   transform: none;
   filter: none;
+  white-space: pre-wrap;
 }
 
 .js-ready .hero__word {
-  opacity: 0.01; /* Tiny bit so it occupies space but basically hidden */
-  transform: translateY(18px);
-  filter: blur(10px);
-  animation: wordReveal 1.4s var(--ease-out) forwards;
+  opacity: 0;
+  transform: translateY(12px);
+  filter: blur(8px);
+  animation: wordReveal 1.2s var(--ease-out) forwards;
   will-change: transform, opacity, filter;
 }
 
 @keyframes wordReveal {
   0% {
     opacity: 0;
-    transform: translateY(18px) scale(0.98);
-    filter: blur(10px);
-  }
-  30% {
-    opacity: 0.5;
+    transform: translateY(12px) scale(0.99);
+    filter: blur(8px);
   }
   100% {
     opacity: 1;
@@ -868,16 +866,24 @@ p {
   }
 }
 
-/* Stagger Logic */
-/* Stagger Logic — Lines Sequential */
-.hero__title-line:nth-child(1) .hero__word:nth-child(1) { animation-delay: 0.2s; }
-.hero__title-line:nth-child(1) .hero__word:nth-child(2) { animation-delay: 0.3s; }
-.hero__title-line:nth-child(1) .hero__word:nth-child(3) { animation-delay: 0.4s; }
-.hero__title-line:nth-child(3) .hero__word:nth-child(1) { animation-delay: 0.55s; }
-.hero__title-line:nth-child(3) .hero__word:nth-child(2) { animation-delay: 0.65s; }
+/* Stagger Logic — Based on word index in the whole H1 */
+.js-ready .hero__word:nth-child(1) { animation-delay: 0.1s; }
+.js-ready .hero__word:nth-child(2) { animation-delay: 0.2s; }
+.js-ready .hero__word:nth-child(3) { animation-delay: 0.35s; } /* One Life */
 
-.hero__title-line {
+.hero__word-group {
   display: inline-block;
+}
+
+.hero__word--accent {
+  color: var(--bronze);
+  font-weight: 400;
+  text-shadow: 0 0 20px rgba(201, 169, 110, 0.15);
+}
+
+/* Second line staggers */
+.hero__word-group:nth-of-type(2) .hero__word:nth-child(1) { animation-delay: 0.6s; } /* to */
+.hero__word-group:nth-of-type(2) .hero__word:nth-child(2) { animation-delay: 0.75s; } /* Feel, Cinema */
   position: relative;
 }
 
@@ -975,8 +981,11 @@ p {
 
 .intro-section p {
   text-align: center;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 860px;
+  margin: 2rem auto 0;
+  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+  line-height: 1.7;
+  color: var(--text-secondary);
 }
 
 /* Legacy wrapper kept for any other uses */
@@ -1366,20 +1375,31 @@ p {
 .logo--kodi           { --logo-multiplier: 1.00; }
 
 /* Codecs / Formats (Dense / Mass-compensated) */
-.logo--vision         { --logo-multiplier: 1.20; }
-.logo--dv             { --logo-multiplier: 1.20; }
-.logo--atmos          { --logo-multiplier: 0.72; } /* Normalized visually for better weight balance */
-.logo--truehd         { --logo-multiplier: 1.30; }
-.logo--dtshdma        { --logo-multiplier: 1.28; }
-.logo--dtsx           { --logo-multiplier: 1.28; }
-.logo--hdr10plus      { --logo-multiplier: 1.24; }
-.logo--hdr10          { --logo-multiplier: 1.18; }
-.logo--dolbydigital   { --logo-multiplier: 1.18; }
+.logo--vision         { --logo-multiplier: 1.15; }
+.logo--dv             { --logo-multiplier: 1.15; }
+.logo--atmos          { --logo-multiplier: 0.88; } /* Normalized visually for better weight balance */
+.logo--truehd         { --logo-multiplier: 1.20; }
+.logo--dtshdma        { --logo-multiplier: 1.18; }
+.logo--dtsx           { --logo-multiplier: 1.18; }
+.logo--hdr10plus      { --logo-multiplier: 1.15; }
+.logo--hdr10          { --logo-multiplier: 1.12; }
+.logo--dolbydigital   { --logo-multiplier: 1.12; }
 
 /* ---------- CONTEXT 1: BADGE CHIPS ---------- */
 
+.format-badge-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 14px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  min-height: 44px;
+}
+
 .format-badge-chip img {
-  --logo-base-h: 24px;
+  --logo-base-h: 22px;
 }
 
 /* ---------- CONTEXT 2: ECOSYSTEM STRIP ---------- */
@@ -1775,10 +1795,7 @@ p {
   opacity: 0.92;
 }
 
-.device-head__logo-img.logo--appletv { height: 28px; }
-.device-head__logo-img.logo--shield  { height: 26px; }
-.device-head__logo-img.logo--dune    { height: 22px; }
-.device-head__logo-img.logo--zidoo   { height: 20px; }
+/* Unified system handles sizes via tokens */
 
 .device-head__logo-img.logo--appletv,
 .device-head__logo-img.logo--shield,
@@ -1824,7 +1841,7 @@ p {
   flex: 0 0 auto;
 }
 
-/* 4. PLATFORM EXPECTATIONS LOGO POLISH — targeting 145-170px desktop width */
+/* 4. PLATFORM EXPECTATIONS LOGO POLISH — Unified system handles heights via tokens */
 .feature-brand__img {
   display: block;
   width: auto;
@@ -1833,15 +1850,6 @@ p {
   opacity: 0.82;
   filter: brightness(0) invert(1);
 }
-
-.feature-brand__img.logo--vision    { height: 22px; }
-.feature-brand__img.logo--dv        { height: 22px; }
-.feature-brand__img.logo--hdr10plus { height: 22px; margin-left: -1px; }
-.feature-brand__img.logo--hdr10     { height: 20px; }
-.feature-brand__img.logo--atmos      { height: 16px; }
-.feature-brand__img.logo--truehd     { height: 22px; }
-.feature-brand__img.logo--dtshdma    { height: 22px; }
-.feature-brand__img.logo--dtsx       { height: 22px; }
 
 @media (max-width: 768px) {
   .feature-brand__img { height: 24px; }
@@ -1922,13 +1930,18 @@ p {
 /* ── LOGO SCALING (TOKEN SYSTEM) ── */
 /* Consolidated below */
 
-.logo--atmos       { height: 18px; width: auto; object-fit: contain; }
-.logo--truehd      { height: 20px; width: auto; object-fit: contain; }
-.logo--dtshdma     { height: 22px; width: auto; object-fit: contain; }
-.logo--dtsx        { height: 18px; width: auto; object-fit: contain; }
-.logo--hdr10       { height: 18px; width: auto; object-fit: contain; }
-.logo--hdr10plus   { height: 17px; width: auto; object-fit: contain; }
-.logo--dv, .logo--vision { height: 18px; width: auto; object-fit: contain; max-height: 18px; }
+.logo--atmos,
+.logo--truehd,
+.logo--dtshdma,
+.logo--dtsx,
+.logo--hdr10,
+.logo--hdr10plus,
+.logo--dv,
+.logo--vision {
+  width: auto;
+  object-fit: contain;
+  /* Height handled by token system */
+}
 .logo--dolbydigital { height: 18px; width: auto; object-fit: contain; }
 
 .logo--appletv     { height: 32px; width: auto; object-fit: contain; }
@@ -2607,29 +2620,8 @@ p {
   padding-bottom: 24px;
 }
 
-/* Unified Optical Logo Scaling Logic */
-[class*="logo--"] {
-  --logo-multiplier: 1.0;
-  --logo-base-height: 22px;
-  height: calc(var(--logo-base-height) * var(--logo-multiplier));
-  max-height: none !important;
-  width: auto;
-}
-
-/* Section-specific base heights */
-.ecosystem-strip__item img { --logo-base-height: var(--height-ecosystem-desktop); }
-.format-badge-chip img      { --logo-base-height: var(--height-format-desktop); }
-.device-head__logo-img     { --logo-base-height: 24px; }
-.feature-brand__img        { --logo-base-height: 18px; }
-
-@media (max-width: 768px) {
-  [class*="logo--"] { --logo-base-height: 20px; }
-  .feature-brand__img { --logo-base-height: 14px; }
-}
-
-/* Cleaned duplicate footer scale */
-
-/* Homepage normalization consolidated in brand classes */
+/* ── LOGO SCALING SYSTEM (Final Verification) ── */
+/* Handled by unified token system at line ~1340 */
 
 /* ── MOBILE TABLE RESPONSIVENESS ── */
 .table-responsive-wrapper {
