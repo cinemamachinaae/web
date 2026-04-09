@@ -20,6 +20,9 @@
       justify-content: center;
       gap: 1rem;
       margin-bottom: 2rem;
+    }
+
+    .js-ready .hero__eyebrow {
       opacity: 0;
       animation: fadeUp 1s 0.3s var(--ease-out) forwards;
     }
@@ -42,6 +45,10 @@
     }
 
     .hero h1 {
+      /* No default opacity: 0 */
+    }
+
+    .js-ready .hero h1 {
       opacity: 0;
       animation: fadeUp 1s 0.5s var(--ease-out) forwards;
     }
@@ -49,6 +56,9 @@
     .hero__lead {
       margin: 1.75rem auto 0;
       text-align: center;
+    }
+
+    .js-ready .hero__lead {
       opacity: 0;
       animation: fadeUp 1s 0.75s var(--ease-out) forwards;
     }
@@ -60,6 +70,9 @@
       justify-content: center;
       margin-top: 2.5rem;
       flex-wrap: wrap;
+    }
+
+    .js-ready .hero__actions {
       opacity: 0;
       animation: fadeUp 1s 1s var(--ease-out) forwards;
     }
@@ -70,13 +83,16 @@
       left: 50%;
       transform: translateX(-50%);
       z-index: 3;
-      opacity: 0;
-      animation: fadeIn 1s 1.5s ease forwards;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 0.5rem;
       cursor: pointer;
+    }
+
+    .js-ready .hero__scroll {
+      opacity: 0;
+      animation: fadeIn 1s 1.5s ease forwards;
     }
 
     .hero__scroll span {
