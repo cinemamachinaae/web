@@ -17,6 +17,7 @@
   --surface-3:    #211e17;
   --border:       rgba(201,169,110,0.12);
   --border-hover: rgba(201,169,110,0.28);
+  --glass:        rgba(15, 14, 12, 0.7);
 
   /* Accent */
   --bronze:       #c9a96e;
@@ -52,7 +53,18 @@
   --height-ecosystem-desktop: 28px;
   --height-format-desktop: 26px;
   --height-table-desktop: 22px;
+  
+  /* UX Polish */
+  --btn-radius: 4px;
 }
+
+/* ── GLOBAL FIXES ─────────────────────────────────────────── */
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+[id] { scroll-margin-top: 100px; }
 
 html {
   scroll-behavior: smooth;
@@ -131,7 +143,7 @@ p {
 .label {
   font-family: var(--font-body);
   font-size: 0.6875rem;
-  font-weight: 600;
+  font-weight: 700; /* Increased for premium readability */
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--bronze);
@@ -139,6 +151,14 @@ p {
 
 .accent { color: var(--bronze); }
 .accent-light { color: var(--bronze-light); }
+
+.text-script {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--bronze-light);
+  letter-spacing: 0;
+}
 
 /* ── LAYOUT ───────────────────────────────────────────────── */
 .container {
@@ -155,6 +175,7 @@ p {
 /* ── BUTTONS ──────────────────────────────────────────────── */
 .btn {
   display: inline-flex;
+  white-space: nowrap; /* Prevent awkward wrapping */
   align-items: center;
   gap: 0.5rem;
   font-family: var(--font-body);
@@ -233,7 +254,7 @@ p {
 }
 
 .nav.scrolled {
-  background: rgba(7,6,4,0.88);
+  background: var(--glass);
   backdrop-filter: blur(24px) saturate(120%);
   -webkit-backdrop-filter: blur(24px) saturate(120%);
   border-color: var(--border);
@@ -308,6 +329,7 @@ p {
   padding: 0.5rem 1.25rem;
   border: 1px solid var(--border-hover);
   transition: all 0.3s;
+  white-space: nowrap;
 }
 
 .nav__cta:hover {
@@ -358,11 +380,33 @@ p {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.4s var(--ease-out);
+  padding: 2rem;
+}
+
+.nav__mobile a {
+  padding: 1rem 0;
+  font-size: clamp(1.75rem, 5vw, 2.25rem);
 }
 
 .nav__mobile.open {
   opacity: 1;
   pointer-events: all;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+/* ── RESPONSIVE TABLE WRAPPER ─────────────────────────────── */
+.table-responsive-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 2rem;
+  border: 1px solid var(--border);
+}
+
+.table-responsive-wrapper table {
+  min-width: 600px;
+  width: 100%;
 }
 
 .nav__mobile a {
@@ -392,8 +436,8 @@ p {
 }
 
 .footer__brand img {
-  height: 18px;
-  opacity: 0.85;
+  height: 24px; /* Increased from 18px */
+  opacity: 0.95;
   margin-bottom: 1.25rem;
   display: block;
 }
@@ -773,6 +817,12 @@ p {
 .video-section {
   padding: var(--section-gap) 0;
   background: var(--bg-warm);
+}
+
+.intro-section p {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Legacy wrapper kept for any other uses */
@@ -1237,7 +1287,7 @@ p {
 /* Codecs / Formats (Dense / Mass-compensated) */
 .logo--vision         { --logo-multiplier: 1.20; }
 .logo--dv             { --logo-multiplier: 1.20; }
-.logo--atmos          { --logo-multiplier: 1.18; }
+.logo--atmos          { --logo-multiplier: 0.85; } /* Reduced for normalization */
 .logo--truehd         { --logo-multiplier: 1.30; }
 .logo--dtshdma        { --logo-multiplier: 1.28; }
 .logo--dtsx           { --logo-multiplier: 1.28; }
@@ -1701,7 +1751,7 @@ p {
 .feature-brand__img.logo--dv        { height: 26px; }
 .feature-brand__img.logo--hdr10plus { height: 26px; margin-left: -1px; }
 .feature-brand__img.logo--hdr10     { height: 24px; }
-.feature-brand__img.logo--atmos      { height: 20px; } /* Optically balanced */
+.feature-brand__img.logo--atmos      { height: 16px; } /* Normalized */
 .feature-brand__img.logo--truehd     { height: 26px; }
 .feature-brand__img.logo--dtshdma    { height: 26px; }
 .feature-brand__img.logo--dtsx       { height: 26px; }
@@ -1789,7 +1839,7 @@ p {
   display: block; 
 }
 
-.logo--atmos       { height: 16px; width: auto; }
+.logo--atmos       { height: 14px; width: auto; } /* Normalized */
 .logo--truehd      { height: 15px; width: auto; }
 .logo--dtshdma     { height: 16px; width: auto; }
 .logo--dtsx        { height: 14px; width: auto; }
@@ -1855,15 +1905,15 @@ p {
 .vimeo-controls {
   position: absolute;
   bottom: 0; left: 0; right: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-  padding: 20px;
+  background: linear-gradient(to top, rgba(0,0,0,0.95), transparent);
+  padding: 1.5rem 2rem;
   display: flex;
   align-items: center;
-  gap: 15px;
-  z-index: 5;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: all 0.3s ease;
+  gap: 1.5rem;
+  z-index: 10;
+  opacity: 1; /* Always visible for functional clarity */
+  transform: translateY(0);
+  transition: all 0.4s var(--ease-out);
 }
 
 .vimeo-shell:hover .vimeo-controls,
@@ -1904,10 +1954,11 @@ p {
 }
 
 /* ── RESPONSIVE COMPONENTS ── */
-.table-responsive-wrapper {
+.table-responsive-wrapper, .format-table-wrapper {
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  margin-bottom: 2rem;
 }
 
 .audio-format-cards {
@@ -1943,27 +1994,31 @@ p {
 }
 
 @media (max-width: 768px) {
-  .table-responsive-wrapper { display: none; }
+  .table-responsive-wrapper { display: block; margin-bottom: 2rem; }
   .audio-format-cards { display: grid; }
-  .vimeo-controls { display: none; }
+  .vimeo-controls { 
+    padding: 1rem;
+    gap: 0.75rem;
+    background: rgba(0,0,0,0.8); /* Solid background on mobile for legibility */
+  }
   .vimeo-shell iframe { pointer-events: auto; }
 }
   }
 }
 
 .comparison-brand-logo {
-  height: 44px;
+  height: 52px; /* Increased from 44px */
   width: auto;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   display: block;
-  opacity: 0.96;
+  opacity: 1;
 }
 
 .footer-brand-logo {
-  height: 40px;
+  height: 48px; /* Increased from 40px */
   width: auto;
   display: block;
-  opacity: 0.98;
+  opacity: 1;
 }
 
 @media (max-width: 768px) {
@@ -2000,14 +2055,14 @@ p {
 .vimeo-controls {
   position: absolute;
   bottom: 0; left: 0; right: 0;
-  background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, transparent 100%);
-  padding: 20px;
+  background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, transparent 100%);
+  padding: 1.5rem;
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 1rem;
   z-index: 10;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  opacity: 1; /* Always visible */
+  transition: opacity 0.4s ease;
 }
 .vimeo-shell:hover .vimeo-controls { opacity: 1; }
 .vimeo-control-btn {
