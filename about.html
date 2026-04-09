@@ -412,9 +412,19 @@
       </p>
     </div>
 
-    <div class="step-process reveal">
+    <div class="process-visual-layer reveal reveal-delay-1">
+      <svg class="process-connection-line" viewBox="0 0 1000 24" preserveAspectRatio="none">
+        <line x1="16.66%" y1="12" x2="83.33%" y2="12" stroke="var(--border)" stroke-width="1" />
+        <line x1="16.66%" y1="12" x2="83.33%" y2="12" stroke="var(--bronze-dim)" stroke-width="2" class="process-line-flow" />
+      </svg>
+    </div>
+
+    <div class="step-process reveal reveal-delay-2">
       <div class="step">
-        <div class="step__num">1</div>
+        <div class="step__num-wrapper">
+          <div class="step__ring"></div>
+          <div class="step__num">1</div>
+        </div>
         <h3>Audit</h3>
         <p>
           We begin by understanding your system completely — hardware, software, library, signal chain, and your playback expectations. We document what you have, what it's doing, and where it's falling short of its potential.
@@ -427,7 +437,10 @@
         </ul>
       </div>
       <div class="step">
-        <div class="step__num">2</div>
+        <div class="step__num-wrapper">
+          <div class="step__ring"></div>
+          <div class="step__num">2</div>
+        </div>
         <h3>Configure</h3>
         <p>
           Based on the audit, we configure every layer — library structure, device settings, software parameters, codec routing, signal chain — with precision. No unnecessary changes. Every decision is documented and explained.
@@ -440,16 +453,19 @@
         </ul>
       </div>
       <div class="step">
-        <div class="step__num">3</div>
+        <div class="step__num-wrapper">
+          <div class="step__ring"></div>
+          <div class="step__num">3</div>
+        </div>
         <h3>Verify</h3>
         <p>
           We test against a reference library of known-good files — across video formats, HDR standards, and audio codecs — to confirm that every path is performing correctly before we consider the engagement complete.
         </p>
         <ul class="service-module__list" style="margin-top:1.5rem;">
-          <li>Reference file playback testing across all formats</li>
+          <li>Reference playback testing across formats</li>
           <li>Audio passthrough verification per codec</li>
           <li>HDR and tone-mapping confirmation</li>
-          <li>Full written system documentation provided</li>
+          <li>Full written system documentation</li>
         </ul>
       </div>
     </div>
