@@ -13,20 +13,36 @@ import {
 } from "lucide-react";
 import prisma from "@/lib/db";
 
+type DashboardLogStatus = "PASS" | "FAIL" | "WARNING";
+
 interface DashboardLog {
   id: string;
   date: Date;
   testName: string;
-  resultStatus: "PASS" | "FAIL" | "WARNING";
+  resultStatus: DashboardLogStatus;
   details: string | null;
+}
+
+function normalizeResultStatus(status: string): DashboardLogStatus {
+  if (status === "PASS" || status === "FAIL" || status === "WARNING") return status;
+  return "WARNING";
 }
 
 async function getDashboardData() {
   const settings = await prisma.siteSettings.findUnique({ where: { id: 1 } });
-  const logs = await prisma.verificationLog.findMany({
+  const rawLogs = await prisma.verificationLog.findMany({
     orderBy: { date: 'desc' },
     take: 4
   });
+
+  const logs: DashboardLog[] = rawLogs.map((log: any) => ({
+    id: String(log.id),
+    date: log.date,
+    testName: log.testName,
+    resultStatus: normalizeResultStatus(log.resultStatus),
+    details: log.details
+  }));
+  
   const stats = await prisma.analyticsSnapshot.findFirst({
     orderBy: { snapshotDate: 'desc' }
   });

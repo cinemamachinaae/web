@@ -51,7 +51,7 @@ module.exports = async (req, res) => {
 
     const { data: emailData, error: emailError } = await resend.emails.send({
       from: 'Cinema Machina <enquiry@updates.cinemamachina.ae>',
-      to: ['cinemamachina.ae@gmail.com'],
+      to: ['contact@cinemamachina.ae'],
       replyTo: safeEmail,
       subject: `New Enquiry from ${fullName}`,
       html: emailHtml,
