@@ -140,13 +140,13 @@ function initVimeo() {
 
   const player = new Vimeo.Player(iframe);
   const playBtn = controls.querySelector(".js-vimeo-play");
-  const muteBtn = controls.querySelector(".js-vimeo-mute");
   const fsBtn = controls.querySelector(".js-vimeo-fullscreen");
   const progress = controls.querySelector(".vimeo-progress");
   const timeDisplay = document.getElementById("vimeo-time");
 
   let duration = 0;
   let idleTimer;
+  let isPlaying = false; // Local state for immediate sync without async player calls
 
   // Formatting helper (MM:SS)
   const formatTime = (s) => {
@@ -161,19 +161,23 @@ function initVimeo() {
     }
   };
 
-  // Idle state management (500ms)
-  const resetIdleTimer = () => {
+  // Idle state management (optimized for performance)
+  const showControls = () => {
     shell.classList.remove("is-idle");
     clearTimeout(idleTimer);
-    
-    // Only go idle if we are actually playing
-    player.getPaused().then((paused) => {
-      if (!paused) {
-        idleTimer = setTimeout(() => {
-          shell.classList.add("is-idle");
-        }, 500);
-      }
-    });
+  };
+
+  const startIdleTimer = () => {
+    if (isPlaying) {
+      idleTimer = setTimeout(() => {
+        shell.classList.add("is-idle");
+      }, 3000); // 3s before controls fade out while playing
+    }
+  };
+
+  const resetIdleTimer = () => {
+    showControls();
+    startIdleTimer();
   };
 
   shell.addEventListener("mousemove", resetIdleTimer);
@@ -191,25 +195,19 @@ function initVimeo() {
     });
   };
 
-  // State Listeners (The "Truth" comes from the player events)
+  // State Listeners
   player.on("play", () => {
+    isPlaying = true;
     shell.classList.remove("is-paused");
     shell.classList.add("is-playing");
     resetIdleTimer();
   });
 
   player.on("pause", () => {
+    isPlaying = false;
     shell.classList.remove("is-playing", "is-idle");
     shell.classList.add("is-paused");
-    clearTimeout(idleTimer);
-  });
-
-  player.on("volumechange", (data) => {
-    if (data.volume === 0) {
-      shell.classList.add("is-muted");
-    } else {
-      shell.classList.remove("is-muted");
-    }
+    showControls();
   });
 
   // Interaction Listeners
@@ -228,20 +226,6 @@ function initVimeo() {
     playBtn.addEventListener("click", (e) => {
       e.stopPropagation();
       togglePlayback();
-    });
-  }
-
-  if (muteBtn) {
-    muteBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      player.getMuted().then((muted) => {
-        player.setMuted(!muted);
-        if (!muted) {
-          shell.classList.add("is-muted");
-        } else {
-          shell.classList.remove("is-muted");
-        }
-      });
     });
   }
 
@@ -271,31 +255,22 @@ function initVimeo() {
       const seekTime = (progress.value / 100) * duration;
       player.setCurrentTime(seekTime);
     });
-    // Prevent event bubbling so dragging doesn't trigger playback toggle
     progress.addEventListener("click", (e) => e.stopPropagation());
     progress.addEventListener("mousedown", (e) => e.stopPropagation());
+    progress.addEventListener("touchstart", (e) => e.stopPropagation(), { passive: true });
   }
 
   player.on("ended", () => {
+    isPlaying = false;
     shell.classList.remove("is-playing", "is-idle");
     shell.classList.add("is-paused");
   });
 
-  // Keyboard Shortcuts (Accessibility)
+  // Keyboard Shortcuts
   shell.addEventListener("keydown", (e) => {
     if (e.key === " " || e.key === "Enter") {
       e.preventDefault();
       togglePlayback();
-    }
-    if (e.key.toLowerCase() === "m") {
-      player.getMuted().then((m) => {
-        player.setMuted(!m);
-        if (!m) {
-          shell.classList.add("is-muted");
-        } else {
-          shell.classList.remove("is-muted");
-        }
-      });
     }
     if (e.key.toLowerCase() === "f") {
       player.requestFullscreen().catch(() => {
@@ -305,12 +280,12 @@ function initVimeo() {
   });
 }
 
-// Initialize with retry logic for CDN availability
+// Robust initialization for CDN availability
 function startVimeo() {
   if (typeof Vimeo !== "undefined") {
     initVimeo();
   } else {
-    // Retry every 100ms for up to 5 seconds
+    // Retry with exponential backoff or 100ms baseline
     let attempts = 0;
     const interval = setInterval(() => {
       attempts++;
@@ -320,6 +295,7 @@ function startVimeo() {
       } else if (attempts > 50) {
         clearInterval(interval);
         console.warn("Vimeo SDK failed to load within timeout.");
+        // Last-ditch: try to find script and re-inject if needed
       }
     }, 100);
   }

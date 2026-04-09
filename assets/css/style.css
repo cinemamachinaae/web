@@ -847,43 +847,55 @@ p {
 
 .js-ready .hero__word {
   opacity: 0;
-  transform: translateY(12px);
+  transform: translateY(8px);
   filter: blur(8px);
-  animation: wordReveal 1.2s var(--ease-out) forwards;
+  animation: wordReveal 2.2s var(--ease-out) forwards;
   will-change: transform, opacity, filter;
 }
 
 @keyframes wordReveal {
   0% {
     opacity: 0;
-    transform: translateY(12px) scale(0.99);
-    filter: blur(8px);
+    transform: translateY(8px);
+    filter: blur(10px);
+  }
+  20% {
+    opacity: 0;
   }
   100% {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
     filter: blur(0);
   }
 }
 
-/* Stagger Logic — Based on word index in the whole H1 */
-.js-ready .hero__word:nth-child(1) { animation-delay: 0.1s; }
-.js-ready .hero__word:nth-child(2) { animation-delay: 0.2s; }
-.js-ready .hero__word:nth-child(3) { animation-delay: 0.35s; } /* One Life */
+/* Stagger Logic — Gentle and Readable */
+.js-ready .hero__word:nth-child(1) { animation-delay: 0.2s; }  /* There's */
+.js-ready .hero__word:nth-child(2) { animation-delay: 0.4s; }  /* only */
+.js-ready .hero__word:nth-child(3) { 
+  animation-delay: 0.8s;
+  animation-duration: 2.8s; /* Extra slow and emphasizing "One Life" */
+}
 
 .hero__word-group {
   display: inline-block;
 }
 
 .hero__word--accent {
-  color: var(--bronze);
-  font-weight: 400;
-  text-shadow: 0 0 20px rgba(201, 169, 110, 0.15);
+  color: var(--bronze-light);
+  font-weight: 500;
+  font-style: italic;
+  font-family: var(--font-display);
+  text-shadow: 0 0 25px rgba(201, 169, 110, 0.15);
+  letter-spacing: 0.02em;
 }
 
 /* Second line staggers */
-.hero__word-group:nth-of-type(2) .hero__word:nth-child(1) { animation-delay: 0.6s; } /* to */
-.hero__word-group:nth-of-type(2) .hero__word:nth-child(2) { animation-delay: 0.75s; } /* Feel, Cinema */
+.hero__word-group:nth-of-type(2) .hero__word:nth-child(1) { animation-delay: 1.4s; } /* to */
+.hero__word-group:nth-of-type(2) .hero__word:nth-child(2) { 
+  animation-delay: 1.8s;
+  animation-duration: 3s; /* Extra slow and emphasizing "Feel, Cinema" */
+}
   position: relative;
 }
 
@@ -1362,22 +1374,20 @@ p {
   transition: transform 0.3s var(--ease-out);
 }
 
-/* 2. Optical Multiplier Mapping (vR5 Unified) */
-/* Ecosystem / Platforms (Standard unless specified) */
+/* 2. Optical Multiplier Mapping (Unified) */
 .logo--zidoo          { --logo-multiplier: 1.00; }
 .logo--dune           { --logo-multiplier: 1.02; }
 .logo--shield         { --logo-multiplier: 1.04; }
 .logo--appletv        { --logo-multiplier: 1.12; }
 .logo--coreelec       { --logo-multiplier: 1.10; }
-.logo--synology       { --logo-multiplier: 1.25; } /* Optimized for 3.5:1 core + mobile presence */
+.logo--synology       { --logo-multiplier: 1.35; filter: brightness(0) invert(1) brightness(0.98) !important; }
 .logo--plex           { --logo-multiplier: 1.00; }
 .logo--jellyfin       { --logo-multiplier: 1.00; }
 .logo--kodi           { --logo-multiplier: 1.00; }
 
-/* Codecs / Formats (Dense / Mass-compensated) */
-.logo--vision         { --logo-multiplier: 1.15; }
-.logo--dv             { --logo-multiplier: 1.15; }
-.logo--atmos          { --logo-multiplier: 0.88; } /* Normalized visually for better weight balance */
+/* Codecs / Formats */
+.logo--vision, .logo--dv { --logo-multiplier: 1.15; }
+.logo--atmos          { --logo-multiplier: 0.90; }
 .logo--truehd         { --logo-multiplier: 1.20; }
 .logo--dtshdma        { --logo-multiplier: 1.18; }
 .logo--dtsx           { --logo-multiplier: 1.18; }
@@ -1385,45 +1395,18 @@ p {
 .logo--hdr10          { --logo-multiplier: 1.12; }
 .logo--dolbydigital   { --logo-multiplier: 1.12; }
 
-/* ---------- CONTEXT 1: BADGE CHIPS ---------- */
-
-.format-badge-chip {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px 14px;
-  background: rgba(255, 255, 255, 0.035);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 8px;
-  min-height: 44px;
+/* ---------- CONTEXTS ---------- */
+.format-badge-chip img, .logo-chip img { 
+  --logo-base-h: 22px; 
 }
-
-.format-badge-chip img {
-  --logo-base-h: 22px;
-}
-
-/* ---------- CONTEXT 2: ECOSYSTEM STRIP ---------- */
 
 .ecosystem-strip__item img {
   --logo-base-h: 26px;
   opacity: 0.92;
 }
-.ecosystem-strip__item .logo--coreelec    { width: 38px; max-height: 15px !important; }
 
-.logo--synology {
-  filter: brightness(0) invert(1) brightness(0.98) !important;
-}
-
-/* ---------- CONTRAST TREATMENT (FINAL) ---------- */
-
-.logo--appletv,
-.logo--shield,
-.logo--jellyfin,
-.logo--synology,
-.logo--coreelec,
-.logo--kodi,
-.logo--zidoo,
-.logo--dune {
+.logo--appletv, .logo--shield, .logo--jellyfin, .logo--synology, 
+.logo--coreelec, .logo--kodi, .logo--zidoo, .logo--dune {
   filter: brightness(0) invert(1) brightness(0.9) !important;
 }
 
@@ -2132,14 +2115,10 @@ p {
   transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.vimeo-control-btn .icon-pause,
-.vimeo-control-btn .icon-muted { display: none; }
+.vimeo-control-btn .icon-pause { display: none; }
 
 .vimeo-shell.is-playing .vimeo-control-btn .icon-play { display: none; }
 .vimeo-shell.is-playing .vimeo-control-btn .icon-pause { display: block; opacity: 1; transform: scale(1); position: static; }
-
-.vimeo-shell.is-muted .vimeo-control-btn .icon-volume { display: none; }
-.vimeo-shell.is-muted .vimeo-control-btn .icon-muted { display: block; }
 
 .vimeo-control-btn:hover {
   transform: scale(1.1);
@@ -2324,18 +2303,7 @@ p {
 /* Based on asset measurement (500x140 trimmed) 
    Correction and visual balance now handled by central multiplier and chip rules */
 
-.logo--synology {
-  transform: scale(1.35); /* Optical match for 3.5:1 ratio vs other ecosystem wordmarks */
-  transform-origin: center center;
-}
-
-.format-badge-chip .logo--synology,
-.logo-chip .logo--synology {
-  width: auto !important;
-  height: 30px !important; /* Bumped for better optical mass */
-  max-width: 140px;
-  transform: none !important;
-}
+/* Consolidated synology scaling logic moved to central mapping */
 
 
 /* Cleaned redundant footer rules */
