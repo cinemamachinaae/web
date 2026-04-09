@@ -731,9 +731,9 @@ p {
 /* Stagger animations – Progressive Enhancement */
 .js-ready .hero__word {
   opacity: 0;
-  transform: translateY(12px);
-  filter: blur(4px);
-  animation: heroReveal 1.4s var(--ease-out) forwards;
+  transform: translateY(16px);
+  filter: blur(8px);
+  animation: heroReveal 2.8s var(--ease-out) forwards;
 }
 
 @keyframes heroReveal {
@@ -745,11 +745,11 @@ p {
 }
 
 /* Stagger by groups – Refined and less busy */
-.js-ready .hero__word-group:nth-child(1) .hero__word:nth-child(1) { animation-delay: 0.1s; }
-.js-ready .hero__word-group:nth-child(1) .hero__word:nth-child(2) { animation-delay: 0.15s; }
-.js-ready .hero__word-group:nth-child(1) .hero__word:nth-child(3) { animation-delay: 0.3s; }
-.js-ready .hero__word-group:nth-child(3) .hero__word:nth-child(1) { animation-delay: 0.45s; }
-.js-ready .hero__word-group:nth-child(3) .hero__word:nth-child(2) { animation-delay: 0.6s; }
+.js-ready .hero__word-group:nth-child(1) .hero__word:nth-child(1) { animation-delay: 0.15s; }
+.js-ready .hero__word-group:nth-child(1) .hero__word:nth-child(2) { animation-delay: 0.3s; }
+.js-ready .hero__word-group:nth-child(1) .hero__word:nth-child(3) { animation-delay: 0.5s; }
+.js-ready .hero__word-group:nth-child(3) .hero__word:nth-child(1) { animation-delay: 0.8s; }
+.js-ready .hero__word-group:nth-child(3) .hero__word:nth-child(2) { animation-delay: 1.1s; }
 
 /* Premium Accent Styling */
 .hero__word--accent {
@@ -761,14 +761,14 @@ p {
 }
 
 .js-ready .hero__word--accent {
-  animation: heroReveal 1.6s var(--ease-out) forwards,
-             bronzeLustre 12s ease-in-out infinite alternate;
+  animation: heroReveal 2.8s var(--ease-out) forwards,
+             bronzeLustre 8s ease-in-out infinite alternate;
 }
 
 @keyframes bronzeLustre {
-  0% { color: var(--bronze); filter: brightness(1); }
-  50% { color: var(--bronze-light); filter: brightness(1.2); }
-  100% { color: var(--bronze); filter: brightness(1); }
+  0%   { color: var(--bronze); text-shadow: 0 0 0px transparent; }
+  50%  { color: var(--bronze-light); text-shadow: 0 0 16px rgba(201,169,110,0.35); }
+  100% { color: var(--bronze); text-shadow: 0 0 0px transparent; }
 }
 
 .hero__bg {
@@ -1155,30 +1155,41 @@ p {
 
 .process-visual-layer {
   position: relative;
-  height: 24px;
+  height: 40px;
   width: 100%;
   margin-bottom: 24px;
 }
 
-.process-connection-line {
+.process-flow-diagram {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: 0;
+  overflow: visible;
 }
 
 .process-line-flow {
-  stroke-dasharray: 20 10;
-  animation: flowLine 30s linear infinite;
-  opacity: 0.6;
+  stroke-dasharray: 20 80;
+  stroke-linecap: round;
+  animation: flowLine 2s linear infinite;
+  opacity: 0.85;
 }
 
 @keyframes flowLine {
   to {
-    stroke-dashoffset: -1000;
+    stroke-dashoffset: -100;
   }
+}
+
+.process-node--pulse {
+  animation: nodePulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes nodePulse {
+  0% { transform: scale(1); fill: var(--bg); filter: drop-shadow(0 0 2px var(--bronze-dim)); }
+  100% { transform: scale(1.15); fill: var(--bronze-dim); filter: drop-shadow(0 0 8px var(--bronze)); }
 }
 
 .step {
@@ -1542,14 +1553,14 @@ p {
 .logo--kodi           { --logo-multiplier: 1.00; }
 
 /* Codecs / Formats */
-.logo--vision, .logo--dv { --logo-multiplier: 1.15; }
-.logo--atmos          { --logo-multiplier: 0.90; }
-.logo--truehd         { --logo-multiplier: 1.20; }
-.logo--dtshdma        { --logo-multiplier: 1.18; }
-.logo--dtsx           { --logo-multiplier: 1.18; }
-.logo--hdr10plus      { --logo-multiplier: 1.15; }
-.logo--hdr10          { --logo-multiplier: 1.12; }
-.logo--dolbydigital   { --logo-multiplier: 1.12; }
+.logo--vision, .logo--dv { --logo-multiplier: 1.05; }
+.logo--atmos          { --logo-multiplier: 0.85; }
+.logo--truehd         { --logo-multiplier: 1.15; }
+.logo--dtshdma        { --logo-multiplier: 1.15; }
+.logo--dtsx           { --logo-multiplier: 1.15; }
+.logo--hdr10plus      { --logo-multiplier: 1.10; }
+.logo--hdr10          { --logo-multiplier: 1.08; }
+.logo--dolbydigital   { --logo-multiplier: 1.08; }
 
 /* ---------- CONTEXTS ---------- */
 .format-badge-chip img, .logo-chip img { 
@@ -2573,7 +2584,7 @@ p {
       margin-top: 2.5rem;
       flex-wrap: wrap;
       opacity: 0;
-      animation: fadeUp 1s 1s var(--ease-out) forwards;
+      animation: fadeUp 1.5s 2.2s var(--ease-out) forwards;
     }
 
     /* ── UTILITY REPLACEMENTS ── */

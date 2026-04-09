@@ -188,6 +188,7 @@ function initVimeo() {
   const togglePlayback = () => {
     player.getPaused().then((paused) => {
       if (paused) {
+        player.setVolume(1).catch(() => {});
         player.play();
       } else {
         player.pause();

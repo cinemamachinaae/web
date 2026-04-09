@@ -6,7 +6,7 @@
   <title>About — Cinema Machina</title>
   <meta name="description" content="Cinema Machina is a premium playback and media-environment specialist working in the hidden layer between your hardware and the final image on screen." />
   <link rel="icon" type="image/png" href="assets/logos/cm-logo-square.png" />
-  <link rel="stylesheet" href="assets/css/style.css?v=3.6" />
+  <link rel="stylesheet" href="assets/css/style.css?v=3.7" />
   <style>
     /* ── WHAT WE ARE / ARE NOT ── */
     .identity-grid {
@@ -413,9 +413,13 @@
     </div>
 
     <div class="process-visual-layer reveal reveal-delay-1">
-      <svg class="process-connection-line" viewBox="0 0 1000 24" preserveAspectRatio="none">
-        <line x1="16.66%" y1="12" x2="83.33%" y2="12" stroke="var(--border)" stroke-width="1" />
-        <line x1="16.66%" y1="12" x2="83.33%" y2="12" stroke="var(--bronze-dim)" stroke-width="2" class="process-line-flow" />
+      <svg class="process-flow-diagram" viewBox="0 0 1000 40" preserveAspectRatio="none">
+        <line x1="16.66%" y1="20" x2="83.33%" y2="20" stroke="var(--border)" stroke-width="1" stroke-dasharray="4 4" />
+        <line x1="16.66%" y1="20" x2="83.33%" y2="20" stroke="var(--bronze-light)" stroke-width="1.5" class="process-line-flow" />
+        
+        <circle cx="16.66%" cy="20" r="4" fill="var(--bg)" stroke="var(--bronze)" stroke-width="1.5" />
+        <circle cx="50%" cy="20" r="5" fill="var(--bg)" stroke="var(--bronze)" stroke-width="2" class="process-node--pulse" />
+        <circle cx="83.33%" cy="20" r="4" fill="var(--bronze)" />
       </svg>
     </div>
 
