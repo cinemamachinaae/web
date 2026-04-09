@@ -148,67 +148,77 @@ function initVimeo() {
   let duration = 0;
   let idleTimer;
 
-  // Formatting helpers
+  // Formatting helper (MM:SS)
   const formatTime = (s) => {
     const min = Math.floor(s / 60);
     const sec = Math.floor(s % 60);
     return `${min}:${sec < 10 ? "0" : ""}${sec}`;
   };
 
-  const updateTimeDisplay = (current, total) => {
-    if (timeDisplay) timeDisplay.textContent = `${formatTime(current)} / ${formatTime(total)}`;
+  const updateTimeUI = (current, total) => {
+    if (timeDisplay) {
+      timeDisplay.textContent = `${formatTime(current)} / ${formatTime(total)}`;
+    }
   };
 
-  // Idle state management (0.5s per user request)
+  // Idle state management (500ms)
   const resetIdleTimer = () => {
     shell.classList.remove("is-idle");
     clearTimeout(idleTimer);
-    idleTimer = setTimeout(() => {
-      player.getPaused().then((paused) => {
-        if (!paused) shell.classList.add("is-idle");
-      });
-    }, 500);
+    
+    // Only go idle if we are actually playing
+    player.getPaused().then((paused) => {
+      if (!paused) {
+        idleTimer = setTimeout(() => {
+          shell.classList.add("is-idle");
+        }, 500);
+      }
+    });
   };
 
   shell.addEventListener("mousemove", resetIdleTimer);
   shell.addEventListener("touchstart", resetIdleTimer, { passive: true });
   shell.addEventListener("keydown", resetIdleTimer);
 
-  // Core Playback Toggle
+  // Shell playback toggle
   const togglePlayback = () => {
     player.getPaused().then((paused) => {
       if (paused) {
         player.play();
-        shell.classList.add("is-playing");
-        updatePlayIcons(true);
-        resetIdleTimer();
       } else {
         player.pause();
-        shell.classList.remove("is-playing");
-        updatePlayIcons(false);
       }
     });
   };
 
-  const updatePlayIcons = (isPlaying) => {
-    if (playBtn) {
-      playBtn.querySelector(".play-path").style.display = isPlaying ? "none" : "block";
-      playBtn.querySelector(".pause-path").style.display = isPlaying ? "block" : "none";
-    }
-  };
-
-  const updateMuteIcons = (isMuted) => {
-    if (muteBtn) {
-      muteBtn.querySelector(".mute-off").style.display = isMuted ? "none" : "block";
-      muteBtn.querySelector(".mute-on").style.display = isMuted ? "block" : "none";
-    }
-  };
-
-  // Event Listeners
-  surfaceToggle.addEventListener("click", (e) => {
-    e.stopPropagation();
-    togglePlayback();
+  // State Listeners (The "Truth" comes from the player events)
+  player.on("play", () => {
+    shell.classList.remove("is-paused");
+    shell.classList.add("is-playing");
+    resetIdleTimer();
   });
+
+  player.on("pause", () => {
+    shell.classList.remove("is-playing", "is-idle");
+    shell.classList.add("is-paused");
+    clearTimeout(idleTimer);
+  });
+
+  player.on("volumechange", (data) => {
+    if (data.volume === 0) {
+      shell.classList.add("is-muted");
+    } else {
+      shell.classList.remove("is-muted");
+    }
+  });
+
+  // Interaction Listeners
+  if (surfaceToggle) {
+    surfaceToggle.addEventListener("click", (e) => {
+      e.stopPropagation();
+      togglePlayback();
+    });
+  }
   
   shell.addEventListener("click", () => {
     togglePlayback();
@@ -226,7 +236,11 @@ function initVimeo() {
       e.stopPropagation();
       player.getMuted().then((muted) => {
         player.setMuted(!muted);
-        updateMuteIcons(!muted);
+        if (!muted) {
+          shell.classList.add("is-muted");
+        } else {
+          shell.classList.remove("is-muted");
+        }
       });
     });
   }
@@ -240,15 +254,15 @@ function initVimeo() {
     });
   }
 
-  // Progress Bar
+  // Progress & Time Sync
   player.getDuration().then((d) => {
     duration = d;
-    updateTimeDisplay(0, duration);
+    updateTimeUI(0, duration);
   });
 
   player.on("timeupdate", (data) => {
     const current = data.seconds;
-    updateTimeDisplay(current, duration);
+    updateTimeUI(current, duration);
     if (progress) progress.value = (current / duration) * 100;
   });
 
@@ -257,12 +271,14 @@ function initVimeo() {
       const seekTime = (progress.value / 100) * duration;
       player.setCurrentTime(seekTime);
     });
+    // Prevent event bubbling so dragging doesn't trigger playback toggle
     progress.addEventListener("click", (e) => e.stopPropagation());
+    progress.addEventListener("mousedown", (e) => e.stopPropagation());
   }
 
   player.on("ended", () => {
-    shell.classList.remove("is-playing");
-    updatePlayIcons(false);
+    shell.classList.remove("is-playing", "is-idle");
+    shell.classList.add("is-paused");
   });
 
   // Keyboard Shortcuts (Accessibility)
@@ -272,15 +288,22 @@ function initVimeo() {
       togglePlayback();
     }
     if (e.key.toLowerCase() === "m") {
-      player.getMuted().then(m => {
+      player.getMuted().then((m) => {
         player.setMuted(!m);
-        updateMuteIcons(!m);
+        if (!m) {
+          shell.classList.add("is-muted");
+        } else {
+          shell.classList.remove("is-muted");
+        }
       });
     }
     if (e.key.toLowerCase() === "f") {
-      player.requestFullscreen();
+      player.requestFullscreen().catch(() => {
+        if (iframe.requestFullscreen) iframe.requestFullscreen();
+      });
     }
   });
+}
 }
 
 // Initialize on DOM load
