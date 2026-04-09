@@ -1782,10 +1782,247 @@ p {
   color: rgba(255,255,255,0.52);
 }
 
-/* mobile cards */
-.comparison-mobile-cards {
-  display: none;
+/* ── LOGO SCALING (TOKEN SYSTEM) ── */
+.comparison-brand-logo { 
+  height: clamp(28px, 4vw, 36px); 
+  width: auto; 
+  display: block; 
 }
+
+.logo--atmos       { height: 16px; width: auto; }
+.logo--truehd      { height: 15px; width: auto; }
+.logo--dtshdma     { height: 16px; width: auto; }
+.logo--dtsx        { height: 14px; width: auto; }
+.logo--hdr10       { height: 14px; width: auto; }
+.logo--hdr10plus   { height: 13px; width: auto; }
+.logo--dv          { height: 15px; width: auto; }
+.logo--dolbydigital { height: 14px; width: auto; }
+
+.logo--appletv     { height: 26px; width: auto; }
+.logo--shield      { height: 24px; width: auto; }
+.logo--dune        { height: 20px; width: auto; }
+.logo--zidoo       { height: 18px; width: auto; }
+.logo--plex        { height: 22px; width: auto; }
+.logo--infuse      { height: 22px; width: auto; }
+.logo--kodi        { height: 22px; width: auto; }
+.logo--synology    { height: 20px; width: auto; }
+
+/* ── VIDEO WRAPPER & VIMEO CUSTOM UI ── */
+.vimeo-shell {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #000;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.vimeo-shell iframe {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+}
+
+.vimeo-poster {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: opacity 0.5s ease;
+}
+
+.vimeo-shell.is-playing .vimeo-poster {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.vimeo-poster__play {
+  background: var(--bronze);
+  color: #000;
+  border: none;
+  padding: 1rem 2rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.vimeo-controls {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  z-index: 5;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.vimeo-shell:hover .vimeo-controls,
+.vimeo-shell.is-playing:hover .vimeo-controls {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.vimeo-control-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+}
+
+.vimeo-progress-wrap {
+  flex: 1;
+  height: 2px;
+  background: rgba(255,255,255,0.2);
+  position: relative;
+}
+
+.vimeo-progress {
+  width: 100%;
+  accent-color: var(--bronze);
+}
+
+.vimeo-time {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.7);
+  min-width: 80px;
+}
+
+/* ── RESPONSIVE COMPONENTS ── */
+.table-responsive-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.audio-format-cards {
+  display: none;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.audio-format-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+}
+
+.audio-format-card__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.audio-format-card__logo {
+  height: 18px;
+  width: auto;
+}
+
+.audio-format-card__row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8125rem;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .table-responsive-wrapper { display: none; }
+  .audio-format-cards { display: grid; }
+  .vimeo-controls { display: none; }
+  .vimeo-shell iframe { pointer-events: auto; }
+}
+  }
+}
+
+.comparison-brand-logo {
+  height: 44px;
+  width: auto;
+  margin-bottom: 1.5rem;
+  display: block;
+  opacity: 0.96;
+}
+
+.footer-brand-logo {
+  height: 40px;
+  width: auto;
+  display: block;
+  opacity: 0.98;
+}
+
+@media (max-width: 768px) {
+  .comparison-brand-logo { height: 40px; }
+  .footer-brand-logo { height: 36px; }
+}
+
+/* Custom Video Controls */
+.vimeo-poster {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s ease;
+}
+.vimeo-poster.is-hidden { opacity: 0; pointer-events: none; }
+.vimeo-poster__play {
+  background: var(--bronze);
+  color: black;
+  border: none;
+  padding: 1rem 2rem;
+  font-family: var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.vimeo-poster__play:hover { transform: scale(1.05); }
+
+.vimeo-controls {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, transparent 100%);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.vimeo-shell:hover .vimeo-controls { opacity: 1; }
+.vimeo-control-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+}
+.vimeo-progress-wrap { flex: 1; display: flex; align-items: center; }
+.vimeo-progress-wrap input { width: 100%; cursor: pointer; accent-color: var(--bronze); }
+.vimeo-time { font-family: var(--font-body); font-size: 0.7rem; color: rgba(255,255,255,0.7); min-width: 80px; }
 
 .comparison-device-card {
   border: 1px solid rgba(255,255,255,0.10);
@@ -1887,18 +2124,7 @@ p {
 }
 
 
-/* ---------- FOOTER BRAND LOCKUP ---------- */
-
-.footer__brand img {
-  height: 32px !important;
-  opacity: 0.96 !important;
-}
-
-@media (max-width: 768px) {
-  .footer__brand img {
-    height: 34px !important;
-  }
-}
+/* Cleaned redundant footer rules */
 
 
 /* ---------- CTA SECTIONS — BREATHING SPACE ---------- */
@@ -2000,6 +2226,24 @@ p {
   position: relative;
   z-index: 3;
 }
+
+    .hero__actions {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 1s 1s var(--ease-out) forwards;
+    }
+
+    /* ── UTILITY REPLACEMENTS ── */
+    .text-center { text-align: center; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+    .mb-3 { margin-bottom: 3rem; }
+    .mt-4 { margin-top: 4rem; }
+    .section-center-header { text-align: center; max-width: 700px; margin: 0 auto 3rem; }
 
 .hero__button-row {
   display: flex;
@@ -2127,121 +2371,21 @@ p {
 
 
 
-/* ============================================================
-   FINAL PRODUCTION-GRADE POLISH vR3.0
-   ============================================================ */
-
-/* 1. HOMEPAGE MOBILE HERO CTA REPAIR */
-@media (max-width: 768px) {
-  .hero__actions,
-  .hero__actions--stack-safe {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    gap: 14px !important;
-    width: 100% !important;
-    margin-top: 1.5rem !important;
-  }
-
-  .hero__button-row {
-    display: grid !important;
-    grid-template-columns: 1fr !important;
-    gap: 12px !important;
-    width: 100% !important;
-  }
-
-  .hero__button-row .btn,
-  .hero__actions .btn,
-  .hero__actions--stack-safe .btn {
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 100% !important;
-    min-height: 54px !important;
-    padding: 0 18px !important;
-    text-align: center !important;
-    text-decoration: none !important;
-    opacity: 1 !important;
-    font-size: 14px !important;
-    letter-spacing: 0.12em !important;
-    text-transform: uppercase !important;
-    font-family: var(--font-body) !important;
-  }
-
-  .hero__scroll-wrap {
-    margin-top: 1.5rem !important;
-  }
-
-  .hero__scroll-link {
-    display: inline-flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 8px !important;
-  }
+/* Global reveal normalization */
+.reveal {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.85s var(--ease-out), transform 0.85s var(--ease-out);
 }
 
-/* 2. AUDIO FORMAT AVAILABILITY MOBILE FIX (Cards vs Table) */
-.audio-format-cards {
-  display: none;
+.js-ready .reveal {
+  opacity: 0;
+  transform: translateY(24px);
 }
 
-@media (max-width: 768px) {
-  .format-table-wrapper {
-    display: none !important;
-  }
-  
-  .audio-format-cards {
-    display: grid;
-    gap: 16px;
-    margin-top: 2rem;
-  }
-  
-  .audio-format-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 16px;
-    padding: 20px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-  }
-  
-  .audio-format-card__head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 12px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  }
-  
-  .audio-format-card__logo {
-    max-height: 20px;
-    width: auto;
-    filter: brightness(0) invert(1);
-    opacity: 0.9;
-  }
-  
-  .audio-format-card__spec {
-    font-size: 13px;
-    color: var(--bronze);
-    letter-spacing: 0.05em;
-  }
-  
-  .audio-format-card__row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 13px;
-    margin-top: 10px;
-  }
-  
-  .audio-format-card__label {
-    color: var(--text-muted);
-  }
-  
-  .audio-format-card__value {
-    color: rgba(255, 255, 255, 0.82);
-    font-weight: 500;
-  }
+.js-ready .reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* 3. SYNOLOGY CHIP BALANCE FIX — Unified with central multipliers */
@@ -2284,87 +2428,9 @@ p {
 .feature-brand__img.logo--dtshdma   { max-height: 14px; }
 .feature-brand__img.logo--dtsx      { max-height: 14px; }
 
-/* 5. FOOTER BRAND SCALE */
-.footer__brand img,
-.footer-brand img,
-.footer-logo img {
-  height: 38px !important;
-  width: auto !important;
-  opacity: 0.98 !important;
-  transition: opacity 0.3s ease;
-}
+/* Cleaned duplicate footer scale */
 
-.footer__brand img:hover {
-  opacity: 1 !important;
-}
-
-@media (max-width: 768px) {
-  .footer__brand img,
-  .footer-brand img,
-  .footer-logo img {
-    height: 38px !important; /* Increased for mobile presence */
-  }
-}
-
-/* ---------- SECTION-SPECIFIC LOGO NORMALIZATION (Final vR6) ---------- */
-
-/* Homepage comparison block — Streaming vs Configured Excellence */
-.comparison-col--good .format-badge-chip .logo--vision { height: 18px !important; }
-.comparison-col--good .format-badge-chip .logo--atmos { height: 18px !important; }
-.comparison-col--good .format-badge-chip .logo--truehd { height: 18px !important; }
-.comparison-col--good .format-badge-chip .logo--dtshdma { height: 18px !important; }
-.comparison-col--good .format-badge-chip .logo--dtsx { height: 18px !important; }
-.comparison-col--good .format-badge-chip .logo--hdr10 { height: 18px !important; }
-
-/* Homepage audio-format table — "Not all audio is created equal" */
-.format-table .format-badge-chip .logo--atmos { height: 16px !important; }
-.format-table .format-badge-chip .logo--dtsx { height: 16px !important; }
-.format-table .format-badge-chip .logo--truehd { height: 18px !important; }
-.format-table .format-badge-chip .logo--dtshdma { height: 18px !important; }
-
-/* Why Setup Matters comparison feature logos (first column grid) */
-.feature-brand__img.logo--dv { height: 21px !important; }
-.feature-brand__img.logo--hdr10plus { height: 20px !important; }
-.feature-brand__img.logo--hdr10 { height: 18px !important; }
-.feature-brand__img.logo--atmos { height: 20px !important; }
-.feature-brand__img.logo--truehd { height: 25px !important; }
-.feature-brand__img.logo--dtshdma { height: 24px !important; }
-.feature-brand__img.logo--dtsx { height: 23px !important; }
-
-/* Why Setup Matters — black strip / bottom badges */
-.cta-full .format-badges .format-badge-chip,
-section[style*="padding-top: 4rem"] .format-badges .format-badge-chip {
-  min-height: 40px !important;
-  padding: 7px 13px !important;
-}
-
-.cta-full .format-badges .logo--vision,
-section[style*="padding-top: 4rem"] .format-badges .logo--vision { height: 16px !important; }
-
-.cta-full .format-badges .logo--atmos,
-section[style*="padding-top: 4rem"] .format-badges .logo--atmos { height: 16px !important; }
-
-.cta-full .format-badges .logo--truehd,
-section[style*="padding-top: 4rem"] .format-badges .logo--truehd { height: 15px !important; }
-
-.cta-full .format-badges .logo--dtshdma,
-section[style*="padding-top: 4rem"] .format-badges .logo--dtshdma { height: 15px !important; }
-
-.cta-full .format-badges .logo--dtsx,
-section[style*="padding-top: 4rem"] .format-badges .logo--dtsx { height: 15px !important; }
-
-.cta-full .format-badges .logo--hdr10,
-section[style*="padding-top: 4rem"] .format-badges .logo--hdr10 { height: 15px !important; }
-
-@media (max-width: 768px) {
-  .feature-brand__img.logo--dv { height: 18px !important; }
-  .feature-brand__img.logo--hdr10plus { height: 18px !important; }
-  .feature-brand__img.logo--hdr10 { height: 16px !important; }
-  .feature-brand__img.logo--atmos { height: 18px !important; }
-  .feature-brand__img.logo--truehd { height: 21px !important; }
-  .feature-brand__img.logo--dtshdma { height: 20px !important; }
-  .feature-brand__img.logo--dtsx { height: 20px !important; }
-}
+/* Homepage normalization consolidated in brand classes */
 
 /* ── MOBILE TABLE RESPONSIVENESS ── */
 .table-responsive-wrapper {

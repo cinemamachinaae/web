@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cinema Machina — Premium Playback & Media Environment Specialists, UAE</title>
-  <meta name="description" content="Cinema Machina delivers premium playback configuration, media library refinement, and signal-path optimisation for luxury home cinema systems in the UAE." />
+  <meta name="description" content="Cinema Machina optimizes luxury home cinema systems in the UAE for reference-grade playback, lossless audio, and full-performance video delivery." />
   <link rel="icon" type="image/png" href="assets/logos/cm-logo-square.png" />
   <link rel="stylesheet" href="assets/css/style.css?v=2.9" />
   <style>
@@ -439,11 +439,11 @@
 <section class="intro-section section" id="intro">
   <div class="container">
     <div class="reveal">
-      <div class="section-label" style="justify-content:center; text-align: center;">
+      <div class="section-center-header">
         <span class="label">The Cinema Machina Approach</span>
+        <h2 class="display-md">We Believe in the Power of a “Well-Set-Up”<br />No Compromise When It Comes to the Cinema Experience.</h2>
       </div>
-      <h2 class="display-md" style="text-align:center;">We Believe in the Power of a “Well-Set-Up”<br />No Compromise When It Comes to the Cinema Experience.</h2>
-      <p style="text-align:center; margin: 0 auto;">
+      <p class="text-center mx-auto" style="max-width: 800px;">
         Great hardware alone can’t deliver the finest results.<br />
         Source quality, playback software, device configuration, and the signal path all work together.<br />
         Cinema Machina specializes in optimizing that hidden layer, bringing the entire system into<br />
@@ -451,7 +451,7 @@
       </p>
     </div>
 
-    <div class="stat-row" style="margin-top:4rem;">
+    <div class="stat-row mt-4">
       <div class="stat-block reveal reveal-delay-1">
         <span class="stat-block__number">4K</span>
         <span class="stat-block__label">True lossless delivery</span>
@@ -467,6 +467,43 @@
       <div class="stat-block reveal reveal-delay-4">
         <span class="stat-block__number">UAE</span>
         <span class="stat-block__label">Luxury home specialists</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ VIMEO DEMO (MOVED UP) ═══════════════════ -->
+<section class="section--tight" id="demo">
+  <div class="container">
+    <div class="reveal section-center-header">
+      <span class="label">The Output</span>
+      <h2 class="display-md">Precision playback.<br />In action.</h2>
+    </div>
+    <div class="reveal reveal-delay-1">
+      <div class="video-wrapper">
+        <div class="vimeo-shell" id="cinema-vimeo-shell">
+          <iframe
+            id="cinema-machina-vimeo"
+            src="https://player.vimeo.com/video/1180098392?background=1&amp;muted=1&amp;playsinline=1&amp;dnt=1"
+            allow="autoplay; fullscreen"
+            loading="lazy"
+            title="Cinema Machina — Premium Playback Demo"
+          ></iframe>
+          
+          <div class="vimeo-poster">
+            <button class="vimeo-poster__play">Experience Playback</button>
+          </div>
+
+          <div class="vimeo-controls">
+            <button class="vimeo-control-btn js-vimeo-toggle">Play</button>
+            <div class="vimeo-progress-wrap">
+              <input type="range" class="vimeo-progress" value="0" step="0.1">
+            </div>
+            <span class="vimeo-time">0:00 / 0:00</span>
+            <button class="vimeo-control-btn js-vimeo-mute">Mute</button>
+            <button class="vimeo-control-btn js-vimeo-fs">Fullscreen</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -547,34 +584,7 @@
 
 <div class="divider"></div>
 
-<!-- ═══════════════════ VIMEO DEMO ═══════════════════ -->
-<section class="section--tight" id="demo">
-  <div class="container">
-    <div class="reveal" style="text-align:center;max-width:700px;margin:0 auto 3rem;">
-      <div class="section-label" style="justify-content:center;">
-        <span class="label">The Output</span>
-      </div>
-      <h2 class="display-md">Precision playback.<br />In action.</h2>
-    </div>
-    <div class="reveal reveal-delay-1">
-      <div class="video-wrapper video-wrapper--interactive">
-        <div class="vimeo-shell" id="cinema-vimeo-shell">
-          <iframe
-            id="cinema-machina-vimeo"
-            src="https://player.vimeo.com/video/1180098392?muted=1&amp;controls=0&amp;playsinline=1&amp;dnt=1"
-            allow="autoplay; fullscreen; picture-in-picture"
-            loading="lazy"
-            title="Cinema Machina — Premium Playback Demo"
-          ></iframe>
-          <button class="vimeo-overlay" id="vimeo-overlay" aria-label="Play Cinema Machina demo">
-            <span class="play-btn">Play Film</span>
-            <span class="play-caption">Experience Playback</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- VIMEO DEMO (OLD POSITION REMOVED) -->
 
 <!-- ═══════════════════ SERVICES OVERVIEW ═══════════════════ -->
 <section class="services-overview" id="services">
@@ -689,7 +699,7 @@
       </div>
       <div class="comparison-col comparison-col--good">
         <div class="column-brand-lockup">
-          <img src="assets/logos/cm-logo-horizontal.png" alt="Cinema Machina" style="height: 32px; margin-bottom: 1.5rem;" />
+          <img src="assets/logos/cm-logo-horizontal.png" alt="Cinema Machina" class="comparison-brand-logo mx-auto" />
         </div>
         <ul>
           <li>Full bitrate remux — 50–120 Mbps</li>
@@ -740,57 +750,107 @@
     </div>
 
     <div class="reveal">
-      <table class="comparison-table" aria-label="Format capability matrix">
-        <thead>
-          <tr>
-            <th style="width: 30%;">Format</th>
-            <th style="width: 35%;">Streaming Services</th>
-            <th style="width: 35%;">Cinema Machina Configured</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <div class="format-badge-chip" style="margin-bottom: 0.5rem; display: inline-flex;"><img src="assets/logos/dolby-atmos.png" alt="Dolby Atmos" class="logo--atmos" /></div>
-              <div style="font-size: 0.75rem; color: var(--text-muted); max-width: 250px;">Object-based spatial audio</div>
-            </td>
-            <td>Lossy delivery only<br><span style="font-size: 0.75rem; color: var(--text-muted);">(Compressed bed-channel)</span></td>
-            <td class="check">Full Lossless Delivery<br><span style="font-size: 0.75rem; color: var(--bronze-dim);">Bit-perfect passthrough</span></td>
-          </tr>
-          <tr>
-            <td>
-              <div class="format-badge-chip" style="margin-bottom: 0.5rem; display: inline-flex;"><img src="assets/logos/dolby-truehd.png" alt="Dolby TrueHD" class="logo--truehd" /></div>
-              <div style="font-size: 0.75rem; color: var(--text-muted); max-width: 250px;">Lossless</div>
-            </td>
-            <td class="cross">Unavailable</td>
-            <td class="check">Full Lossless Passthrough</td>
-          </tr>
-          <tr>
-            <td>
-              <div class="format-badge-chip" style="margin-bottom: 0.5rem; display: inline-flex;"><img src="assets/logos/dts-hd-ma.png" alt="DTS-HD Master Audio" class="logo--dtshdma" /></div>
-              <div style="font-size: 0.75rem; color: var(--text-muted); max-width: 250px;">Lossless home-cinema format with DTS core fallback</div>
-            </td>
-            <td class="cross">Unavailable</td>
-            <td class="check">Full Lossless Passthrough</td>
-          </tr>
-          <tr>
-            <td>
-              <div class="format-badge-chip" style="margin-bottom: 0.5rem; display: inline-flex;"><img src="assets/logos/dts-x.png" alt="DTS:X" class="logo--dtsx" /></div>
-              <div style="font-size: 0.75rem; color: var(--text-muted); max-width: 250px;">Object-based spatial audio</div>
-            </td>
-            <td class="cross">Unavailable</td>
-            <td class="check">Full Lossless Passthrough</td>
-          </tr>
-          <tr>
-            <td>
-              <div class="format-badge-chip" style="margin-bottom: 0.5rem; display: inline-flex;"><img src="assets/logos/dolby-digital.png" alt="Dolby Digital" class="logo--dolbydigital" /></div>
-              <div style="font-size: 0.75rem; color: var(--text-muted); max-width: 250px;">Lossy</div>
-            </td>
-            <td class="check" style="color: var(--text-primary);">Standard delivery format</td>
-            <td class="check">Supported</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-responsive-wrapper">
+        <table class="comparison-table" aria-label="Format capability matrix">
+          <thead>
+            <tr>
+              <th style="width: 30%;">Format</th>
+              <th style="width: 35%;">Streaming Services</th>
+              <th style="width: 35%;">Cinema Machina Configured</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="format-badge-chip" style="margin-bottom: 0.5rem; display: inline-flex;"><img src="assets/logos/dolby-atmos.png" alt="Dolby Atmos" class="logo--atmos" /></div>
+                <div style="font-size: 0.75rem; color: var(--text-muted); max-width: 250px;">Object-based spatial audio</div>
+              </td>
+              <td>Lossy delivery only<br><span style="font-size: 0.75rem; color: var(--text-muted);">(Compressed bed-channel)</span></td>
+              <td class="check">Full Lossless Delivery<br><span style="font-size: 0.75rem; color: var(--bronze-dim);">Bit-perfect passthrough</span></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="format-badge-chip" style="margin-bottom: 0.5rem; display: inline-flex;"><img src="assets/logos/dolby-truehd.png" alt="Dolby TrueHD" class="logo--truehd" /></div>
+                <div style="font-size: 0.75rem; color: var(--text-muted); max-width: 250px;">Lossless</div>
+              </td>
+              <td class="cross">Unavailable</td>
+              <td class="check">Full Lossless Passthrough</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="format-badge-chip" style="margin-bottom: 0.5rem; display: inline-flex;"><img src="assets/logos/dts-hd-ma.png" alt="DTS-HD Master Audio" class="logo--dtshdma" /></div>
+                <div style="font-size: 0.75rem; color: var(--text-muted); max-width: 250px;">Lossless home-cinema format with DTS core fallback</div>
+              </td>
+              <td class="cross">Unavailable</td>
+              <td class="check">Full Lossless Passthrough</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="format-badge-chip" style="margin-bottom: 0.5rem; display: inline-flex;"><img src="assets/logos/dts-x.png" alt="DTS:X" class="logo--dtsx" /></div>
+                <div style="font-size: 0.75rem; color: var(--text-muted); max-width: 250px;">Object-based spatial audio</div>
+              </td>
+              <td class="cross">Unavailable</td>
+              <td class="check">Full Lossless Passthrough</td>
+            </tr>
+            <tr>
+              <td>
+                <div class="format-badge-chip" style="margin-bottom: 0.5rem; display: inline-flex;"><img src="assets/logos/dolby-digital.png" alt="Dolby Digital" class="logo--dolbydigital" /></div>
+                <div style="font-size: 0.75rem; color: var(--text-muted); max-width: 250px;">Lossy</div>
+              </td>
+              <td class="check" style="color: var(--text-primary);">Standard delivery format</td>
+              <td class="check">Supported</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Mobile Fallback Cards -->
+      <div class="audio-format-cards">
+        <div class="audio-format-card">
+          <div class="audio-format-card__head">
+            <img src="assets/logos/dolby-atmos.png" alt="Dolby Atmos" class="audio-format-card__logo">
+            <span class="audio-format-card__spec">ATMOS</span>
+          </div>
+          <div class="audio-format-card__row">
+            <span class="audio-format-card__label">Streaming</span>
+            <span class="audio-format-card__value">Lossy (DD+)</span>
+          </div>
+          <div class="audio-format-card__row">
+            <span class="audio-format-card__label">Cinema Machina</span>
+            <span class="audio-format-card__value" style="color: var(--bronze)">TrueHD Lossless</span>
+          </div>
+        </div>
+
+        <div class="audio-format-card">
+          <div class="audio-format-card__head">
+            <img src="assets/logos/dolby-truehd.png" alt="Dolby TrueHD" class="audio-format-card__logo">
+            <span class="audio-format-card__spec">TRUEHD</span>
+          </div>
+          <div class="audio-format-card__row">
+            <span class="audio-format-card__label">Streaming</span>
+            <span class="audio-format-card__value">Unavailable</span>
+          </div>
+          <div class="audio-format-card__row">
+            <span class="audio-format-card__label">Cinema Machina</span>
+            <span class="audio-format-card__value" style="color: var(--bronze)">Reference Grade</span>
+          </div>
+        </div>
+
+        <div class="audio-format-card">
+          <div class="audio-format-card__head">
+            <img src="assets/logos/dts-hd-ma.png" alt="DTS-HD MA" class="audio-format-card__logo">
+            <span class="audio-format-card__spec">DTS-HD MA</span>
+          </div>
+          <div class="audio-format-card__row">
+            <span class="audio-format-card__label">Streaming</span>
+            <span class="audio-format-card__value">Unavailable</span>
+          </div>
+          <div class="audio-format-card__row">
+            <span class="audio-format-card__label">Cinema Machina</span>
+            <span class="audio-format-card__value" style="color: var(--bronze)">Reference Grade</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
