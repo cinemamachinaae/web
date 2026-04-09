@@ -896,8 +896,7 @@ p {
   animation-delay: 1.8s;
   animation-duration: 3s; /* Extra slow and emphasizing "Feel, Cinema" */
 }
-  position: relative;
-}
+
 
 .hero__lead,
 .hero p,
