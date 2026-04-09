@@ -1478,6 +1478,21 @@ p {
   }
 }
 
+/* ── TYPOGRAPHY LINE CONTROL ── */
+.hero__lead-line,
+.approach__title-line {
+  display: block;
+}
+
+@media (min-width: 769px) {
+  .hero__lead-line--desktop-single,
+  .approach__title-line--single {
+    display: block !important;
+    white-space: nowrap !important;
+  }
+}
+
+
 
 
 /* ============================================================
@@ -1556,9 +1571,10 @@ p {
 .logo--kodi           { --logo-multiplier: 1.00; }
 
 /* Codecs / Formats */
-.logo--vision, .logo--dv { --logo-multiplier: 1.05; }
-.logo--atmos          { --logo-multiplier: 0.85; }
+.logo--vision, .logo--dv { height: 16px !important; width: auto !important; }
+.logo--atmos          { height: 18px !important; width: auto !important; }
 .logo--truehd         { --logo-multiplier: 1.15; }
+
 .logo--dtshdma        { --logo-multiplier: 1.15; }
 .logo--dtsx           { --logo-multiplier: 1.15; }
 .logo--hdr10plus      { --logo-multiplier: 1.10; }
@@ -2073,6 +2089,68 @@ p {
   transform: translateY(-1px);
 }
 
+.vimeo-surface-toggle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  width: 90px;
+  height: 90px;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(226, 193, 155, 0.3);
+  border-radius: 50%;
+  color: var(--bronze);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-out), background 0.3s var(--ease-out);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.vimeo-surface-toggle.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.is-playing .vimeo-surface-toggle {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.9);
+}
+
+.vimeo-shell:hover .vimeo-surface-toggle {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.vimeo-shell.is-idle .vimeo-surface-toggle {
+  opacity: 0 !important;
+}
+
+.vimeo-surface-toggle__icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.vimeo-surface-toggle__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.vimeo-surface-toggle__icon--play { display: block; }
+.vimeo-surface-toggle__icon--pause { display: none; }
+
+.is-playing .vimeo-surface-toggle__icon--play { display: none; }
+.is-playing .vimeo-surface-toggle__icon--pause { display: block; }
+
 .comparison-disclaimer {
   margin-top: 1rem;
   font-size: 13px;
@@ -2166,15 +2244,37 @@ p {
     0 20px 50px rgba(0,0,0,0.4),
     inset 0 0 0 1px rgba(255,255,255,0.03);
   transition:
-    transform 0.5s var(--ease-out),
-    border-color 0.4s ease,
-    background 0.4s ease;
+  color: var(--bronze);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-out), background 0.3s var(--ease-out);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  pointer-events: none;
 }
 
-.vimeo-surface-toggle__icon svg {
-  width: 32px;
-  height: 32px;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+.vimeo-surface-toggle.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.is-playing .vimeo-surface-toggle {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.9);
+}
+
+/* Hover over shell shows button even if playing, unless idle */
+.vimeo-shell:hover .vimeo-surface-toggle {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.vimeo-shell.is-idle .vimeo-surface-toggle {
+  opacity: 0 !important;
 }
 
 .icon-pause { opacity: 0; transform: scale(0.8); position: absolute; }

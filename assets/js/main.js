@@ -146,22 +146,24 @@ function initVimeo() {
 
   let duration = 0;
   let idleTimer;
-  let isPlaying = false; // Local state for immediate sync without async player calls
+  let isPlaying = false;
+  let hasInteracted = false;
 
-  // Formatting helper (MM:SS)
   const formatTime = (s) => {
     const min = Math.floor(s / 60);
     const sec = Math.floor(s % 60);
     return `${min}:${sec < 10 ? "0" : ""}${sec}`;
   };
 
-  const updateTimeUI = (current, total) => {
+  const updateUI = (current, total) => {
     if (timeDisplay) {
       timeDisplay.textContent = `${formatTime(current)} / ${formatTime(total)}`;
     }
+    if (progress && total > 0) {
+      progress.value = (current / total) * 100;
+    }
   };
 
-  // Idle state management (optimized for performance)
   const showControls = () => {
     shell.classList.remove("is-idle");
     clearTimeout(idleTimer);
@@ -171,37 +173,38 @@ function initVimeo() {
     if (isPlaying) {
       idleTimer = setTimeout(() => {
         shell.classList.add("is-idle");
-      }, 3000); // 3s before controls fade out while playing
+      }, 1600); // Luxury 1600ms fade
     }
   };
 
-  const resetIdleTimer = () => {
+  const poke = () => {
     showControls();
     startIdleTimer();
   };
 
-  shell.addEventListener("mousemove", resetIdleTimer);
-  shell.addEventListener("touchstart", resetIdleTimer, { passive: true });
-  shell.addEventListener("keydown", resetIdleTimer);
+  shell.addEventListener("mousemove", poke);
+  shell.addEventListener("touchstart", poke, { passive: true });
+  shell.addEventListener("click", poke);
 
-  // Shell playback toggle
-  const togglePlayback = () => {
-    player.getPaused().then((paused) => {
-      if (paused) {
-        player.setVolume(1).catch(() => {});
-        player.play();
-      } else {
-        player.pause();
+  const handlePlayPause = async () => {
+    const paused = await player.getPaused();
+    if (paused) {
+      if (!hasInteracted) {
+        await player.setVolume(1);
+        hasInteracted = true;
       }
-    });
+      player.play();
+    } else {
+      player.pause();
+    }
   };
 
-  // State Listeners
+  // Listeners
   player.on("play", () => {
     isPlaying = true;
-    shell.classList.remove("is-paused");
     shell.classList.add("is-playing");
-    resetIdleTimer();
+    shell.classList.remove("is-paused");
+    poke();
   });
 
   player.on("pause", () => {
@@ -211,22 +214,34 @@ function initVimeo() {
     showControls();
   });
 
-  // Interaction Listeners
+  player.on("ended", () => {
+    isPlaying = false;
+    shell.classList.remove("is-playing", "is-idle");
+    shell.classList.add("is-paused");
+    showControls();
+  });
+
+  player.on("timeupdate", (data) => {
+    updateUI(data.seconds, duration);
+  });
+
+  player.getDuration().then(d => {
+    duration = d;
+    updateUI(0, duration);
+  });
+
+  // Events
   if (surfaceToggle) {
     surfaceToggle.addEventListener("click", (e) => {
       e.stopPropagation();
-      togglePlayback();
+      handlePlayPause();
     });
   }
-  
-  shell.addEventListener("click", () => {
-    togglePlayback();
-  });
 
   if (playBtn) {
     playBtn.addEventListener("click", (e) => {
       e.stopPropagation();
-      togglePlayback();
+      handlePlayPause();
     });
   }
 
@@ -239,45 +254,20 @@ function initVimeo() {
     });
   }
 
-  // Progress & Time Sync
-  player.getDuration().then((d) => {
-    duration = d;
-    updateTimeUI(0, duration);
-  });
-
-  player.on("timeupdate", (data) => {
-    const current = data.seconds;
-    updateTimeUI(current, duration);
-    if (progress) progress.value = (current / duration) * 100;
-  });
-
   if (progress) {
     progress.addEventListener("input", () => {
-      const seekTime = (progress.value / 100) * duration;
-      player.setCurrentTime(seekTime);
+      const seek = (progress.value / 100) * duration;
+      player.setCurrentTime(seek);
     });
-    progress.addEventListener("click", (e) => e.stopPropagation());
-    progress.addEventListener("mousedown", (e) => e.stopPropagation());
-    progress.addEventListener("touchstart", (e) => e.stopPropagation(), { passive: true });
+    progress.addEventListener("click", e => e.stopPropagation());
+    progress.addEventListener("mousedown", e => e.stopPropagation());
   }
 
-  player.on("ended", () => {
-    isPlaying = false;
-    shell.classList.remove("is-playing", "is-idle");
-    shell.classList.add("is-paused");
-  });
-
-  // Keyboard Shortcuts
-  shell.addEventListener("keydown", (e) => {
-    if (e.key === " " || e.key === "Enter") {
-      e.preventDefault();
-      togglePlayback();
-    }
-    if (e.key.toLowerCase() === "f") {
-      player.requestFullscreen().catch(() => {
-        if (iframe.requestFullscreen) iframe.requestFullscreen();
-      });
-    }
+  // Double click for fullscreen
+  shell.addEventListener("dblclick", () => {
+    player.requestFullscreen().catch(() => {
+      if (iframe.requestFullscreen) iframe.requestFullscreen();
+    });
   });
 }
 

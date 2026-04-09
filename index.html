@@ -435,9 +435,13 @@
         <span class="hero__word hero__word--accent">Feel, Cinema</span>
       </span>
     </h1>
-    <p class="lead hero__body">
-      The finest playback platforms, verified local-library logic, and absolute signal-path integrity.<br />
-      We don't just set up hardware; we restore the hidden layer of cinematic performance.
+    <p class="lead hero__lead">
+      <span class="hero__lead-line hero__lead-line--desktop-single">
+        The finest playback platforms, verified local-library logic, and absolute signal-path integrity.
+      </span>
+      <span class="hero__lead-line">
+        We don't just set up hardware; we restore the hidden layer of cinematic performance.
+      </span>
     </p>
     <div class="hero__actions hero__actions--stack-safe reveal reveal-delay-2">
       <div class="hero__button-row">
@@ -473,25 +477,18 @@
         >
           <iframe
             id="cinema-machina-vimeo"
-            src="https://player.vimeo.com/video/1180098392?background=0&controls=0&playsinline=1&dnt=1"
+            src="https://player.vimeo.com/video/1180098392?background=0&muted=0&controls=0&playsinline=1&dnt=1"
             allow="autoplay; fullscreen; picture-in-picture"
             loading="lazy"
-            title="Cinema Machina — Premium Playback Demo"
-          ></iframe>
+            title="Cinema Machina — Premium Playback Demo">
+          </iframe>
 
-          <button
-            class="vimeo-surface-toggle"
-            id="vimeo-surface-toggle"
-            type="button"
-            aria-label="Play or pause video"
-          >
-            <span class="vimeo-surface-toggle__icon" id="vimeo-surface-toggle-icon">
-              <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M8 5v14l11-7z"></path>
-              </svg>
-              <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path>
-              </svg>
+          <button class="vimeo-surface-toggle is-visible is-paused" id="vimeo-surface-toggle" type="button" aria-label="Play or pause video">
+            <span class="vimeo-surface-toggle__icon vimeo-surface-toggle__icon--play" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
+            </span>
+            <span class="vimeo-surface-toggle__icon vimeo-surface-toggle__icon--pause" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6zm8-14v14h4V5z"></path></svg>
             </span>
           </button>
 
@@ -541,7 +538,14 @@
     <div class="reveal">
       <div class="section-center-header">
         <span class="label">The Cinema Machina Approach</span>
-        <h2 class="display-md">We Believe in the Power of a “Well-Set-Up”.<br />No Compromise When It Comes to the Cinema Experience.</h2>
+        <h2 class="display-md approach__title">
+          <span class="approach__title-line approach__title-line--single">
+            We Believe in the Power of a “Well-Set-Up”.
+          </span>
+          <span class="approach__title-line">
+            No Compromise When It Comes to the Cinema Experience.
+          </span>
+        </h2>
       </div>
       <p class="intro-p introduction-text">
         Great hardware alone can’t deliver the finest results. Source quality, playback software, device configuration, and the signal path all work together. Cinema Machina specializes in optimizing that hidden layer, bringing the entire system into perfect alignment.
