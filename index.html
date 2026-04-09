@@ -412,9 +412,14 @@
     <div class="hero__eyebrow">
       <span>Premium Playback Specialist · UAE</span>
     </div>
-    <h1 class="display-xl hero__title">
-      There's only <span class="text-script">One Life</span><br />
-      to <span class="text-script">Feel, Cinema</span>
+    <h1 class="display-xl hero__title hero__title--tagline" aria-label="There's only One Life to Feel, Cinema">
+      <span class="hero__title-line">
+        There's only <span class="text-script text-script--gold">One Life</span>
+      </span><br />
+      <span class="hero__title-line">
+        to <span class="text-script text-script--gold">Feel, Cinema</span>
+      </span>
+      <span class="hero-title-sheen" aria-hidden="true"></span>
     </h1>
     <p class="lead hero__body">
       The true home cinema experience is driven by the setup not just expensive gadgets!<br />
@@ -444,28 +449,34 @@
       <h2 class="display-md">Precision playback.<br />In action.</h2>
     </div>
     <div class="reveal reveal-delay-1">
-      <div class="video-wrapper">
-        <div class="vimeo-shell" id="cinema-vimeo-shell">
+      <div class="video-wrapper video-wrapper--interactive">
+        <div class="vimeo-shell" id="cinema-vimeo-shell" tabindex="0" aria-label="Cinema Machina demo video player">
           <iframe
             id="cinema-machina-vimeo"
-            src="https://player.vimeo.com/video/1180098392?background=1&amp;muted=1&amp;playsinline=1&amp;dnt=1"
-            allow="autoplay; fullscreen"
+            src="https://player.vimeo.com/video/1180098392?background=0&muted=1&controls=0&playsinline=1&dnt=1"
+            allow="autoplay; fullscreen; picture-in-picture"
             loading="lazy"
-            title="Cinema Machina — Premium Playback Demo"
-          ></iframe>
-          
-          <div class="vimeo-poster">
-            <button class="vimeo-poster__play">Experience Playback</button>
-          </div>
+            title="Cinema Machina — Premium Playback Demo">
+          </iframe>
 
-          <div class="vimeo-controls">
-            <button class="vimeo-control-btn js-vimeo-toggle">Play</button>
-            <div class="vimeo-progress-wrap">
-              <input type="range" class="vimeo-progress" value="0" step="0.1">
+          <button class="vimeo-surface-toggle" id="vimeo-surface-toggle" aria-label="Play or pause video">
+            <span class="vimeo-surface-toggle__icon" id="vimeo-surface-toggle-icon">Play</span>
+          </button>
+
+          <div class="vimeo-controls is-visible" id="vimeo-controls" aria-label="Video controls">
+            <div class="vimeo-controls__left">
+              <button class="vimeo-control-btn js-vimeo-play" type="button" aria-label="Play or pause video">Play</button>
+              <button class="vimeo-control-btn js-vimeo-mute" type="button" aria-label="Mute or unmute video">Mute</button>
             </div>
-            <span class="vimeo-time">0:00 / 0:00</span>
-            <button class="vimeo-control-btn js-vimeo-mute">Mute</button>
-            <button class="vimeo-control-btn js-vimeo-fs">Fullscreen</button>
+
+            <div class="vimeo-progress-wrap">
+              <input type="range" class="vimeo-progress" value="0" step="0.1" min="0" max="100" aria-label="Video progress" />
+            </div>
+
+            <div class="vimeo-controls__right">
+              <span class="vimeo-time" id="vimeo-time">00:00 / 00:00</span>
+              <button class="vimeo-control-btn js-vimeo-fullscreen" type="button" aria-label="Enter fullscreen">Fullscreen</button>
+            </div>
           </div>
         </div>
       </div>
