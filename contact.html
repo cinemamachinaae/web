@@ -6,7 +6,7 @@
   <title>Contact — Cinema Machina</title>
   <meta name="description" content="Book a private Cinema Machina consultation for your luxury home cinema system in the UAE. Get in touch via WhatsApp, email, or our inquiry form." />
   <link rel="icon" type="image/png" href="assets/logos/cm-logo-square.png" />
-  <link rel="stylesheet" href="assets/css/style.css?v=4.0" />
+  <link rel="stylesheet" href="assets/css/style.css?v=4.3" />
   <style>
     /* ── CONTACT LAYOUT ── */
     .contact-hero {
@@ -46,6 +46,12 @@
       position: relative;
       z-index: 2;
       padding-top: 8rem;
+    }
+
+    .nav__cta.nav__cta--active {
+      background: var(--bronze);
+      color: var(--bg);
+      border-color: var(--bronze);
     }
 
     /* ── CONTACT BODY ── */
@@ -224,7 +230,7 @@
     <li><a href="about.html">About</a></li>
     <li><a href="why-setup-matters.html">Why Setup Matters</a></li>
   </ul>
-  <a href="contact.html" class="nav__cta">Book Consultation</a>
+  <a href="contact.html" class="nav__cta nav__cta--active" aria-current="page">Book Consultation</a>
   <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu">
     <span></span><span></span><span></span>
   </button>
@@ -450,7 +456,7 @@
   <div class="container">
     <div class="footer__inner">
       <div class="footer__brand">
-        <a href="index.html"><img src="assets/logos/cm-logo-horizontal.png" alt="Cinema Machina" /></a>
+        <a href="index.html"><img src="assets/logos/cm-logo-horizontal.png" alt="Cinema Machina" class="footer-brand-logo" /></a>
         <p>Premium playback and media-environment specialist for luxury home cinema systems in the UAE.</p>
       </div>
       <div class="footer__nav">
