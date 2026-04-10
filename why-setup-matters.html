@@ -6,7 +6,7 @@
   <title>Why Setup Matters — Cinema Machina</title>
   <meta name="description" content="Why great hardware alone isn't enough. The truth about playback configuration, bitrate, audio formats, and what stands between your system and a true cinema experience." />
   <link rel="icon" type="image/png" href="assets/logos/cm-logo-square.png" />
-  <link rel="stylesheet" href="assets/css/style.css?v=4.1" />
+  <link rel="stylesheet" href="assets/css/style.css?v=4.2" />
   <style>
     .why-hero .lead {
       max-width: 58ch;
@@ -100,6 +100,10 @@
       align-items: start;
     }
 
+    .proof-grid > * {
+      min-width: 0;
+    }
+
     .proof-sticky {
       position: sticky;
       top: 120px;
@@ -183,14 +187,18 @@
 
     .proof-side-card {
       padding: clamp(1.75rem, 2.6vw, 2.5rem);
+      max-width: 100%;
+      overflow: hidden;
     }
 
     .proof-side-card h3 {
       margin-bottom: 1rem;
     }
 
-    .proof-side-card p {
+    .proof-side-card p,
+    .proof-note p {
       max-width: none;
+      overflow-wrap: anywhere;
     }
 
     .proof-note {
@@ -198,6 +206,8 @@
       padding: 1.25rem 1.35rem;
       border: 1px solid rgba(226,193,155,0.12);
       background: rgba(255,255,255,0.02);
+      max-width: 100%;
+      overflow: hidden;
     }
 
     .proof-note p {
@@ -208,7 +218,10 @@
     .format-table-shell {
       margin-top: 1.5rem;
       border: 1px solid var(--border);
+      max-width: 100%;
       overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
     }
 
     .format-table-shell table {
@@ -434,7 +447,7 @@
       aspect-ratio: 4 / 3;
       border: 1px solid var(--border);
       overflow: hidden;
-      background: var(--surface);
+      background: var(--surface-2);
     }
 
     .closing-visual img {
@@ -442,6 +455,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center;
     }
 
     .cta-full .section-label {
@@ -494,8 +508,24 @@
         border-radius: 18px;
       }
 
+      .proof-side-card {
+        padding: 1.5rem 1.35rem;
+      }
+
+      .proof-note {
+        padding: 1rem 1.1rem;
+      }
+
       .format-table-shell {
         margin-top: 1.25rem;
+      }
+
+      .format-table-shell table {
+        min-width: 680px;
+      }
+
+      .closing-visual {
+        aspect-ratio: 16 / 11;
       }
 
       .cta-full__actions {
@@ -802,7 +832,7 @@
       </div>
 
       <div class="closing-visual reveal reveal-delay-2">
-        <img src="assets/images/why-setup-closing.png" alt="Cinema Machina verified setup" loading="lazy" />
+        <img src="assets/images/services-signal-chain.jpg" alt="Cinema Machina verified setup" loading="lazy" />
       </div>
     </div>
   </div>
@@ -830,7 +860,7 @@
   <div class="container">
     <div class="footer__inner">
       <div class="footer__brand">
-        <a href="index.html"><img src="assets/logos/cm-logo-horizontal.png" alt="Cinema Machina" /></a>
+        <a href="index.html"><img src="assets/logos/cm-logo-horizontal.png" alt="Cinema Machina" class="footer-brand-logo" /></a>
         <p>Premium playback and media-environment specialist for luxury home cinema systems in the UAE.</p>
       </div>
       <div class="footer__nav">

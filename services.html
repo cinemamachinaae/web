@@ -6,7 +6,7 @@
   <title>Services — Cinema Machina</title>
   <meta name="description" content="Cinema Machina services: media library setup, playback device configuration, HDMI & signal chain optimisation, diagnostics, and premium viewing refinement for luxury home cinema in the UAE." />
   <link rel="icon" type="image/png" href="assets/logos/cm-logo-square.png" />
-  <link rel="stylesheet" href="assets/css/style.css?v=4.0" />
+  <link rel="stylesheet" href="assets/css/style.css?v=4.2" />
   <style>
     /* ── SERVICE MODULE ── */
     .service-module {
@@ -103,12 +103,17 @@
       margin-top: 0.45rem;
     }
 
+    .service-module__badges {
+      margin-top: 2rem;
+      margin-bottom: 2.25rem;
+    }
+
     /* ── PROCESS HIGHLIGHT ── */
     .process-highlight {
       background: var(--surface);
       border: 1px solid var(--border);
       padding: 2rem;
-      margin-top: 2rem;
+      margin-top: 0;
     }
 
     .process-highlight h4 {
@@ -130,6 +135,7 @@
     @media (max-width: 768px) {
       .service-module__inner { grid-template-columns: 1fr; }
       .service-module:nth-child(even) .service-module__inner { direction: ltr; }
+      .service-module__badges { margin-bottom: 2rem; }
     }
   </style>
 </head>
@@ -142,7 +148,7 @@
   </a>
   <ul class="nav__links">
     <li><a href="index.html">Home</a></li>
-    <li><a href="services.html">Services</a></li>
+    <li><a href="services.html" class="active">Services</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="why-setup-matters.html">Why Setup Matters</a></li>
   </ul>
@@ -207,7 +213,7 @@
           <li>Local subtitle management and language configuration</li>
           <li>Library scanning optimisation and scheduled maintenance</li>
         </ul>
-        <div class="format-badges u-mt-2 u-flex-start u-m-0">
+        <div class="format-badges service-module__badges u-flex-start">
           <div class="format-badge-chip"><img src="assets/logos/plex.png" alt="Plex" class="logo--plex" /></div>
           <div class="format-badge-chip"><img src="assets/logos/jellyfin.png" alt="Jellyfin" class="logo--jellyfin" /></div>
           <div class="format-badge-chip"><img src="assets/logos/kodi.png" alt="Kodi" class="logo--kodi" /></div>
@@ -246,7 +252,7 @@
           <li>CoreELEC — AMLogic device setup and HDR passthrough</li>
           <li>Platform selection guidance based on your library and signal chain</li>
         </ul>
-        <div class="format-badges u-mt-2 u-flex-start u-m-0">
+        <div class="format-badges service-module__badges u-flex-start">
           <div class="format-badge-chip"><img src="assets/logos/zidoo.png" alt="Zidoo" class="logo--zidoo" /></div>
           <div class="format-badge-chip"><img src="assets/logos/dune-hd.png" alt="Dune HD" class="logo--dune" /></div>
           <div class="format-badge-chip"><img src="assets/logos/nvidia-shield.png" alt="Nvidia Shield" class="logo--shield" /></div>
@@ -406,7 +412,7 @@
   <div class="container">
     <div class="footer__inner">
       <div class="footer__brand">
-        <a href="index.html"><img src="assets/logos/cm-logo-horizontal.png" alt="Cinema Machina" /></a>
+        <a href="index.html"><img src="assets/logos/cm-logo-horizontal.png" alt="Cinema Machina" class="footer-brand-logo" /></a>
         <p>Premium playback and media-environment specialist for luxury home cinema systems in the UAE.</p>
       </div>
       <div class="footer__nav">
