@@ -6,81 +6,118 @@
   <title>Why Setup Matters — Cinema Machina</title>
   <meta name="description" content="Why great hardware alone isn't enough. The truth about playback configuration, bitrate, audio formats, and what stands between your system and a true cinema experience." />
   <link rel="icon" type="image/png" href="assets/logos/cm-logo-square.png" />
-  <link rel="stylesheet" href="assets/css/style.css?v=4.0" />
-  <script src="https://player.vimeo.com/api/player.js"></script>
+  <link rel="stylesheet" href="assets/css/style.css?v=4.1" />
   <style>
-    /* ── MYTH SECTION ── */
-    .myth-section {
+    .why-hero .lead {
+      max-width: 58ch;
+    }
+
+    .why-module {
       padding: var(--section-gap) 0;
+    }
+
+    .why-module--warm {
+      background: var(--bg-warm);
+    }
+
+    .why-center-header {
+      text-align: center;
+      max-width: 880px;
+      margin: 0 auto 3.5rem;
+    }
+
+    .why-center-header .section-label {
+      justify-content: center;
+    }
+
+    .why-center-header .lead {
+      margin: 1rem auto 0;
+      text-align: center;
+      max-width: 70ch;
     }
 
     .myth-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(3rem, 6vw, 7rem);
-      align-items: start;
-      margin-top: 2rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(1.5rem, 3vw, 2.25rem);
+      align-items: stretch;
     }
 
-    .myth-item {
-      padding: 2.5rem;
+    .myth-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
       border: 1px solid var(--border);
-      background: var(--surface);
+      padding: clamp(1.75rem, 2.6vw, 2.5rem);
+      min-height: 100%;
       position: relative;
       overflow: hidden;
     }
 
-    .myth-item::before {
-      content: '';
+    .myth-card::before {
+      content: "";
       position: absolute;
-      top: 0; left: 0; right: 0;
+      left: 0;
+      right: 0;
+      top: 0;
       height: 2px;
+      background: var(--border);
     }
 
-    .myth-item--myth::before { background: var(--text-muted); }
-    .myth-item--reality::before { background: var(--bronze); }
+    .myth-card--reality::before {
+      background: var(--bronze);
+    }
 
-    .myth-item__badge {
-      font-size: 0.5625rem;
+    .myth-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      font-size: 0.625rem;
       font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--bronze);
+    }
+
+    .myth-card--myth .myth-kicker {
+      color: var(--text-muted);
+    }
+
+    .myth-card h3 {
+      font-size: clamp(1.2rem, 2vw, 1.55rem);
       margin-bottom: 1rem;
-      display: block;
     }
 
-    .myth-item--myth .myth-item__badge { color: var(--text-muted); }
-
-    .myth-item h3 {
-      font-size: 1.25rem;
-      margin-bottom: 1rem;
+    .myth-card p {
+      max-width: none;
+      font-size: 0.9375rem;
+      line-height: 1.8;
     }
 
-    .myth-item p { font-size: 0.875rem; max-width: none; }
-
-    /* ── EDITORIAL MODULES ── */
-    .editorial-module {
-      padding: var(--section-gap) 0;
+    .proof-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+      gap: clamp(2rem, 6vw, 6rem);
+      align-items: start;
     }
 
-    .editorial-module:nth-child(even) { background: var(--bg-warm); }
-
-    .editorial-module__header {
-      text-align: center;
-      margin-bottom: 3.5rem;
+    .proof-sticky {
+      position: sticky;
+      top: 120px;
     }
 
-    .editorial-module__header .lead {
-      margin: 1rem auto 0;
-      text-align: center;
-    }
-
-    /* ── ENHANCED BAR CHART ── */
-    .chart-container {
-      background: var(--surface);
+    .chart-card,
+    .proof-side-card,
+    .platform-card,
+    .consistency-card,
+    .closing-panel {
+      background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.018));
       border: 1px solid var(--border);
-      padding: 2.5rem;
+      box-shadow: inset 0 0 0 1px rgba(226,193,155,0.03);
+    }
+
+    .chart-card {
+      padding: clamp(1.5rem, 2.5vw, 2.25rem);
+      margin-top: 2rem;
     }
 
     .chart-title {
@@ -90,116 +127,395 @@
       letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--bronze);
-      margin-bottom: 2rem;
-      padding-bottom: 1rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.875rem;
       border-bottom: 1px solid var(--border);
     }
 
-    .bar-item-enhanced {
+    .bar-stack {
       display: grid;
-      grid-template-columns: 150px 1fr auto;
-      align-items: center;
-      gap: 1.5rem;
+      gap: 1rem;
     }
 
-    .bar-label-enhanced {
+    .bar-item {
+      display: grid;
+      grid-template-columns: 140px 1fr auto;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .bar-label {
       font-size: 0.75rem;
       font-weight: 500;
       letter-spacing: 0.05em;
-      color: var(--text-muted);
+      color: var(--text-secondary);
     }
 
-    .bar-track-enhanced {
+    .bar-track {
       height: 4px;
-      background: rgba(255,255,255,0.05);
-      border-radius: 2px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 999px;
       overflow: hidden;
     }
 
-    .bar-fill-enhanced {
+    .bar-fill {
       height: 100%;
+      border-radius: 999px;
       background: var(--bronze);
-      border-radius: 2px;
-      transition: width 1.5s var(--ease-out);
     }
 
-    .bar-fill-enhanced.tier-2 { background: var(--text-muted); }
+    .bar-fill--streaming {
+      width: 18%;
+      background: var(--text-muted);
+    }
 
-    .bar-value-enhanced {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      min-width: 40px;
+    .bar-fill--machina {
+      width: 100%;
+    }
+
+    .bar-value {
+      min-width: 44px;
       text-align: right;
+      font-size: 0.75rem;
+      color: var(--text-primary);
+      font-family: var(--font-body);
     }
 
-    /* ── TWO COL PROOF ── */
-    .proof-two-col {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: clamp(3rem, 7vw, 9rem);
-      align-items: start;
+    .proof-side-card {
+      padding: clamp(1.75rem, 2.6vw, 2.5rem);
     }
 
-    @media (max-width: 991px) {
-      .proof-two-col { grid-template-columns: 1fr; }
+    .proof-side-card h3 {
+      margin-bottom: 1rem;
     }
 
-    /* ── CONSISTENCY GRID ── */
+    .proof-side-card p {
+      max-width: none;
+    }
+
+    .proof-note {
+      margin-top: 1.5rem;
+      padding: 1.25rem 1.35rem;
+      border: 1px solid rgba(226,193,155,0.12);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .proof-note p {
+      font-size: 0.875rem;
+      color: var(--text-primary);
+    }
+
+    .format-table-shell {
+      margin-top: 1.5rem;
+      border: 1px solid var(--border);
+      overflow-x: auto;
+    }
+
+    .format-table-shell table {
+      width: 100%;
+      min-width: 720px;
+      border-collapse: collapse;
+    }
+
+    .format-table-shell th,
+    .format-table-shell td {
+      padding: 1rem 1.1rem;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    .format-table-shell thead th {
+      font-family: var(--font-body);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--bronze);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .format-table-shell tbody tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .format-table-shell td {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+
+    .format-table-shell td:first-child {
+      color: var(--text-primary);
+    }
+
+    .format-logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .format-logo img {
+      display: block;
+      width: auto;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+    }
+
+    .format-logo .logo--truehd,
+    .format-logo .logo--dtshdma {
+      height: 20px;
+    }
+
+    .format-logo .logo--atmos,
+    .format-logo .logo--dtsx {
+      height: 18px;
+    }
+
+    .streaming-text {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.58);
+      white-space: nowrap;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 32px;
+      padding: 0 12px;
+      border-radius: 999px;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 600;
+      white-space: nowrap;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .status-pill--gold {
+      color: var(--bronze-light);
+      background: rgba(226,193,155,0.08);
+      border-color: rgba(226,193,155,0.24);
+    }
+
+    .status-pill--dim {
+      color: rgba(255,255,255,0.45);
+      background: rgba(255,255,255,0.03);
+      border-color: rgba(255,255,255,0.08);
+    }
+
     .consistency-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-      margin-top: 3rem;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(1.25rem, 2vw, 2rem);
     }
 
     .consistency-card {
-      padding: 2.5rem;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      transition: border-color 0.3s;
+      padding: clamp(1.75rem, 2.5vw, 2.4rem);
     }
 
-    .consistency-card:hover { border-color: var(--bronze); }
-
-    .consistency-card__score {
-      font-family: var(--font-display);
-      font-size: 2.5rem;
-      font-weight: 300;
-      line-height: 1;
-      margin-bottom: 2rem;
+    .consistency-number {
       display: block;
+      font-family: var(--font-display);
+      font-size: clamp(2.1rem, 4vw, 2.8rem);
+      line-height: 1;
       color: var(--text-muted);
+      margin-bottom: 1.4rem;
     }
 
-    .consistency-card__score--high { color: var(--bronze); }
+    .consistency-card--highlight .consistency-number {
+      color: var(--bronze);
+    }
 
-    .consistency-card__label {
+    .consistency-kicker {
+      display: block;
       font-size: 0.625rem;
       font-weight: 700;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--bronze);
-      margin-bottom: 1rem;
-      display: block;
+      margin-bottom: 0.9rem;
     }
 
-    .consistency-card h4 { margin-bottom: 1rem; }
-    .consistency-card p { font-size: 0.875rem; color: var(--text-muted); }
+    .consistency-card h4 {
+      margin-bottom: 0.9rem;
+    }
+
+    .consistency-card p {
+      max-width: none;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    .platform-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: clamp(1rem, 1.8vw, 1.5rem);
+      margin-top: 2.5rem;
+    }
+
+    .platform-card {
+      padding: 1.4rem 1.2rem;
+      border-radius: 22px;
+    }
+
+    .platform-head {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .platform-head img {
+      display: block;
+      width: auto;
+      object-fit: contain;
+      filter: brightness(0) invert(1) brightness(0.9);
+    }
+
+    .platform-head .logo--appletv { height: 22px; }
+    .platform-head .logo--shield { height: 20px; }
+    .platform-head .logo--dune { height: 18px; }
+    .platform-head .logo--zidoo { height: 18px; }
+
+    .platform-title {
+      color: var(--text-primary);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      line-height: 1.45;
+    }
+
+    .platform-rows {
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .platform-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.75rem;
+      align-items: center;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .platform-row:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .platform-label {
+      color: rgba(255,255,255,0.72);
+      font-size: 0.8125rem;
+      line-height: 1.45;
+    }
+
+    .platform-disclaimer {
+      margin-top: 1rem;
+      text-align: center;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.8125rem;
+      max-width: none;
+    }
+
+    .closing-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(340px, 0.95fr);
+      gap: clamp(2rem, 6vw, 6rem);
+      align-items: center;
+    }
+
+    .closing-visual {
+      aspect-ratio: 4 / 3;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      background: var(--surface);
+    }
+
+    .closing-visual img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .cta-full .section-label {
+      justify-content: center;
+    }
+
+    .cta-full .lead {
+      margin: 1rem auto 0;
+      text-align: center;
+      max-width: 58ch;
+    }
+
+    .cta-full__actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 1100px) {
+      .platform-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 900px) {
+      .proof-grid,
+      .closing-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .proof-sticky {
+        position: static;
+      }
+    }
 
     @media (max-width: 768px) {
-      .consistency-grid { grid-template-columns: 1fr; }
+      .myth-grid,
+      .consistency-grid,
+      .platform-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .bar-item {
+        grid-template-columns: 90px 1fr 44px;
+        gap: 0.75rem;
+      }
+
+      .platform-card {
+        border-radius: 18px;
+      }
+
+      .format-table-shell {
+        margin-top: 1.25rem;
+      }
+
+      .cta-full__actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .cta-full__actions .btn {
+        width: 100%;
+        justify-content: center;
+      }
     }
   </style>
 </head>
-<body class="bg-dark text-light">
+<body>
 
-<!-- ═══════════════════ NAVIGATION ═══════════════════ -->
-<nav class="nav">
-  <div class="nav__brand">
-    <a href="index.html">
-      <img src="assets/logos/cm-logo-horizontal.png" alt="Cinema Machina" class="nav__logo" />
-    </a>
-  </div>
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav__logo">
+    <img src="assets/logos/cm-logo-horizontal.png" alt="Cinema Machina" />
+  </a>
   <ul class="nav__links">
     <li><a href="index.html">Home</a></li>
     <li><a href="services.html">Services</a></li>
@@ -219,8 +535,7 @@
   <a href="contact.html">Contact</a>
 </nav>
 
-<!-- ═══ PAGE HERO ═══ -->
-<section class="page-hero">
+<section class="page-hero why-hero">
   <div class="page-hero__bg">
     <img src="assets/images/why-setup-integrity-master.png" alt="High-fidelity cinema signal path" loading="eager" />
   </div>
@@ -240,10 +555,9 @@
   </div>
 </section>
 
-<!-- ═══ THE MYTH ═══ -->
-<section class="myth-section section--tight u-pb-2" id="myth">
+<section class="why-module section--tight">
   <div class="container">
-    <div class="reveal u-mb-2">
+    <div class="reveal why-center-header">
       <div class="section-label">
         <span class="label">The Plug-and-Play Myth</span>
       </div>
@@ -251,45 +565,51 @@
     </div>
 
     <div class="myth-grid">
-      <div class="myth-item myth-item--myth reveal">
-        <span class="myth-item__badge">The Myth</span>
-        <h3>"My high-end projector will look incredible with anything."</h3>
-        <p>Display hardware is only as good as the signal it receives. Without precise configuration, even a £50,000 system delivers a compromised result.</p>
-      </div>
-      <div class="myth-item myth-item--reality reveal reveal-delay-2">
-        <span class="myth-item__badge">The Reality</span>
+      <article class="myth-card myth-card--myth reveal">
+        <span class="myth-kicker">The Myth</span>
+        <h3>“My high-end projector will look incredible with anything.”</h3>
+        <p>
+          Display hardware is only as good as the signal it receives. Without precise configuration, even a premium system delivers a compromised result.
+        </p>
+      </article>
+
+      <article class="myth-card myth-card--reality reveal reveal-delay-2">
+        <span class="myth-kicker">The Reality</span>
         <h3>Performance begins before the display.</h3>
-        <p>If the source is compressed, the amplifier receives lossy audio, and the signal chain is unoptimized—the entire investment is undermined.</p>
-      </div>
+        <p>
+          If the source is compressed, the processor receives lossy audio, or the signal chain is unoptimized, the entire investment is undermined before the image reaches the screen.
+        </p>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- ═══ ELEVATED PROOF: BITRATE & AUDIO ═══ -->
-<section class="editorial-module section--tight u-bg-warm u-pt-4">
+<section class="why-module why-module--warm section--tight">
   <div class="container">
-    <div class="proof-two-col">
+    <div class="proof-grid">
       <div class="reveal">
         <div class="section-label">
           <span class="label">Technical Proof</span>
         </div>
         <h2 class="display-md">What your screen<br />actually receives.</h2>
-        
-        <div class="chart-container">
+
+        <div class="chart-card">
           <div class="chart-title">Video Bitrate Comparison (Mbps)</div>
-          <div class="bar-item-enhanced u-mb-15">
-            <span class="bar-label-enhanced">Streaming</span>
-            <div class="bar-track-enhanced"><div class="bar-fill-enhanced tier-2 u-w-18p"></div></div>
-            <span class="bar-value-enhanced u-color-muted">18</span>
-          </div>
-          <div class="bar-item-enhanced">
-            <span class="bar-label-enhanced">Cinema Machina</span>
-            <div class="bar-track-enhanced"><div class="bar-fill-enhanced tier-5 u-w-full"></div></div>
-            <span class="bar-value-enhanced">100+</span>
+          <div class="bar-stack">
+            <div class="bar-item">
+              <span class="bar-label">Streaming</span>
+              <div class="bar-track"><div class="bar-fill bar-fill--streaming"></div></div>
+              <span class="bar-value">18</span>
+            </div>
+            <div class="bar-item">
+              <span class="bar-label">Cinema Machina</span>
+              <div class="bar-track"><div class="bar-fill bar-fill--machina"></div></div>
+              <span class="bar-value">100+</span>
+            </div>
           </div>
         </div>
 
-        <div class="table-responsive-wrapper u-mt-3">
+        <div class="format-table-shell">
           <table class="format-table">
             <thead>
               <tr>
@@ -301,224 +621,216 @@
             </thead>
             <tbody>
               <tr>
-                <td><span class="feature-brand"><img src="assets/logos/dolby-truehd.png" alt="Dolby TrueHD" class="feature-brand__img logo--truehd" /></span></td>
+                <td><span class="format-logo"><img src="assets/logos/dolby-truehd.png" alt="Dolby TrueHD" class="logo--truehd" /></span></td>
                 <td>Dolby TrueHD (Lossless)</td>
                 <td>~3,000 – 6,000 kbps</td>
-                <td><span class="comparison-status comparison-status--available">Reference</span></td>
+                <td><span class="status-pill status-pill--gold">Reference</span></td>
               </tr>
               <tr>
-                <td><span class="feature-brand"><img src="assets/logos/dolby-atmos.png" alt="Dolby Atmos" class="feature-brand__img logo--atmos" /></span></td>
+                <td><span class="format-logo"><img src="assets/logos/dolby-atmos.png" alt="Dolby Atmos" class="logo--atmos" /></span></td>
                 <td>Atmos (TrueHD / DD+)</td>
                 <td>Object-Based Spatial</td>
-                <td><span class="comparison-status comparison-status--available">Reference</span></td>
+                <td><span class="status-pill status-pill--gold">Reference</span></td>
               </tr>
               <tr>
-                <td><span class="feature-brand"><img src="assets/logos/dts-hd-ma.png" alt="DTS-HD MA" class="feature-brand__img logo--dtshdma" /></span></td>
+                <td><span class="format-logo"><img src="assets/logos/dts-hd-ma.png" alt="DTS-HD Master Audio" class="logo--dtshdma" /></span></td>
                 <td>DTS Master Audio</td>
                 <td>~3,000 – 6,000 kbps</td>
-                <td><span class="comparison-status comparison-status--available">Reference</span></td>
+                <td><span class="status-pill status-pill--gold">Reference</span></td>
               </tr>
               <tr>
-                <td><span class="feature-brand"><img src="assets/logos/dts-x.png" alt="DTS:X" class="feature-brand__img logo--dtsx" /></span></td>
+                <td><span class="format-logo"><img src="assets/logos/dts-x.png" alt="DTS:X" class="logo--dtsx" /></span></td>
                 <td>DTS:X Spatial</td>
                 <td>High-Bitrate Object</td>
-                <td><span class="comparison-status comparison-status--available">Reference</span></td>
+                <td><span class="status-pill status-pill--gold">Reference</span></td>
               </tr>
               <tr>
-                <td><span class="feature-brand font-mono u-small-caps" style="color:rgba(255,255,255,0.6); letter-spacing: 0.1em; font-weight: 700;">Streaming / Web</span></td>
+                <td><span class="streaming-text">Streaming / Web</span></td>
                 <td>Dolby Digital Plus</td>
                 <td>~640 – 768 kbps</td>
-                <td><span class="comparison-status comparison-status--compromise">Compromised</span></td>
+                <td><span class="status-pill status-pill--dim">Compromised</span></td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
-      
-      <div class="reveal reveal-delay-2 u-pos-sticky">
-        <h3 class="display-sm u-mb-15">5–6× more visual data.</h3>
-        <p class="u-text-base u-lh-16 u-max-none">Netflix's 4K stream averages 15–18 Mbps. A lossless 4K remux—the format we optimize for—delivers 80–120 Mbps. The difference is visible on any calibrated display.</p>
-        <div class="highlight-box u-mt-25 u-surface-box u-p-2">
-          <p class="u-text-base">Insufficient bitrate makes quality impossible. A properly configured system removes that ceiling.</p>
+
+      <aside class="proof-sticky reveal reveal-delay-2">
+        <div class="proof-side-card">
+          <h3 class="display-sm">5–6× more visual data.</h3>
+          <p>
+            Netflix 4K streams typically average around 15–18 Mbps. The lossless local playback profiles we optimize for routinely deliver 80–120 Mbps. The difference is visible on any properly calibrated display.
+          </p>
+          <div class="proof-note">
+            <p>Insufficient bitrate creates a hard ceiling on image quality. Correct setup removes that ceiling.</p>
+          </div>
         </div>
-      </div>
+      </aside>
     </div>
   </div>
 </section>
 
-<!-- ═══ EDITORIAL: PLAYBACK CONSISTENCY ═══ -->
-<section class="editorial-module" id="consistency">
+<section class="why-module">
   <div class="container">
-    <div class="editorial-module__header reveal">
-      <div class="section-label u-flex-center">
+    <div class="why-center-header reveal">
+      <div class="section-label">
         <span class="label">Playback Consistency</span>
       </div>
       <h2 class="display-md">Reliability is part<br />of the experience.</h2>
       <p class="lead">
-        A broken interface, a loading spinner, a buffering pause, an audio-sync drift — these are not minor annoyances. In a luxury home cinema, they break the experience entirely.
+        A loading spinner, a buffering pause, or an audio-sync drift are not minor annoyances in a luxury cinema. They break the experience entirely.
       </p>
     </div>
 
     <div class="consistency-grid">
-      <div class="consistency-card reveal reveal-delay-1">
-        <span class="consistency-card__score consistency-card__score--low">01</span>
-        <span class="consistency-card__label">Streaming</span>
+      <article class="consistency-card reveal reveal-delay-1">
+        <span class="consistency-number">01</span>
+        <span class="consistency-kicker">Streaming</span>
         <h4>Platform Dependency</h4>
-        <p>Performance depends on ISP quality, CDN load, and the app version. These factors are out of your control and can fail at any time.</p>
-      </div>
-      <div class="consistency-card reveal reveal-delay-2">
-        <span class="consistency-card__score consistency-card__score--mid">02</span>
-        <span class="consistency-card__label">Default Local</span>
+        <p>Performance depends on ISP quality, CDN load, and app behavior. These variables are outside your control and can fail without warning.</p>
+      </article>
+
+      <article class="consistency-card reveal reveal-delay-2">
+        <span class="consistency-number">02</span>
+        <span class="consistency-kicker">Default Local</span>
         <h4>Configuration Gaps</h4>
-        <p>A local library removes internet reliance, but default device settings often introduce HDR mismatch and frame-rate pacing drift.</p>
-      </div>
-      <div class="consistency-card reveal reveal-delay-3">
-        <span class="consistency-card__score consistency-card__score--high">03</span>
-        <span class="consistency-card__label">Cinema Machina</span>
+        <p>A local library removes internet reliance, but default device settings still introduce HDR mismatch, codec issues, and frame-rate drift.</p>
+      </article>
+
+      <article class="consistency-card consistency-card--highlight reveal reveal-delay-3">
+        <span class="consistency-number">03</span>
+        <span class="consistency-kicker">Cinema Machina</span>
         <h4>Verified Integrity</h4>
-        <p>A properly configured system plays every file correctly with verified audio passthrough and perfect frame-pacing, every time.</p>
-      </div>
+        <p>A properly configured system plays every file correctly with verified audio passthrough, correct output modes, and stable frame pacing every time.</p>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- ═══ PLATFORM COMPARISON ═══ -->
-<section class="section section--tight section--comparison" id="platform-comparison">
+<section class="why-module why-module--warm section section--comparison">
   <div class="container">
-    <div class="reveal comparison-heading">
+    <div class="why-center-header reveal">
       <div class="section-label">
         <span class="label">Platform Expectations</span>
       </div>
       <h2 class="display-md">Not every playback platform is built for the same job.</h2>
-      <p class="comparison-intro">
-        Apple TV 4K, NVIDIA Shield TV Pro, Dune HD, and Zidoo can all be excellent — but they are not interchangeable.
-        Cinema Machina selects and configures based on your library and display requirements.
+      <p class="lead">
+        Apple TV 4K, NVIDIA Shield TV Pro, Dune HD, and Zidoo can all be excellent — but they are not interchangeable. Cinema Machina selects and configures based on your library and display requirements.
       </p>
     </div>
 
-    <div class="reveal reveal-delay-1">
-      <div class="comparison-mobile-cards">
-        <article class="comparison-device-card">
-          <div class="comparison-device-card__head">
-            <img src="assets/logos/apple-tv.png" alt="Apple TV" class="device-head__logo-img logo--appletv" />
-            <div class="comparison-device-card__title">Apple TV 4K</div>
-          </div>
-          <div class="comparison-device-card__rows">
-            <div class="comparison-device-row"><div class="comparison-device-row__label">Max Output</div><span class="comparison-status comparison-status--available">4K60</span></div>
-            <div class="comparison-device-row"><div class="comparison-device-row__label"><span class="feature-brand"><img src="assets/logos/dolby-vision-horizontal.png" alt="Dolby Vision" class="feature-brand__img logo--dv" /></span></div><span class="comparison-status comparison-status--available">Available</span></div>
-            <div class="comparison-device-row"><div class="comparison-device-row__label"><span class="feature-brand"><img src="assets/logos/dolby-atmos.png" alt="Dolby Atmos" class="feature-brand__img logo--atmos" /></span></div><span class="comparison-status comparison-status--available">Available</span></div>
-            <div class="comparison-device-row"><div class="comparison-device-row__label"><span class="feature-brand"><img src="assets/logos/dolby-truehd.png" alt="Dolby TrueHD" class="feature-brand__img logo--truehd" /></span></div><span class="comparison-status comparison-status--unavailable">Unavailable</span></div>
-            <div class="comparison-device-row"><div class="comparison-device-row__label">Local Playback</div><span class="comparison-status comparison-status--unavailable">Limited</span></div>
-            <div class="comparison-device-row"><div class="comparison-device-row__label">Best Usage</div><span class="device-fit">Streaming</span></div>
-          </div>
-        </article>
+    <div class="platform-grid reveal reveal-delay-1">
+      <article class="platform-card">
+        <div class="platform-head">
+          <img src="assets/logos/apple-tv.png" alt="Apple TV" class="logo--appletv" />
+          <div class="platform-title">Apple TV 4K</div>
+        </div>
+        <div class="platform-rows">
+          <div class="platform-row"><span class="platform-label">Max Output</span><span class="status-pill status-pill--gold">4K60</span></div>
+          <div class="platform-row"><span class="platform-label">Dolby Vision</span><span class="status-pill status-pill--gold">Available</span></div>
+          <div class="platform-row"><span class="platform-label">Dolby Atmos</span><span class="status-pill status-pill--gold">Available</span></div>
+          <div class="platform-row"><span class="platform-label">Dolby TrueHD</span><span class="status-pill status-pill--dim">Unavailable</span></div>
+          <div class="platform-row"><span class="platform-label">Local Playback</span><span class="status-pill status-pill--dim">Limited</span></div>
+          <div class="platform-row"><span class="platform-label">Best Usage</span><span class="platform-label">Streaming</span></div>
+        </div>
+      </article>
 
-        <article class="comparison-device-card">
-          <div class="comparison-device-card__head">
-            <img src="assets/logos/nvidia-shield.png" alt="NVIDIA Shield" class="device-head__logo-img logo--shield" />
-            <div class="comparison-device-card__title">NVIDIA Shield Pro</div>
-          </div>
-          <div class="comparison-device-card__rows">
-            <div class="comparison-device-row"><div class="comparison-device-row__label">Max Output</div><span class="comparison-status comparison-status--available">4K60</span></div>
-            <div class="comparison-device-row"><div class="comparison-device-row__label"><span class="feature-brand"><img src="assets/logos/dolby-vision-horizontal.png" alt="Dolby Vision" class="feature-brand__img logo--dv" /></span></div><span class="comparison-status comparison-status--available">Available</span></div>
-            <div class="comparison-device-row"><div class="comparison-device-row__label"><span class="feature-brand"><img src="assets/logos/dolby-atmos.png" alt="Dolby Atmos" class="feature-brand__img logo--atmos" /></span></div><span class="comparison-status comparison-status--available">Available</span></div>
-            <div class="comparison-device-row"><div class="comparison-device-row__label"><span class="feature-brand"><img src="assets/logos/dolby-truehd.png" alt="Dolby TrueHD" class="feature-brand__img logo--truehd" /></span></div><span class="comparison-status comparison-status--available">Available</span></div>
-            <div class="comparison-device-row"><div class="comparison-device-row__label">Local Playback</div><span class="comparison-status comparison-status--available">Strong</span></div>
-            <div class="comparison-device-row"><div class="comparison-device-row__label">Best Usage</div><span class="device-fit">Hybrid</span></div>
-          </div>
-        </article>
+      <article class="platform-card">
+        <div class="platform-head">
+          <img src="assets/logos/nvidia-shield.png" alt="NVIDIA Shield" class="logo--shield" />
+          <div class="platform-title">NVIDIA Shield Pro</div>
+        </div>
+        <div class="platform-rows">
+          <div class="platform-row"><span class="platform-label">Max Output</span><span class="status-pill status-pill--gold">4K60</span></div>
+          <div class="platform-row"><span class="platform-label">Dolby Vision</span><span class="status-pill status-pill--gold">Available</span></div>
+          <div class="platform-row"><span class="platform-label">Dolby Atmos</span><span class="status-pill status-pill--gold">Available</span></div>
+          <div class="platform-row"><span class="platform-label">Dolby TrueHD</span><span class="status-pill status-pill--gold">Available</span></div>
+          <div class="platform-row"><span class="platform-label">Local Playback</span><span class="status-pill status-pill--gold">Strong</span></div>
+          <div class="platform-row"><span class="platform-label">Best Usage</span><span class="platform-label">Hybrid</span></div>
+        </div>
+      </article>
 
-        <article class="comparison-device-card">
-          <div class="comparison-device-card__head">
-            <img src="assets/logos/dune-hd.png" alt="Dune HD" class="device-head__logo-img logo--dune" />
-            <div class="comparison-device-card__title">Dune HD Box</div>
-          </div>
-          <div class="comparison-device-card__rows">
-            <div class="comparison-device-row"><div class="comparison-device-row__label">Max Output</div><span class="comparison-status comparison-status--available">4K60</span></div>
-            <div class="comparison-device-row"><div class="comparison-device-row__label"><span class="feature-brand"><img src="assets/logos/dolby-vision-horizontal.png" alt="Dolby Vision" class="feature-brand__img logo--dv" /></span></div><span class="comparison-status comparison-status--available">Available</span></div>
-            <div class="comparison-device-row"><div class="comparison-device-row__label"><span class="feature-brand"><img src="assets/logos/dolby-atmos.png" alt="Dolby Atmos" class="feature-brand__img logo--atmos" /></span></div><span class="comparison-status comparison-status--available">Available</span></div>
-            <div class="comparison-device-row"><div class="comparison-device-row__label"><span class="feature-brand"><img src="assets/logos/dolby-truehd.png" alt="Dolby TrueHD" class="feature-brand__img logo--truehd" /></span></div><span class="comparison-status comparison-status--available">Available</span></div>
-            <div class="comparison-device-row"><div class="comparison-device-row__label">Local Playback</div><span class="comparison-status comparison-status--available">Reference</span></div>
-            <div class="comparison-device-row"><div class="comparison-device-row__label">Best Usage</div><span class="device-fit">Local + Apps</span></div>
-          </div>
-        </article>
+      <article class="platform-card">
+        <div class="platform-head">
+          <img src="assets/logos/dune-hd.png" alt="Dune HD" class="logo--dune" />
+          <div class="platform-title">Dune HD Box</div>
+        </div>
+        <div class="platform-rows">
+          <div class="platform-row"><span class="platform-label">Max Output</span><span class="status-pill status-pill--gold">4K60</span></div>
+          <div class="platform-row"><span class="platform-label">Dolby Vision</span><span class="status-pill status-pill--gold">Available</span></div>
+          <div class="platform-row"><span class="platform-label">Dolby Atmos</span><span class="status-pill status-pill--gold">Available</span></div>
+          <div class="platform-row"><span class="platform-label">Dolby TrueHD</span><span class="status-pill status-pill--gold">Available</span></div>
+          <div class="platform-row"><span class="platform-label">Local Playback</span><span class="status-pill status-pill--gold">Reference</span></div>
+          <div class="platform-row"><span class="platform-label">Best Usage</span><span class="platform-label">Local + Apps</span></div>
+        </div>
+      </article>
 
-        <article class="comparison-device-card">
-          <div class="comparison-device-card__head">
-            <img src="assets/logos/zidoo.png" alt="Zidoo" class="device-head__logo-img logo--zidoo" />
-            <div class="comparison-device-card__title">Zidoo Z9X 8K</div>
-          </div>
-          <div class="comparison-device-card__rows">
-            <div class="comparison-device-row"><div class="comparison-device-row__label">Max Output</div><span class="comparison-status comparison-status--available">8K60</span></div>
-            <div class="comparison-device-row"><div class="comparison-device-row__label"><span class="feature-brand"><img src="assets/logos/dolby-vision-horizontal.png" alt="Dolby Vision" class="feature-brand__img logo--dv" /></span></div><span class="comparison-status comparison-status--available">Available</span></div>
-            <div class="comparison-device-row"><div class="comparison-device-row__label"><span class="feature-brand"><img src="assets/logos/dolby-atmos.png" alt="Dolby Atmos" class="feature-brand__img logo--atmos" /></span></div><span class="comparison-status comparison-status--available">Available</span></div>
-            <div class="comparison-device-row"><div class="comparison-device-row__label"><span class="feature-brand"><img src="assets/logos/dolby-truehd.png" alt="Dolby TrueHD" class="feature-brand__img logo--truehd" /></span></div><span class="comparison-status comparison-status--available">Available</span></div>
-            <div class="comparison-device-row"><div class="comparison-device-row__label">Local Playback</div><span class="comparison-status comparison-status--available">Reference</span></div>
-            <div class="comparison-device-row"><div class="comparison-device-row__label">Best Usage</div><span class="device-fit">Local Library</span></div>
-          </div>
-        </article>
-      </div>
+      <article class="platform-card">
+        <div class="platform-head">
+          <img src="assets/logos/zidoo.png" alt="Zidoo" class="logo--zidoo" />
+          <div class="platform-title">Zidoo Z9X 8K</div>
+        </div>
+        <div class="platform-rows">
+          <div class="platform-row"><span class="platform-label">Max Output</span><span class="status-pill status-pill--gold">8K60</span></div>
+          <div class="platform-row"><span class="platform-label">Dolby Vision</span><span class="status-pill status-pill--gold">Available</span></div>
+          <div class="platform-row"><span class="platform-label">Dolby Atmos</span><span class="status-pill status-pill--gold">Available</span></div>
+          <div class="platform-row"><span class="platform-label">Dolby TrueHD</span><span class="status-pill status-pill--gold">Available</span></div>
+          <div class="platform-row"><span class="platform-label">Local Playback</span><span class="status-pill status-pill--gold">Reference</span></div>
+          <div class="platform-row"><span class="platform-label">Best Usage</span><span class="platform-label">Local Library</span></div>
+        </div>
+      </article>
     </div>
 
-    <p class="comparison-disclaimer">
-      Capabilities vary by model, firmware, and the full display/audio chain.
-    </p>
+    <p class="platform-disclaimer">Capabilities vary by model, firmware, app behavior, and the full display/audio chain.</p>
   </div>
 </section>
 
-<!-- ═══ CLOSING ARGUMENT ═══ -->
-<section class="closing-argument" id="closing">
+<section class="why-module closing-argument">
   <div class="container">
     <div class="closing-grid">
       <div class="reveal">
         <div class="section-label">
           <span class="label">The Conclusion</span>
         </div>
-        <h2 class="display-md">
-          Setup is not a luxury.<br />
-          It's the foundation.
-        </h2>
+        <h2 class="display-md">Setup is not a luxury.<br />It’s the foundation.</h2>
         <p class="u-mt-125 u-max-none">
-          Every element of your cinema system — projector, screen, processor, amplifier, speakers — was designed with maximum capability in mind. This is only accessible when the playback chain delivers exactly what is needed.
+          Every element of your cinema system — projector, screen, processor, amplifier, and speakers — was designed with maximum capability in mind. That capability is only accessible when the playback chain is configured to deliver exactly what each component needs.
         </p>
         <p class="u-mt-1 u-max-none">
-          Cinema Machina works at every layer of that chain to ensure every component is operating at design intent.
+          Cinema Machina works at every layer of that chain to ensure every component operates at design intent, not at whatever the default configuration happens to allow.
         </p>
       </div>
-      <div class="reveal reveal-delay-2 closing-image">
-        <img src="assets/images/why-setup-closing.png" alt="Cinema Machina verified setup" class="img-frame" />
+
+      <div class="closing-visual reveal reveal-delay-2">
+        <img src="assets/images/why-setup-closing.png" alt="Cinema Machina verified setup" loading="lazy" />
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════ CTA FULL ═══════════════════ -->
 <section class="cta-full u-bg-warm" id="cta">
   <div class="container cta-full__content">
     <div class="reveal">
       <div class="section-label u-flex-center">
         <span class="label">Ready to Begin</span>
       </div>
-      <h2 class="display-lg">
-        Restore the performance<br />your hardware promised.
-      </h2>
+      <h2 class="display-lg">Restore the performance<br />your hardware promised.</h2>
       <p class="lead">
-        Book a private consultation. We'll audit your current setup and identify exactly where quality is being lost.
+        Book a private consultation. We’ll assess your current setup, identify where quality is being lost, and define the cleanest path to full-performance playback.
       </p>
       <div class="cta-full__actions u-mt-25">
         <a href="contact.html" class="btn btn-primary">Book Consultation</a>
-        <a href="services.html" class="btn btn-ghost">Explore Services</a>
+        <a href="services.html" class="btn btn-outline">Explore Services</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════ FOOTER ═══════════════════ -->
 <footer class="footer">
   <div class="container">
     <div class="footer__inner">
       <div class="footer__brand">
-        <a href="index.html"><img src="assets/logos/cm-logo-horizontal.png" alt="Cinema Machina" class="footer-brand-logo" /></a>
+        <a href="index.html"><img src="assets/logos/cm-logo-horizontal.png" alt="Cinema Machina" /></a>
         <p>Premium playback and media-environment specialist for luxury home cinema systems in the UAE.</p>
       </div>
       <div class="footer__nav">
