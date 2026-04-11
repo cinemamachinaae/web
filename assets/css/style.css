@@ -2385,6 +2385,7 @@ p {
 
 .is-playing .vimeo-surface-toggle {
   opacity: 0;
+  pointer-events: none;
 }
 
 /* Hover over shell shows button even if playing, unless idle */
@@ -2395,6 +2396,9 @@ p {
 .vimeo-shell.is-idle .vimeo-surface-toggle {
   opacity: 0 !important;
 }
+
+.vimeo-surface-toggle__icon--play { display: flex; }
+.vimeo-surface-toggle__icon--pause { display: none; }
 
 .icon-pause { opacity: 0; transform: scale(0.8); position: absolute; }
 .icon-play  { opacity: 1; transform: scale(1); }
