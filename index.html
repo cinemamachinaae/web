@@ -129,6 +129,25 @@
       to   { opacity: 1; }
     }
 
+    /* ── CTA SECONDARY BUTTON ── */
+    .btn-outline {
+      border-color: var(--bronze);
+      color: var(--bronze);
+    }
+
+    .btn-outline:hover {
+      background: var(--bronze);
+      color: var(--bg);
+    }
+
+    /* ── MOBILE INTRO HEADING ── */
+    @media (max-width: 768px) {
+      .hero__title {
+        font-size: clamp(2.5rem, 8vw, 4rem);
+        max-width: 90%;
+      }
+    }
+
     /* ── INTRO SECTION ── */
     .intro-section {
       padding: clamp(4rem, 7vw, 5.75rem) 0;
@@ -139,8 +158,35 @@
       margin-bottom: 1.75rem;
     }
 
+    .intro-section .approach__title {
+      max-width: 20ch;
+      margin: 0 auto;
+      text-align: center;
+      line-height: 1.1;
+      letter-spacing: -0.014em;
+    }
+
+    .intro-section .approach__title-line,
+    .intro-section .approach__title-line--single {
+      display: block;
+    }
+
+    @media (min-width: 769px) {
+      .intro-section .approach__title-line,
+      .intro-section .approach__title-line--single {
+        white-space: nowrap;
+      }
+    }
+
     .intro-section p {
       margin-top: 0;
+    }
+
+    .intro-p {
+      max-width: 42ch;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
     }
 
     .intro-section .stat-row {
@@ -171,6 +217,22 @@
       overflow: hidden;
     }
 
+    section#demo .vimeo-surface-toggle__icon {
+      width: 74px;
+      height: 74px;
+      border-color: rgba(226,193,155,0.22);
+      background: rgba(12,10,8,0.28);
+      box-shadow:
+        0 18px 42px rgba(0,0,0,0.32),
+        inset 0 0 0 1px rgba(255,255,255,0.025);
+    }
+
+    section#demo .vimeo-surface-toggle__icon--play svg {
+      width: 28px;
+      height: 28px;
+      transform: translateX(1px);
+    }
+
     section#demo .vimeo-shell:hover .vimeo-surface-toggle {
       opacity: 1;
     }
@@ -188,6 +250,14 @@
       border-color: rgba(201,169,110,0.18);
     }
 
+    section#demo .vimeo-controls__left {
+      display: none;
+    }
+
+    section#demo .vimeo-controls {
+      gap: 1rem;
+    }
+
     section#demo .vimeo-time {
       min-width: 80px;
     }
@@ -203,6 +273,10 @@
 
       section#demo .video-wrapper {
         max-width: 100%;
+      }
+
+      section#demo .vimeo-shell iframe {
+        pointer-events: none;
       }
 
       section#demo .vimeo-controls {
@@ -236,6 +310,13 @@
 
     .services-overview .u-section-header {
       margin-bottom: 2.25rem;
+    }
+
+    .services-overview .u-section-header p {
+      max-width: 42ch;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
     }
 
     .service-card {
@@ -321,7 +402,10 @@
 
     .comparison-section .u-section-header .lead {
       margin: 0 auto 1.25rem;
-      max-width: 760px;
+      max-width: 38ch;
+      text-align: center;
+      font-size: clamp(1rem, 1.4vw, 1.08rem);
+      line-height: 1.72;
     }
 
     .comparison-grid {
@@ -329,11 +413,14 @@
       grid-template-columns: 1fr 1fr;
       gap: 1px;
       margin-top: 1.5rem;
-      align-items: start;
+      align-items: stretch;
     }
 
     .comparison-col {
-      padding: 1.75rem;
+      padding: 2.25rem;
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
     }
 
     .comparison-col--bad {
@@ -366,6 +453,36 @@
     }
 
     .comparison-col--good h3 { color: var(--bronze-light); }
+
+    .comparison-col h3,
+    .column-brand-lockup {
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.65rem;
+    }
+
+    .comparison-col--bad h3 {
+      color: var(--text-primary);
+      justify-content: flex-start;
+    }
+
+    .column-brand-lockup {
+      justify-content: center;
+    }
+
+    .comparison-col ul {
+      gap: 0.9rem;
+    }
+
+    .comparison-col--good ul,
+    .comparison-col--bad ul {
+      flex: 1;
+    }
+
+    .comparison-col .format-badges {
+      margin-top: auto;
+    }
 
     .comparison-col ul {
       list-style: none;
@@ -470,6 +587,31 @@
       margin-top: 2rem;
     }
 
+    .cta-full__actions .btn {
+      min-width: 260px;
+      min-height: 56px;
+      justify-content: center;
+      padding: 0.875rem 2.25rem;
+    }
+
+    .cta-full__actions .btn-outline {
+      color: var(--bronze-light);
+      border: 1px solid rgba(226,193,155,0.46);
+      background: rgba(7,6,4,0.98);
+      box-shadow:
+        inset 0 0 0 1px rgba(226,193,155,0.07),
+        0 14px 34px rgba(0,0,0,0.18);
+    }
+
+    .cta-full__actions .btn-outline:hover {
+      color: var(--bg);
+      border-color: var(--bronze-light);
+      background: var(--bronze-light);
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,0.04),
+        0 18px 40px rgba(0,0,0,0.22);
+    }
+
     .footer {
       padding: clamp(2.5rem, 5vw, 4.5rem) 0 2rem;
     }
@@ -494,6 +636,21 @@
       .hero__content {
         padding-top: 2rem;
         padding-bottom: 0.5rem;
+      }
+
+      .intro-section .approach__title {
+        max-width: 13ch;
+        font-size: clamp(1.85rem, 7vw, 2.2rem);
+        line-height: 1.12;
+        letter-spacing: -0.015em;
+        text-align: center;
+      }
+
+      .intro-section .approach__title-line,
+      .intro-section .approach__title-line--single {
+        display: block;
+        text-wrap: balance;
+        white-space: normal !important;
       }
 
       .comparison-grid { grid-template-columns: 1fr; gap: 1.5px; }
@@ -536,6 +693,11 @@
 
       .cta-full {
         padding: clamp(3rem, 8vw, 4.25rem) 0;
+      }
+
+      .cta-full__actions .btn {
+        min-width: 0;
+        width: 100%;
       }
 
       .footer {
@@ -609,7 +771,7 @@
         We don't just set up hardware; we restore the hidden layer of cinematic performance.
       </span>
     </p>
-    <div class="hero__actions hero__actions--stack-safe reveal reveal-delay-2">
+    <div class="hero__actions hero__actions--stack-safe">
       <div class="hero__button-row">
         <a href="contact.html" class="btn btn-primary btn--hero">Book a Consultation</a>
         <a href="why-setup-matters.html" class="btn btn-outline btn--hero">Why Setup Matters</a>
@@ -980,7 +1142,7 @@
       </p>
       <div class="cta-full__actions">
         <a href="contact.html" class="btn btn-primary">Book a Consultation</a>
-        <a href="about.html" class="btn btn-ghost">
+        <a href="about.html" class="btn btn-outline">
           What We Are
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
         </a>
