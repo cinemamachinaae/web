@@ -447,6 +447,28 @@
       line-height: 1.76;
     }
 
+    .comparison-intro-lockup {
+      max-width: none;
+      width: 100%;
+      margin: 0.95rem auto 0;
+      text-align: center;
+      font-size: clamp(1.02rem, 1.4vw, 1.08rem);
+      line-height: 1.76;
+      color: var(--text-secondary);
+    }
+
+    .comparison-intro-lockup__line {
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+
+    @media (min-width: 769px) {
+      .comparison-intro-lockup__line {
+        white-space: nowrap;
+      }
+    }
+
     .comparison-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -695,6 +717,14 @@
       }
 
       .comparison-grid { grid-template-columns: 1fr; gap: 1.5px; }
+
+      .comparison-intro-lockup {
+        max-width: 24ch;
+      }
+
+      .comparison-intro-lockup__line {
+        white-space: normal !important;
+      }
 
       .intro-section {
         padding: clamp(3rem, 9vw, 4rem) 0;
@@ -1106,8 +1136,13 @@
         <span class="label">The Difference</span>
       </div>
       <h2 class="display-md">Streaming convenience<br />vs. configured excellence.</h2>
-      <p class="u-mt-1">
-        Convenience platforms are designed for the average viewer. Cinema Machina is designed for excellence.
+      <p class="u-mt-1 comparison-intro-lockup">
+        <span class="comparison-intro-lockup__line">
+          Convenience platforms are designed for the average viewer.
+        </span>
+        <span class="comparison-intro-lockup__line">
+          Cinema Machina is designed for excellence.
+        </span>
       </p>
     </div>
 
