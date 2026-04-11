@@ -159,18 +159,20 @@
     }
 
     .intro-section .approach__title {
-      max-width: 24ch;
-      width: 100%;
+      display: inline-grid;
+      justify-items: center;
+      width: auto;
+      max-width: none;
       margin: 0 auto;
       text-align: center;
-      line-height: 1.1;
-      letter-spacing: -0.014em;
+      line-height: 1.08;
+      letter-spacing: -0.016em;
     }
 
     .intro-section .approach__title-line,
     .intro-section .approach__title-line--single {
       display: block;
-      width: 100%;
+      width: auto;
       text-align: center;
     }
 
@@ -186,7 +188,7 @@
     }
 
     .intro-p {
-      max-width: 42ch;
+      max-width: 40ch;
       margin-left: auto;
       margin-right: auto;
       text-align: center;
@@ -405,10 +407,10 @@
 
     .comparison-section .u-section-header .lead {
       margin: 0 auto 1.25rem;
-      max-width: 38ch;
+      max-width: 36ch;
       text-align: center;
-      font-size: clamp(1rem, 1.4vw, 1.08rem);
-      line-height: 1.72;
+      font-size: clamp(1.02rem, 1.45vw, 1.1rem);
+      line-height: 1.74;
     }
 
     .comparison-grid {
@@ -642,9 +644,11 @@
       }
 
       .intro-section .approach__title {
+        display: block;
         max-width: 13ch;
+        width: auto;
         font-size: clamp(1.85rem, 7vw, 2.2rem);
-        line-height: 1.12;
+        line-height: 1.1;
         letter-spacing: -0.015em;
         text-align: center;
       }
