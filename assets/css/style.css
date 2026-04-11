@@ -384,13 +384,6 @@ p {
   border-color: var(--bronze);
 }
 
-.nav.scrolled {
-  background: var(--glass);
-  -webkit-backdrop-filter: blur(24px) saturate(120%);
-  backdrop-filter: blur(24px) saturate(120%);
-  border-color: var(--border);
-}
-
 /* Hamburger */
 .nav__toggle {
   display: none;
@@ -1743,13 +1736,6 @@ p {
   backdrop-filter: blur(8px);
 }
 
-/* 1. Optical Sizing System Tokens (vR5 - Normalized) */
-:root {
-  --logo-scale-standard: 1.00;
-  --logo-scale-dense: 1.22;
-  --logo-scale-whitespace: 1.45;
-}
-
 .format-badge-chip img,
 .ecosystem-strip__item img,
 .logo-chip img,
@@ -1807,16 +1793,6 @@ p {
 .u-section-header .lead { margin-top: 1rem; }
 .u-section-header--center .section-label { justify-content: center; }
 .u-section-header--center .lead { margin-left: auto; margin-right: auto; }
-
-.u-flex-center { display: flex; align-items: center; justify-content: center; }
-.u-flex-start { display: flex; align-items: center; justify-content: flex-start; }
-.u-text-center { text-align: center; }
-.u-mx-auto { margin-left: auto; margin-right: auto; }
-.u-mt-1 { margin-top: 1rem; }
-.u-mt-2 { margin-top: 2rem; }
-.u-mb-1 { margin-bottom: 1rem; }
-.u-mb-2 { margin-bottom: 2rem; }
-
 
 /* ============================================================
    FINAL MOBILE STABILIZATION + FIVE AREAS FIX
@@ -2326,67 +2302,7 @@ p {
   transform: translateY(-1px);
 }
 
-.vimeo-surface-toggle {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(1);
-  width: 90px;
-  height: 90px;
-  background: rgba(0, 0, 0, 0.45);
-  border: 1px solid rgba(226, 193, 155, 0.3);
-  border-radius: 50%;
-  color: var(--bronze);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 10;
-  transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-out), background 0.3s var(--ease-out);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  opacity: 0;
-  pointer-events: none;
-}
 
-.vimeo-surface-toggle.is-visible {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.is-playing .vimeo-surface-toggle {
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(0.9);
-}
-
-.vimeo-shell:hover .vimeo-surface-toggle {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
-}
-
-.vimeo-shell.is-idle .vimeo-surface-toggle {
-  opacity: 0 !important;
-}
-
-.vimeo-surface-toggle__icon {
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-.vimeo-surface-toggle__icon svg {
-  width: 100%;
-  height: 100%;
-}
-
-.vimeo-surface-toggle__icon--play { display: block; }
-.vimeo-surface-toggle__icon--pause { display: none; }
-
-.is-playing .vimeo-surface-toggle__icon--play { display: none; }
-.is-playing .vimeo-surface-toggle__icon--pause { display: block; }
 
 .comparison-disclaimer {
   margin-top: 1rem;
@@ -2459,18 +2375,7 @@ p {
   box-shadow:
     0 20px 50px rgba(0,0,0,0.4),
     inset 0 0 0 1px rgba(255,255,255,0.03);
-  transition:
-  color: var(--bronze);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 10;
-  transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-out), background 0.3s var(--ease-out);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  opacity: 0;
-  pointer-events: none;
+  transition: all 0.4s var(--ease-out);
 }
 
 .vimeo-surface-toggle.is-visible {
@@ -2480,13 +2385,11 @@ p {
 
 .is-playing .vimeo-surface-toggle {
   opacity: 0;
-  transform: translate(-50%, -50%) scale(0.9);
 }
 
 /* Hover over shell shows button even if playing, unless idle */
 .vimeo-shell:hover .vimeo-surface-toggle {
   opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
 }
 
 .vimeo-shell.is-idle .vimeo-surface-toggle {
@@ -3148,4 +3051,3 @@ p {
 .table-responsive-wrapper table {
   min-width: 600px; /* Force scroll on narrow screens */
 }
-
