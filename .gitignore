@@ -2,3 +2,5 @@
 ._*
 
 .env.local
+.vercel
+.env*.local

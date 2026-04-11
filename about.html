@@ -6,7 +6,7 @@
   <title>About — Cinema Machina</title>
   <meta name="description" content="Cinema Machina is a premium playback and media-environment specialist working in the hidden layer between your hardware and the final image on screen." />
   <link rel="icon" type="image/png" href="assets/logos/cm-logo-square.png" />
-  <link rel="stylesheet" href="assets/css/style.css?v=4.3" />
+  <link rel="stylesheet" href="assets/css/style.css?v=4.4" />
   <style>
     /* ── WHAT WE ARE / ARE NOT ── */
     .identity-grid {
@@ -253,7 +253,7 @@
 <!-- ═══ PAGE HERO ═══ -->
 <section class="page-hero">
   <div class="page-hero__bg page-hero__bg--high-contrast">
-    <img src="assets/images/about-hero-master-v3.png" alt="Signal intelligence and technical hidden layer" loading="eager" />
+    <img src="assets/images/about-hero-master-v3.png" alt="Signal intelligence and technical hidden layer" fetchpriority="high" loading="eager" />
   </div>
   <div class="page-hero__gradient"></div>
   <div class="container page-hero__content">
@@ -262,7 +262,7 @@
         <span class="label">Brand Philosophy</span>
       </div>
       <h1 class="display-lg">Giving a soul to cinema setup</h1>
-      <p class="lead">
+      <p class="lead u-mt-1">
         On a mission to bring back the elite cinema quality by hitting the sweet spot of signal integrity
         and precision engineering
       </p>
@@ -315,16 +315,15 @@
 <!-- ═══ HIDDEN LAYER ═══ -->
 <section class="hidden-layer" id="hidden-layer">
   <div class="container">
-    <div class="reveal u-text-center u-max-700 u-mx-auto">
-      <div class="section-label u-flex-center">
+    <div class="u-section-header u-section-header--center reveal">
+      <div class="section-label">
         <span class="label">The Hidden Layer</span>
       </div>
       <h2 class="display-md">Between your hardware<br />and your cinema moment.</h2>
-      <p class="lead">
+      <p class="u-mt-1">
         Great hardware alone can’t deliver the finest results.
         Source quality, playback software, device configuration, and the signal path all work together.
-        Cinema Machina specializes in optimizing that hidden layer, bringing the entire system into
-        perfect alignment.
+        Cinema Machina specializes in optimizing that hidden layer, bringing the entire system into perfect alignment.
       </p>
     </div>
 
@@ -402,12 +401,12 @@
 <!-- ═══ 3-STEP PROCESS ═══ -->
 <section class="section bg-warm" id="process">
   <div class="container">
-    <div class="reveal u-section-header-center">
-      <div class="section-label u-flex-center">
+    <div class="u-section-header u-section-header--center reveal">
+      <div class="section-label">
         <span class="label">How We Work</span>
       </div>
       <h2 class="display-md">Audit. Configure. Verify.</h2>
-      <p class="lead u-lead-center">
+      <p class="u-mt-1">
         Every Cinema Machina engagement follows the same rigorous three-phase approach — regardless of the size or complexity of your system.
       </p>
     </div>
@@ -496,7 +495,7 @@
       </div>
       <div class="about-image-block reveal reveal-delay-2">
         <div class="image-frame--hero u-border-all">
-          <img src="assets/images/about-waveform.jpg" alt="Audio waveform analysis" loading="lazy" />
+          <img src="assets/images/about-waveform.jpg" alt="Audio waveform analysis" fetchpriority="high" loading="eager" />
         </div>
       </div>
     </div>
@@ -519,6 +518,28 @@
       <div class="cta-full__actions">
         <a href="contact.html" class="btn btn-primary">Begin Your Consultation</a>
         <a href="services.html" class="btn btn-outline">Explore Services</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA FULL ═══ -->
+<section class="cta-full u-bg-warm" id="cta">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label u-flex-center">
+        <span class="label">Ready to Begin</span>
+      </div>
+      <h2 class="display-lg">Precision is a choice.</h2>
+      <p class="lead">
+        Book a private consultation. We’ll assess your current setup, identify exactly where performance is being lost, and define the cleanest path to restoring playback integrity.
+      </p>
+      <div class="cta-full__actions">
+        <a href="contact.html" class="btn btn-primary">Book a Consultation</a>
+        <a href="services.html" class="btn btn-ghost">
+          Our Services
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
       </div>
     </div>
   </div>

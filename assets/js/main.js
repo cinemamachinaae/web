@@ -273,23 +273,27 @@ function initVimeo() {
 
 // Robust initialization for CDN availability
 function startVimeo() {
+  const vimeoRoot = document.querySelector('#cinema-vimeo-shell, #cinema-machina-vimeo');
+  if (!vimeoRoot) return;
+
   if (typeof Vimeo !== "undefined") {
     initVimeo();
-  } else {
-    // Retry with exponential backoff or 100ms baseline
-    let attempts = 0;
-    const interval = setInterval(() => {
-      attempts++;
-      if (typeof Vimeo !== "undefined") {
-        initVimeo();
-        clearInterval(interval);
-      } else if (attempts > 50) {
-        clearInterval(interval);
-        console.warn("Vimeo SDK failed to load within timeout.");
-        // Last-ditch: try to find script and re-inject if needed
-      }
-    }, 100);
+    return;
   }
+
+  // Retry with exponential backoff or 100ms baseline
+  let attempts = 0;
+  const interval = setInterval(() => {
+    attempts++;
+    if (typeof Vimeo !== "undefined") {
+      initVimeo();
+      clearInterval(interval);
+    } else if (attempts > 50) {
+      clearInterval(interval);
+      console.warn("Vimeo SDK failed to load within timeout.");
+      // Last-ditch: try to find script and re-inject if needed
+    }
+  }, 100);
 }
 
 document.addEventListener("DOMContentLoaded", startVimeo);
@@ -300,39 +304,74 @@ document.addEventListener("DOMContentLoaded", startVimeo);
   const form = document.querySelector('.contact-form');
   if (!form) return;
 
+  const btn = form.querySelector('button[type="submit"]');
+  const note = form.querySelector('.form-note');
+  if (!btn) return;
+
+  const originalNoteText = note ? note.textContent : '';
+
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
-    const btn = form.querySelector('button[type="submit"]');
-    const originalText = btn.textContent;
-    btn.textContent = 'Sending…';
+    
+    // Reset previous states
+    form.classList.remove('form-touched');
+    btn.classList.remove('is-success', 'is-unavailable');
+    if(note) {
+      note.classList.remove('is-unavailable');
+      note.textContent = originalNoteText;
+    }
+
+    // Safety check for basic validation
+    if (!form.checkValidity()) {
+      form.classList.add('form-touched');
+      return;
+    }
+
+    const originalBtnText = btn.textContent;
+    btn.textContent = 'Sending Enquiry…';
     btn.disabled = true;
+    btn.classList.add('is-loading');
 
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
 
     try {
-      // Real fetch call placeholder - replace with actual endpoint if available
+      // Real fetch call with check for success
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
       });
 
-      // Show success regardless of endpoint existence for demo/client polish
-      setTimeout(() => {
+      if (response.ok) {
+        btn.classList.replace('is-loading', 'is-success');
         btn.textContent = 'Message Sent — We\'ll be in touch';
-        btn.style.background = 'var(--surface-2)';
-        btn.style.color = 'var(--bronze)';
         form.reset();
-      }, 1000);
+      } else {
+        throw new Error('Server returned error status');
+      }
     } catch (err) {
-      // Fallback for demo parity
+      console.warn("Form submission error:", err);
+      
+      // Truthful Premium Fallback
+      btn.classList.remove('is-loading');
+      btn.classList.add('is-unavailable');
+      btn.textContent = 'Service Offline';
+      
+      if (note) {
+        note.classList.add('is-unavailable');
+        note.innerHTML = 'Enquiry service is currently unreachable. Please reach us via <a href="https://wa.me/971507282195" class="u-color-bronze">WhatsApp</a> or email.';
+      }
+
       setTimeout(() => {
-        btn.textContent = 'Message Sent — We\'ll be in touch';
-        btn.style.background = 'var(--surface-2)';
-        btn.style.color = 'var(--bronze)';
-        form.reset();
-      }, 1000);
+        btn.disabled = false;
+        btn.classList.remove('is-unavailable');
+        btn.textContent = 'Retry Enquiry';
+        if (note) {
+          note.classList.remove('is-unavailable');
+          note.textContent = originalNoteText;
+        }
+      }, 5000);
     }
   });
 })();

@@ -6,7 +6,7 @@
   <title>Why Setup Matters — Cinema Machina</title>
   <meta name="description" content="Why great hardware alone isn't enough. The truth about playback configuration, bitrate, audio formats, and what stands between your system and a true cinema experience." />
   <link rel="icon" type="image/png" href="assets/logos/cm-logo-square.png" />
-  <link rel="stylesheet" href="assets/css/style.css?v=4.2" />
+  <link rel="stylesheet" href="assets/css/style.css?v=4.4" />
   <style>
     .why-hero .lead {
       max-width: 58ch;
@@ -382,59 +382,6 @@
       margin-bottom: 1rem;
     }
 
-    .platform-head img {
-      display: block;
-      width: auto;
-      object-fit: contain;
-      filter: brightness(0) invert(1) brightness(0.9);
-    }
-
-    .platform-head .logo--appletv { height: 22px; }
-    .platform-head .logo--shield { height: 20px; }
-    .platform-head .logo--dune { height: 18px; }
-    .platform-head .logo--zidoo { height: 18px; }
-
-    .platform-title {
-      color: var(--text-primary);
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      line-height: 1.45;
-    }
-
-    .platform-rows {
-      display: grid;
-      gap: 0.8rem;
-    }
-
-    .platform-row {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 0.75rem;
-      align-items: center;
-      padding-bottom: 0.8rem;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .platform-row:last-child {
-      border-bottom: 0;
-      padding-bottom: 0;
-    }
-
-    .platform-label {
-      color: rgba(255,255,255,0.72);
-      font-size: 0.8125rem;
-      line-height: 1.45;
-    }
-
-    .platform-disclaimer {
-      margin-top: 1rem;
-      text-align: center;
-      color: rgba(255,255,255,0.5);
-      font-size: 0.8125rem;
-      max-width: none;
-    }
 
     .closing-grid {
       display: grid;
@@ -567,7 +514,7 @@
 
 <section class="page-hero why-hero">
   <div class="page-hero__bg">
-    <img src="assets/images/why-setup-integrity-master.png" alt="High-fidelity cinema signal path" loading="eager" />
+    <img src="assets/images/why-setup-integrity-master.png" alt="High-fidelity cinema signal path" fetchpriority="high" loading="eager" />
   </div>
   <div class="page-hero__gradient"></div>
   <div class="container page-hero__content">
@@ -578,7 +525,7 @@
       <h1 class="display-lg">
         Great hardware is<br /><em>not enough.</em>
       </h1>
-      <p class="lead">
+      <p class="lead u-mt-1">
         A true home cinema experience is shaped by setup, not hardware cost alone. Cinema Machina refines playback configuration, media environment logic, and signal-path integrity so every frame performs at its full potential.
       </p>
     </div>
@@ -740,78 +687,79 @@
 <section class="why-module why-module--warm section section--comparison">
   <div class="container">
     <div class="why-center-header reveal">
+    <div class="u-section-header reveal">
       <div class="section-label">
-        <span class="label">Platform Expectations</span>
+        <span class="label">Platform Audit</span>
       </div>
-      <h2 class="display-md">Not every playback platform is built for the same job.</h2>
-      <p class="lead">
-        Apple TV 4K, NVIDIA Shield TV Pro, Dune HD, and Zidoo can all be excellent — but they are not interchangeable. Cinema Machina selects and configures based on your library and display requirements.
+      <h2 class="display-md">Playback Device Verification.</h2>
+      <p class="u-mt-1 u-max-none">
+        The hardware in your rack is rarely the bottleneck — the configuration usually is. We audit every output parameter to ensure your display and processor receive the exact signal They were designed to handle.
       </p>
     </div>
 
-    <div class="platform-grid reveal reveal-delay-1">
-      <article class="platform-card">
-        <div class="platform-head">
+    <div class="comparison-mobile-cards reveal reveal-delay-1">
+      <article class="comparison-device-card">
+        <div class="comparison-device-card__head">
           <img src="assets/logos/apple-tv.png" alt="Apple TV" class="logo--appletv" />
-          <div class="platform-title">Apple TV 4K</div>
+          <div class="comparison-device-card__title">Apple TV 4K</div>
         </div>
-        <div class="platform-rows">
-          <div class="platform-row"><span class="platform-label">Max Output</span><span class="status-pill status-pill--gold">4K60</span></div>
-          <div class="platform-row"><span class="platform-label">Dolby Vision</span><span class="status-pill status-pill--gold">Available</span></div>
-          <div class="platform-row"><span class="platform-label">Dolby Atmos</span><span class="status-pill status-pill--gold">Available</span></div>
-          <div class="platform-row"><span class="platform-label">Dolby TrueHD</span><span class="status-pill status-pill--dim">Unavailable</span></div>
-          <div class="platform-row"><span class="platform-label">Local Playback</span><span class="status-pill status-pill--dim">Limited</span></div>
-          <div class="platform-row"><span class="platform-label">Best Usage</span><span class="platform-label">Streaming</span></div>
+        <div class="comparison-device-card__rows">
+          <div class="comparison-device-row"><span class="comparison-device-row__label">Max Output</span><span class="status-pill status-pill--gold">4K60</span></div>
+          <div class="comparison-device-row"><span class="comparison-device-row__label">Dolby Vision</span><span class="status-pill status-pill--gold">Available</span></div>
+          <div class="comparison-device-row"><span class="comparison-device-row__label">Dolby Atmos</span><span class="status-pill status-pill--gold">Available</span></div>
+          <div class="comparison-device-row"><span class="comparison-device-row__label">Dolby TrueHD</span><span class="status-pill status-pill--dim">Unavailable</span></div>
+          <div class="comparison-device-row"><span class="comparison-device-row__label">Local Playback</span><span class="status-pill status-pill--dim">Limited</span></div>
+          <div class="comparison-device-row"><span class="comparison-device-row__label">Best Usage</span><span class="comparison-device-row__label u-text-sm u-color-bronze">Streaming</span></div>
         </div>
       </article>
 
-      <article class="platform-card">
-        <div class="platform-head">
+      <article class="comparison-device-card">
+        <div class="comparison-device-card__head">
           <img src="assets/logos/nvidia-shield.png" alt="NVIDIA Shield" class="logo--shield" />
-          <div class="platform-title">NVIDIA Shield Pro</div>
+          <div class="comparison-device-card__title">NVIDIA Shield Pro</div>
         </div>
-        <div class="platform-rows">
-          <div class="platform-row"><span class="platform-label">Max Output</span><span class="status-pill status-pill--gold">4K60</span></div>
-          <div class="platform-row"><span class="platform-label">Dolby Vision</span><span class="status-pill status-pill--gold">Available</span></div>
-          <div class="platform-row"><span class="platform-label">Dolby Atmos</span><span class="status-pill status-pill--gold">Available</span></div>
-          <div class="platform-row"><span class="platform-label">Dolby TrueHD</span><span class="status-pill status-pill--gold">Available</span></div>
-          <div class="platform-row"><span class="platform-label">Local Playback</span><span class="status-pill status-pill--gold">Strong</span></div>
-          <div class="platform-row"><span class="platform-label">Best Usage</span><span class="platform-label">Hybrid</span></div>
+        <div class="comparison-device-card__rows">
+          <div class="comparison-device-row"><span class="comparison-device-row__label">Max Output</span><span class="status-pill status-pill--gold">4K60</span></div>
+          <div class="comparison-device-row"><span class="comparison-device-row__label">Dolby Vision</span><span class="status-pill status-pill--gold">Available</span></div>
+          <div class="comparison-device-row"><span class="comparison-device-row__label">Dolby Atmos</span><span class="status-pill status-pill--gold">Available</span></div>
+          <div class="comparison-device-row"><span class="comparison-device-row__label">Dolby TrueHD</span><span class="status-pill status-pill--gold">Available</span></div>
+          <div class="comparison-device-row"><span class="comparison-device-row__label">Local Playback</span><span class="status-pill status-pill--gold">Strong</span></div>
+          <div class="comparison-device-row"><span class="comparison-device-row__label">Best Usage</span><span class="comparison-device-row__label u-text-sm u-color-bronze">Hybrid</span></div>
         </div>
       </article>
 
-      <article class="platform-card">
-        <div class="platform-head">
+      <article class="comparison-device-card">
+        <div class="comparison-device-card__head">
           <img src="assets/logos/dune-hd.png" alt="Dune HD" class="logo--dune" />
-          <div class="platform-title">Dune HD Box</div>
+          <div class="comparison-device-card__title">Dune HD Box</div>
         </div>
-        <div class="platform-rows">
-          <div class="platform-row"><span class="platform-label">Max Output</span><span class="status-pill status-pill--gold">4K60</span></div>
-          <div class="platform-row"><span class="platform-label">Dolby Vision</span><span class="status-pill status-pill--gold">Available</span></div>
-          <div class="platform-row"><span class="platform-label">Dolby Atmos</span><span class="status-pill status-pill--gold">Available</span></div>
-          <div class="platform-row"><span class="platform-label">Dolby TrueHD</span><span class="status-pill status-pill--gold">Available</span></div>
-          <div class="platform-row"><span class="platform-label">Local Playback</span><span class="status-pill status-pill--gold">Reference</span></div>
-          <div class="platform-row"><span class="platform-label">Best Usage</span><span class="platform-label">Local + Apps</span></div>
+        <div class="comparison-device-card__rows">
+          <div class="comparison-device-row"><span class="comparison-device-row__label">Max Output</span><span class="status-pill status-pill--gold">4K60</span></div>
+          <div class="comparison-device-row"><span class="comparison-device-row__label">Dolby Vision</span><span class="status-pill status-pill--gold">Available</span></div>
+          <div class="comparison-device-row"><span class="comparison-device-row__label">Dolby Atmos</span><span class="status-pill status-pill--gold">Available</span></div>
+          <div class="comparison-device-row"><span class="comparison-device-row__label">Dolby TrueHD</span><span class="status-pill status-pill--gold">Available</span></div>
+          <div class="comparison-device-row"><span class="comparison-device-row__label">Local Playback</span><span class="status-pill status-pill--gold">Reference</span></div>
+          <div class="comparison-device-row"><span class="comparison-device-row__label">Best Usage</span><span class="comparison-device-row__label u-text-sm u-color-bronze">Local + Apps</span></div>
         </div>
       </article>
 
-      <article class="platform-card">
-        <div class="platform-head">
+      <article class="comparison-device-card">
+        <div class="comparison-device-card__head">
           <img src="assets/logos/zidoo.png" alt="Zidoo" class="logo--zidoo" />
-          <div class="platform-title">Zidoo Z9X 8K</div>
+          <div class="comparison-device-card__title">Zidoo Z9X 8K</div>
         </div>
-        <div class="platform-rows">
-          <div class="platform-row"><span class="platform-label">Max Output</span><span class="status-pill status-pill--gold">8K60</span></div>
-          <div class="platform-row"><span class="platform-label">Dolby Vision</span><span class="status-pill status-pill--gold">Available</span></div>
-          <div class="platform-row"><span class="platform-label">Dolby Atmos</span><span class="status-pill status-pill--gold">Available</span></div>
-          <div class="platform-row"><span class="platform-label">Dolby TrueHD</span><span class="status-pill status-pill--gold">Available</span></div>
-          <div class="platform-row"><span class="platform-label">Local Playback</span><span class="status-pill status-pill--gold">Reference</span></div>
-          <div class="platform-row"><span class="platform-label">Best Usage</span><span class="platform-label">Local Library</span></div>
+        <div class="comparison-device-card__rows">
+          <div class="comparison-device-row"><span class="comparison-device-row__label">Max Output</span><span class="status-pill status-pill--gold">8K60</span></div>
+          <div class="comparison-device-row"><span class="comparison-device-row__label">Dolby Vision</span><span class="status-pill status-pill--gold">Available</span></div>
+          <div class="comparison-device-row"><span class="comparison-device-row__label">Dolby Atmos</span><span class="status-pill status-pill--gold">Available</span></div>
+          <div class="comparison-device-row"><span class="comparison-device-row__label">Dolby TrueHD</span><span class="status-pill status-pill--gold">Available</span></div>
+          <div class="comparison-device-row"><span class="comparison-device-row__label">Local Playback</span><span class="status-pill status-pill--gold">Reference</span></div>
+          <div class="comparison-device-row"><span class="comparison-device-row__label">Best Usage</span><span class="comparison-device-row__label u-text-sm u-color-bronze">Local Library</span></div>
         </div>
       </article>
     </div>
 
-    <p class="platform-disclaimer">Capabilities vary by model, firmware, app behavior, and the full display/audio chain.</p>
+    <p class="u-mt-1 u-text-center u-color-muted u-text-sm">Capabilities vary by model, firmware, app behavior, and the full display/audio chain.</p>
   </div>
 </section>
 
@@ -838,8 +786,9 @@
   </div>
 </section>
 
+<!-- ═══ CTA FULL ═══ -->
 <section class="cta-full u-bg-warm" id="cta">
-  <div class="container cta-full__content">
+  <div class="container">
     <div class="reveal">
       <div class="section-label u-flex-center">
         <span class="label">Ready to Begin</span>
@@ -848,9 +797,12 @@
       <p class="lead">
         Book a private consultation. We’ll assess your current setup, identify where quality is being lost, and define the cleanest path to full-performance playback.
       </p>
-      <div class="cta-full__actions u-mt-25">
-        <a href="contact.html" class="btn btn-primary">Book Consultation</a>
-        <a href="services.html" class="btn btn-outline">Explore Services</a>
+      <div class="cta-full__actions">
+        <a href="contact.html" class="btn btn-primary">Book a Consultation</a>
+        <a href="about.html" class="btn btn-ghost">
+          What We Are
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
       </div>
     </div>
   </div>
