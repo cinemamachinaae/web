@@ -13,8 +13,8 @@
     .hero { min-height: 86vh; }
 
     .hero__content {
-      padding-top: 2.75rem;
-      padding-bottom: 1rem;
+      padding-top: 2.5rem;
+      padding-bottom: 0.75rem;
     }
 
     .hero__eyebrow {
@@ -52,7 +52,7 @@
     /* Removed redundant h1 animation, now handled per-word in style.css */
 
     .hero__lead {
-      margin: 1rem auto 0;
+      margin: 0.875rem auto 0;
       text-align: center;
       max-width: 720px;
     }
@@ -67,13 +67,13 @@
       gap: 1rem;
       align-items: center;
       justify-content: center;
-      margin-top: 1.25rem;
+      margin-top: 1.125rem;
       flex-wrap: wrap;
     }
 
     .hero__actions--stack-safe {
-      gap: 20px;
-      margin-top: 1.5rem;
+      gap: 18px;
+      margin-top: 1.35rem;
     }
 
     .js-ready .hero__actions {
@@ -131,13 +131,20 @@
 
     /* ── INTRO SECTION ── */
     .intro-section {
-      padding: var(--section-gap) 0;
+      padding: clamp(4rem, 7vw, 5.75rem) 0;
       text-align: center;
     }
 
-    .intro-section .lead {
-      margin: 1.5rem auto 0;
-      text-align: center;
+    .intro-section .u-section-header {
+      margin-bottom: 1.75rem;
+    }
+
+    .intro-section p {
+      margin-top: 0;
+    }
+
+    .intro-section .stat-row {
+      margin-top: 2.75rem !important;
     }
 
     /* ── VIDEO SECTION CUSTOM ── */
@@ -399,14 +406,25 @@
 
     section#bitrate .u-grid-2-even {
       align-items: start;
+      gap: clamp(1.75rem, 4vw, 3.5rem) !important;
     }
 
-    section#bitrate .bar-chart {
+    section#bitrate .bar-chart,
+    section#bitrate .bar-chart-premium {
       gap: 0.875rem;
     }
 
     .bitrate-section {
       padding: clamp(2.25rem, 3.75vw, 3.25rem) 0;
+    }
+
+    section#bitrate .u-surface-box {
+      padding: 2rem !important;
+    }
+
+    .comparison-col .format-badges {
+      margin-top: 1.75rem;
+      gap: 12px;
     }
 
     /* ── AUDIO CODECS ── */
@@ -416,7 +434,8 @@
     }
 
     .codec-section .format-badges {
-      margin-top: 2rem;
+      margin-top: 1.75rem;
+      gap: 12px;
     }
 
     /* ── CTA FULL ── */
@@ -457,6 +476,7 @@
     }
 
     .footer__inner {
+      gap: 2.5rem;
       margin-bottom: 2.75rem;
     }
 
@@ -472,7 +492,57 @@
     }
 
     @media (max-width: 768px) {
+      .hero__content {
+        padding-top: 2rem;
+        padding-bottom: 0.5rem;
+      }
+
       .comparison-grid { grid-template-columns: 1fr; gap: 1.5px; }
+
+      .intro-section {
+        padding: clamp(3rem, 9vw, 4rem) 0;
+      }
+
+      .intro-section .stat-row {
+        margin-top: 2rem !important;
+      }
+
+      section#ecosystem.section--tight {
+        padding: clamp(1.75rem, 6vw, 2.25rem) 0;
+      }
+
+      section#ecosystem .container.mb-3 {
+        margin-bottom: 1rem;
+      }
+
+      section#bitrate .u-grid-2-even {
+        gap: 1.75rem !important;
+      }
+
+      section#bitrate .u-surface-box {
+        padding: 1.5rem !important;
+      }
+
+      .services-overview {
+        padding: clamp(3.5rem, 8vw, 4.5rem) 0;
+      }
+
+      .comparison-section {
+        padding: clamp(2.25rem, 7vw, 3rem) 0;
+      }
+
+      .codec-section {
+        padding: clamp(3rem, 8vw, 4rem) 0;
+      }
+
+      .cta-full {
+        padding: clamp(3rem, 8vw, 4.25rem) 0;
+      }
+
+      .footer {
+        padding: clamp(2rem, 6vw, 3rem) 0 1.75rem;
+      }
+
       .stat-row {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -704,7 +774,6 @@
 <section class="bitrate-section section--tight u-bg-warm u-border-top" id="bitrate">
   <div class="container">
     <div class="u-grid-2-even">
-      <div class="reveal">
       <div class="u-section-header reveal">
         <div class="section-label">
           <span class="label">Video Bitrate Reality</span>
