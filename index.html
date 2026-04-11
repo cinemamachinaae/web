@@ -155,7 +155,7 @@
     }
 
     .intro-section .u-section-header {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.35rem;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -163,8 +163,7 @@
 
     .intro-section .u-section-header .section-label {
       justify-content: center;
-      margin-bottom: 1rem;
-      width: 100%;
+      margin-bottom: 0.9rem;
     }
 
     .intro-section .u-section-header .label {
@@ -173,8 +172,9 @@
     }
 
     .intro-section .approach__title {
-      width: 100%;
-      max-width: 26ch;
+      display: inline-block;
+      width: auto;
+      max-width: none;
       margin: 0 auto;
       text-align: center;
       line-height: 1.08;
@@ -184,7 +184,7 @@
     .intro-section .approach__title-line,
     .intro-section .approach__title-line--single {
       display: block;
-      width: 100%;
+      width: auto;
       text-align: center;
     }
 
@@ -200,21 +200,25 @@
     }
 
     .intro-p {
-      max-width: 36ch;
+      max-width: 34ch;
       margin-left: auto;
       margin-right: auto;
       text-align: center;
     }
 
     .intro-section .stat-row {
-      margin-top: 2.75rem !important;
+      margin-top: 2.5rem !important;
+      max-width: 1120px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .intro-section .stat-block {
-      min-height: 172px;
+      min-height: 164px;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      padding-inline: 1.5rem;
     }
 
     .intro-section .stat-block__number {
@@ -222,10 +226,10 @@
     }
 
     .intro-section .stat-block__label {
-      max-width: 16ch;
+      max-width: 13ch;
       margin-left: auto;
       margin-right: auto;
-      line-height: 1.45;
+      line-height: 1.42;
     }
 
     /* ── VIDEO SECTION CUSTOM ── */
@@ -675,7 +679,7 @@
 
       .intro-section .approach__title {
         display: block;
-        max-width: 13.5ch;
+        max-width: 13ch;
         width: auto;
         font-size: clamp(1.85rem, 7vw, 2.2rem);
         line-height: 1.08;
@@ -701,11 +705,11 @@
       }
 
       .intro-section .stat-block {
-        min-height: 148px;
+        min-height: 144px;
       }
 
       .intro-section .stat-block__label {
-        max-width: 14ch;
+        max-width: 12ch;
       }
 
       section#ecosystem.section--tight {
