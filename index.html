@@ -155,12 +155,16 @@
     }
 
     .intro-section .u-section-header {
-      margin-bottom: 1.75rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .intro-section .u-section-header .section-label {
       justify-content: center;
-      margin-bottom: 1.1rem;
+      margin-bottom: 1rem;
+      width: 100%;
     }
 
     .intro-section .u-section-header .label {
@@ -169,10 +173,8 @@
     }
 
     .intro-section .approach__title {
-      display: inline-grid;
-      justify-items: center;
-      width: auto;
-      max-width: none;
+      width: 100%;
+      max-width: 26ch;
       margin: 0 auto;
       text-align: center;
       line-height: 1.08;
@@ -182,7 +184,7 @@
     .intro-section .approach__title-line,
     .intro-section .approach__title-line--single {
       display: block;
-      width: auto;
+      width: 100%;
       text-align: center;
     }
 
@@ -198,7 +200,7 @@
     }
 
     .intro-p {
-      max-width: 38ch;
+      max-width: 36ch;
       margin-left: auto;
       margin-right: auto;
       text-align: center;
@@ -206,6 +208,24 @@
 
     .intro-section .stat-row {
       margin-top: 2.75rem !important;
+    }
+
+    .intro-section .stat-block {
+      min-height: 172px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .intro-section .stat-block__number {
+      min-height: 1em;
+    }
+
+    .intro-section .stat-block__label {
+      max-width: 16ch;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.45;
     }
 
     /* ── VIDEO SECTION CUSTOM ── */
@@ -655,10 +675,10 @@
 
       .intro-section .approach__title {
         display: block;
-        max-width: 13ch;
+        max-width: 13.5ch;
         width: auto;
         font-size: clamp(1.85rem, 7vw, 2.2rem);
-        line-height: 1.1;
+        line-height: 1.08;
         letter-spacing: -0.015em;
         text-align: center;
       }
@@ -678,6 +698,14 @@
 
       .intro-section .stat-row {
         margin-top: 2rem !important;
+      }
+
+      .intro-section .stat-block {
+        min-height: 148px;
+      }
+
+      .intro-section .stat-block__label {
+        max-width: 14ch;
       }
 
       section#ecosystem.section--tight {
