@@ -1,70 +1,74 @@
-const { Resend } = require('resend');
+import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-module.exports = async (req, res) => {
-  // Only allow POST
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
+function escapeHtml(value = '') {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
 
+function json(data, status = 200) {
+  return new Response(JSON.stringify(data), {
+    status,
+    headers: { 'Content-Type': 'application/json' },
+  });
+}
+
+export async function POST(request) {
   try {
-    const { first_name, last_name, email, phone, service, system_description } = req.body;
+    const body = await request.json();
 
-    // Basic validation
-    if (!first_name || !email) {
-      return res.status(400).json({ error: 'First name and email are required.' });
+    const firstName = (body.first_name || '').trim();
+    const lastName = (body.last_name || '').trim();
+    const email = (body.email || '').trim();
+    const phone = (body.phone || '').trim();
+    const service = (body.service || '').trim();
+    const systemDescription = (body.system_description || '').trim();
+
+    if (!firstName || !email) {
+      return json({ error: 'First name and email are required.' }, 400);
     }
 
-    // Sanitize helper (simple HTML escaping)
-    const esc = (str) => {
-      if (!str) return '';
-      return str
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#039;');
-    };
+    const fullName = [firstName, lastName].filter(Boolean).join(' ');
+    const safeName = escapeHtml(fullName || firstName);
+    const safeEmail = escapeHtml(email);
+    const safePhone = escapeHtml(phone || 'Not provided');
+    const safeService = escapeHtml(service || 'Not selected');
+    const safeSystem = escapeHtml(systemDescription || 'No system details provided.');
 
-    const fullName = `${esc(first_name)} ${esc(last_name)}`.trim();
-    const safeEmail = esc(email);
-    const safePhone = esc(phone);
-    const safeService = esc(service);
-    const safeSystem = esc(system_description);
-
-    const emailHtml = `
-      <div style="font-family: sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; border: 1px solid #eee; padding: 20px; border-radius: 8px;">
-        <h2 style="color: #c9a96e; border-bottom: 2px solid #c9a96e; padding-bottom: 10px;">New Enquiry: Cinema Machina</h2>
-        <p><strong>From:</strong> ${fullName}</p>
-        <p><strong>Email:</strong> ${safeEmail}</p>
-        <p><strong>Phone:</strong> ${safePhone || 'Not provided'}</p>
-        <p><strong>Primary Interest:</strong> ${safeService || 'Not selected'}</p>
-        <div style="background: #f9f9f9; padding: 15px; border-radius: 4px; margin-top: 20px;">
-          <h3 style="margin-top: 0; font-size: 1rem; color: #666;">System Description:</h3>
-          <p style="white-space: pre-wrap;">${safeSystem || 'No description provided.'}</p>
+    const { data, error } = await resend.emails.send({
+      from: process.env.CONTACT_FROM_EMAIL,
+      to: [process.env.CONTACT_TO_EMAIL],
+      replyTo: email,
+      subject: `New Cinema Machina enquiry — ${fullName || firstName}`,
+      html: `
+        <div style="font-family:Arial,sans-serif;line-height:1.6;color:#111;">
+          <h2 style="margin:0 0 16px;">New website enquiry</h2>
+          <p><strong>Name:</strong> ${safeName}</p>
+          <p><strong>Email:</strong> ${safeEmail}</p>
+          <p><strong>Phone / WhatsApp:</strong> ${safePhone}</p>
+          <p><strong>Primary Interest:</strong> ${safeService}</p>
+          <hr style="margin:24px 0;border:none;border-top:1px solid #ddd;" />
+          <p><strong>System details:</strong></p>
+          <p style="white-space:pre-wrap;">${safeSystem}</p>
         </div>
-        <hr style="margin-top: 30px; border: 0; border-top: 1px solid #eee;" />
-        <p style="font-size: 0.8rem; color: #999;">This enquiry was sent via the cinemamachina.ae contact form.</p>
-      </div>
-    `;
-
-    const { data: emailData, error: emailError } = await resend.emails.send({
-      from: 'Cinema Machina <enquiry@updates.cinemamachina.ae>',
-      to: ['contact@cinemamachina.ae'],
-      replyTo: safeEmail,
-      subject: `New Enquiry from ${fullName}`,
-      html: emailHtml,
+      `,
     });
 
-    if (emailError) {
-      console.error('Resend error:', emailError);
-      return res.status(500).json({ error: 'Failed to send email.' });
+    if (error) {
+      console.error('Resend send error:', error);
+      return json({ error: 'Email send failed.' }, 500);
     }
 
-    return res.status(200).json({ success: true, message: 'Enquiry sent successfully.' });
+    return json({ ok: true, id: data?.id || null }, 200);
   } catch (error) {
-    console.error('Server error:', error);
-    return res.status(500).json({ error: 'An unexpected error occurred.' });
+    console.error('Contact API error:', error);
+    return json({ error: 'Invalid request.' }, 500);
   }
-};
+}
+
+export default { POST };
