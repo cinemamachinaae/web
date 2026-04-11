@@ -482,7 +482,7 @@ p {
 }
 
 .footer__brand img {
-  height: 38px; /* Increased for better presence */
+  height: 60px;
   opacity: 0.98;
   margin-bottom: 1.5rem;
   display: block;
@@ -793,6 +793,14 @@ p {
 .hero__title--tagline {
   position: relative;
   display: inline-block;
+  opacity: 1;
+  transform: none;
+  filter: none;
+  will-change: opacity, transform;
+}
+
+.hero__word-group {
+  display: inline-block;
 }
 
 .hero__word {
@@ -803,30 +811,6 @@ p {
   white-space: pre-wrap;
 }
 
-.js-ready .hero__word {
-  opacity: 0;
-  transform: translateY(12px);
-  filter: blur(12px);
-  animation: wordReveal 3.2s var(--ease-out) forwards;
-  will-change: transform, opacity, filter;
-}
-
-@keyframes wordReveal {
-  0% { opacity: 0; transform: translateY(12px); filter: blur(12px); }
-  35% { opacity: 0; }
-  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
-}
-
-/* Stagger Logic — Gentle Luxury Stagger */
-.js-ready .hero__word:nth-child(1) { animation-delay: 0.3s; }
-.js-ready .hero__word:nth-child(2) { animation-delay: 0.5s; }
-.js-ready .hero__word:nth-child(3) { 
-  animation-delay: 0.9s;
-  animation-duration: 3.5s; 
-}
-
-.hero__word-group { display: inline-block; }
-
 .hero__word--accent {
   color: var(--bronze-light);
   font-weight: 500;
@@ -836,22 +820,22 @@ p {
   letter-spacing: 0.02em;
 }
 
-.js-ready .hero__word--accent {
-  animation: wordReveal 3.5s var(--ease-out) forwards,
-             bronzeLustre 10s ease-in-out infinite alternate;
+.js-ready .hero__title--tagline {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: heroTitleReveal 1.35s var(--ease-out) forwards;
+  animation-delay: 0.28s;
 }
 
-@keyframes bronzeLustre {
-  0%   { color: var(--bronze); text-shadow: 0 0 0px transparent; }
-  50%  { color: var(--bronze-light); text-shadow: 0 0 20px rgba(201,169,110,0.4); }
-  100% { color: var(--bronze); text-shadow: 0 0 0px transparent; }
-}
-
-/* Second line staggers */
-.hero__word-group:nth-of-type(2) .hero__word:nth-child(1) { animation-delay: 1.6s; } 
-.hero__word-group:nth-of-type(2) .hero__word:nth-child(2) { 
-  animation-delay: 2.1s;
-  animation-duration: 3.8s; 
+@keyframes heroTitleReveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 
@@ -1761,8 +1745,8 @@ p {
 .logo--kodi                   { --logo-multiplier: 1.00; }
 
 /* Codecs / Formats — NORMALIZED OPTICAL PARITY */
-.logo--vision, .logo--dv, .logo--dolby-vision { height: 14px !important; width: auto !important; }
-.logo--atmos, .logo--dolby-atmos              { height: 19px !important; width: auto !important; }
+.logo--vision, .logo--dv, .logo--dolby-vision { height: 17px !important; width: auto !important; }
+.logo--atmos, .logo--dolby-atmos              { height: 15px !important; width: auto !important; }
 .logo--truehd, .logo--dolby-truehd            { --logo-multiplier: 1.15; }
 .logo--dtshdma, .logo--dts-hd-ma              { --logo-multiplier: 1.15; }
 .logo--dtsx, .logo--dts-x                    { --logo-multiplier: 1.15; }
@@ -2400,11 +2384,10 @@ p {
 .vimeo-surface-toggle__icon--play { display: flex; }
 .vimeo-surface-toggle__icon--pause { display: none; }
 
-.icon-pause { opacity: 0; transform: scale(0.8); position: absolute; }
-.icon-play  { opacity: 1; transform: scale(1); }
-
-.vimeo-shell.is-playing .icon-play { opacity: 0; transform: scale(0.8); }
-.vimeo-shell.is-playing .icon-pause { opacity: 1; transform: scale(1); position: static; }
+.vimeo-surface-toggle .icon-pause,
+.vimeo-surface-toggle__icon--pause {
+  display: none !important;
+}
 
 .vimeo-shell:hover .vimeo-surface-toggle__icon {
   transform: scale(1.05);
