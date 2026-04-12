@@ -540,11 +540,11 @@
     .comparison-col--good h3 { color: var(--bronze-light); }
 
     .column-brand-lockup {
-      min-height: 60px;
+      min-height: 78px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 1.65rem;
+      margin-bottom: 1.95rem;
       width: 100%;
     }
 
@@ -561,7 +561,8 @@
 
     .comparison-col--bad .column-brand-lockup,
     .comparison-col--good .column-brand-lockup {
-      min-height: 72px;
+      min-height: 78px;
+      align-self: stretch;
     }
 
     .comparison-col--bad ul,
@@ -585,32 +586,32 @@
     }
 
     .comparison-col li {
-      font-size: 0.9rem;
-      color: rgba(237,232,219,0.78);
+      font-size: 0.925rem;
+      color: rgba(237,232,219,0.82);
       display: grid;
-      grid-template-columns: 16px minmax(0, 1fr);
+      grid-template-columns: 18px minmax(0, 1fr);
       align-items: start;
-      column-gap: 0.75rem;
-      line-height: 1.7;
+      column-gap: 0.8rem;
+      line-height: 1.72;
       margin: 0;
       text-align: left;
       font-weight: 500;
     }
 
     .comparison-col--good li {
-      color: rgba(237,232,219,0.88);
+      color: rgba(237,232,219,0.9);
       font-weight: 500;
     }
 
     .comparison-col--bad li {
-      color: rgba(237,232,219,0.78);
+      color: rgba(237,232,219,0.84);
       font-weight: 500;
     }
 
     .comparison-col li::before {
       content: '—';
-      color: var(--text-muted);
-      width: 16px;
+      color: rgba(237,232,219,0.48);
+      width: 18px;
       display: block;
       text-align: center;
       flex-shrink: 0;
