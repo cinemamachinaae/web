@@ -559,6 +559,11 @@
       color: var(--text-primary);
     }
 
+    .comparison-col--bad .column-brand-lockup,
+    .comparison-col--good .column-brand-lockup {
+      min-height: 72px;
+    }
+
     .comparison-col--bad ul,
     .comparison-col--good ul {
       padding-top: 0.1rem;
@@ -581,14 +586,15 @@
 
     .comparison-col li {
       font-size: 0.9rem;
-      color: var(--text-secondary);
-      display: flex;
-      align-items: flex-start;
-      gap: 0.75rem;
+      color: rgba(237,232,219,0.78);
+      display: grid;
+      grid-template-columns: 16px minmax(0, 1fr);
+      align-items: start;
+      column-gap: 0.75rem;
       line-height: 1.7;
       margin: 0;
       text-align: left;
-      font-weight: 400;
+      font-weight: 500;
     }
 
     .comparison-col--good li {
@@ -596,9 +602,17 @@
       font-weight: 500;
     }
 
+    .comparison-col--bad li {
+      color: rgba(237,232,219,0.78);
+      font-weight: 500;
+    }
+
     .comparison-col li::before {
       content: '—';
       color: var(--text-muted);
+      width: 16px;
+      display: block;
+      text-align: center;
       flex-shrink: 0;
     }
 
@@ -607,6 +621,8 @@
       color: var(--bronze);
       font-size: 0.6rem;
       margin-top: 0.4rem;
+      width: 16px;
+      text-align: center;
     }
 
     section#bitrate.section--tight {
