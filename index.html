@@ -42,6 +42,7 @@
     .hero__eyebrow::after {
       content: '';
       flex: 1;
+      min-width: 20px;
       max-width: 60px;
       height: 1px;
       background: var(--bronze-dim);
@@ -144,8 +145,10 @@
     @media (max-width: 768px) {
       .hero__title {
         font-size: clamp(2.5rem, 8vw, 4rem);
-        max-width: 90%;
+        max-width: 95%;
+        text-wrap: balance;
       }
+      .hero__eyebrow { gap: 0.75rem; }
     }
 
     /* ── INTRO SECTION ── */
@@ -159,11 +162,12 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      gap: 0;
     }
 
     .intro-section .u-section-header .section-label {
       justify-content: center;
-      margin-bottom: 0.9rem;
+      margin-bottom: 1.35rem;
     }
 
     .intro-section .u-section-header .label {
@@ -179,6 +183,7 @@
       text-align: center;
       line-height: 1.08;
       letter-spacing: -0.016em;
+      margin-top: 0;
     }
 
     .intro-section .approach__title-line,
@@ -226,10 +231,11 @@
     }
 
     .intro-section .stat-block__label {
-      max-width: 13ch;
+      max-width: 18ch;
       margin-left: auto;
       margin-right: auto;
       line-height: 1.42;
+      text-wrap: balance;
     }
 
     /* ── VIDEO SECTION CUSTOM ── */
@@ -333,6 +339,19 @@
 
     section#ecosystem .container.mb-3 {
       margin-bottom: 1.25rem;
+      text-align: center;
+    }
+
+    section#ecosystem .section-label {
+      display: inline-flex;
+      justify-content: center;
+      width: auto;
+      margin: 0 auto;
+    }
+
+    section#ecosystem .section-label .label {
+      display: inline-block;
+      text-align: center;
     }
 
     section#ecosystem .ecosystem-strip {
@@ -509,47 +528,45 @@
 
     .comparison-col h3 {
       font-size: 1rem;
-      margin-bottom: 1.25rem;
+      margin: 0;
       color: var(--text-secondary);
+      font-family: var(--font-display);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
     }
 
     .comparison-col--good h3 { color: var(--bronze-light); }
 
-    .comparison-col h3,
     .column-brand-lockup {
       min-height: 60px;
       display: flex;
       align-items: center;
+      justify-content: center;
       margin-bottom: 1.65rem;
     }
 
-    .comparison-col--bad h3 {
-      color: var(--text-primary);
-      justify-content: flex-start;
-    }
-
-    .column-brand-lockup {
+    .column-brand-lockup--bad {
       justify-content: center;
+      padding-left: 0;
     }
 
-    .comparison-col ul {
-      gap: 0.9rem;
-    }
-
-    .comparison-col--good ul,
-    .comparison-col--bad ul {
-      flex: 1;
-    }
-
-    .comparison-col .format-badges {
-      margin-top: auto;
+    .column-brand-lockup--bad h3 {
+      color: var(--text-primary);
     }
 
     .comparison-col ul {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 0.75rem;
+      gap: 0.9rem;
+      margin: 0;
+      padding: 0;
+      flex: 1;
+    }
+
+    .comparison-col .format-badges {
+      margin-top: auto;
     }
 
     .comparison-col li {
@@ -558,6 +575,24 @@
       display: flex;
       align-items: flex-start;
       gap: 0.75rem;
+      line-height: 1.7;
+      margin: 0;
+      text-align: left;
+      font-weight: 400;
+    }
+
+    .comparison-col--bad ul,
+    .comparison-col--good ul {
+      padding-top: 0.1rem;
+    }
+
+    .comparison-col--good li {
+      color: rgba(237,232,219,0.8);
+      font-weight: 400;
+    }
+
+    .comparison-col--bad .column-brand-lockup {
+      max-width: 36ch;
     }
 
     .comparison-col li::before {
@@ -689,8 +724,10 @@
       gap: 0;
     }
 
-    .stat-row .stat-block + .stat-block {
-      border-left: none;
+    @media (min-width: 769px) {
+      .stat-row .stat-block + .stat-block {
+        border-left: none;
+      }
     }
 
     @media (max-width: 768px) {
@@ -944,7 +981,9 @@
   <div class="container">
     <div class="reveal">
       <div class="u-section-header u-section-header--center">
-        <span class="label">The Cinema Machina Approach</span>
+        <div class="section-label">
+          <span class="label">The Cinema Machina Approach</span>
+        </div>
         <h2 class="display-md approach__title">
           <span class="approach__title-line approach__title-line--single">
             We Believe in the Power of a “Well-Set-Up”.
@@ -983,7 +1022,9 @@
 <!-- ═══════════════════ ECOSYSTEM ═══════════════════ -->
 <section class="section--tight" id="ecosystem">
   <div class="container mb-3">
-    <span class="label u-text-center d-block">Verified Ecosystem Compatibility</span>
+    <div class="section-label u-flex-center">
+      <span class="label">Verified Ecosystem Compatibility</span>
+    </div>
   </div>
   <div class="ecosystem-strip">
     <div class="ecosystem-strip__track" id="eco-track">
@@ -1148,7 +1189,9 @@
 
     <div class="comparison-grid reveal">
       <div class="comparison-col comparison-col--bad">
-        <h3>Streaming / Default Setup</h3>
+        <div class="column-brand-lockup column-brand-lockup--bad">
+          <h3>Streaming / Default Setup</h3>
+        </div>
         <ul>
           <li>Compressed video — 15–25 Mbps typical</li>
           <li>Heavily processed audio — lossy Dolby Digital</li>
