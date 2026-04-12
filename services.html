@@ -8,6 +8,25 @@
   <link rel="icon" type="image/png" href="assets/logos/cm-logo-square.png" />
   <link rel="stylesheet" href="assets/css/style.css?v=4.4" />
   <style>
+    /* ── PAGE HERO POLISH ── */
+    .page-hero .section-label {
+      margin-bottom: 1.1rem;
+      justify-content: center;
+    }
+
+    .page-hero h1 {
+      max-width: 12ch;
+      margin: 0 auto;
+      line-height: 1.04;
+      text-wrap: balance;
+    }
+
+    .page-hero .lead {
+      max-width: 44ch;
+      margin: 1rem auto 0;
+      text-align: center;
+    }
+
     /* ── SERVICE MODULE ── */
     .service-module {
       padding: var(--section-gap) 0;
@@ -19,8 +38,8 @@
     .service-module__inner {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: clamp(3rem, 6vw, 7rem);
-      align-items: center;
+      gap: clamp(2.75rem, 5vw, 5.5rem);
+      align-items: start;
     }
 
     .service-module:nth-child(even) .service-module__inner {
@@ -72,32 +91,39 @@
 
     .service-module h2 {
       font-size: clamp(1.75rem, 3vw, 2.5rem);
-      margin-bottom: 1.25rem;
+      margin-bottom: 1rem;
+      line-height: 1.08;
+      text-wrap: balance;
     }
 
     .service-module p {
-      max-width: none;
+      max-width: 58ch;
     }
 
     .service-module__list {
       list-style: none;
-      margin-top: 2rem;
+      margin-top: 1.75rem;
       display: flex;
       flex-direction: column;
-      gap: 0.875rem;
+      gap: 0.95rem;
     }
 
     .service-module__list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.875rem;
+      display: grid;
+      grid-template-columns: 14px minmax(0, 1fr);
+      align-items: start;
+      column-gap: 0.875rem;
       font-size: 0.875rem;
       color: var(--text-secondary);
+      line-height: 1.72;
     }
 
     .service-module__list li::before {
       content: '✦';
       color: var(--bronze);
+      width: 14px;
+      display: block;
+      text-align: center;
       flex-shrink: 0;
       font-size: 0.5rem;
       margin-top: 0.45rem;
@@ -131,11 +157,44 @@
       line-height: 1.7;
     }
 
+    /* ── CTA POLISH ── */
+    .cta-full__actions .btn {
+      min-width: 260px;
+      min-height: 56px;
+      justify-content: center;
+      padding: 0.875rem 2.25rem;
+    }
+
+    .cta-full__actions .btn-ghost {
+      color: var(--bronze-light);
+      border: 1px solid rgba(226,193,155,0.42);
+      background: rgba(7,6,4,0.92);
+      box-shadow:
+        inset 0 0 0 1px rgba(226,193,155,0.06),
+        0 14px 34px rgba(0,0,0,0.18);
+    }
+
+    .cta-full__actions .btn-ghost:hover {
+      color: var(--bg);
+      border-color: var(--bronze-light);
+      background: var(--bronze-light);
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,0.04),
+        0 18px 40px rgba(0,0,0,0.22);
+    }
+
     /* ── MOBILE ── */
     @media (max-width: 768px) {
       .service-module__inner { grid-template-columns: 1fr; }
       .service-module:nth-child(even) .service-module__inner { direction: ltr; }
+      .page-hero h1 { max-width: 11ch; }
+      .page-hero .lead { max-width: 28ch; }
+      .service-module h2 { max-width: 14ch; }
       .service-module__badges { margin-bottom: 2rem; }
+      .cta-full__actions .btn {
+        width: 100%;
+        min-width: 0;
+      }
     }
   </style>
 </head>
