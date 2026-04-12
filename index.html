@@ -534,6 +534,7 @@
       font-weight: 400;
       line-height: 1.15;
       letter-spacing: -0.01em;
+      text-align: center;
     }
 
     .comparison-col--good h3 { color: var(--bronze-light); }
@@ -544,15 +545,23 @@
       align-items: center;
       justify-content: center;
       margin-bottom: 1.65rem;
+      width: 100%;
     }
 
     .column-brand-lockup--bad {
       justify-content: center;
       padding-left: 0;
+      width: 100%;
+      max-width: none;
     }
 
     .column-brand-lockup--bad h3 {
       color: var(--text-primary);
+    }
+
+    .comparison-col--bad ul,
+    .comparison-col--good ul {
+      padding-top: 0.1rem;
     }
 
     .comparison-col ul {
@@ -563,6 +572,7 @@
       margin: 0;
       padding: 0;
       flex: 1;
+      width: 100%;
     }
 
     .comparison-col .format-badges {
@@ -581,18 +591,9 @@
       font-weight: 400;
     }
 
-    .comparison-col--bad ul,
-    .comparison-col--good ul {
-      padding-top: 0.1rem;
-    }
-
     .comparison-col--good li {
-      color: rgba(237,232,219,0.8);
-      font-weight: 400;
-    }
-
-    .comparison-col--bad .column-brand-lockup {
-      max-width: 36ch;
+      color: rgba(237,232,219,0.88);
+      font-weight: 500;
     }
 
     .comparison-col li::before {
