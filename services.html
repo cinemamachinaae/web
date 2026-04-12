@@ -15,10 +15,13 @@
     }
 
     .page-hero h1 {
-      max-width: 11ch;
+      display: inline-block;
+      width: auto;
+      max-width: none;
       margin: 0 auto;
       line-height: 1.02;
-      text-wrap: balance;
+      white-space: nowrap;
+      text-align: center;
     }
 
     .page-hero .lead {
@@ -170,6 +173,16 @@
       max-width: none;
     }
 
+    /* ── CODEC STRIP SPACING ── */
+    .section--strip {
+      padding-top: 4.5rem;
+      padding-bottom: 4.5rem;
+    }
+
+    .section--strip + .cta-full {
+      padding-top: 4.5rem;
+    }
+
     /* ── CTA POLISH ── */
     .cta-full__actions .btn {
       min-width: 260px;
@@ -206,13 +219,27 @@
         gap: 2.2rem;
       }
       .service-module:nth-child(even) .service-module__inner { direction: ltr; }
-      .page-hero h1 { max-width: 10.5ch; }
+      .page-hero h1 {
+        display: block;
+        width: auto;
+        max-width: 12ch;
+        white-space: normal;
+        text-wrap: balance;
+      }
       .page-hero .lead { max-width: 30ch; }
       .service-module h2 { max-width: 13ch; }
       .service-module__badges { margin-bottom: 2.1rem; }
       .process-highlight {
         padding: 1.6rem;
         margin-top: 1.75rem;
+      }
+      .section--strip {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+      }
+
+      .section--strip + .cta-full {
+        padding-top: 3rem;
       }
       .cta-full__actions .btn {
         width: 100%;
