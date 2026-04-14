@@ -2556,9 +2556,27 @@ p {
   .table-responsive-wrapper, .format-table-wrapper { display: none; }
   .audio-format-cards { display: grid; }
   .vimeo-controls { 
-    padding: 1rem;
-    gap: 0.75rem;
-    background: rgba(0,0,0,0.8); /* Solid background on mobile for legibility */
+    left: 0.5rem;
+    right: 0.5rem;
+    bottom: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    gap: 0.5rem;
+    background: rgba(0,0,0,0.85); /* Solid background on mobile for legibility */
+  }
+  .vimeo-control-btn { 
+    width: 28px; 
+    height: 28px; 
+  }
+  .vimeo-control-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+  .vimeo-time { 
+    min-width: 56px; 
+    font-size: 0.65rem;
+  }
+  .vimeo-progress {
+    height: 2px;
   }
   .vimeo-shell iframe { pointer-events: auto; }
 }
