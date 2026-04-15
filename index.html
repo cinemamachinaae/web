@@ -1,359 +1,263 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cinema Machina — Premium Playback & Media Environment Specialists, UAE</title>
-  <meta name="description" content="Cinema Machina optimizes luxury home cinema systems in the UAE for reference-grade playback, lossless audio, and full-performance video delivery." />
-  <link rel="icon" type="image/png" href="assets/logos/cm-logo-square.png" />
-  <link rel="stylesheet" href="assets/css/style.css?v=4.4" />
-  <script src="https://player.vimeo.com/api/player.js"></script>
-  <style>
-    /* ── PAGE-SPECIFIC OVERRIDES ── */
-    .hero { min-height: 86vh; }
-
-    .hero__content {
-      padding-top: 2.5rem;
-      padding-bottom: 0.75rem;
-    }
-
-    .hero__eyebrow {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 1.125rem;
-    }
-
-    .js-ready .hero__eyebrow {
-      opacity: 0;
-      animation: fadeUp 1s 0.3s var(--ease-out) forwards;
-    }
-
-    .hero__eyebrow span {
-      font-family: var(--font-body);
-      font-size: 0.6875rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--bronze);
-    }
-
-    .hero__eyebrow::before,
-    .hero__eyebrow::after {
-      content: '';
-      flex: 1;
-      max-width: 60px;
-      height: 1px;
-      background: var(--bronze-dim);
-    }
-
-
-
-    /* Removed redundant h1 animation, now handled per-word in style.css */
-
-    .hero__lead {
-      margin: 0.875rem auto 0;
-      text-align: center;
-      max-width: 720px;
-    }
-
-    .js-ready .hero__lead {
-      opacity: 0;
-      animation: fadeUp 1s 0.75s var(--ease-out) forwards;
-    }
-
-    .hero__actions {
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-      justify-content: center;
-      margin-top: 1.125rem;
-      flex-wrap: wrap;
-    }
-
-    .hero__actions--stack-safe {
-      gap: 18px;
-      margin-top: 1.35rem;
-    }
-
-    .js-ready .hero__actions {
-      opacity: 0;
-      animation: fadeUp 1s 1s var(--ease-out) forwards;
-    }
-
-    .hero__scroll {
-      position: absolute;
-      bottom: 1.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 3;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      cursor: pointer;
-    }
-
-    .js-ready .hero__scroll {
-      opacity: 0;
-      animation: fadeIn 1s 1.5s ease forwards;
-    }
-
-    .hero__scroll span {
-      font-size: 0.625rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    .hero__scroll-line {
-      width: 1px;
-      height: 32px;
-      background: linear-gradient(to bottom, var(--bronze-dim), transparent);
-      animation: scrollLine 2s ease-in-out infinite;
-    }
-
-    @keyframes scrollLine {
-      0%, 100% { opacity: 0.3; transform: scaleY(1); }
-      50% { opacity: 0.8; transform: scaleY(0.6); }
-    }
-
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-    }
-
-    /* ── CTA SECONDARY BUTTON ── */
-    .btn-outline {
-      border-color: var(--bronze);
-      color: var(--bronze);
-    }
-
-    .btn-outline:hover {
-      background: var(--bronze);
-      color: var(--bg);
-    }
-
-    /* ── MOBILE INTRO HEADING ── */
-    @media (max-width: 768px) {
-      .hero__title {
-        font-size: clamp(2.5rem, 8vw, 4rem);
-        max-width: 90%;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Cinema Machina — Premium Playback & Media Environment Specialists, UAE
+    </title>
+    <meta
+      name="description"
+      content="Cinema Machina optimizes luxury home cinema systems in the UAE for reference-grade playback, lossless audio, and full-performance video delivery."
+    />
+    <link rel="icon" type="image/png" href="assets/logos/cm-logo-square.png" />
+    <link rel="stylesheet" href="assets/css/style.css?v=4.4" />
+    <script src="https://player.vimeo.com/api/player.js"></script>
+    <style>
+      /* ── PAGE-SPECIFIC OVERRIDES ── */
+      .hero {
+        min-height: 86vh;
       }
-    }
 
-    /* ── INTRO SECTION ── */
-    .intro-section {
-      padding: clamp(4rem, 7vw, 5.75rem) 0;
-      text-align: center;
-    }
+      .hero__content {
+        padding-top: 2.5rem;
+        padding-bottom: 0.75rem;
+      }
 
-    .intro-section .u-section-header {
-      margin-bottom: 1.35rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0;
-    }
+      .hero__eyebrow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 1.125rem;
+      }
 
-    .intro-section .u-section-header .section-label {
-      justify-content: center;
-      margin-bottom: 2.6rem;
-    }
+      .js-ready .hero__eyebrow {
+        opacity: 0;
+        animation: fadeUp 1s 0.3s var(--ease-out) forwards;
+      }
 
-    .intro-section .u-section-header .label {
-      display: inline-block;
-      text-align: center;
-    }
+      .hero__eyebrow span {
+        font-family: var(--font-body);
+        font-size: 0.6875rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--bronze);
+      }
 
-    .intro-section .approach__title {
-      display: inline-block;
-      width: auto;
-      max-width: none;
-      margin: 0 auto;
-      text-align: center;
-      line-height: 1.08;
-      letter-spacing: -0.016em;
-      margin-top: 0;
-    }
+      .hero__eyebrow::before,
+      .hero__eyebrow::after {
+        content: '';
+        flex: 1;
+        max-width: 60px;
+        height: 1px;
+        background: var(--bronze-dim);
+      }
 
-    .intro-section .approach__title-line,
-    .intro-section .approach__title-line--single {
-      display: block;
-      width: auto;
-      text-align: center;
-    }
+      /* Removed redundant h1 animation, now handled per-word in style.css */
 
-    @media (min-width: 769px) {
+      .hero__lead {
+        margin: 0.875rem auto 0;
+        text-align: center;
+        max-width: 720px;
+      }
+
+      .js-ready .hero__lead {
+        opacity: 0;
+        animation: fadeUp 1s 0.75s var(--ease-out) forwards;
+      }
+
+      .hero__actions {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        justify-content: center;
+        margin-top: 1.125rem;
+        flex-wrap: wrap;
+      }
+
+      .hero__actions--stack-safe {
+        gap: 18px;
+        margin-top: 1.35rem;
+      }
+
+      .js-ready .hero__actions {
+        opacity: 0;
+        animation: fadeUp 1s 1s var(--ease-out) forwards;
+      }
+
+      .hero__scroll {
+        position: absolute;
+        bottom: 1.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 3;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+      }
+
+      .js-ready .hero__scroll {
+        opacity: 0;
+        animation: fadeIn 1s 1.5s ease forwards;
+      }
+
+      .hero__scroll span {
+        font-size: 0.625rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+      }
+
+      .hero__scroll-line {
+        width: 1px;
+        height: 32px;
+        background: linear-gradient(to bottom, var(--bronze-dim), transparent);
+        animation: scrollLine 2s ease-in-out infinite;
+      }
+
+      @keyframes scrollLine {
+        0%,
+        100% {
+          opacity: 0.3;
+          transform: scaleY(1);
+        }
+        50% {
+          opacity: 0.8;
+          transform: scaleY(0.6);
+        }
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(24px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      /* ── CTA SECONDARY BUTTON ── */
+      .btn-outline {
+        border-color: var(--bronze);
+        color: var(--bronze);
+      }
+
+      .btn-outline:hover {
+        background: var(--bronze);
+        color: var(--bg);
+      }
+
+      /* ── MOBILE INTRO HEADING ── */
+      @media (max-width: 768px) {
+        .hero__title {
+          font-size: clamp(2.5rem, 8vw, 4rem);
+          max-width: 90%;
+        }
+      }
+
+      /* ── INTRO SECTION ── */
+      .intro-section {
+        padding: clamp(4rem, 7vw, 5.75rem) 0;
+        text-align: center;
+      }
+
+      .intro-section .u-section-header {
+        margin-bottom: 1.35rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+      }
+
+      .intro-section .u-section-header .section-label {
+        justify-content: center;
+        margin-bottom: 1.25rem;
+      }
+
+      .intro-section .u-section-header .label {
+        display: inline-block;
+        text-align: center;
+      }
+
+      .intro-section .approach__title {
+        display: inline-block;
+        width: auto;
+        max-width: none;
+        margin: 0 auto;
+        text-align: center;
+        line-height: 1.08;
+        letter-spacing: -0.016em;
+        margin-top: 0;
+      }
+
       .intro-section .approach__title-line,
       .intro-section .approach__title-line--single {
-        white-space: nowrap;
+        display: block;
+        width: auto;
+        text-align: center;
       }
-    }
 
-    .intro-section p {
-      margin-top: 0;
-    }
-
-    .intro-p {
-      max-width: 34ch;
-      margin-left: auto;
-      margin-right: auto;
-      text-align: center;
-    }
-
-    .intro-section .stat-row {
-      margin-top: 2.5rem !important;
-      max-width: 1120px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .intro-section .stat-block {
-      min-height: 164px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding-inline: 1.5rem;
-    }
-
-    .intro-section .stat-block__number {
-      min-height: 1em;
-    }
-
-    .intro-section .stat-block__label {
-      max-width: 13ch;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.42;
-    }
-
-    /* ── VIDEO SECTION CUSTOM ── */
-    section#demo.section--tight {
-      padding: clamp(1.75rem, 3.5vw, 3rem) 0;
-    }
-
-    section#demo .u-section-header {
-      margin-bottom: 1.5rem;
-    }
-
-    section#demo .video-wrapper {
-      margin: 0 auto;
-      max-width: 960px;
-    }
-
-    section#demo .video-wrapper--interactive {
-      padding: 0;
-    }
-
-    section#demo .vimeo-shell {
-      border-radius: 24px;
-      box-shadow: 0 28px 80px rgba(0,0,0,0.35);
-      overflow: hidden;
-    }
-
-    section#demo .vimeo-surface-toggle__icon {
-      width: 74px;
-      height: 74px;
-      border-color: rgba(226,193,155,0.22);
-      background: rgba(12,10,8,0.28);
-      box-shadow:
-        0 18px 42px rgba(0,0,0,0.32),
-        inset 0 0 0 1px rgba(255,255,255,0.025);
-    }
-
-    section#demo .vimeo-surface-toggle__icon--play svg {
-      width: 28px;
-      height: 28px;
-      transform: translateX(1px);
-    }
-
-    section#demo .vimeo-shell:hover .vimeo-surface-toggle {
-      opacity: 1;
-    }
-
-    section#demo .vimeo-shell.is-playing:hover .vimeo-surface-toggle {
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    section#demo .vimeo-controls {
-      bottom: 1.25rem;
-      left: 1.25rem;
-      right: 1.25rem;
-      padding: 0.85rem 1rem;
-      border-color: rgba(201,169,110,0.18);
-    }
-
-    section#demo .vimeo-controls__left {
-      display: none;
-    }
-
-    section#demo .vimeo-controls {
-      gap: 1rem;
-    }
-
-    section#demo .vimeo-time {
-      min-width: 80px;
-    }
-
-    section#demo .vimeo-shell:fullscreen,
-    section#demo .vimeo-shell:-webkit-full-screen {
-      width: 100vw;
-      height: 100vh;
-      max-width: none;
-      border-radius: 0;
-      background: #000;
-      box-shadow: none;
-      overflow: hidden;
-      aspect-ratio: auto;
-    }
-
-    section#demo .vimeo-shell:fullscreen iframe,
-    section#demo .vimeo-shell:-webkit-full-screen iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      max-width: none;
-      max-height: none;
-      border: 0;
-      aspect-ratio: auto;
-    }
-
-    section#demo .vimeo-shell:fullscreen .vimeo-controls,
-    section#demo .vimeo-shell:-webkit-full-screen .vimeo-controls {
-      position: absolute;
-      left: 1.25rem;
-      right: 1.25rem;
-      bottom: 1.25rem;
-      margin: 0;
-      z-index: 4;
-    }
-
-    section#demo .vimeo-shell:fullscreen .vimeo-surface-toggle,
-    section#demo .vimeo-shell:-webkit-full-screen .vimeo-surface-toggle {
-      z-index: 4;
-    }
-
-    @media (max-width: 768px) {
-      section#demo .vimeo-shell:fullscreen .vimeo-controls,
-      section#demo .vimeo-shell:-webkit-full-screen .vimeo-controls {
-        left: 0.75rem;
-        right: 0.75rem;
-        bottom: 0.75rem;
+      @media (min-width: 769px) {
+        .intro-section .approach__title-line,
+        .intro-section .approach__title-line--single {
+          white-space: nowrap;
+        }
       }
-    }
 
-    @media (max-width: 768px) {
+      .intro-section p {
+        margin-top: 0;
+      }
+
+      .intro-p {
+        max-width: 34ch;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+      }
+
+      .intro-section .stat-row {
+        margin-top: 2.5rem !important;
+        max-width: 1120px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .intro-section .stat-block {
+        min-height: 164px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-inline: 1.5rem;
+      }
+
+      .intro-section .stat-block__number {
+        min-height: 1em;
+      }
+
+      .intro-section .stat-block__label {
+        max-width: 13ch;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.42;
+      }
+
+      /* ── VIDEO SECTION CUSTOM ── */
       section#demo.section--tight {
-        padding: clamp(1.75rem, 4vw, 2.5rem) 0;
+        padding: clamp(1.75rem, 3.5vw, 3rem) 0;
       }
 
       section#demo .u-section-header {
@@ -361,998 +265,1580 @@
       }
 
       section#demo .video-wrapper {
-        max-width: 100%;
+        margin: 0 auto;
+        max-width: 960px;
       }
 
-      section#demo .vimeo-shell iframe {
+      section#demo .video-wrapper--interactive {
+        padding: 0;
+      }
+
+      section#demo .vimeo-shell {
+        border-radius: 24px;
+        box-shadow: 0 28px 80px rgba(0, 0, 0, 0.35);
+        overflow: hidden;
+      }
+
+      section#demo .vimeo-surface-toggle__icon {
+        width: 74px;
+        height: 74px;
+        border-color: rgba(226, 193, 155, 0.22);
+        background: rgba(12, 10, 8, 0.28);
+        box-shadow:
+          0 18px 42px rgba(0, 0, 0, 0.32),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.025);
+      }
+
+      section#demo .vimeo-surface-toggle__icon--play svg {
+        width: 28px;
+        height: 28px;
+        transform: translateX(1px);
+      }
+
+      section#demo .vimeo-shell:hover .vimeo-surface-toggle {
+        opacity: 1;
+      }
+
+      section#demo .vimeo-shell.is-playing:hover .vimeo-surface-toggle {
+        opacity: 0;
         pointer-events: none;
       }
 
       section#demo .vimeo-controls {
-        bottom: 1rem;
-        left: 1rem;
-        right: 1rem;
+        bottom: 1.25rem;
+        left: 1.25rem;
+        right: 1.25rem;
         padding: 0.85rem 1rem;
-      }
-    }
-
-    /* ── SERVICES GRID ── */
-    section#ecosystem.section--tight {
-      padding: clamp(2rem, 3.5vw, 2.75rem) 0;
-    }
-
-section#ecosystem .container.mb-3 {
-  margin-bottom: 1.25rem;
-  display: flex;
-  justify-content: center;
-}
-
-section#ecosystem .section-label {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-
-section#ecosystem .section-label .label {
-  display: inline-block;
-  text-align: center;
-}
-
-    section#ecosystem .ecosystem-strip {
-      padding: 1.5rem 0;
-    }
-
-    section#ecosystem .ecosystem-strip__track {
-      gap: 3rem;
-    }
-
-    .services-overview {
-      padding: clamp(4.25rem, 7vw, 6rem) 0;
-    }
-
-    .services-overview .u-section-header {
-      margin-bottom: 2.25rem;
-    }
-
-    .services-overview .u-section-header p {
-      max-width: 42ch;
-      margin-left: auto;
-      margin-right: auto;
-      text-align: center;
-    }
-
-    .service-card {
-      padding: 2.5rem 2rem;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      transition: border-color 0.35s, transform 0.45s var(--ease-out),
-                  box-shadow 0.45s var(--ease-out);
-      cursor: default;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .service-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: var(--bronze);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.5s var(--ease-out);
-    }
-
-    .service-card:hover {
-      border-color: var(--border-hover);
-      transform: translateY(-5px);
-      box-shadow: 0 24px 60px rgba(0,0,0,0.65);
-    }
-
-    .service-card:hover::before { transform: scaleX(1); }
-
-    .service-card__num {
-      font-family: var(--font-display);
-      font-size: 2.5rem;
-      font-weight: 300;
-      color: var(--bronze-dim);
-      line-height: 1;
-      margin-bottom: 1.25rem;
-    }
-
-    .service-card__icon {
-      margin-bottom: 1.25rem;
-      color: var(--bronze);
-    }
-
-    .service-card h3 {
-      font-size: 1.15rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .service-card p {
-      font-size: 0.875rem;
-      line-height: 1.75;
-      max-width: none;
-    }
-
-    .service-card__link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-top: 1.5rem;
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--bronze);
-      text-decoration: none;
-      transition: gap 0.25s;
-    }
-
-    .service-card__link:hover { gap: 0.875rem; }
-
-    /* ── COMPARISON ── */
-    .comparison-section {
-      padding: clamp(2.5rem, 4.5vw, 4rem) 0;
-      background: var(--bg-warm);
-    }
-
-    .comparison-section .u-section-header {
-      margin-bottom: 1.5rem;
-    }
-
-    .comparison-section .u-section-header .lead {
-      margin: 0 auto 1.25rem;
-      max-width: 34ch;
-      text-align: center;
-      font-size: clamp(1.02rem, 1.4vw, 1.08rem);
-      line-height: 1.76;
-    }
-
-    .comparison-intro-lockup {
-      max-width: none;
-      width: 100%;
-      margin: 0.95rem auto 0;
-      text-align: center;
-      font-size: clamp(1.02rem, 1.4vw, 1.08rem);
-      line-height: 1.76;
-      color: var(--text-secondary);
-    }
-
-    .comparison-intro-lockup__line {
-      display: block;
-      width: 100%;
-      text-align: center;
-    }
-
-    @media (min-width: 769px) {
-      .comparison-intro-lockup__line {
-        white-space: nowrap;
-      }
-    }
-
-    .comparison-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      margin-top: 1.5rem;
-      align-items: stretch;
-    }
-
-    .comparison-col {
-      padding: 2.25rem;
-      min-height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .comparison-col--bad {
-      background: var(--surface);
-    }
-
-    .comparison-col--good {
-      background: var(--surface-2);
-      border: 1px solid var(--border-hover);
-      position: relative;
-    }
-
-    .comparison-col--good::before {
-      content: 'Cinema Machina';
-      position: absolute;
-      top: 0; right: 0;
-      background: var(--bronze);
-      color: var(--bg);
-      font-size: 0.6875rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 0.4rem 1rem;
-    }
-
-    .comparison-col h3 {
-      font-size: 1rem;
-      margin-bottom: 1.25rem;
-      color: var(--text-secondary);
-    }
-
-    .comparison-col--good h3 { color: var(--bronze-light); }
-
-    .comparison-col h3,
-    .column-brand-lockup {
-      min-height: 60px;
-      display: flex;
-      align-items: center;
-      margin-bottom: 1.65rem;
-    }
-
-    .comparison-col--bad h3 {
-      color: var(--text-primary);
-      justify-content: flex-start;
-    }
-
-    .column-brand-lockup {
-      justify-content: center;
-    }
-
-    .comparison-col ul {
-      gap: 0.9rem;
-    }
-
-    .comparison-col--good ul,
-    .comparison-col--bad ul {
-      flex: 1;
-    }
-
-    .comparison-col .format-badges {
-      margin-top: auto;
-    }
-
-    .comparison-col ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .comparison-col li {
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-      display: flex;
-      align-items: flex-start;
-      gap: 0.75rem;
-    }
-
-    .comparison-col li::before {
-      content: '—';
-      color: var(--text-muted);
-      flex-shrink: 0;
-    }
-
-    .comparison-col--good li::before {
-      content: '✦';
-      color: var(--bronze);
-      font-size: 0.6rem;
-      margin-top: 0.4rem;
-    }
-
-    section#bitrate.section--tight {
-      padding: clamp(2.25rem, 3.75vw, 3.25rem) 0;
-    }
-
-    section#bitrate .u-section-header {
-      margin-bottom: 1.5rem;
-    }
-
-    section#bitrate .u-grid-2-even {
-      align-items: start;
-      gap: clamp(1.75rem, 4vw, 3.5rem) !important;
-    }
-
-    section#bitrate .bar-chart,
-    section#bitrate .bar-chart-premium {
-      gap: 0.875rem;
-    }
-
-    .bitrate-section {
-      padding: clamp(2.25rem, 3.75vw, 3.25rem) 0;
-    }
-
-    section#bitrate .u-surface-box {
-      padding: 2rem !important;
-    }
-
-    .comparison-col .format-badges {
-      margin-top: 1.75rem;
-      gap: 12px;
-    }
-
-    /* ── AUDIO CODECS ── */
-    .codec-section {
-      padding: clamp(4rem, 7vw, 5.75rem) 0;
-      background: var(--bg-warm);
-    }
-
-    .codec-section .format-badges {
-      margin-top: 1.75rem;
-      gap: 12px;
-    }
-
-    /* ── CTA FULL ── */
-    .cta-full {
-      padding: clamp(4rem, 7vw, 6rem) 0;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta-full::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 60% 80% at 50% 100%, rgba(201,169,110,0.07) 0%, transparent 70%);
-    }
-
-    .cta-full__content { position: relative; z-index: 1; }
-
-    .cta-full h2 { margin-bottom: 1rem; }
-
-    .cta-full .lead {
-      margin: 0 auto 2rem;
-      text-align: center;
-    }
-
-    .cta-full__actions {
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 2rem;
-    }
-
-    .cta-full__actions .btn {
-      min-width: 260px;
-      min-height: 56px;
-      justify-content: center;
-      padding: 0.875rem 2.25rem;
-    }
-
-    .cta-full__actions .btn-outline {
-      color: var(--bronze-light);
-      border: 1px solid rgba(226,193,155,0.46);
-      background: rgba(7,6,4,0.98);
-      box-shadow:
-        inset 0 0 0 1px rgba(226,193,155,0.07),
-        0 14px 34px rgba(0,0,0,0.18);
-    }
-
-    .cta-full__actions .btn-outline:hover {
-      color: var(--bg);
-      border-color: var(--bronze-light);
-      background: var(--bronze-light);
-      box-shadow:
-        inset 0 0 0 1px rgba(255,255,255,0.04),
-        0 18px 40px rgba(0,0,0,0.22);
-    }
-
-    .footer {
-      padding: clamp(2.5rem, 5vw, 4.5rem) 0 2rem;
-    }
-
-    .footer__inner {
-      gap: 2.5rem;
-      margin-bottom: 2.75rem;
-    }
-
-    /* ── STAT ROW ── */
-    .stat-row {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-    }
-
-    .stat-row .stat-block + .stat-block {
-      border-left: none;
-    }
-
-    @media (max-width: 768px) {
-      .hero__content {
-        padding-top: 2rem;
-        padding-bottom: 0.5rem;
+        border-color: rgba(201, 169, 110, 0.18);
       }
 
-      .intro-section .approach__title {
-        display: block;
-        max-width: 13ch;
-        width: auto;
-        font-size: clamp(1.85rem, 7vw, 2.2rem);
-        line-height: 1.08;
-        letter-spacing: -0.015em;
-        text-align: center;
+      section#demo .vimeo-controls__left {
+        display: none;
       }
 
-      .intro-section .approach__title-line,
-      .intro-section .approach__title-line--single {
-        display: block;
-        text-wrap: balance;
-        white-space: normal !important;
+      section#demo .vimeo-controls {
+        gap: 1rem;
       }
 
-      .comparison-grid { grid-template-columns: 1fr; gap: 1.5px; }
-
-      .comparison-intro-lockup {
-        max-width: 24ch;
+      section#demo .vimeo-time {
+        min-width: 80px;
       }
 
-      .comparison-intro-lockup__line {
-        white-space: normal !important;
+      section#demo .vimeo-shell:fullscreen,
+      section#demo .vimeo-shell:-webkit-full-screen {
+        width: 100vw;
+        height: 100vh;
+        max-width: none;
+        border-radius: 0;
+        background: #000;
+        box-shadow: none;
+        overflow: hidden;
+        aspect-ratio: auto;
       }
 
-      .intro-section {
-        padding: clamp(3rem, 9vw, 4rem) 0;
+      section#demo .vimeo-shell:fullscreen iframe,
+      section#demo .vimeo-shell:-webkit-full-screen iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        max-width: none;
+        max-height: none;
+        border: 0;
+        aspect-ratio: auto;
       }
 
-      .intro-section .stat-row {
-        margin-top: 2rem !important;
+      section#demo .vimeo-shell:fullscreen .vimeo-controls,
+      section#demo .vimeo-shell:-webkit-full-screen .vimeo-controls {
+        position: absolute;
+        left: 1.25rem;
+        right: 1.25rem;
+        bottom: 1.25rem;
+        margin: 0;
+        z-index: 4;
       }
 
-      .intro-section .stat-block {
-        min-height: 144px;
+      section#demo .vimeo-shell:fullscreen .vimeo-surface-toggle,
+      section#demo .vimeo-shell:-webkit-full-screen .vimeo-surface-toggle {
+        z-index: 4;
       }
 
-      .intro-section .stat-block__label {
-        max-width: 12ch;
+      @media (max-width: 768px) {
+        section#demo .vimeo-shell:fullscreen .vimeo-controls,
+        section#demo .vimeo-shell:-webkit-full-screen .vimeo-controls {
+          left: 0.75rem;
+          right: 0.75rem;
+          bottom: 0.75rem;
+        }
       }
 
+      @media (max-width: 768px) {
+        section#demo.section--tight {
+          padding: clamp(1.75rem, 4vw, 2.5rem) 0;
+        }
+
+        section#demo .u-section-header {
+          margin-bottom: 1.5rem;
+        }
+
+        section#demo .video-wrapper {
+          max-width: 100%;
+        }
+
+        section#demo .vimeo-shell iframe {
+          pointer-events: none;
+        }
+
+        section#demo .vimeo-controls {
+          bottom: 1rem;
+          left: 1rem;
+          right: 1rem;
+          padding: 0.85rem 1rem;
+        }
+      }
+
+      /* ── SERVICES GRID ── */
       section#ecosystem.section--tight {
-        padding: clamp(1.75rem, 6vw, 2.25rem) 0;
+        padding: clamp(2rem, 3.5vw, 2.75rem) 0;
       }
 
       section#ecosystem .container.mb-3 {
-        margin-bottom: 1rem;
+        margin-bottom: 1.25rem;
+        display: flex;
+        justify-content: center;
       }
 
-      section#bitrate .u-grid-2-even {
-        gap: 1.75rem !important;
-      }
-
-      section#bitrate .u-surface-box {
-        padding: 1.5rem !important;
-      }
-
-      .services-overview {
-        padding: clamp(3.5rem, 8vw, 4.5rem) 0;
-      }
-
-      .comparison-section {
-        padding: clamp(2.25rem, 7vw, 3rem) 0;
-      }
-
-      .codec-section {
-        padding: clamp(3rem, 8vw, 4rem) 0;
-      }
-
-      .cta-full {
-        padding: clamp(3rem, 8vw, 4.25rem) 0;
-      }
-
-      .cta-full__actions .btn {
-        min-width: 0;
+      section#ecosystem .section-label {
+        display: flex;
+        justify-content: center;
         width: 100%;
       }
 
+      section#ecosystem .section-label .label {
+        display: inline-block;
+        text-align: center;
+      }
+
+      section#ecosystem .ecosystem-strip {
+        padding: 1.5rem 0;
+      }
+
+      section#ecosystem .ecosystem-strip__track {
+        gap: 3rem;
+      }
+
+      .services-overview {
+        padding: clamp(4.25rem, 7vw, 6rem) 0;
+      }
+
+      .services-overview .u-section-header {
+        margin-bottom: 2.25rem;
+      }
+
+      .services-overview .u-section-header p {
+        max-width: 42ch;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+      }
+
+      .service-card {
+        padding: 2.5rem 2rem;
+        border: 1px solid var(--border);
+        background: var(--surface);
+        transition:
+          border-color 0.35s,
+          transform 0.45s var(--ease-out),
+          box-shadow 0.45s var(--ease-out);
+        cursor: default;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .service-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: var(--bronze);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.5s var(--ease-out);
+      }
+
+      .service-card:hover {
+        border-color: var(--border-hover);
+        transform: translateY(-5px);
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65);
+      }
+
+      .service-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      .service-card__num {
+        font-family: var(--font-display);
+        font-size: 2.5rem;
+        font-weight: 300;
+        color: var(--bronze-dim);
+        line-height: 1;
+        margin-bottom: 1.25rem;
+      }
+
+      .service-card__icon {
+        margin-bottom: 1.25rem;
+        color: var(--bronze);
+      }
+
+      .service-card h3 {
+        font-size: 1.15rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .service-card p {
+        font-size: 0.875rem;
+        line-height: 1.75;
+        max-width: none;
+      }
+
+      .service-card__link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 1.5rem;
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--bronze);
+        text-decoration: none;
+        transition: gap 0.25s;
+      }
+
+      .service-card__link:hover {
+        gap: 0.875rem;
+      }
+
+      /* ── COMPARISON ── */
+      .comparison-section {
+        padding: clamp(2.5rem, 4.5vw, 4rem) 0;
+        background: var(--bg-warm);
+      }
+
+      .comparison-section .u-section-header {
+        margin-bottom: 1.5rem;
+      }
+
+      .comparison-section .u-section-header .lead {
+        margin: 0 auto 1.25rem;
+        max-width: 34ch;
+        text-align: center;
+        font-size: clamp(1.02rem, 1.4vw, 1.08rem);
+        line-height: 1.76;
+      }
+
+      .comparison-intro-lockup {
+        max-width: none;
+        width: 100%;
+        margin: 0.95rem auto 0;
+        text-align: center;
+        font-size: clamp(1.02rem, 1.4vw, 1.08rem);
+        line-height: 1.76;
+        color: var(--text-secondary);
+      }
+
+      .comparison-intro-lockup__line {
+        display: block;
+        width: 100%;
+        text-align: center;
+      }
+
+      @media (min-width: 769px) {
+        .comparison-intro-lockup__line {
+          white-space: nowrap;
+        }
+      }
+
+      .comparison-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1px;
+        margin-top: 1.5rem;
+        align-items: stretch;
+      }
+
+      .comparison-col {
+        padding: 2.25rem;
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .comparison-col--bad {
+        background: var(--surface);
+      }
+
+      .comparison-col--good {
+        background: var(--surface-2);
+        border: 1px solid var(--border-hover);
+        position: relative;
+      }
+
+      .comparison-col--good::before {
+        content: 'Cinema Machina';
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: var(--bronze);
+        color: var(--bg);
+        font-size: 0.6875rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        padding: 0.4rem 1rem;
+      }
+
+      .comparison-col h3 {
+        font-size: 1rem;
+        margin-bottom: 1.25rem;
+        color: var(--text-secondary);
+      }
+
+      .comparison-col--good h3 {
+        color: var(--bronze-light);
+      }
+
+      .comparison-col h3,
+      .column-brand-lockup {
+        min-height: 60px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.65rem;
+      }
+
+      .comparison-col--bad h3 {
+        color: var(--text-primary);
+        justify-content: flex-start;
+      }
+
+      .column-brand-lockup {
+        justify-content: center;
+      }
+
+      .comparison-col ul {
+        gap: 0.9rem;
+      }
+
+      .comparison-col--good ul,
+      .comparison-col--bad ul {
+        flex: 1;
+      }
+
+      .comparison-col .format-badges {
+        margin-top: auto;
+      }
+
+      .comparison-col ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .comparison-col li {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+      }
+
+      .comparison-col li::before {
+        content: '—';
+        color: var(--text-muted);
+        flex-shrink: 0;
+      }
+
+      .comparison-col--good li::before {
+        content: '✦';
+        color: var(--bronze);
+        font-size: 0.6rem;
+        margin-top: 0.4rem;
+      }
+
+      section#bitrate.section--tight {
+        padding: clamp(2.25rem, 3.75vw, 3.25rem) 0;
+      }
+
+      section#bitrate .u-section-header {
+        margin-bottom: 1.5rem;
+      }
+
+      section#bitrate .u-grid-2-even {
+        align-items: start;
+        gap: clamp(1.75rem, 4vw, 3.5rem) !important;
+      }
+
+      section#bitrate .bar-chart,
+      section#bitrate .bar-chart-premium {
+        gap: 0.875rem;
+      }
+
+      .bitrate-section {
+        padding: clamp(2.25rem, 3.75vw, 3.25rem) 0;
+      }
+
+      section#bitrate .u-surface-box {
+        padding: 2rem !important;
+      }
+
+      .comparison-col .format-badges {
+        margin-top: 1.75rem;
+        gap: 12px;
+      }
+
+      /* ── AUDIO CODECS ── */
+      .codec-section {
+        padding: clamp(4rem, 7vw, 5.75rem) 0;
+        background: var(--bg-warm);
+      }
+
+      .codec-section .format-badges {
+        margin-top: 1.75rem;
+        gap: 12px;
+      }
+
+      /* ── CTA FULL ── */
+      .cta-full {
+        padding: clamp(4rem, 7vw, 6rem) 0;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cta-full::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse 60% 80% at 50% 100%,
+          rgba(201, 169, 110, 0.07) 0%,
+          transparent 70%
+        );
+      }
+
+      .cta-full__content {
+        position: relative;
+        z-index: 1;
+      }
+
+      .cta-full h2 {
+        margin-bottom: 1rem;
+      }
+
+      .cta-full .lead {
+        margin: 0 auto 2rem;
+        text-align: center;
+      }
+
+      .cta-full__actions {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 2rem;
+      }
+
+      .cta-full__actions .btn {
+        min-width: 260px;
+        min-height: 56px;
+        justify-content: center;
+        padding: 0.875rem 2.25rem;
+      }
+
+      .cta-full__actions .btn-outline {
+        color: var(--bronze-light);
+        border: 1px solid rgba(226, 193, 155, 0.46);
+        background: rgba(7, 6, 4, 0.98);
+        box-shadow:
+          inset 0 0 0 1px rgba(226, 193, 155, 0.07),
+          0 14px 34px rgba(0, 0, 0, 0.18);
+      }
+
+      .cta-full__actions .btn-outline:hover {
+        color: var(--bg);
+        border-color: var(--bronze-light);
+        background: var(--bronze-light);
+        box-shadow:
+          inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+          0 18px 40px rgba(0, 0, 0, 0.22);
+      }
+
       .footer {
-        padding: clamp(2rem, 6vw, 3rem) 0 1.75rem;
+        padding: clamp(2.5rem, 5vw, 4.5rem) 0 2rem;
       }
 
+      .footer__inner {
+        gap: 2.5rem;
+        margin-bottom: 2.75rem;
+      }
+
+      /* ── STAT ROW ── */
       .stat-row {
-        grid-template-columns: repeat(2, 1fr);
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0;
       }
-      .stat-row .stat-block:nth-child(2) { border-left: none; }
-      .stat-row .stat-block:nth-child(3) { border-top: none; }
-      .stat-row .stat-block:nth-child(4) { border-top: none; border-left: none; }
-    }
-  </style>
-</head>
-<body>
 
-<!-- ═══════════════════ NAVIGATION ═══════════════════ -->
-<nav class="nav" id="nav">
-  <a href="index.html" class="nav__logo" aria-label="Cinema Machina Home">
-    <img src="assets/logos/cm-logo-horizontal.png" alt="Cinema Machina" />
-  </a>
-  <ul class="nav__links">
-    <li><a href="index.html" class="active">Home</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="why-setup-matters.html">Why Setup Matters</a></li>
-  </ul>
-  <a href="contact.html" class="nav__cta">Book Consultation</a>
-  <button class="nav__toggle" aria-label="Toggle menu" id="nav-toggle">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
+      .stat-row .stat-block + .stat-block {
+        border-left: none;
+      }
 
-<!-- Mobile Menu -->
-<nav class="nav__mobile" id="nav-mobile">
-  <a href="index.html">Home</a>
-  <a href="services.html">Services</a>
-  <a href="about.html">About</a>
-  <a href="why-setup-matters.html">Why Setup Matters</a>
-  <a href="contact.html">Contact</a>
-</nav>
+      @media (max-width: 768px) {
+        .hero__content {
+          padding-top: 2rem;
+          padding-bottom: 0.5rem;
+        }
 
-<!-- ═══════════════════ HERO ═══════════════════ -->
-<section class="hero" id="hero">
-  <div class="hero__bg">
-    <img src="assets/images/hero-home-theatre.jpg" alt="Premium home cinema" loading="eager" />
-  </div>
-  <div class="hero__overlay"></div>
-  <div class="hero__content">
-    <div class="hero__eyebrow">
-      <span>Premium Playback Specialist · UAE</span>
-    </div>
-    <h1 class="display-xl hero__title hero__title--tagline" aria-label="There’s only One Life to Feel, Cinema">
-      <span class="hero__word-group">
-        <span class="hero__word">There’s</span>
-        <span class="hero__word">only</span>
-        <span class="hero__word hero__word--accent">One Life</span>
-      </span>
-      <br />
-      <span class="hero__word-group">
-        <span class="hero__word">to</span>
-        <span class="hero__word hero__word--accent">Feel, Cinema</span>
-      </span>
-    </h1>
-    <p class="lead hero__lead">
-      <span class="hero__lead-line hero__lead-line--desktop-single">
-        The finest playback platforms, verified local-library logic, and absolute signal-path integrity.
-      </span>
-      <span class="hero__lead-line">
-        We don't just set up hardware; we restore the hidden layer of cinematic performance.
-      </span>
-    </p>
-    <div class="hero__actions hero__actions--stack-safe">
-      <div class="hero__button-row">
-        <a href="contact.html" class="btn btn-primary btn--hero">Book a Consultation</a>
-        <a href="why-setup-matters.html" class="btn btn-outline btn--hero">Why Setup Matters</a>
+        .intro-section .approach__title {
+          display: block;
+          max-width: 13ch;
+          width: auto;
+          font-size: clamp(1.85rem, 7vw, 2.2rem);
+          line-height: 1.08;
+          letter-spacing: -0.015em;
+          text-align: center;
+        }
+
+        .intro-section .approach__title-line,
+        .intro-section .approach__title-line--single {
+          display: block;
+          text-wrap: balance;
+          white-space: normal !important;
+        }
+
+        .comparison-grid {
+          grid-template-columns: 1fr;
+          gap: 1.5px;
+        }
+
+        .comparison-intro-lockup {
+          max-width: 24ch;
+        }
+
+        .comparison-intro-lockup__line {
+          white-space: normal !important;
+        }
+
+        .intro-section {
+          padding: clamp(3rem, 9vw, 4rem) 0;
+        }
+
+        .intro-section .stat-row {
+          margin-top: 2rem !important;
+        }
+
+        .intro-section .stat-block {
+          min-height: 144px;
+        }
+
+        .intro-section .stat-block__label {
+          max-width: 12ch;
+        }
+
+        section#ecosystem.section--tight {
+          padding: clamp(1.75rem, 6vw, 2.25rem) 0;
+        }
+
+        section#ecosystem .container.mb-3 {
+          margin-bottom: 1rem;
+        }
+
+        section#bitrate .u-grid-2-even {
+          gap: 1.75rem !important;
+        }
+
+        section#bitrate .u-surface-box {
+          padding: 1.5rem !important;
+        }
+
+        .services-overview {
+          padding: clamp(3.5rem, 8vw, 4.5rem) 0;
+        }
+
+        .comparison-section {
+          padding: clamp(2.25rem, 7vw, 3rem) 0;
+        }
+
+        .codec-section {
+          padding: clamp(3rem, 8vw, 4rem) 0;
+        }
+
+        .cta-full {
+          padding: clamp(3rem, 8vw, 4.25rem) 0;
+        }
+
+        .cta-full__actions .btn {
+          min-width: 0;
+          width: 100%;
+        }
+
+        .footer {
+          padding: clamp(2rem, 6vw, 3rem) 0 1.75rem;
+        }
+
+        .stat-row {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .stat-row .stat-block:nth-child(2) {
+          border-left: none;
+        }
+        .stat-row .stat-block:nth-child(3) {
+          border-top: none;
+        }
+        .stat-row .stat-block:nth-child(4) {
+          border-top: none;
+          border-left: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ═══════════════════ NAVIGATION ═══════════════════ -->
+    <nav class="nav" id="nav">
+      <a href="index.html" class="nav__logo" aria-label="Cinema Machina Home">
+        <img src="assets/logos/cm-logo-horizontal.png" alt="Cinema Machina" />
+      </a>
+      <ul class="nav__links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="why-setup-matters.html">Why Setup Matters</a></li>
+      </ul>
+      <a href="contact.html" class="nav__cta">Book Consultation</a>
+      <button class="nav__toggle" aria-label="Toggle menu" id="nav-toggle">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <nav class="nav__mobile" id="nav-mobile">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="why-setup-matters.html">Why Setup Matters</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <!-- ═══════════════════ HERO ═══════════════════ -->
+    <section class="hero" id="hero">
+      <div class="hero__bg">
+        <img
+          src="assets/images/hero-home-theatre.jpg"
+          alt="Premium home cinema"
+          loading="eager"
+        />
       </div>
-
-      <div class="hero__scroll-wrap">
-        <a href="#demo" class="hero__scroll-link" aria-label="Scroll to next section">
-          <span class="hero__scroll-label">Scroll</span>
-          <span class="hero__scroll-line" aria-hidden="true"></span>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════ VIMEO DEMO ═══════════════════ -->
-<section class="section--tight" id="demo">
-  <div class="container">
-    <div class="reveal u-section-header u-section-header--center">
-      <span class="label">The Output</span>
-      <h2 class="display-md">Precision playback.<br />In action.</h2>
-    </div>
-
-    <div class="reveal reveal-delay-1">
-      <div class="video-wrapper video-wrapper--interactive">
-        <div
-          class="vimeo-shell is-idle is-paused"
-          id="cinema-vimeo-shell"
-          tabindex="0"
-          aria-label="Cinema Machina demo video player"
+      <div class="hero__overlay"></div>
+      <div class="hero__content">
+        <div class="hero__eyebrow">
+          <span>Premium Playback Specialist · UAE</span>
+        </div>
+        <h1
+          class="display-xl hero__title hero__title--tagline"
+          aria-label="There’s only One Life to Feel, Cinema"
         >
-          <iframe
-            id="cinema-machina-vimeo"
-            src="https://player.vimeo.com/video/1180098392?background=0&muted=0&controls=0&playsinline=1&dnt=1"
-            allow="autoplay; fullscreen; picture-in-picture"
-            loading="lazy"
-            title="Cinema Machina — Premium Playback Demo">
-          </iframe>
+          <span class="hero__word-group">
+            <span class="hero__word">There’s</span>
+            <span class="hero__word">only</span>
+            <span class="hero__word hero__word--accent">One Life</span>
+          </span>
+          <br />
+          <span class="hero__word-group">
+            <span class="hero__word">to</span>
+            <span class="hero__word hero__word--accent">Feel, Cinema</span>
+          </span>
+        </h1>
+        <p class="lead hero__lead">
+          <span class="hero__lead-line hero__lead-line--desktop-single">
+            The finest playback platforms, verified local-library logic, and
+            absolute signal-path integrity.
+          </span>
+          <span class="hero__lead-line">
+            We don't just set up hardware; we restore the hidden layer of
+            cinematic performance.
+          </span>
+        </p>
+        <div class="hero__actions hero__actions--stack-safe">
+          <div class="hero__button-row">
+            <a href="contact.html" class="btn btn-primary btn--hero"
+              >Book a Consultation</a
+            >
+            <a href="why-setup-matters.html" class="btn btn-outline btn--hero"
+              >Why Setup Matters</a
+            >
+          </div>
 
-          <button class="vimeo-surface-toggle is-visible is-paused" id="vimeo-surface-toggle" type="button" aria-label="Play or pause video">
-            <span class="vimeo-surface-toggle__icon vimeo-surface-toggle__icon--play" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
-            </span>
-            <span class="vimeo-surface-toggle__icon vimeo-surface-toggle__icon--pause" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6zm8-14v14h4V5z"></path></svg>
-            </span>
-          </button>
+          <div class="hero__scroll-wrap">
+            <a
+              href="#demo"
+              class="hero__scroll-link"
+              aria-label="Scroll to next section"
+            >
+              <span class="hero__scroll-label">Scroll</span>
+              <span class="hero__scroll-line" aria-hidden="true"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-          <div class="vimeo-controls" id="vimeo-controls" aria-label="Video controls">
-            <div class="vimeo-controls__left">
-              <button class="vimeo-control-btn js-vimeo-play" type="button" aria-label="Play or pause video">
-                <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path d="M8 5v14l11-7z"></path>
-                </svg>
-                <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path>
-                </svg>
-              </button>
-            </div>
+    <!-- ═══════════════════ VIMEO DEMO ═══════════════════ -->
+    <section class="section--tight" id="demo">
+      <div class="container">
+        <div class="reveal u-section-header u-section-header--center">
+          <span class="label">The Output</span>
+          <h2 class="display-md">Precision playback.<br />In action.</h2>
+        </div>
 
-            <div class="vimeo-progress-wrap">
-              <input
-                type="range"
-                class="vimeo-progress"
-                value="0"
-                step="0.1"
-                min="0"
-                max="100"
-                aria-label="Video progress"
+        <div class="reveal reveal-delay-1">
+          <div class="video-wrapper video-wrapper--interactive">
+            <div
+              class="vimeo-shell is-idle is-paused"
+              id="cinema-vimeo-shell"
+              tabindex="0"
+              aria-label="Cinema Machina demo video player"
+            >
+              <iframe
+                id="cinema-machina-vimeo"
+                src="https://player.vimeo.com/video/1180098392?background=0&muted=0&controls=0&playsinline=1&dnt=1"
+                allow="autoplay; fullscreen; picture-in-picture"
+                loading="lazy"
+                title="Cinema Machina — Premium Playback Demo"
               >
-            </div>
+              </iframe>
 
-            <div class="vimeo-controls__right">
-              <span class="vimeo-time" id="vimeo-time">0:00 / 0:00</span>
-
-              <button class="vimeo-control-btn js-vimeo-fullscreen" type="button" aria-label="Enter fullscreen">
-                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"></path>
-                </svg>
+              <button
+                class="vimeo-surface-toggle is-visible is-paused"
+                id="vimeo-surface-toggle"
+                type="button"
+                aria-label="Play or pause video"
+              >
+                <span
+                  class="vimeo-surface-toggle__icon vimeo-surface-toggle__icon--play"
+                  aria-hidden="true"
+                >
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M8 5v14l11-7z"></path>
+                  </svg>
+                </span>
+                <span
+                  class="vimeo-surface-toggle__icon vimeo-surface-toggle__icon--pause"
+                  aria-hidden="true"
+                >
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M6 19h4V5H6zm8-14v14h4V5z"></path>
+                  </svg>
+                </span>
               </button>
+
+              <div
+                class="vimeo-controls"
+                id="vimeo-controls"
+                aria-label="Video controls"
+              >
+                <div class="vimeo-controls__left">
+                  <button
+                    class="vimeo-control-btn js-vimeo-play"
+                    type="button"
+                    aria-label="Play or pause video"
+                  >
+                    <svg
+                      class="icon-play"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path d="M8 5v14l11-7z"></path>
+                    </svg>
+                    <svg
+                      class="icon-pause"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path>
+                    </svg>
+                  </button>
+                </div>
+
+                <div class="vimeo-progress-wrap">
+                  <input
+                    type="range"
+                    class="vimeo-progress"
+                    value="0"
+                    step="0.1"
+                    min="0"
+                    max="100"
+                    aria-label="Video progress"
+                  />
+                </div>
+
+                <div class="vimeo-controls__right">
+                  <span class="vimeo-time" id="vimeo-time">0:00 / 0:00</span>
+
+                  <button
+                    class="vimeo-control-btn js-vimeo-fullscreen"
+                    type="button"
+                    aria-label="Enter fullscreen"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ═══════════════════ INTRO ═══════════════════ -->
-<section class="intro-section section" id="intro">
-  <div class="container">
-    <div class="reveal">
-      <div class="u-section-header u-section-header--center">
-        <span class="label">The Cinema Machina Approach</span>
-        <h2 class="display-md approach__title">
-          <span class="approach__title-line approach__title-line--single">
-            We Believe in the Power of a “Well-Set-Up”.
-          </span>
-          <span class="approach__title-line">
-            No Compromise When It Comes to the Cinema Experience.
-          </span>
-        </h2>
-      </div>
-      <p class="intro-p introduction-text">
-        Great hardware alone can’t deliver the finest results. Source quality, playback software, device configuration, and the signal path all work together. Cinema Machina specializes in optimizing that hidden layer, bringing the entire system into perfect alignment.
-      </p>
-    </div>
-
-    <div class="stat-row u-mt-4">
-      <div class="stat-block reveal reveal-delay-1">
-        <span class="stat-block__number">4K</span>
-        <span class="stat-block__label">True lossless delivery</span>
-      </div>
-      <div class="stat-block reveal reveal-delay-2">
-        <span class="stat-block__number">100+</span>
-        <span class="stat-block__label">Mbps bitrates enabled</span>
-      </div>
-      <div class="stat-block reveal reveal-delay-3">
-        <span class="stat-block__number">TrueHD</span>
-        <span class="stat-block__label">Atmos passthrough</span>
-      </div>
-      <div class="stat-block reveal reveal-delay-4">
-        <span class="stat-block__number">UAE</span>
-        <span class="stat-block__label">Luxury home specialists</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════ ECOSYSTEM ═══════════════════ -->
-<section class="section--tight" id="ecosystem">
-  <div class="container mb-3">
-    <div class="section-label u-flex-center">
-      <span class="label">Verified Ecosystem Compatibility</span>
-    </div>
-  </div>
-  <div class="ecosystem-strip">
-    <div class="ecosystem-strip__track" id="eco-track">
-      <div class="ecosystem-strip__item"><img src="assets/logos/nvidia-shield.png" alt="Nvidia Shield" class="logo--shield" /><span>Nvidia Shield</span></div>
-      <div class="ecosystem-strip__item"><img src="assets/logos/zidoo.png" alt="Zidoo" class="logo--zidoo" /><span>Zidoo</span></div>
-      <div class="ecosystem-strip__item"><img src="assets/logos/dune-hd.png" alt="Dune HD" class="logo--dune" /><span>Dune HD</span></div>
-      <div class="ecosystem-strip__item"><img src="assets/logos/apple-tv.png" alt="Apple TV" class="logo--appletv" /><span>Apple TV</span></div>
-      <div class="ecosystem-strip__item"><img src="assets/logos/synology.png" alt="Synology" class="logo--synology" /><span>Synology</span></div>
-      <div class="ecosystem-strip__item"><img src="assets/logos/coreelec.png" alt="CoreELEC" class="logo--coreelec" /><span>CoreELEC</span></div>
-      <div class="ecosystem-strip__item"><img src="assets/logos/plex.png" alt="Plex" class="logo--plex" /><span>Plex</span></div>
-      <div class="ecosystem-strip__item"><img src="assets/logos/jellyfin.png" alt="Jellyfin" class="logo--jellyfin" /><span>Jellyfin</span></div>
-      <div class="ecosystem-strip__item"><img src="assets/logos/kodi.png" alt="Kodi" class="logo--kodi" /><span>Kodi</span></div>
-      <!-- Loop -->
-      <div class="ecosystem-strip__item" aria-hidden="true"><img src="assets/logos/nvidia-shield.png" alt="" class="logo--shield" /><span>Nvidia Shield</span></div>
-      <div class="ecosystem-strip__item" aria-hidden="true"><img src="assets/logos/zidoo.png" alt="" class="logo--zidoo" /><span>Zidoo</span></div>
-      <div class="ecosystem-strip__item" aria-hidden="true"><img src="assets/logos/dune-hd.png" alt="" class="logo--dune" /><span>Dune HD</span></div>
-      <div class="ecosystem-strip__item" aria-hidden="true"><img src="assets/logos/apple-tv.png" alt="" class="logo--appletv" /><span>Apple TV</span></div>
-      <div class="ecosystem-strip__item" aria-hidden="true"><img src="assets/logos/synology.png" alt="" class="logo--synology" /><span>Synology</span></div>
-      <div class="ecosystem-strip__item" aria-hidden="true"><img src="assets/logos/coreelec.png" alt="" class="logo--coreelec" /><span>CoreELEC</span></div>
-      <div class="ecosystem-strip__item" aria-hidden="true"><img src="assets/logos/plex.png" alt="" class="logo--plex" /><span>Plex</span></div>
-      <div class="ecosystem-strip__item" aria-hidden="true"><img src="assets/logos/jellyfin.png" alt="" class="logo--jellyfin" /><span>Jellyfin</span></div>
-      <div class="ecosystem-strip__item" aria-hidden="true"><img src="assets/logos/kodi.png" alt="" class="logo--kodi" /><span>Kodi</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════ BITRATE ═══════════════════ -->
-<section class="bitrate-section section--tight u-bg-warm u-border-top" id="bitrate">
-  <div class="container">
-    <div class="u-grid-2-even">
-      <div class="u-section-header reveal">
-        <div class="section-label">
-          <span class="label">Video Bitrate Reality</span>
-        </div>
-        <h2 class="display-md">The numbers<br />tell the story.</h2>
-        <p class="u-mt-1">
-          Bitrate determines how much visual data reaches your screen. Most viewers are watching a fraction of what their hardware can deliver.
-        </p>
-      </div>
-      <div class="bar-chart-premium reveal reveal-delay-2 u-surface-box">
-        <div class="bar-item u-mb-2">
-          <span class="bar-label u-text-left">Compressed streaming</span>
-          <div class="bar-track u-h-8">
-            <div class="bar-fill low" data-width="18"></div>
+    <!-- ═══════════════════ INTRO ═══════════════════ -->
+    <section class="intro-section section" id="intro">
+      <div class="container">
+        <div class="reveal">
+          <div class="u-section-header u-section-header--center">
+            <div class="section-label">
+              <span class="label">The Cinema Machina Approach</span>
+            </div>
+            <h2 class="display-md approach__title">
+              <span class="approach__title-line approach__title-line--single">
+                We Believe in the Power of a “Well-Set-Up”.
+              </span>
+              <span class="approach__title-line">
+                No Compromise When It Comes to the Cinema Experience.
+              </span>
+            </h2>
           </div>
-          <span class="bar-value">~18 Mbps</span>
+          <p class="intro-p introduction-text">
+            Great hardware alone can’t deliver the finest results. Source
+            quality, playback software, device configuration, and the signal
+            path all work together. Cinema Machina specializes in optimizing
+            that hidden layer, bringing the entire system into perfect
+            alignment.
+          </p>
         </div>
-        <div class="bar-item">
-          <span class="bar-label u-text-left">Cinema Machina Local Playback</span>
-          <div class="bar-track u-h-8">
-            <div class="bar-fill high" data-width="100"></div>
+
+        <div class="stat-row u-mt-4">
+          <div class="stat-block reveal reveal-delay-1">
+            <span class="stat-block__number">4K</span>
+            <span class="stat-block__label">True lossless delivery</span>
           </div>
-          <span class="bar-value">100+ Mbps</span>
-        </div>
-        <p class="u-mt-2 u-color-muted u-text-xs u-border-top u-pt-1">
-          * Illustrative normalized comparison of visual data delivery for a 4K HDR source.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════ SERVICES ═══════════════════ -->
-<section class="services-overview" id="services">
-  <div class="container">
-    <div class="u-section-header u-section-header--center reveal">
-      <div class="section-label">
-        <span class="label">What We Do</span>
-      </div>
-      <h2 class="display-md">Five areas of mastery.</h2>
-      <p class="u-mt-1">
-        Every engagement is tailored to your system, your content, and your expectations. We work across the full playback chain.
-      </p>
-    </div>
-
-    <div class="grid-3 u-gap-15">
-      <div class="service-card reveal reveal-delay-1">
-        <div class="service-card__num">01</div>
-        <svg class="service-card__icon" width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round">
-          <rect x="4" y="8" width="24" height="16" rx="1"/>
-          <path d="M4 12h24M8 8V6M24 8V6"/>
-          <circle cx="16" cy="18" r="3"/>
-        </svg>
-        <h3>Media Library &amp; Playback Setup</h3>
-        <p>Structured, art-enriched media libraries. Metadata that matches, chapters that load, covers that resolve. No orphaned files or broken scans.</p>
-        <a href="services.html" class="service-card__link">
-          Learn more <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
-        </a>
-      </div>
-
-      <div class="service-card reveal reveal-delay-2">
-        <div class="service-card__num">02</div>
-        <svg class="service-card__icon" width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round">
-          <rect x="6" y="10" width="20" height="14" rx="1"/>
-          <path d="M11 10V8a5 5 0 0 1 10 0v2"/>
-          <circle cx="16" cy="17" r="2"/>
-        </svg>
-        <h3>Playback Device Guidance</h3>
-        <p>Zidoo, Dune HD, Nvidia Shield, Apple TV, CoreELEC — each has optimal configurations. We configure them correctly for your content and signal chain.</p>
-        <a href="services.html" class="service-card__link">
-          Learn more <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
-        </a>
-      </div>
-
-      <div class="service-card reveal reveal-delay-3">
-        <div class="service-card__num">03</div>
-        <svg class="service-card__icon" width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round">
-          <path d="M4 16h4l3-8 4 16 3-12 3 6 4-2"/>
-        </svg>
-        <h3>HDMI / Audio / Signal Chain</h3>
-        <p>End-to-end signal integrity. From source to processor to display, we verify every link — HDMI handshakes, audio passthrough, display calibration pass-off.</p>
-        <a href="services.html" class="service-card__link">
-          Learn more <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
-        </a>
-      </div>
-
-      <div class="service-card reveal reveal-delay-1">
-        <div class="service-card__num">04</div>
-        <svg class="service-card__icon" width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round">
-          <circle cx="16" cy="16" r="10"/>
-          <path d="M16 10v6l4 4"/>
-        </svg>
-        <h3>Playback Diagnostics</h3>
-        <p>Stuttering, dropped frames, HDR mapping failures, audio sync issues — we diagnose and resolve problems that most integrators don't know how to find.</p>
-        <a href="services.html" class="service-card__link">
-          Learn more <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
-        </a>
-      </div>
-
-      <div class="service-card service-card--wide reveal reveal-delay-2">
-        <div class="service-card__num">05</div>
-        <svg class="service-card__icon" width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round">
-          <polygon points="16,4 20,12 28,13 22,19 24,27 16,23 8,27 10,19 4,13 12,12"/>
-        </svg>
-        <h3>Premium Viewing Refinement</h3>
-        <p>Custom playback profiles that preserve director intent. This is where good becomes exceptional.</p>
-        <a href="services.html" class="service-card__link">
-          Learn more <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════ COMPARISON ═══════════════════ -->
-<section class="comparison-section" id="comparison">
-  <div class="container">
-    <div class="u-section-header u-section-header--center reveal">
-      <div class="section-label">
-        <span class="label">The Difference</span>
-      </div>
-      <h2 class="display-md">Streaming convenience<br />vs. configured excellence.</h2>
-      <p class="u-mt-1 comparison-intro-lockup">
-        <span class="comparison-intro-lockup__line">
-          Convenience platforms are designed for the average viewer.
-        </span>
-        <span class="comparison-intro-lockup__line">
-          Cinema Machina is designed for excellence.
-        </span>
-      </p>
-    </div>
-
-    <div class="comparison-grid reveal">
-      <div class="comparison-col comparison-col--bad">
-        <h3>Streaming / Default Setup</h3>
-        <ul>
-          <li>Compressed video — 15–25 Mbps typical</li>
-          <li>Heavily processed audio — lossy Dolby Digital</li>
-          <li>HDR tone mapping decided by the platform</li>
-          <li>No lossless audio passthrough</li>
-          <li>Region-restricted content</li>
-          <li>Dependent on internet bandwidth</li>
-          <li>No director's cut versions</li>
-          <li>Interface not optimised for cinema viewing</li>
-        </ul>
-      </div>
-      <div class="comparison-col comparison-col--good">
-        <div class="column-brand-lockup">
-          <img src="assets/logos/cm-logo-horizontal.png" alt="Cinema Machina" class="comparison-brand-logo u-mx-auto" />
-        </div>
-        <ul>
-          <li>Full bitrate remux — 50–120 Mbps</li>
-          <li>Lossless audio — Dolby TrueHD, DTS-HD MA, Atmos</li>
-          <li>HDR passthrough with proper tone mapping</li>
-          <li>Bit-perfect to your processor and display</li>
-          <li>Full library ownership — no dropouts</li>
-          <li>Zero buffering — local or fast LAN playback</li>
-          <li>Full editions — theatrical, extended, 4K remasters</li>
-          <li>Cinema-mode UI with frame rate matching</li>
-        </ul>
-        <div class="format-badges reveal" aria-label="Reference-grade platform compatibility">
-          <div class="format-badge-chip"><img src="assets/logos/zidoo.png" alt="Zidoo" class="logo--zidoo" /></div>
-          <div class="format-badge-chip"><img src="assets/logos/dune-hd.png" alt="Dune HD" class="logo--dune" /></div>
-          <div class="format-badge-chip"><img src="assets/logos/nvidia-shield.png" alt="Nvidia Shield" class="logo--shield" /></div>
-          <div class="format-badge-chip"><img src="assets/logos/apple-tv.png" alt="Apple TV" class="logo--appletv" /></div>
-          <div class="format-badge-chip format-badge-chip--synology-wrap"><img src="assets/logos/synology.png" alt="Synology" class="logo--synology" /></div>
-          <div class="format-badge-chip"><img src="assets/logos/coreelec.png" alt="CoreELEC" class="logo--coreelec" /></div>
+          <div class="stat-block reveal reveal-delay-2">
+            <span class="stat-block__number">100+</span>
+            <span class="stat-block__label">Mbps bitrates enabled</span>
+          </div>
+          <div class="stat-block reveal reveal-delay-3">
+            <span class="stat-block__number">TrueHD</span>
+            <span class="stat-block__label">Atmos passthrough</span>
+          </div>
+          <div class="stat-block reveal reveal-delay-4">
+            <span class="stat-block__number">UAE</span>
+            <span class="stat-block__label">Luxury home specialists</span>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ═══════════════════ CODEC ═══════════════════ -->
-<section class="codec-section section--tight u-bg-warm u-border-top" id="codec">
-  <div class="container">
-    <div class="reveal">
-      <div class="section-label">
-        <span class="label">Format Mastering</span>
+    <!-- ═══════════════════ ECOSYSTEM ═══════════════════ -->
+    <section class="section--tight" id="ecosystem">
+      <div class="container mb-3">
+        <div class="section-label u-flex-center">
+          <span class="label">Verified Ecosystem Compatibility</span>
+        </div>
       </div>
-      <h2 class="display-md">Codec authenticity.</h2>
-      <p class="lead u-mt-1">
-        Immersive audio and advanced HDR standards only deliver their promise when the playback device is configured for bit-perfect passthrough.
-      </p>
+      <div class="ecosystem-strip">
+        <div class="ecosystem-strip__track" id="eco-track">
+          <div class="ecosystem-strip__item">
+            <img
+              src="assets/logos/nvidia-shield.png"
+              alt="Nvidia Shield"
+              class="logo--shield"
+            /><span>Nvidia Shield</span>
+          </div>
+          <div class="ecosystem-strip__item">
+            <img
+              src="assets/logos/zidoo.png"
+              alt="Zidoo"
+              class="logo--zidoo"
+            /><span>Zidoo</span>
+          </div>
+          <div class="ecosystem-strip__item">
+            <img
+              src="assets/logos/dune-hd.png"
+              alt="Dune HD"
+              class="logo--dune"
+            /><span>Dune HD</span>
+          </div>
+          <div class="ecosystem-strip__item">
+            <img
+              src="assets/logos/apple-tv.png"
+              alt="Apple TV"
+              class="logo--appletv"
+            /><span>Apple TV</span>
+          </div>
+          <div class="ecosystem-strip__item">
+            <img
+              src="assets/logos/synology.png"
+              alt="Synology"
+              class="logo--synology"
+            /><span>Synology</span>
+          </div>
+          <div class="ecosystem-strip__item">
+            <img
+              src="assets/logos/coreelec.png"
+              alt="CoreELEC"
+              class="logo--coreelec"
+            /><span>CoreELEC</span>
+          </div>
+          <div class="ecosystem-strip__item">
+            <img
+              src="assets/logos/plex.png"
+              alt="Plex"
+              class="logo--plex"
+            /><span>Plex</span>
+          </div>
+          <div class="ecosystem-strip__item">
+            <img
+              src="assets/logos/jellyfin.png"
+              alt="Jellyfin"
+              class="logo--jellyfin"
+            /><span>Jellyfin</span>
+          </div>
+          <div class="ecosystem-strip__item">
+            <img
+              src="assets/logos/kodi.png"
+              alt="Kodi"
+              class="logo--kodi"
+            /><span>Kodi</span>
+          </div>
+          <!-- Loop -->
+          <div class="ecosystem-strip__item" aria-hidden="true">
+            <img
+              src="assets/logos/nvidia-shield.png"
+              alt=""
+              class="logo--shield"
+            /><span>Nvidia Shield</span>
+          </div>
+          <div class="ecosystem-strip__item" aria-hidden="true">
+            <img src="assets/logos/zidoo.png" alt="" class="logo--zidoo" /><span
+              >Zidoo</span
+            >
+          </div>
+          <div class="ecosystem-strip__item" aria-hidden="true">
+            <img
+              src="assets/logos/dune-hd.png"
+              alt=""
+              class="logo--dune"
+            /><span>Dune HD</span>
+          </div>
+          <div class="ecosystem-strip__item" aria-hidden="true">
+            <img
+              src="assets/logos/apple-tv.png"
+              alt=""
+              class="logo--appletv"
+            /><span>Apple TV</span>
+          </div>
+          <div class="ecosystem-strip__item" aria-hidden="true">
+            <img
+              src="assets/logos/synology.png"
+              alt=""
+              class="logo--synology"
+            /><span>Synology</span>
+          </div>
+          <div class="ecosystem-strip__item" aria-hidden="true">
+            <img
+              src="assets/logos/coreelec.png"
+              alt=""
+              class="logo--coreelec"
+            /><span>CoreELEC</span>
+          </div>
+          <div class="ecosystem-strip__item" aria-hidden="true">
+            <img src="assets/logos/plex.png" alt="" class="logo--plex" /><span
+              >Plex</span
+            >
+          </div>
+          <div class="ecosystem-strip__item" aria-hidden="true">
+            <img
+              src="assets/logos/jellyfin.png"
+              alt=""
+              class="logo--jellyfin"
+            /><span>Jellyfin</span>
+          </div>
+          <div class="ecosystem-strip__item" aria-hidden="true">
+            <img src="assets/logos/kodi.png" alt="" class="logo--kodi" /><span
+              >Kodi</span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
 
-      <div class="format-badges reveal u-mt-3 u-flex-center" aria-label="Reference-grade format compatibility">
-        <div class="format-badge-chip"><img src="assets/logos/dolby-vision-horizontal.png" alt="Dolby Vision" class="logo--vision" /></div>
-        <div class="format-badge-chip"><img src="assets/logos/dolby-atmos.png" alt="Dolby Atmos" class="logo--atmos" /></div>
-        <div class="format-badge-chip"><img src="assets/logos/dolby-truehd.png" alt="Dolby TrueHD" class="logo--truehd" /></div>
-        <div class="format-badge-chip"><img src="assets/logos/dts-hd-ma.png" alt="DTS-HD Master Audio" class="logo--dtshdma" /></div>
-        <div class="format-badge-chip"><img src="assets/logos/dts-x.png" alt="DTS:X" class="logo--dtsx" /></div>
-        <div class="format-badge-chip"><img src="assets/logos/hdr10-plus.png" alt="HDR10+" class="logo--hdr10plus" /></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════ CTA FULL ═══════════════════ -->
-<section class="cta-full" id="cta">
-  <div class="container">
-    <div class="reveal">
-      <div class="section-label u-flex-center">
-        <span class="label">Ready to Begin</span>
-      </div>
-      <h2 class="display-lg">
-        Your hardware is capable<br />of more than you know.
-      </h2>
-      <p class="lead">
-        Book a private consultation. We’ll audit your current setup, identify exactly where performance is being lost, and define the cleanest path to restoring playback integrity.
-      </p>
-      <div class="cta-full__actions">
-        <a href="contact.html" class="btn btn-primary">Book a Consultation</a>
-        <a href="about.html" class="btn btn-outline">
-          What We Are
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════ FOOTER ═══════════════════ -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer__inner">
-      <div class="footer__brand">
-        <a href="index.html"><img src="assets/logos/cm-logo-horizontal.png" alt="Cinema Machina" class="footer-brand-logo" /></a>
-        <p>Premium playback and media-environment specialist for luxury home cinema systems in the UAE.</p>
-      </div>
-      <div class="footer__nav">
-        <h4>Navigation</h4>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="why-setup-matters.html">Why Setup Matters</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer__contact">
-        <h4>Get In Touch</h4>
-        <div class="footer__contact-items">
-          <a href="https://wa.me/971507282195" class="footer__contact-link" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-            <div>
-              <span>WhatsApp</span>
-              <strong>+971 50 728 2195</strong>
+    <!-- ═══════════════════ BITRATE ═══════════════════ -->
+    <section
+      class="bitrate-section section--tight u-bg-warm u-border-top"
+      id="bitrate"
+    >
+      <div class="container">
+        <div class="u-grid-2-even">
+          <div class="u-section-header reveal">
+            <div class="section-label">
+              <span class="label">Video Bitrate Reality</span>
             </div>
-          </a>
-          <a href="mailto:cinemamachina.ae@gmail.com" class="footer__contact-link">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <div>
-              <span>Email</span>
-              <strong>cinemamachina.ae@gmail.com</strong>
+            <h2 class="display-md">The numbers<br />tell the story.</h2>
+            <p class="u-mt-1">
+              Bitrate determines how much visual data reaches your screen. Most
+              viewers are watching a fraction of what their hardware can
+              deliver.
+            </p>
+          </div>
+          <div class="bar-chart-premium reveal reveal-delay-2 u-surface-box">
+            <div class="bar-item u-mb-2">
+              <span class="bar-label u-text-left">Compressed streaming</span>
+              <div class="bar-track u-h-8">
+                <div class="bar-fill low" data-width="18"></div>
+              </div>
+              <span class="bar-value">~18 Mbps</span>
             </div>
-          </a>
-          <a href="tel:+971507282195" class="footer__contact-link">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <div>
-              <span>Location</span>
-              <strong>UAE — By Appointment</strong>
+            <div class="bar-item">
+              <span class="bar-label u-text-left"
+                >Cinema Machina Local Playback</span
+              >
+              <div class="bar-track u-h-8">
+                <div class="bar-fill high" data-width="100"></div>
+              </div>
+              <span class="bar-value">100+ Mbps</span>
             </div>
-          </a>
+            <p class="u-mt-2 u-color-muted u-text-xs u-border-top u-pt-1">
+              * Illustrative normalized comparison of visual data delivery for a
+              4K HDR source.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="footer__bottom">
-      <p>© 2026 Cinema Machina. All rights reserved.</p>
-      <p>Luxury Home Cinema Specialists &nbsp;·&nbsp; UAE</p>
-    </div>
-  </div>
-</footer>
+    <!-- ═══════════════════ SERVICES ═══════════════════ -->
+    <section class="services-overview" id="services">
+      <div class="container">
+        <div class="u-section-header u-section-header--center reveal">
+          <div class="section-label">
+            <span class="label">What We Do</span>
+          </div>
+          <h2 class="display-md">Five areas of mastery.</h2>
+          <p class="u-mt-1">
+            Every engagement is tailored to your system, your content, and your
+            expectations. We work across the full playback chain.
+          </p>
+        </div>
 
-<script src="assets/js/main.js"></script>
-</body>
+        <div class="grid-3 u-gap-15">
+          <div class="service-card reveal reveal-delay-1">
+            <div class="service-card__num">01</div>
+            <svg
+              class="service-card__icon"
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.25"
+              stroke-linecap="round"
+            >
+              <rect x="4" y="8" width="24" height="16" rx="1" />
+              <path d="M4 12h24M8 8V6M24 8V6" />
+              <circle cx="16" cy="18" r="3" />
+            </svg>
+            <h3>Media Library &amp; Playback Setup</h3>
+            <p>
+              Structured, art-enriched media libraries. Metadata that matches,
+              chapters that load, covers that resolve. No orphaned files or
+              broken scans.
+            </p>
+            <a href="services.html" class="service-card__link">
+              Learn more
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path d="M2 7h10M8 3l4 4-4 4" />
+              </svg>
+            </a>
+          </div>
+
+          <div class="service-card reveal reveal-delay-2">
+            <div class="service-card__num">02</div>
+            <svg
+              class="service-card__icon"
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.25"
+              stroke-linecap="round"
+            >
+              <rect x="6" y="10" width="20" height="14" rx="1" />
+              <path d="M11 10V8a5 5 0 0 1 10 0v2" />
+              <circle cx="16" cy="17" r="2" />
+            </svg>
+            <h3>Playback Device Guidance</h3>
+            <p>
+              Zidoo, Dune HD, Nvidia Shield, Apple TV, CoreELEC — each has
+              optimal configurations. We configure them correctly for your
+              content and signal chain.
+            </p>
+            <a href="services.html" class="service-card__link">
+              Learn more
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path d="M2 7h10M8 3l4 4-4 4" />
+              </svg>
+            </a>
+          </div>
+
+          <div class="service-card reveal reveal-delay-3">
+            <div class="service-card__num">03</div>
+            <svg
+              class="service-card__icon"
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.25"
+              stroke-linecap="round"
+            >
+              <path d="M4 16h4l3-8 4 16 3-12 3 6 4-2" />
+            </svg>
+            <h3>HDMI / Audio / Signal Chain</h3>
+            <p>
+              End-to-end signal integrity. From source to processor to display,
+              we verify every link — HDMI handshakes, audio passthrough, display
+              calibration pass-off.
+            </p>
+            <a href="services.html" class="service-card__link">
+              Learn more
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path d="M2 7h10M8 3l4 4-4 4" />
+              </svg>
+            </a>
+          </div>
+
+          <div class="service-card reveal reveal-delay-1">
+            <div class="service-card__num">04</div>
+            <svg
+              class="service-card__icon"
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.25"
+              stroke-linecap="round"
+            >
+              <circle cx="16" cy="16" r="10" />
+              <path d="M16 10v6l4 4" />
+            </svg>
+            <h3>Playback Diagnostics</h3>
+            <p>
+              Stuttering, dropped frames, HDR mapping failures, audio sync
+              issues — we diagnose and resolve problems that most integrators
+              don't know how to find.
+            </p>
+            <a href="services.html" class="service-card__link">
+              Learn more
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path d="M2 7h10M8 3l4 4-4 4" />
+              </svg>
+            </a>
+          </div>
+
+          <div class="service-card service-card--wide reveal reveal-delay-2">
+            <div class="service-card__num">05</div>
+            <svg
+              class="service-card__icon"
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.25"
+              stroke-linecap="round"
+            >
+              <polygon
+                points="16,4 20,12 28,13 22,19 24,27 16,23 8,27 10,19 4,13 12,12"
+              />
+            </svg>
+            <h3>Premium Viewing Refinement</h3>
+            <p>
+              Custom playback profiles that preserve director intent. This is
+              where good becomes exceptional.
+            </p>
+            <a href="services.html" class="service-card__link">
+              Learn more
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 14 14"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path d="M2 7h10M8 3l4 4-4 4" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════ COMPARISON ═══════════════════ -->
+    <section class="comparison-section" id="comparison">
+      <div class="container">
+        <div class="u-section-header u-section-header--center reveal">
+          <div class="section-label">
+            <span class="label">The Difference</span>
+          </div>
+          <h2 class="display-md">
+            Streaming convenience<br />vs. configured excellence.
+          </h2>
+          <p class="u-mt-1 comparison-intro-lockup">
+            <span class="comparison-intro-lockup__line">
+              Convenience platforms are designed for the average viewer.
+            </span>
+            <span class="comparison-intro-lockup__line">
+              Cinema Machina is designed for excellence.
+            </span>
+          </p>
+        </div>
+
+        <div class="comparison-grid reveal">
+          <div class="comparison-col comparison-col--bad">
+            <h3>Streaming / Default Setup</h3>
+            <ul>
+              <li>Compressed video — 15–25 Mbps typical</li>
+              <li>Heavily processed audio — lossy Dolby Digital</li>
+              <li>HDR tone mapping decided by the platform</li>
+              <li>No lossless audio passthrough</li>
+              <li>Region-restricted content</li>
+              <li>Dependent on internet bandwidth</li>
+              <li>No director's cut versions</li>
+              <li>Interface not optimised for cinema viewing</li>
+            </ul>
+          </div>
+          <div class="comparison-col comparison-col--good">
+            <div class="column-brand-lockup">
+              <img
+                src="assets/logos/cm-logo-horizontal.png"
+                alt="Cinema Machina"
+                class="comparison-brand-logo u-mx-auto"
+              />
+            </div>
+            <ul>
+              <li>Full bitrate remux — 50–120 Mbps</li>
+              <li>Lossless audio — Dolby TrueHD, DTS-HD MA, Atmos</li>
+              <li>HDR passthrough with proper tone mapping</li>
+              <li>Bit-perfect to your processor and display</li>
+              <li>Full library ownership — no dropouts</li>
+              <li>Zero buffering — local or fast LAN playback</li>
+              <li>Full editions — theatrical, extended, 4K remasters</li>
+              <li>Cinema-mode UI with frame rate matching</li>
+            </ul>
+            <div
+              class="format-badges reveal"
+              aria-label="Reference-grade platform compatibility"
+            >
+              <div class="format-badge-chip">
+                <img
+                  src="assets/logos/zidoo.png"
+                  alt="Zidoo"
+                  class="logo--zidoo"
+                />
+              </div>
+              <div class="format-badge-chip">
+                <img
+                  src="assets/logos/dune-hd.png"
+                  alt="Dune HD"
+                  class="logo--dune"
+                />
+              </div>
+              <div class="format-badge-chip">
+                <img
+                  src="assets/logos/nvidia-shield.png"
+                  alt="Nvidia Shield"
+                  class="logo--shield"
+                />
+              </div>
+              <div class="format-badge-chip">
+                <img
+                  src="assets/logos/apple-tv.png"
+                  alt="Apple TV"
+                  class="logo--appletv"
+                />
+              </div>
+              <div class="format-badge-chip format-badge-chip--synology-wrap">
+                <img
+                  src="assets/logos/synology.png"
+                  alt="Synology"
+                  class="logo--synology"
+                />
+              </div>
+              <div class="format-badge-chip">
+                <img
+                  src="assets/logos/coreelec.png"
+                  alt="CoreELEC"
+                  class="logo--coreelec"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════ CODEC ═══════════════════ -->
+    <section
+      class="codec-section section--tight u-bg-warm u-border-top"
+      id="codec"
+    >
+      <div class="container">
+        <div class="reveal">
+          <div class="section-label">
+            <span class="label">Format Mastering</span>
+          </div>
+          <h2 class="display-md">Codec authenticity.</h2>
+          <p class="lead u-mt-1">
+            Immersive audio and advanced HDR standards only deliver their
+            promise when the playback device is configured for bit-perfect
+            passthrough.
+          </p>
+
+          <div
+            class="format-badges reveal u-mt-3 u-flex-center"
+            aria-label="Reference-grade format compatibility"
+          >
+            <div class="format-badge-chip">
+              <img
+                src="assets/logos/dolby-vision-horizontal.png"
+                alt="Dolby Vision"
+                class="logo--vision"
+              />
+            </div>
+            <div class="format-badge-chip">
+              <img
+                src="assets/logos/dolby-atmos.png"
+                alt="Dolby Atmos"
+                class="logo--atmos"
+              />
+            </div>
+            <div class="format-badge-chip">
+              <img
+                src="assets/logos/dolby-truehd.png"
+                alt="Dolby TrueHD"
+                class="logo--truehd"
+              />
+            </div>
+            <div class="format-badge-chip">
+              <img
+                src="assets/logos/dts-hd-ma.png"
+                alt="DTS-HD Master Audio"
+                class="logo--dtshdma"
+              />
+            </div>
+            <div class="format-badge-chip">
+              <img
+                src="assets/logos/dts-x.png"
+                alt="DTS:X"
+                class="logo--dtsx"
+              />
+            </div>
+            <div class="format-badge-chip">
+              <img
+                src="assets/logos/hdr10-plus.png"
+                alt="HDR10+"
+                class="logo--hdr10plus"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════ CTA FULL ═══════════════════ -->
+    <section class="cta-full" id="cta">
+      <div class="container">
+        <div class="reveal">
+          <div class="section-label u-flex-center">
+            <span class="label">Ready to Begin</span>
+          </div>
+          <h2 class="display-lg">
+            Your hardware is capable<br />of more than you know.
+          </h2>
+          <p class="lead">
+            Book a private consultation. We’ll audit your current setup,
+            identify exactly where performance is being lost, and define the
+            cleanest path to restoring playback integrity.
+          </p>
+          <div class="cta-full__actions">
+            <a href="contact.html" class="btn btn-primary"
+              >Book a Consultation</a
+            >
+            <a href="about.html" class="btn btn-outline">
+              What We Are
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path d="M3 8h10M9 4l4 4-4 4" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════ FOOTER ═══════════════════ -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__inner">
+          <div class="footer__brand">
+            <a href="index.html"
+              ><img
+                src="assets/logos/cm-logo-horizontal.png"
+                alt="Cinema Machina"
+                class="footer-brand-logo"
+            /></a>
+            <p>
+              Premium playback and media-environment specialist for luxury home
+              cinema systems in the UAE.
+            </p>
+          </div>
+          <div class="footer__nav">
+            <h4>Navigation</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="why-setup-matters.html">Why Setup Matters</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer__contact">
+            <h4>Get In Touch</h4>
+            <div class="footer__contact-items">
+              <a
+                href="https://wa.me/971507282195"
+                class="footer__contact-link"
+                target="_blank"
+                rel="noopener"
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"
+                  />
+                </svg>
+                <div>
+                  <span>WhatsApp</span>
+                  <strong>+971 50 728 2195</strong>
+                </div>
+              </a>
+              <a
+                href="mailto:cinemamachina.ae@gmail.com"
+                class="footer__contact-link"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                >
+                  <path
+                    d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                  />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
+                <div>
+                  <span>Email</span>
+                  <strong>cinemamachina.ae@gmail.com</strong>
+                </div>
+              </a>
+              <a href="tel:+971507282195" class="footer__contact-link">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                >
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                <div>
+                  <span>Location</span>
+                  <strong>UAE — By Appointment</strong>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer__bottom">
+          <p>© 2026 Cinema Machina. All rights reserved.</p>
+          <p>Luxury Home Cinema Specialists &nbsp;·&nbsp; UAE</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+  </body>
 </html>
