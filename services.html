@@ -1,600 +1,842 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Services — Cinema Machina</title>
-  <meta name="description" content="Cinema Machina services: media library setup, playback device configuration, HDMI & signal chain optimisation, diagnostics, and premium viewing refinement for luxury home cinema in the UAE." />
-  <link rel="canonical" href="https://cinemamachina.vercel.app/services.html" />
-  <link rel="icon" type="image/png" href="assets/logos/cm-logo-square.png" />
-  <link rel="stylesheet" href="assets/css/style.css?v=4.4" />
-  <style>
-    /* ── PAGE HERO POLISH ── */
-    .page-hero .section-label {
-      margin-bottom: 1.35rem;
-      justify-content: center;
-    }
-
-    .page-hero__content {
-      display: flex;
-      justify-content: center;
-    }
-
-    .page-hero__content .reveal {
-      width: 100%;
-      max-width: 1100px;
-      margin-left: auto;
-      margin-right: auto;
-      text-align: center;
-    }
-
-    .page-hero h1 {
-      display: block;
-      width: 100%;
-      max-width: none;
-      margin: 0 auto;
-      line-height: 1.02;
-      white-space: nowrap;
-      text-align: center;
-    }
-
-    .page-hero .lead {
-      max-width: 46ch;
-      margin: 1.2rem auto 0;
-      text-align: center;
-      font-size: clamp(1.02rem, 1.45vw, 1.14rem);
-      line-height: 1.78;
-    }
-
-    /* ── SERVICE MODULE ── */
-    .service-module {
-      padding: clamp(5.5rem, 9vw, 8rem) 0;
-      position: relative;
-    }
-
-    .service-module:nth-child(even) { background: var(--bg-warm); }
-
-    .service-module__inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(3rem, 5.5vw, 6rem);
-      align-items: start;
-    }
-
-    .service-module:nth-child(even) .service-module__inner {
-      direction: rtl;
-    }
-
-    .service-module:nth-child(even) .service-module__inner > * {
-      direction: ltr;
-    }
-
-    .service-module__image {
-      aspect-ratio: 4/3;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      position: relative;
-    }
-
-    .service-module__image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 1.2s var(--ease-out);
-    }
-
-    .service-module__image:hover img { transform: scale(1.05); }
-
-    .service-module__tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.38rem 0.95rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      font-size: 0.6875rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--bronze);
-      margin-bottom: 1.65rem;
-    }
-
-    .service-module__tag::before {
-      content: '';
-      display: inline-block;
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--bronze);
-    }
-
-    .service-module h2 {
-      font-size: clamp(1.95rem, 3vw, 2.7rem);
-      margin-bottom: 1.15rem;
-      line-height: 1.06;
-      text-wrap: balance;
-      max-width: 12ch;
-    }
-
-    .service-module p {
-      max-width: 56ch;
-      font-size: 0.96rem;
-      line-height: 1.82;
-      color: rgba(237,232,219,0.68);
-    }
-
-    .service-module p + p {
-      margin-top: 1rem;
-    }
-
-    .service-module__list {
-      list-style: none;
-      margin-top: 1.9rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .service-module__list li {
-      display: grid;
-      grid-template-columns: 16px minmax(0, 1fr);
-      align-items: start;
-      column-gap: 0.95rem;
-      font-size: 0.92rem;
-      color: rgba(237,232,219,0.76);
-      line-height: 1.74;
-      font-weight: 400;
-    }
-
-    .service-module__list li::before {
-      content: '✦';
-      color: var(--bronze);
-      width: 16px;
-      display: block;
-      text-align: center;
-      flex-shrink: 0;
-      font-size: 0.52rem;
-      margin-top: 0.42rem;
-    }
-
-    .service-module__badges {
-      margin-top: 2.15rem;
-      margin-bottom: 2.5rem;
-    }
-
-    /* ── PROCESS HIGHLIGHT ── */
-    .process-highlight {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 2.2rem;
-      margin-top: 2.1rem;
-    }
-
-    .process-highlight h4 {
-      font-family: var(--font-body);
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--bronze);
-      margin-bottom: 0.95rem;
-    }
-
-    .process-highlight p {
-      font-size: 0.92rem;
-      line-height: 1.78;
-      color: rgba(237,232,219,0.66);
-      max-width: none;
-    }
-
-    /* ── CODEC STRIP SPACING ── */
-    .section--strip {
-      padding-top: 4.5rem;
-      padding-bottom: 4.5rem;
-    }
-
-    .section--strip + .cta-full {
-      padding-top: 4.5rem;
-    }
-
-    /* ── CTA POLISH ── */
-    .cta-full__actions .btn {
-      min-width: 260px;
-      min-height: 56px;
-      justify-content: center;
-      padding: 0.875rem 2.25rem;
-    }
-
-    .cta-full__actions .btn-ghost {
-      color: var(--bronze-light);
-      border: 1px solid rgba(226,193,155,0.46);
-      background: rgba(7,6,4,0.98);
-      box-shadow:
-        inset 0 0 0 1px rgba(226,193,155,0.07),
-        0 14px 34px rgba(0,0,0,0.18);
-    }
-
-    .cta-full__actions .btn-ghost:hover {
-      color: var(--bg);
-      border-color: var(--bronze-light);
-      background: var(--bronze-light);
-      box-shadow:
-        inset 0 0 0 1px rgba(255,255,255,0.04),
-        0 18px 40px rgba(0,0,0,0.22);
-    }
-
-    .footer {
-      padding: clamp(2.75rem, 5vw, 4.5rem) 0 2rem;
-    }
-
-    .footer__inner {
-      gap: 2.75rem;
-      margin-bottom: 3rem;
-    }
-
-    /* ── MOBILE ── */
-    @media (max-width: 768px) {
-      .service-module {
-        padding: clamp(4rem, 9vw, 5rem) 0;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Services — Cinema Machina</title>
+    <meta
+      name="description"
+      content="Cinema Machina services: media library setup, playback device configuration, HDMI & signal chain optimisation, diagnostics, and premium viewing refinement for luxury home cinema in the UAE."
+    />
+    <link
+      rel="canonical"
+      href="https://cinemamachina.vercel.app/services.html"
+    />
+    <link rel="icon" type="image/png" href="assets/logos/cm-logo-square.png" />
+    <link rel="stylesheet" href="assets/css/style.css?v=4.4" />
+    <style>
+      /* ── PAGE HERO POLISH ── */
+      .page-hero .section-label {
+        margin-bottom: 1.35rem;
+        justify-content: center;
       }
-      .service-module__inner {
-        grid-template-columns: 1fr;
-        gap: 2.2rem;
+
+      .page-hero__content {
+        display: flex;
+        justify-content: center;
       }
-      .service-module:nth-child(even) .service-module__inner { direction: ltr; }
+
+      .page-hero__content .reveal {
+        width: 100%;
+        max-width: 1100px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+      }
+
       .page-hero h1 {
         display: block;
-        width: auto;
-        max-width: 12ch;
-        white-space: normal;
+        width: 100%;
+        max-width: none;
+        margin: 0 auto;
+        line-height: 1.02;
+        white-space: nowrap;
+        text-align: center;
+      }
+
+      .page-hero .lead {
+        max-width: 46ch;
+        margin: 1.2rem auto 0;
+        text-align: center;
+        font-size: clamp(1.02rem, 1.45vw, 1.14rem);
+        line-height: 1.78;
+      }
+
+      /* ── SERVICE MODULE ── */
+      .service-module {
+        padding: clamp(5.5rem, 9vw, 8rem) 0;
+        position: relative;
+      }
+
+      .service-module:nth-child(even) {
+        background: var(--bg-warm);
+      }
+
+      .service-module__inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: clamp(3rem, 5.5vw, 6rem);
+        align-items: start;
+      }
+
+      .service-module:nth-child(even) .service-module__inner {
+        direction: rtl;
+      }
+
+      .service-module:nth-child(even) .service-module__inner > * {
+        direction: ltr;
+      }
+
+      .service-module__image {
+        aspect-ratio: 4/3;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        position: relative;
+      }
+
+      .service-module__image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 1.2s var(--ease-out);
+      }
+
+      .service-module__image:hover img {
+        transform: scale(1.05);
+      }
+
+      .service-module__tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.38rem 0.95rem;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        font-size: 0.6875rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--bronze);
+        margin-bottom: 1.65rem;
+      }
+
+      .service-module__tag::before {
+        content: '';
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--bronze);
+      }
+
+      .service-module h2 {
+        font-size: clamp(1.95rem, 3vw, 2.7rem);
+        margin-bottom: 1.15rem;
+        line-height: 1.06;
+        overflow-wrap: break-word;
         text-wrap: balance;
+        max-width: 12ch;
       }
-      .page-hero .lead { max-width: 30ch; }
-      .service-module h2 { max-width: 13ch; }
-      .service-module__badges { margin-bottom: 2.1rem; }
+
+      .service-module p {
+        max-width: 56ch;
+        font-size: 0.96rem;
+        line-height: 1.82;
+        color: rgba(237, 232, 219, 0.68);
+      }
+
+      .service-module p + p {
+        margin-top: 1rem;
+      }
+
+      .service-module__list {
+        list-style: none;
+        margin-top: 1.9rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .service-module__list li {
+        display: grid;
+        grid-template-columns: 16px minmax(0, 1fr);
+        align-items: start;
+        column-gap: 0.95rem;
+        font-size: 0.92rem;
+        color: rgba(237, 232, 219, 0.76);
+        line-height: 1.74;
+        font-weight: 400;
+      }
+
+      .service-module__list li::before {
+        content: '✦';
+        color: var(--bronze);
+        width: 16px;
+        display: block;
+        text-align: center;
+        flex-shrink: 0;
+        font-size: 0.52rem;
+        margin-top: 0.42rem;
+      }
+
+      .service-module__badges {
+        margin-top: 2.15rem;
+        margin-bottom: 2.5rem;
+      }
+
+      /* ── PROCESS HIGHLIGHT ── */
       .process-highlight {
-        padding: 1.6rem;
-        margin-top: 1.75rem;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        padding: 2.2rem;
+        margin-top: 2.1rem;
       }
+
+      .process-highlight h4 {
+        font-family: var(--font-body);
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--bronze);
+        margin-bottom: 0.95rem;
+      }
+
+      .process-highlight p {
+        font-size: 0.92rem;
+        line-height: 1.78;
+        color: rgba(237, 232, 219, 0.66);
+        max-width: none;
+      }
+
+      /* ── CODEC STRIP SPACING ── */
       .section--strip {
-        padding-top: 3rem;
-        padding-bottom: 3rem;
+        padding-top: 4.5rem;
+        padding-bottom: 4.5rem;
       }
 
       .section--strip + .cta-full {
-        padding-top: 3rem;
+        padding-top: 4.5rem;
       }
+
+      /* ── CTA POLISH ── */
       .cta-full__actions .btn {
-        width: 100%;
-        min-width: 0;
+        min-width: 260px;
+        min-height: 56px;
+        justify-content: center;
+        padding: 0.875rem 2.25rem;
       }
-    }
-  </style>
-</head>
-<body>
 
-<!-- ═══ NAV ═══ -->
-<nav class="nav" id="nav">
-  <a href="index.html" class="nav__logo">
-    <img src="assets/logos/cm-logo-horizontal.png" alt="Cinema Machina" />
-  </a>
-  <ul class="nav__links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="services.html" class="active">Services</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="why-setup-matters.html">Why Setup Matters</a></li>
-  </ul>
-  <a href="contact.html" class="nav__cta">Book Consultation</a>
-  <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-<nav class="nav__mobile" id="nav-mobile">
-  <a href="index.html">Home</a>
-  <a href="services.html">Services</a>
-  <a href="about.html">About</a>
-  <a href="why-setup-matters.html">Why Setup Matters</a>
-  <a href="contact.html">Contact</a>
-</nav>
+      .cta-full__actions .btn-ghost {
+        color: var(--bronze-light);
+        border: 1px solid rgba(226, 193, 155, 0.46);
+        background: rgba(7, 6, 4, 0.98);
+        box-shadow:
+          inset 0 0 0 1px rgba(226, 193, 155, 0.07),
+          0 14px 34px rgba(0, 0, 0, 0.18);
+      }
 
-<!-- ═══ PAGE HERO ═══ -->
-<section class="page-hero">
-  <div class="page-hero__bg">
-    <img src="assets/images/services-signal-chain.jpg" alt="AV signal chain equipment" fetchpriority="high" loading="eager" />
-  </div>
-  <div class="page-hero__gradient"></div>
-  <div class="container page-hero__content">
-    <div class="reveal">
-      <div class="section-label">
-        <span class="label">Cinema Machina Services</span>
+      .cta-full__actions .btn-ghost:hover {
+        color: var(--bg);
+        border-color: var(--bronze-light);
+        background: var(--bronze-light);
+        box-shadow:
+          inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+          0 18px 40px rgba(0, 0, 0, 0.22);
+      }
+
+      .footer {
+        padding: clamp(2.75rem, 5vw, 4.5rem) 0 2rem;
+      }
+
+      .footer__inner {
+        gap: 2.75rem;
+        margin-bottom: 3rem;
+      }
+
+      /* ── MOBILE ── */
+      @media (max-width: 768px) {
+        .service-module {
+          padding: clamp(4rem, 9vw, 5rem) 0;
+        }
+        .service-module__inner {
+          grid-template-columns: 1fr;
+          gap: 2.2rem;
+        }
+        .service-module:nth-child(even) .service-module__inner {
+          direction: ltr;
+        }
+        .page-hero h1 {
+          display: block;
+          width: auto;
+          max-width: 12ch;
+          white-space: normal;
+          overflow-wrap: break-word;
+          text-wrap: balance;
+        }
+        .page-hero .lead {
+          max-width: 30ch;
+        }
+        .service-module h2 {
+          max-width: 13ch;
+        }
+        .service-module__badges {
+          margin-bottom: 2.1rem;
+        }
+        .process-highlight {
+          padding: 1.6rem;
+          margin-top: 1.75rem;
+        }
+        .section--strip {
+          padding-top: 3rem;
+          padding-bottom: 3rem;
+        }
+
+        .section--strip + .cta-full {
+          padding-top: 3rem;
+        }
+        .cta-full__actions .btn {
+          width: 100%;
+          min-width: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ═══ NAV ═══ -->
+    <nav class="nav" id="nav">
+      <a href="index.html" class="nav__logo">
+        <img src="assets/logos/cm-logo-horizontal.png" alt="Cinema Machina" />
+      </a>
+      <ul class="nav__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html" class="active">Services</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="why-setup-matters.html">Why Setup Matters</a></li>
+      </ul>
+      <a href="contact.html" class="nav__cta">Book Consultation</a>
+      <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+    <nav class="nav__mobile" id="nav-mobile">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="why-setup-matters.html">Why Setup Matters</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <!-- ═══ PAGE HERO ═══ -->
+    <section class="page-hero">
+      <div class="page-hero__bg">
+        <img
+          src="assets/images/services-signal-chain.jpg"
+          alt="AV signal chain equipment"
+          fetchpriority="high"
+          loading="eager"
+        />
       </div>
-      <h1 class="display-lg">
-        The full playback chain.<br />
-        Perfected.
-      </h1>
-      <p class="lead u-mt-1">
-        Five specialised service areas. Each addresses a distinct layer of your cinema system — because every link matters.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════ SERVICE 01 ═══════════════════ -->
-<section class="service-module" id="media-library">
-  <div class="container">
-    <div class="service-module__inner">
-      <div class="service-module__image reveal">
-        <div class="image-frame--support">
-          <img src="assets/images/services-library-master.png" alt="Media server and NAS setup" loading="lazy" />
+      <div class="page-hero__gradient"></div>
+      <div class="container page-hero__content">
+        <div class="reveal">
+          <div class="section-label">
+            <span class="label">Cinema Machina Services</span>
+          </div>
+          <h1 class="display-lg">
+            The full playback chain.<br />
+            Perfected.
+          </h1>
+          <p class="lead u-mt-1">
+            Five specialised service areas. Each addresses a distinct layer of
+            your cinema system — because every link matters.
+          </p>
         </div>
       </div>
-      <div class="reveal reveal-delay-2">
-        <div class="service-module__tag">01</div>
-        <h2>Media Library &amp;<br />Playback Setup</h2>
-        <p>
-          A disorganised media library is the most common — and most overlooked — barrier to a premium playback experience. Wrong metadata, mismatched file names, missing artwork, incorrect chapter markers, and broken links all degrade the experience before a single frame plays.
-        </p>
-        <p class="u-mt-1">
-          Cinema Machina builds structured, fully resolved libraries across Plex, Jellyfin, Kodi, and NAS environments — with exhibition-quality metadata, custom artwork, and a folder logic that scales cleanly.
-        </p>
-        <ul class="service-module__list">
-          <li>Plex, Jellyfin, Kodi library construction and configuration</li>
-          <li>NAS setup and media share configuration (Synology, QNAP)</li>
-          <li>Custom metadata agents and artwork resolution</li>
-          <li>File naming, folder structure, and version management</li>
-          <li>Local subtitle management and language configuration</li>
-          <li>Library scanning optimisation and scheduled maintenance</li>
-        </ul>
-        <div class="format-badges service-module__badges u-flex-start">
-          <div class="format-badge-chip"><img src="assets/logos/plex.png" alt="Plex" class="logo--plex" /></div>
-          <div class="format-badge-chip"><img src="assets/logos/jellyfin.png" alt="Jellyfin" class="logo--jellyfin" /></div>
-          <div class="format-badge-chip"><img src="assets/logos/kodi.png" alt="Kodi" class="logo--kodi" /></div>
-          <div class="format-badge-chip format-badge-chip--synology-wrap"><img src="assets/logos/synology.png" alt="Synology" class="logo--synology" /></div>
-        </div>
-        <div class="process-highlight">
-          <h4>Outcome</h4>
-          <p>A library that opens clean, loads instantly, displays correctly, and scales without breaking as your collection grows.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ═══════════════════ SERVICE 02 ═══════════════════ -->
-<section class="service-module" id="devices">
-  <div class="container">
-    <div class="service-module__inner">
-      <div class="service-module__image reveal">
-        <img src="assets/images/why-setup-projector.jpg" alt="Premium playback device" loading="lazy" />
-      </div>
-      <div class="reveal reveal-delay-2">
-        <div class="service-module__tag">02</div>
-        <h2>Playback Devices &amp;<br />Platform Guidance</h2>
-        <p>
-          Every playback device has a native capability ceiling — and most are never configured to reach it. The same Zidoo or Nvidia Shield set up by different hands will perform very differently in practice.
-        </p>
-        <p class="u-mt-1">
-          Cinema Machina configures each device to unlock its full capability for your specific signal chain — correct output resolution, frame rate, HDR format, audio codec routing, and client application behaviour.
-        </p>
-        <ul class="service-module__list">
-          <li>Zidoo media player — full ZidooMC and ZDMC configuration</li>
-          <li>Dune HD — firmware selection, ISP optimisation</li>
-          <li>Nvidia Shield — Kodi / Plex / Shield Experience setup</li>
-          <li>Apple TV — MrMC, Infuse, VLC configuration</li>
-          <li>CoreELEC — AMLogic device setup and HDR passthrough</li>
-          <li>Platform selection guidance based on your library and signal chain</li>
-        </ul>
-        <div class="format-badges service-module__badges u-flex-start">
-          <div class="format-badge-chip"><img src="assets/logos/zidoo.png" alt="Zidoo" class="logo--zidoo" /></div>
-          <div class="format-badge-chip"><img src="assets/logos/dune-hd.png" alt="Dune HD" class="logo--dune" /></div>
-          <div class="format-badge-chip"><img src="assets/logos/nvidia-shield.png" alt="Nvidia Shield" class="logo--shield" /></div>
-          <div class="format-badge-chip"><img src="assets/logos/apple-tv.png" alt="Apple TV" class="logo--appletv" /></div>
-          <div class="format-badge-chip"><img src="assets/logos/coreelec.png" alt="CoreELEC" class="logo--coreelec" /></div>
-        </div>
-        <div class="process-highlight">
-          <h4>Outcome</h4>
-          <p>Your device performing exactly as its engineering intended — every time, for every file format in your library.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════ SERVICE 03 ═══════════════════ -->
-<section class="service-module" id="signal-chain">
-  <div class="container">
-    <div class="service-module__inner">
-      <div class="service-module__image reveal">
-        <img src="assets/images/services-signal-chain.jpg" alt="HDMI and AV processor signal chain" loading="lazy" />
-      </div>
-      <div class="reveal reveal-delay-2">
-        <div class="service-module__tag">03</div>
-        <h2>HDMI &amp; Signal Chain<br />Optimisation</h2>
-        <p>
-          The path between your source and your display is where most luxury systems fail silently. HDMI negotiation errors, incorrect colour space declarations, missing EDID handshakes, and audio extraction failures are invisible to most users — until we show them what they've been missing.
-        </p>
-        <p class="u-mt-1">
-          We trace the complete signal path — source device, processor, switch, display, and speakers — and verify each link. Where there are compromises, we resolve them systematically.
-        </p>
-        <ul class="service-module__list">
-          <li>Full HDMI chain audit from source to display</li>
-          <li>EDID management and display negotiation verification</li>
-          <li>AV processor input configuration and audio routing</li>
-          <li>HDR metadata passthrough verification (HDR10, DV, HLG)</li>
-          <li>Dolby Atmos / DTS:X bitstream integrity testing</li>
-          <li>4K/120Hz and VRR compatibility verification</li>
-        </ul>
-        <div class="process-highlight">
-          <h4>Outcome</h4>
-          <p>A signal chain where every link is verified, every handshake confirmed, and every format reaches your processor and display intact.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════ SERVICE 04 ═══════════════════ -->
-<section class="service-module" id="diagnostics">
-  <div class="container">
-    <div class="service-module__inner">
-      <div class="service-module__image reveal">
-        <div class="image-frame--support">
-          <img src="assets/images/services-diagnostics-master.png" alt="Signal analysis and diagnostics" loading="lazy" />
-        </div>
-      </div>
-      <div class="reveal reveal-delay-2">
-        <div class="service-module__tag">04</div>
-        <h2>Playback Diagnostics</h2>
-        <p>
-          Stuttering. Frame drops. Audio sync drift. HDR mapping that looks wrong. Codec failures that silently fall back to downmixed stereo. These are common problems in luxury cinema systems — and they're rarely visible without the right tools.
-        </p>
-        <p class="u-mt-1">
-          Cinema Machina provides structured diagnostic sessions that isolate the source of playback issues — whether they originate in the media file, the playback software, the device firmware, or the signal chain.
-        </p>
-        <ul class="service-module__list">
-          <li>Stuttering and frame-pacing analysis</li>
-          <li>Audio-visual sync measurement and correction</li>
-          <li>HDR format mismatch identification</li>
-          <li>Codec passthrough failure diagnosis</li>
-          <li>Network-related buffering and latency diagnosis</li>
-          <li>Post-change verification after any system modification</li>
-        </ul>
-        <div class="process-highlight">
-          <h4>Outcome</h4>
-          <p>A clean playback baseline — with documentation of what was found, what was fixed, and what to monitor going forward.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════ SERVICE 05 ═══════════════════ -->
-<section class="service-module" id="refinement">
-  <div class="container">
-    <div class="service-module__inner">
-      <div class="service-module__image reveal">
-        <div class="image-frame--support">
-          <img src="assets/images/why-setup-integrity-master.png" alt="Premium cinema viewing environment" loading="lazy" />
-        </div>
-      </div>
-      <div class="reveal reveal-delay-2">
-        <div class="service-module__tag">05</div>
-        <h2>Premium Viewing<br />Refinement</h2>
-        <p>
-          This is the final, most nuanced layer. Beyond setup and configuration, there are decisions that separate a good system from a truly exceptional one. How your projector tone-maps Dolby Vision. How your device handles 23.976 vs 24Hz. Whether your HDR metadata is being honoured or overridden.
-        </p>
-        <p class="u-mt-1">
-          Cinema Machina builds custom playback profiles for your system — calibrated to your content, your room, and your processor — then verifies against a reference library to confirm the result.
-        </p>
-        <ul class="service-module__list">
-          <li>Frame rate matching configuration (23.976, 24, 25, 30, 60Hz)</li>
-          <li>HDR zone and tone-mapping profile tuning</li>
-          <li>Display calibration pre-pass and hand-off to calibrator</li>
-          <li>Dolby Vision / HDR10+ profile selection per device</li>
-          <li>Custom Kodi / Plex / Jellyfin skin and UI configuration</li>
-          <li>Reference playback testing against known-good files</li>
-        </ul>
-        <div class="process-highlight">
-          <h4>Outcome</h4>
-          <p>A cinema system that performs with intention — where every creative decision by the filmmakers reaches the screen exactly as it should.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ═══ CODEC AUTHENTICITY ═══ -->
-<section class="section--strip">
-  <div class="container">
-    <div class="format-badges reveal" aria-label="Reference-grade format compatibility">
-      <div class="format-badge-chip"><img src="assets/logos/dolby-vision-horizontal.png" alt="Dolby Vision" class="logo--vision" /></div>
-      <div class="format-badge-chip"><img src="assets/logos/dolby-atmos.png" alt="Dolby Atmos" class="logo--atmos" /></div>
-      <div class="format-badge-chip"><img src="assets/logos/dolby-truehd.png" alt="Dolby TrueHD" class="logo--truehd" /></div>
-      <div class="format-badge-chip"><img src="assets/logos/dts-hd-ma.png" alt="DTS-HD Master Audio" class="logo--dtshdma" /></div>
-      <div class="format-badge-chip"><img src="assets/logos/dts-x.png" alt="DTS:X" class="logo--dtsx" /></div>
-      <div class="format-badge-chip"><img src="assets/logos/hdr10-plus.png" alt="HDR10+" class="logo--hdr10" /></div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ CTA ═══ -->
-<section class="cta-full u-bg-warm">
-  <div class="container">
-    <div class="reveal">
-      <div class="section-label u-flex-center">
-        <span class="label">Ready to Begin</span>
-      </div>
-      <h2 class="display-lg">
-        Every system is different.<br />Every engagement is tailored.
-      </h2>
-      <p class="lead">
-        Book a private consultation. We’ll assess your current setup, identify the most important interventions, and propose a clear engagement plan to restore performance.
-      </p>
-      <div class="cta-full__actions">
-        <a href="contact.html" class="btn btn-primary">Book a Consultation</a>
-        <a href="about.html" class="btn btn-ghost">
-          What We Are
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ FOOTER ═══ -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer__inner">
-      <div class="footer__brand">
-        <a href="index.html"><img src="assets/logos/cm-logo-horizontal.png" alt="Cinema Machina" class="footer-brand-logo" /></a>
-        <p>Premium playback and media-environment specialist for luxury home cinema systems in the UAE.</p>
-      </div>
-      <div class="footer__nav">
-        <h4>Navigation</h4>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="why-setup-matters.html">Why Setup Matters</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer__contact">
-        <h4>Get In Touch</h4>
-        <div class="footer__contact-items">
-          <a href="https://wa.me/971507282195" class="footer__contact-link" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-            <div>
-              <span>WhatsApp</span>
-              <strong>+971 50 728 2195</strong>
+    <!-- ═══════════════════ SERVICE 01 ═══════════════════ -->
+    <section class="service-module" id="media-library">
+      <div class="container">
+        <div class="service-module__inner">
+          <div class="service-module__image reveal">
+            <div class="image-frame--support">
+              <img
+                src="assets/images/services-library-master.png"
+                alt="Media server and NAS setup"
+                loading="lazy"
+              />
             </div>
-          </a>
-          <a href="mailto:cinemamachina.ae@gmail.com" class="footer__contact-link">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <div>
-              <span>Email</span>
-              <strong>cinemamachina.ae@gmail.com</strong>
+          </div>
+          <div class="reveal reveal-delay-2">
+            <div class="service-module__tag">01</div>
+            <h2>Media Library &amp;<br />Playback Setup</h2>
+            <p>
+              A disorganised media library is the most common — and most
+              overlooked — barrier to a premium playback experience. Wrong
+              metadata, mismatched file names, missing artwork, incorrect
+              chapter markers, and broken links all degrade the experience
+              before a single frame plays.
+            </p>
+            <p class="u-mt-1">
+              Cinema Machina builds structured, fully resolved libraries across
+              Plex, Jellyfin, Kodi, and NAS environments — with
+              exhibition-quality metadata, custom artwork, and a folder logic
+              that scales cleanly.
+            </p>
+            <ul class="service-module__list">
+              <li>
+                Plex, Jellyfin, Kodi library construction and configuration
+              </li>
+              <li>NAS setup and media share configuration (Synology, QNAP)</li>
+              <li>Custom metadata agents and artwork resolution</li>
+              <li>File naming, folder structure, and version management</li>
+              <li>Local subtitle management and language configuration</li>
+              <li>Library scanning optimisation and scheduled maintenance</li>
+            </ul>
+            <div class="format-badges service-module__badges u-flex-start">
+              <div class="format-badge-chip">
+                <img
+                  src="assets/logos/plex.png"
+                  alt="Plex"
+                  class="logo--plex"
+                />
+              </div>
+              <div class="format-badge-chip">
+                <img
+                  src="assets/logos/jellyfin.png"
+                  alt="Jellyfin"
+                  class="logo--jellyfin"
+                />
+              </div>
+              <div class="format-badge-chip">
+                <img
+                  src="assets/logos/kodi.png"
+                  alt="Kodi"
+                  class="logo--kodi"
+                />
+              </div>
+              <div class="format-badge-chip format-badge-chip--synology-wrap">
+                <img
+                  src="assets/logos/synology.png"
+                  alt="Synology"
+                  class="logo--synology"
+                />
+              </div>
             </div>
-          </a>
-          <a href="tel:+971507282195" class="footer__contact-link">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <div>
-              <span>Location</span>
-              <strong>UAE — By Appointment</strong>
+            <div class="process-highlight">
+              <h4>Outcome</h4>
+              <p>
+                A library that opens clean, loads instantly, displays correctly,
+                and scales without breaking as your collection grows.
+              </p>
             </div>
-          </a>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="footer__bottom">
-      <p>© 2026 Cinema Machina. All rights reserved.</p>
-      <p>Luxury Home Cinema Specialists &nbsp;·&nbsp; UAE</p>
-    </div>
-  </div>
-</footer>
+    <!-- ═══════════════════ SERVICE 02 ═══════════════════ -->
+    <section class="service-module" id="devices">
+      <div class="container">
+        <div class="service-module__inner">
+          <div class="service-module__image reveal">
+            <img
+              src="assets/images/why-setup-projector.jpg"
+              alt="Premium playback device"
+              loading="lazy"
+            />
+          </div>
+          <div class="reveal reveal-delay-2">
+            <div class="service-module__tag">02</div>
+            <h2>Playback Devices &amp;<br />Platform Guidance</h2>
+            <p>
+              Every playback device has a native capability ceiling — and most
+              are never configured to reach it. The same Zidoo or Nvidia Shield
+              set up by different hands will perform very differently in
+              practice.
+            </p>
+            <p class="u-mt-1">
+              Cinema Machina configures each device to unlock its full
+              capability for your specific signal chain — correct output
+              resolution, frame rate, HDR format, audio codec routing, and
+              client application behaviour.
+            </p>
+            <ul class="service-module__list">
+              <li>Zidoo media player — full ZidooMC and ZDMC configuration</li>
+              <li>Dune HD — firmware selection, ISP optimisation</li>
+              <li>Nvidia Shield — Kodi / Plex / Shield Experience setup</li>
+              <li>Apple TV — MrMC, Infuse, VLC configuration</li>
+              <li>CoreELEC — AMLogic device setup and HDR passthrough</li>
+              <li>
+                Platform selection guidance based on your library and signal
+                chain
+              </li>
+            </ul>
+            <div class="format-badges service-module__badges u-flex-start">
+              <div class="format-badge-chip">
+                <img
+                  src="assets/logos/zidoo.png"
+                  alt="Zidoo"
+                  class="logo--zidoo"
+                />
+              </div>
+              <div class="format-badge-chip">
+                <img
+                  src="assets/logos/dune-hd.png"
+                  alt="Dune HD"
+                  class="logo--dune"
+                />
+              </div>
+              <div class="format-badge-chip">
+                <img
+                  src="assets/logos/nvidia-shield.png"
+                  alt="Nvidia Shield"
+                  class="logo--shield"
+                />
+              </div>
+              <div class="format-badge-chip">
+                <img
+                  src="assets/logos/apple-tv.png"
+                  alt="Apple TV"
+                  class="logo--appletv"
+                />
+              </div>
+              <div class="format-badge-chip">
+                <img
+                  src="assets/logos/coreelec.png"
+                  alt="CoreELEC"
+                  class="logo--coreelec"
+                />
+              </div>
+            </div>
+            <div class="process-highlight">
+              <h4>Outcome</h4>
+              <p>
+                Your device performing exactly as its engineering intended —
+                every time, for every file format in your library.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<script src="assets/js/main.js"></script>
-</body>
+    <!-- ═══════════════════ SERVICE 03 ═══════════════════ -->
+    <section class="service-module" id="signal-chain">
+      <div class="container">
+        <div class="service-module__inner">
+          <div class="service-module__image reveal">
+            <img
+              src="assets/images/services-signal-chain.jpg"
+              alt="HDMI and AV processor signal chain"
+              loading="lazy"
+            />
+          </div>
+          <div class="reveal reveal-delay-2">
+            <div class="service-module__tag">03</div>
+            <h2>HDMI &amp; Signal Chain<br />Optimisation</h2>
+            <p>
+              The path between your source and your display is where most luxury
+              systems fail silently. HDMI negotiation errors, incorrect colour
+              space declarations, missing EDID handshakes, and audio extraction
+              failures are invisible to most users — until we show them what
+              they've been missing.
+            </p>
+            <p class="u-mt-1">
+              We trace the complete signal path — source device, processor,
+              switch, display, and speakers — and verify each link. Where there
+              are compromises, we resolve them systematically.
+            </p>
+            <ul class="service-module__list">
+              <li>Full HDMI chain audit from source to display</li>
+              <li>EDID management and display negotiation verification</li>
+              <li>AV processor input configuration and audio routing</li>
+              <li>HDR metadata passthrough verification (HDR10, DV, HLG)</li>
+              <li>Dolby Atmos / DTS:X bitstream integrity testing</li>
+              <li>4K/120Hz and VRR compatibility verification</li>
+            </ul>
+            <div class="process-highlight">
+              <h4>Outcome</h4>
+              <p>
+                A signal chain where every link is verified, every handshake
+                confirmed, and every format reaches your processor and display
+                intact.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════ SERVICE 04 ═══════════════════ -->
+    <section class="service-module" id="diagnostics">
+      <div class="container">
+        <div class="service-module__inner">
+          <div class="service-module__image reveal">
+            <div class="image-frame--support">
+              <img
+                src="assets/images/services-diagnostics-master.png"
+                alt="Signal analysis and diagnostics"
+                loading="lazy"
+              />
+            </div>
+          </div>
+          <div class="reveal reveal-delay-2">
+            <div class="service-module__tag">04</div>
+            <h2>Playback Diagnostics</h2>
+            <p>
+              Stuttering. Frame drops. Audio sync drift. HDR mapping that looks
+              wrong. Codec failures that silently fall back to downmixed stereo.
+              These are common problems in luxury cinema systems — and they're
+              rarely visible without the right tools.
+            </p>
+            <p class="u-mt-1">
+              Cinema Machina provides structured diagnostic sessions that
+              isolate the source of playback issues — whether they originate in
+              the media file, the playback software, the device firmware, or the
+              signal chain.
+            </p>
+            <ul class="service-module__list">
+              <li>Stuttering and frame-pacing analysis</li>
+              <li>Audio-visual sync measurement and correction</li>
+              <li>HDR format mismatch identification</li>
+              <li>Codec passthrough failure diagnosis</li>
+              <li>Network-related buffering and latency diagnosis</li>
+              <li>Post-change verification after any system modification</li>
+            </ul>
+            <div class="process-highlight">
+              <h4>Outcome</h4>
+              <p>
+                A clean playback baseline — with documentation of what was
+                found, what was fixed, and what to monitor going forward.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════ SERVICE 05 ═══════════════════ -->
+    <section class="service-module" id="refinement">
+      <div class="container">
+        <div class="service-module__inner">
+          <div class="service-module__image reveal">
+            <div class="image-frame--support">
+              <img
+                src="assets/images/why-setup-integrity-master.png"
+                alt="Premium cinema viewing environment"
+                loading="lazy"
+              />
+            </div>
+          </div>
+          <div class="reveal reveal-delay-2">
+            <div class="service-module__tag">05</div>
+            <h2>Premium Viewing<br />Refinement</h2>
+            <p>
+              This is the final, most nuanced layer. Beyond setup and
+              configuration, there are decisions that separate a good system
+              from a truly exceptional one. How your projector tone-maps Dolby
+              Vision. How your device handles 23.976 vs 24Hz. Whether your HDR
+              metadata is being honoured or overridden.
+            </p>
+            <p class="u-mt-1">
+              Cinema Machina builds custom playback profiles for your system —
+              calibrated to your content, your room, and your processor — then
+              verifies against a reference library to confirm the result.
+            </p>
+            <ul class="service-module__list">
+              <li>
+                Frame rate matching configuration (23.976, 24, 25, 30, 60Hz)
+              </li>
+              <li>HDR zone and tone-mapping profile tuning</li>
+              <li>Display calibration pre-pass and hand-off to calibrator</li>
+              <li>Dolby Vision / HDR10+ profile selection per device</li>
+              <li>Custom Kodi / Plex / Jellyfin skin and UI configuration</li>
+              <li>Reference playback testing against known-good files</li>
+            </ul>
+            <div class="process-highlight">
+              <h4>Outcome</h4>
+              <p>
+                A cinema system that performs with intention — where every
+                creative decision by the filmmakers reaches the screen exactly
+                as it should.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ CODEC AUTHENTICITY ═══ -->
+    <section class="section--strip">
+      <div class="container">
+        <div
+          class="format-badges reveal"
+          aria-label="Reference-grade format compatibility"
+        >
+          <div class="format-badge-chip">
+            <img
+              src="assets/logos/dolby-vision-horizontal.png"
+              alt="Dolby Vision"
+              class="logo--vision"
+            />
+          </div>
+          <div class="format-badge-chip">
+            <img
+              src="assets/logos/dolby-atmos.png"
+              alt="Dolby Atmos"
+              class="logo--atmos"
+            />
+          </div>
+          <div class="format-badge-chip">
+            <img
+              src="assets/logos/dolby-truehd.png"
+              alt="Dolby TrueHD"
+              class="logo--truehd"
+            />
+          </div>
+          <div class="format-badge-chip">
+            <img
+              src="assets/logos/dts-hd-ma.png"
+              alt="DTS-HD Master Audio"
+              class="logo--dtshdma"
+            />
+          </div>
+          <div class="format-badge-chip">
+            <img src="assets/logos/dts-x.png" alt="DTS:X" class="logo--dtsx" />
+          </div>
+          <div class="format-badge-chip">
+            <img
+              src="assets/logos/hdr10-plus.png"
+              alt="HDR10+"
+              class="logo--hdr10"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ CTA ═══ -->
+    <section class="cta-full u-bg-warm">
+      <div class="container">
+        <div class="reveal">
+          <div class="section-label u-flex-center">
+            <span class="label">Ready to Begin</span>
+          </div>
+          <h2 class="display-lg">
+            Every system is different.<br />Every engagement is tailored.
+          </h2>
+          <p class="lead">
+            Book a private consultation. We’ll assess your current setup,
+            identify the most important interventions, and propose a clear
+            engagement plan to restore performance.
+          </p>
+          <div class="cta-full__actions">
+            <a href="contact.html" class="btn btn-primary"
+              >Book a Consultation</a
+            >
+            <a href="about.html" class="btn btn-ghost">
+              What We Are
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path d="M3 8h10M9 4l4 4-4 4" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__inner">
+          <div class="footer__brand">
+            <a href="index.html"
+              ><img
+                src="assets/logos/cm-logo-horizontal.png"
+                alt="Cinema Machina"
+                class="footer-brand-logo"
+            /></a>
+            <p>
+              Premium playback and media-environment specialist for luxury home
+              cinema systems in the UAE.
+            </p>
+          </div>
+          <div class="footer__nav">
+            <h4>Navigation</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="why-setup-matters.html">Why Setup Matters</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer__contact">
+            <h4>Get In Touch</h4>
+            <div class="footer__contact-items">
+              <a
+                href="https://wa.me/971507282195"
+                class="footer__contact-link"
+                target="_blank"
+                rel="noopener"
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"
+                  />
+                </svg>
+                <div>
+                  <span>WhatsApp</span>
+                  <strong>+971 50 728 2195</strong>
+                </div>
+              </a>
+              <a
+                href="mailto:cinemamachina.ae@gmail.com"
+                class="footer__contact-link"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                >
+                  <path
+                    d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                  />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
+                <div>
+                  <span>Email</span>
+                  <strong>cinemamachina.ae@gmail.com</strong>
+                </div>
+              </a>
+              <a href="tel:+971507282195" class="footer__contact-link">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                >
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                <div>
+                  <span>Location</span>
+                  <strong>UAE — By Appointment</strong>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer__bottom">
+          <p>© 2026 Cinema Machina. All rights reserved.</p>
+          <p>Luxury Home Cinema Specialists &nbsp;·&nbsp; UAE</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+  </body>
 </html>
