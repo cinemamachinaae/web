@@ -184,7 +184,6 @@ function initVimeo() {
 
   shell.addEventListener("mousemove", poke);
   shell.addEventListener("touchstart", poke, { passive: true });
-  shell.addEventListener("click", poke);
 
   const handlePlayPause = async () => {
     const paused = await player.getPaused();
@@ -245,12 +244,68 @@ function initVimeo() {
     });
   }
 
+  const toggleFullscreen = async () => {
+    const fullscreenElement = document.fullscreenElement || document.webkitFullscreenElement;
+
+    if (fullscreenElement) {
+      if (document.exitFullscreen) {
+        try {
+          await document.exitFullscreen();
+          return;
+        } catch {}
+      }
+
+      if (document.webkitExitFullscreen) {
+        try {
+          document.webkitExitFullscreen();
+          return;
+        } catch {}
+      }
+
+      try {
+        await player.exitFullscreen();
+      } catch {}
+      return;
+    }
+
+    if (shell.requestFullscreen) {
+      try {
+        await shell.requestFullscreen();
+        return;
+      } catch {}
+    }
+
+    if (shell.webkitRequestFullscreen) {
+      try {
+        shell.webkitRequestFullscreen();
+        return;
+      } catch {}
+    }
+
+    if (iframe.requestFullscreen) {
+      try {
+        await iframe.requestFullscreen();
+        return;
+      } catch {}
+    }
+
+    if (iframe.webkitRequestFullscreen) {
+      try {
+        iframe.webkitRequestFullscreen();
+        return;
+      } catch {}
+    }
+
+    try {
+      await player.requestFullscreen();
+    } catch {}
+  };
+
   if (fsBtn) {
-    fsBtn.addEventListener("click", (e) => {
+    fsBtn.addEventListener("click", async (e) => {
       e.stopPropagation();
-      player.requestFullscreen().catch(() => {
-        if (iframe.requestFullscreen) iframe.requestFullscreen();
-      });
+      await toggleFullscreen();
+      poke();
     });
   }
 
@@ -263,11 +318,20 @@ function initVimeo() {
     progress.addEventListener("mousedown", e => e.stopPropagation());
   }
 
+  shell.addEventListener("click", (e) => {
+    if (e.target.closest(".vimeo-controls")) {
+      poke();
+      return;
+    }
+
+    handlePlayPause();
+    poke();
+  });
+
   // Double click for fullscreen
-  shell.addEventListener("dblclick", () => {
-    player.requestFullscreen().catch(() => {
-      if (iframe.requestFullscreen) iframe.requestFullscreen();
-    });
+  shell.addEventListener("dblclick", async () => {
+    await toggleFullscreen();
+    poke();
   });
 }
 

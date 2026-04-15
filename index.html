@@ -5,9 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cinema Machina — Premium Playback & Media Environment Specialists, UAE</title>
   <meta name="description" content="Cinema Machina optimizes luxury home cinema systems in the UAE for reference-grade playback, lossless audio, and full-performance video delivery." />
-  <link rel="canonical" href="https://cinemamachina.vercel.app/" />
   <link rel="icon" type="image/png" href="assets/logos/cm-logo-square.png" />
-  <link rel="stylesheet" href="assets/css/style.css?v=4.5" />
+  <link rel="stylesheet" href="assets/css/style.css?v=4.4" />
   <script src="https://player.vimeo.com/api/player.js"></script>
   <style>
     /* ── PAGE-SPECIFIC OVERRIDES ── */
@@ -43,7 +42,6 @@
     .hero__eyebrow::after {
       content: '';
       flex: 1;
-      min-width: 20px;
       max-width: 60px;
       height: 1px;
       background: var(--bronze-dim);
@@ -146,10 +144,8 @@
     @media (max-width: 768px) {
       .hero__title {
         font-size: clamp(2.5rem, 8vw, 4rem);
-        max-width: 95%;
-        text-wrap: balance;
+        max-width: 90%;
       }
-      .hero__eyebrow { gap: 0.75rem; }
     }
 
     /* ── INTRO SECTION ── */
@@ -168,7 +164,7 @@
 
     .intro-section .u-section-header .section-label {
       justify-content: center;
-      margin-bottom: 1.35rem;
+      margin-bottom: 2.6rem;
     }
 
     .intro-section .u-section-header .label {
@@ -232,11 +228,10 @@
     }
 
     .intro-section .stat-block__label {
-      max-width: 18ch;
+      max-width: 13ch;
       margin-left: auto;
       margin-right: auto;
       line-height: 1.42;
-      text-wrap: balance;
     }
 
     /* ── VIDEO SECTION CUSTOM ── */
@@ -264,18 +259,18 @@
     }
 
     section#demo .vimeo-surface-toggle__icon {
-      width: 66px;
-      height: 66px;
-      border-color: rgba(226,193,155,0.2);
-      background: rgba(12,10,8,0.24);
+      width: 74px;
+      height: 74px;
+      border-color: rgba(226,193,155,0.22);
+      background: rgba(12,10,8,0.28);
       box-shadow:
-        0 14px 32px rgba(0,0,0,0.28),
-        inset 0 0 0 1px rgba(255,255,255,0.02);
+        0 18px 42px rgba(0,0,0,0.32),
+        inset 0 0 0 1px rgba(255,255,255,0.025);
     }
 
     section#demo .vimeo-surface-toggle__icon--play svg {
-      width: 24px;
-      height: 24px;
+      width: 28px;
+      height: 28px;
       transform: translateX(1px);
     }
 
@@ -289,46 +284,71 @@
     }
 
     section#demo .vimeo-controls {
-      bottom: 1rem;
-      left: 1rem;
-      right: 1rem;
-      padding: 0.65rem 0.85rem;
-      gap: 0.625rem;
-      border-color: rgba(201,169,110,0.14);
-      background: rgba(8,7,6,0.72);
-      box-shadow:
-        0 12px 28px rgba(0,0,0,0.28),
-        inset 0 0 0 1px rgba(255,255,255,0.012);
-      -webkit-backdrop-filter: blur(18px) saturate(130%);
-      backdrop-filter: blur(18px) saturate(130%);
+      bottom: 1.25rem;
+      left: 1.25rem;
+      right: 1.25rem;
+      padding: 0.85rem 1rem;
+      border-color: rgba(201,169,110,0.18);
     }
 
     section#demo .vimeo-controls__left {
       display: none;
     }
 
-    section#demo .vimeo-controls__right {
-      gap: 0.45rem;
-    }
-
-    section#demo .vimeo-progress-wrap {
-      min-width: 0;
+    section#demo .vimeo-controls {
+      gap: 1rem;
     }
 
     section#demo .vimeo-time {
-      min-width: 68px;
-      font-size: 0.64rem;
-      letter-spacing: 0.04em;
+      min-width: 80px;
     }
 
-    section#demo .vimeo-control-btn {
-      width: 28px;
-      height: 28px;
+    section#demo .vimeo-shell:fullscreen,
+    section#demo .vimeo-shell:-webkit-full-screen {
+      width: 100vw;
+      height: 100vh;
+      max-width: none;
+      border-radius: 0;
+      background: #000;
+      box-shadow: none;
+      overflow: hidden;
+      aspect-ratio: auto;
     }
 
-    section#demo .vimeo-control-btn svg {
-      width: 14px;
-      height: 14px;
+    section#demo .vimeo-shell:fullscreen iframe,
+    section#demo .vimeo-shell:-webkit-full-screen iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      max-height: none;
+      border: 0;
+      aspect-ratio: auto;
+    }
+
+    section#demo .vimeo-shell:fullscreen .vimeo-controls,
+    section#demo .vimeo-shell:-webkit-full-screen .vimeo-controls {
+      position: absolute;
+      left: 1.25rem;
+      right: 1.25rem;
+      bottom: 1.25rem;
+      margin: 0;
+      z-index: 4;
+    }
+
+    section#demo .vimeo-shell:fullscreen .vimeo-surface-toggle,
+    section#demo .vimeo-shell:-webkit-full-screen .vimeo-surface-toggle {
+      z-index: 4;
+    }
+
+    @media (max-width: 768px) {
+      section#demo .vimeo-shell:fullscreen .vimeo-controls,
+      section#demo .vimeo-shell:-webkit-full-screen .vimeo-controls {
+        left: 0.75rem;
+        right: 0.75rem;
+        bottom: 0.75rem;
+      }
     }
 
     @media (max-width: 768px) {
@@ -349,66 +369,10 @@
       }
 
       section#demo .vimeo-controls {
-        bottom: 0.625rem;
-        left: 0.625rem;
-        right: 0.625rem;
-        padding: 0.5rem 0.625rem;
-        gap: 0.45rem;
-      }
-
-      section#demo .vimeo-surface-toggle__icon {
-        width: 54px;
-        height: 54px;
-      }
-
-      section#demo .vimeo-surface-toggle__icon--play svg {
-        width: 18px;
-        height: 18px;
-      }
-
-      section#demo .vimeo-controls__right {
-        gap: 0.35rem;
-      }
-
-      section#demo .vimeo-control-btn {
-        width: 24px;
-        height: 24px;
-      }
-
-      section#demo .vimeo-control-btn svg {
-        width: 12px;
-        height: 12px;
-      }
-
-      section#demo .vimeo-time {
-        min-width: 56px;
-        font-size: 0.56rem;
-        letter-spacing: 0.03em;
-      }
-    }
-
-    @media (max-width: 480px) {
-      section#demo .vimeo-controls {
-        bottom: 0.5rem;
-        left: 0.5rem;
-        right: 0.5rem;
-        padding: 0.425rem 0.5rem;
-        gap: 0.375rem;
-      }
-
-      section#demo .vimeo-control-btn {
-        width: 22px;
-        height: 22px;
-      }
-
-      section#demo .vimeo-control-btn svg {
-        width: 11px;
-        height: 11px;
-      }
-
-      section#demo .vimeo-time {
-        min-width: 52px;
-        font-size: 0.52rem;
+        bottom: 1rem;
+        left: 1rem;
+        right: 1rem;
+        padding: 0.85rem 1rem;
       }
     }
 
@@ -417,22 +381,22 @@
       padding: clamp(2rem, 3.5vw, 2.75rem) 0;
     }
 
-    section#ecosystem .container.mb-3 {
-      margin-bottom: 1.25rem;
-      text-align: center;
-    }
+section#ecosystem .container.mb-3 {
+  margin-bottom: 1.25rem;
+  display: flex;
+  justify-content: center;
+}
 
-    section#ecosystem .section-label {
-      display: inline-flex;
-      justify-content: center;
-      width: auto;
-      margin: 0 auto;
-    }
+section#ecosystem .section-label {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
 
-    section#ecosystem .section-label .label {
-      display: inline-block;
-      text-align: center;
-    }
+section#ecosystem .section-label .label {
+  display: inline-block;
+  text-align: center;
+}
 
     section#ecosystem .ecosystem-strip {
       padding: 1.5rem 0;
@@ -608,93 +572,60 @@
 
     .comparison-col h3 {
       font-size: 1rem;
-      margin: 0;
+      margin-bottom: 1.25rem;
       color: var(--text-secondary);
-      font-family: var(--font-display);
-      font-weight: 400;
-      line-height: 1.15;
-      letter-spacing: -0.01em;
-      text-align: center;
-      width: 100%;
     }
 
     .comparison-col--good h3 { color: var(--bronze-light); }
 
+    .comparison-col h3,
     .column-brand-lockup {
-      min-height: 74px;
+      min-height: 60px;
       display: flex;
       align-items: center;
-      justify-content: center;
-      margin-bottom: 1.7rem;
-      width: 100%;
+      margin-bottom: 1.65rem;
     }
 
-    .column-brand-lockup--bad {
-      justify-content: center;
-      width: 100%;
-      max-width: none;
-      text-align: center;
-    }
-
-    .column-brand-lockup--bad h3 {
+    .comparison-col--bad h3 {
       color: var(--text-primary);
+      justify-content: flex-start;
     }
 
-    .comparison-col--bad .column-brand-lockup,
-    .comparison-col--good .column-brand-lockup {
-      min-height: 74px;
-      align-self: stretch;
-    }
-
-    .comparison-col--bad ul,
-    .comparison-col--good ul {
-      padding-top: 0;
+    .column-brand-lockup {
+      justify-content: center;
     }
 
     .comparison-col ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
       gap: 0.9rem;
-      margin: 0;
-      padding: 0;
+    }
+
+    .comparison-col--good ul,
+    .comparison-col--bad ul {
       flex: 1;
-      width: 100%;
     }
 
     .comparison-col .format-badges {
       margin-top: auto;
     }
 
+    .comparison-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
     .comparison-col li {
-      font-size: 0.925rem;
-      color: rgba(237,232,219,0.82);
-      display: grid;
-      grid-template-columns: 18px minmax(0, 1fr);
-      align-items: start;
-      column-gap: 0.8rem;
-      line-height: 1.72;
-      margin: 0;
-      text-align: left;
-      font-weight: 500;
-    }
-
-    .comparison-col--good li {
-      color: rgba(237,232,219,0.9);
-      font-weight: 500;
-    }
-
-    .comparison-col--bad li {
-      color: rgba(237,232,219,0.84);
-      font-weight: 500;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
     }
 
     .comparison-col li::before {
       content: '—';
-      color: rgba(237,232,219,0.48);
-      width: 18px;
-      display: block;
-      text-align: center;
+      color: var(--text-muted);
       flex-shrink: 0;
     }
 
@@ -703,8 +634,6 @@
       color: var(--bronze);
       font-size: 0.6rem;
       margin-top: 0.4rem;
-      width: 18px;
-      text-align: center;
     }
 
     section#bitrate.section--tight {
@@ -823,10 +752,8 @@
       gap: 0;
     }
 
-    @media (min-width: 769px) {
-      .stat-row .stat-block + .stat-block {
-        border-left: none;
-      }
+    .stat-row .stat-block + .stat-block {
+      border-left: none;
     }
 
     @media (max-width: 768px) {
@@ -1080,9 +1007,7 @@
   <div class="container">
     <div class="reveal">
       <div class="u-section-header u-section-header--center">
-        <div class="section-label">
-          <span class="label">The Cinema Machina Approach</span>
-        </div>
+        <span class="label">The Cinema Machina Approach</span>
         <h2 class="display-md approach__title">
           <span class="approach__title-line approach__title-line--single">
             We Believe in the Power of a “Well-Set-Up”.
@@ -1288,9 +1213,7 @@
 
     <div class="comparison-grid reveal">
       <div class="comparison-col comparison-col--bad">
-        <div class="column-brand-lockup column-brand-lockup--bad">
-          <h3>Streaming / Default Setup</h3>
-        </div>
+        <h3>Streaming / Default Setup</h3>
         <ul>
           <li>Compressed video — 15–25 Mbps typical</li>
           <li>Heavily processed audio — lossy Dolby Digital</li>
