@@ -264,18 +264,18 @@
     }
 
     section#demo .vimeo-surface-toggle__icon {
-      width: 74px;
-      height: 74px;
-      border-color: rgba(226,193,155,0.22);
-      background: rgba(12,10,8,0.28);
+      width: 66px;
+      height: 66px;
+      border-color: rgba(226,193,155,0.2);
+      background: rgba(12,10,8,0.24);
       box-shadow:
-        0 18px 42px rgba(0,0,0,0.32),
-        inset 0 0 0 1px rgba(255,255,255,0.025);
+        0 14px 32px rgba(0,0,0,0.28),
+        inset 0 0 0 1px rgba(255,255,255,0.02);
     }
 
     section#demo .vimeo-surface-toggle__icon--play svg {
-      width: 28px;
-      height: 28px;
+      width: 24px;
+      height: 24px;
       transform: translateX(1px);
     }
 
@@ -289,23 +289,46 @@
     }
 
     section#demo .vimeo-controls {
-      bottom: 1.25rem;
-      left: 1.25rem;
-      right: 1.25rem;
-      padding: 0.85rem 1rem;
-      border-color: rgba(201,169,110,0.18);
+      bottom: 1rem;
+      left: 1rem;
+      right: 1rem;
+      padding: 0.65rem 0.85rem;
+      gap: 0.625rem;
+      border-color: rgba(201,169,110,0.14);
+      background: rgba(8,7,6,0.72);
+      box-shadow:
+        0 12px 28px rgba(0,0,0,0.28),
+        inset 0 0 0 1px rgba(255,255,255,0.012);
+      -webkit-backdrop-filter: blur(18px) saturate(130%);
+      backdrop-filter: blur(18px) saturate(130%);
     }
 
     section#demo .vimeo-controls__left {
       display: none;
     }
 
-    section#demo .vimeo-controls {
-      gap: 1rem;
+    section#demo .vimeo-controls__right {
+      gap: 0.45rem;
+    }
+
+    section#demo .vimeo-progress-wrap {
+      min-width: 0;
     }
 
     section#demo .vimeo-time {
-      min-width: 80px;
+      min-width: 68px;
+      font-size: 0.64rem;
+      letter-spacing: 0.04em;
+    }
+
+    section#demo .vimeo-control-btn {
+      width: 28px;
+      height: 28px;
+    }
+
+    section#demo .vimeo-control-btn svg {
+      width: 14px;
+      height: 14px;
     }
 
     @media (max-width: 768px) {
@@ -326,10 +349,66 @@
       }
 
       section#demo .vimeo-controls {
-        bottom: 1rem;
-        left: 1rem;
-        right: 1rem;
-        padding: 0.85rem 1rem;
+        bottom: 0.625rem;
+        left: 0.625rem;
+        right: 0.625rem;
+        padding: 0.5rem 0.625rem;
+        gap: 0.45rem;
+      }
+
+      section#demo .vimeo-surface-toggle__icon {
+        width: 54px;
+        height: 54px;
+      }
+
+      section#demo .vimeo-surface-toggle__icon--play svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      section#demo .vimeo-controls__right {
+        gap: 0.35rem;
+      }
+
+      section#demo .vimeo-control-btn {
+        width: 24px;
+        height: 24px;
+      }
+
+      section#demo .vimeo-control-btn svg {
+        width: 12px;
+        height: 12px;
+      }
+
+      section#demo .vimeo-time {
+        min-width: 56px;
+        font-size: 0.56rem;
+        letter-spacing: 0.03em;
+      }
+    }
+
+    @media (max-width: 480px) {
+      section#demo .vimeo-controls {
+        bottom: 0.5rem;
+        left: 0.5rem;
+        right: 0.5rem;
+        padding: 0.425rem 0.5rem;
+        gap: 0.375rem;
+      }
+
+      section#demo .vimeo-control-btn {
+        width: 22px;
+        height: 22px;
+      }
+
+      section#demo .vimeo-control-btn svg {
+        width: 11px;
+        height: 11px;
+      }
+
+      section#demo .vimeo-time {
+        min-width: 52px;
+        font-size: 0.52rem;
       }
     }
 
