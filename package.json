@@ -1,7 +1,13 @@
 {
   "devDependencies": {
-    "eslint": "10.2.0",
-    "prettier": "3.8.1"
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.59.1",
+    "eslint": "^10.2.0",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^17.5.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
+    "prettier": "^3.8.1"
   },
   "name": "web",
   "version": "1.0.0",
@@ -53,17 +59,28 @@
     "path-key": "^3.1.1",
     "prelude-ls": "^1.2.1",
     "punycode": "^2.3.1",
-    "resend": "^6.10.0",
+    "resend": "^6.11.0",
     "shebang-command": "^2.0.0",
     "shebang-regex": "^3.0.0",
     "type-check": "^0.4.0",
     "uri-js": "^4.4.1",
+    "vercel": "^51.2.1",
     "which": "^2.0.2",
     "word-wrap": "^1.2.5",
     "yocto-queue": "^0.1.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
+    "lint": "eslint \"assets/js/**/*.js\" \"api/**/*.js\" \"api/**/*.mjs\" \"*.js\"",
+    "lint:fix": "eslint \"assets/js/**/*.js\" \"api/**/*.js\" \"api/**/*.mjs\" \"*.js\" --fix",
+    "test:e2e": "playwright test --config=playwright.config.mjs",
+    "test:e2e:headed": "playwright test --config=playwright.config.mjs --headed",
+    "test:e2e:ui": "playwright test --config=playwright.config.mjs --ui",
+    "test:e2e:webkit": "playwright test --config=playwright.config.mjs --project=\"Desktop Safari\" --project=\"Mobile Safari\"",
+    "qa": "npm run format:check && npm run lint && npm run test:e2e",
+    "prepare": "husky"
   },
   "repository": {
     "type": "git",
@@ -76,5 +93,14 @@
   "bugs": {
     "url": "https://github.com/cinemamachinaae/web/issues"
   },
-  "homepage": "https://github.com/cinemamachinaae/web#readme"
+  "homepage": "https://github.com/cinemamachinaae/web#readme",
+  "lint-staged": {
+    "*.{js,mjs}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{html,css,json}": [
+      "prettier --write"
+    ]
+  }
 }
