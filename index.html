@@ -22,6 +22,7 @@
       .hero__content {
         padding-top: 2.5rem;
         padding-bottom: 0.75rem;
+        padding-inline: clamp(1rem, 3.8vw, 1.75rem);
       }
 
       .hero__eyebrow {
@@ -164,8 +165,14 @@
       /* ── MOBILE INTRO HEADING ── */
       @media (max-width: 768px) {
         .hero__title {
-          font-size: clamp(2.5rem, 8vw, 4rem);
-          max-width: 90%;
+          font-size: clamp(2.75rem, 12vw, 4.35rem);
+          max-width: 11ch;
+          margin-inline: auto;
+        }
+
+        .hero__lead {
+          max-width: 22ch;
+          font-size: clamp(1rem, 4.8vw, 1.16rem);
         }
       }
 
@@ -280,18 +287,18 @@
       }
 
       section#demo .vimeo-surface-toggle__icon {
-        width: 74px;
-        height: 74px;
-        border-color: rgba(226, 193, 155, 0.22);
-        background: rgba(12, 10, 8, 0.28);
+        width: 58px;
+        height: 58px;
+        border-color: rgba(226, 193, 155, 0.18);
+        background: rgba(12, 10, 8, 0.22);
         box-shadow:
-          0 18px 42px rgba(0, 0, 0, 0.32),
-          inset 0 0 0 1px rgba(255, 255, 255, 0.025);
+          0 12px 28px rgba(0, 0, 0, 0.24),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.02);
       }
 
       section#demo .vimeo-surface-toggle__icon--play svg {
-        width: 28px;
-        height: 28px;
+        width: 20px;
+        height: 20px;
         transform: translateX(1px);
       }
 
@@ -305,11 +312,17 @@
       }
 
       section#demo .vimeo-controls {
-        bottom: 1.25rem;
-        left: 1.25rem;
-        right: 1.25rem;
-        padding: 0.85rem 1rem;
-        border-color: rgba(201, 169, 110, 0.18);
+        bottom: 0.85rem;
+        left: 0.85rem;
+        right: 0.85rem;
+        padding: 0.5rem 0.7rem;
+        border-color: rgba(201, 169, 110, 0.12);
+        background: rgba(8, 7, 6, 0.68);
+        box-shadow:
+          0 10px 24px rgba(0, 0, 0, 0.24),
+          inset 0 0 0 1px rgba(255, 255, 255, 0.01);
+        -webkit-backdrop-filter: blur(16px) saturate(125%);
+        backdrop-filter: blur(16px) saturate(125%);
       }
 
       section#demo .vimeo-controls__left {
@@ -317,11 +330,26 @@
       }
 
       section#demo .vimeo-controls {
-        gap: 1rem;
+        gap: 0.5rem;
       }
 
       section#demo .vimeo-time {
-        min-width: 80px;
+        min-width: 62px;
+        font-size: 0.58rem;
+        letter-spacing: 0.035em;
+      }
+
+      section#demo .vimeo-control-btn {
+        width: 28px;
+        height: 28px;
+        min-width: 28px;
+        min-height: 28px;
+        padding: 0;
+        flex: 0 0 28px;
+        border-radius: 999px;
+        -webkit-appearance: none;
+        appearance: none;
+        line-height: 1;
       }
 
       section#demo .vimeo-shell:fullscreen,
@@ -390,10 +418,102 @@
         }
 
         section#demo .vimeo-controls {
-          bottom: 1rem;
-          left: 1rem;
-          right: 1rem;
-          padding: 0.85rem 1rem;
+          bottom: 0.5rem;
+          left: 0.5rem;
+          right: 0.5rem;
+          padding: 0.4rem 0.5rem;
+          gap: 0.35rem;
+        }
+
+        section#demo .vimeo-surface-toggle__icon {
+          width: 44px;
+          height: 44px;
+        }
+
+        section#demo .vimeo-surface-toggle__icon--play svg {
+          width: 14px;
+          height: 14px;
+        }
+
+        section#demo .vimeo-time {
+          min-width: 50px;
+          font-size: 0.5rem;
+          letter-spacing: 0.025em;
+        }
+
+        section#demo .vimeo-control-btn {
+          width: 24px;
+          height: 24px;
+          min-width: 24px;
+          min-height: 24px;
+          padding: 0;
+          flex: 0 0 24px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero__eyebrow {
+          gap: 0.5rem;
+          margin-bottom: 0.65rem;
+        }
+
+        .hero__eyebrow span {
+          font-size: 0.45rem;
+          letter-spacing: 0.12em;
+        }
+
+        .hero__eyebrow::before,
+        .hero__eyebrow::after {
+          max-width: 24px;
+        }
+
+        .hero__actions--stack-safe {
+          gap: 10px;
+        }
+
+        .hero__button-row {
+          width: min(100%, 22rem);
+          gap: 8px;
+          padding-inline: 0.625rem;
+        }
+
+        .btn--hero {
+          width: 100%;
+          min-height: 44px;
+          padding: 0.72rem 0.9rem;
+          font-size: 0.7rem;
+          letter-spacing: 0.1em;
+        }
+
+        .cta-full__actions {
+          width: min(100%, 22rem);
+        }
+
+        section#demo .vimeo-controls {
+          bottom: 0.4rem;
+          left: 0.4rem;
+          right: 0.4rem;
+          padding: 0.35rem 0.45rem;
+          gap: 0.3rem;
+        }
+
+        section#demo .vimeo-surface-toggle__icon {
+          width: 40px;
+          height: 40px;
+        }
+
+        section#demo .vimeo-surface-toggle__icon--play svg {
+          width: 13px;
+          height: 13px;
+        }
+
+        section#demo .vimeo-control-btn {
+          width: 22px;
+          height: 22px;
+          min-width: 22px;
+          min-height: 22px;
+          padding: 0;
+          flex: 0 0 22px;
         }
       }
 
@@ -801,6 +921,54 @@
         .hero__content {
           padding-top: 2rem;
           padding-bottom: 0.5rem;
+        }
+
+        .hero__eyebrow {
+          gap: 0.55rem;
+          margin-bottom: 0.75rem;
+        }
+
+        .hero__eyebrow span {
+          font-size: 0.5rem;
+          letter-spacing: 0.13em;
+        }
+
+        .hero__eyebrow::before,
+        .hero__eyebrow::after {
+          max-width: 30px;
+        }
+
+        .hero__actions--stack-safe {
+          gap: 14px;
+          margin-top: 1.1rem;
+          padding-inline: 0;
+        }
+
+        .hero__button-row {
+          width: min(100%, 24rem);
+          margin-inline: auto;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          padding-inline: 0.75rem;
+          box-sizing: border-box;
+        }
+
+        .btn--hero {
+          width: 100%;
+          min-height: 48px;
+          padding: 0.85rem 1rem;
+          font-size: 0.76rem;
+          letter-spacing: 0.12em;
+        }
+
+        .hero__scroll-wrap {
+          margin-top: 0.25rem;
+        }
+
+        .cta-full__actions {
+          width: min(100%, 24rem);
+          margin-inline: auto;
         }
 
         .intro-section .approach__title {
