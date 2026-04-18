@@ -2,6 +2,8 @@
    CINEMA MACHINA — GLOBAL JAVASCRIPT
    ============================================================ */
 
+/* global Vimeo */
+
 'use strict';
 
 /* ── SCROLL-BASED NAV ───────────────────────────────────────── */
@@ -18,7 +20,7 @@
   // Highlight active page
   const links = nav.querySelectorAll('.nav__links a');
   const current = window.location.pathname.split('/').pop() || 'index.html';
-  links.forEach(link => {
+  links.forEach((link) => {
     const href = link.getAttribute('href');
     if (href === current || (current === '' && href === 'index.html')) {
       link.classList.add('active');
@@ -48,7 +50,7 @@
     toggle.classList.contains('open') ? close() : open();
   });
 
-  mobileMenu.querySelectorAll('a').forEach(a => {
+  mobileMenu.querySelectorAll('a').forEach((a) => {
     a.addEventListener('click', close);
   });
 })();
@@ -65,19 +67,22 @@
   // Safety fallback: if IntersectionObserver doesn't fire within 3s
   // (e.g. headless browsers, screenshot tools, SSR crawlers), reveal everything.
   const fallbackTimer = setTimeout(() => {
-    items.forEach(el => el.classList.add('visible'));
+    items.forEach((el) => el.classList.add('visible'));
   }, 3000);
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.05, rootMargin: '0px 0px -40px 0px' }
+  );
 
-  items.forEach(el => {
+  items.forEach((el) => {
     // Immediately reveal elements already visible in viewport on load
     const rect = el.getBoundingClientRect();
     if (rect.top < window.innerHeight && rect.bottom > 0) {
@@ -88,31 +93,42 @@
   });
 
   // Clear fallback timer if all items revealed normally
-  document.addEventListener('scroll', () => {
-    const anyHidden = [...items].some(el => !el.classList.contains('visible'));
-    if (!anyHidden) clearTimeout(fallbackTimer);
-  }, { once: true, passive: true });
+  document.addEventListener(
+    'scroll',
+    () => {
+      const anyHidden = [...items].some(
+        (el) => !el.classList.contains('visible')
+      );
+      if (!anyHidden) clearTimeout(fallbackTimer);
+    },
+    { once: true, passive: true }
+  );
 })();
 
 /* ── BAR CHART ANIMATION ───────────────────────────────────── */
 (function initBars() {
-  const bars = document.querySelectorAll('.bar-fill[data-width], .bar-fill-enhanced[data-width]');
+  const bars = document.querySelectorAll(
+    '.bar-fill[data-width], .bar-fill-enhanced[data-width]'
+  );
   if (!bars.length) return;
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const bar = entry.target;
-        const width = bar.getAttribute('data-width');
-        setTimeout(() => {
-          bar.style.width = width + '%';
-        }, 200);
-        observer.unobserve(bar);
-      }
-    });
-  }, { threshold: 0.3 });
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const bar = entry.target;
+          const width = bar.getAttribute('data-width');
+          setTimeout(() => {
+            bar.style.width = width + '%';
+          }, 200);
+          observer.unobserve(bar);
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
 
-  bars.forEach(bar => observer.observe(bar));
+  bars.forEach((bar) => observer.observe(bar));
 })();
 
 /* ── PARALLAX HERO ──────────────────────────────────────────── */
@@ -131,18 +147,18 @@
 
 /* -- VIMEO PLAYER API INITIALIZATION ------------------------ */
 function initVimeo() {
-  const shell = document.getElementById("cinema-vimeo-shell");
-  const iframe = document.getElementById("cinema-machina-vimeo");
-  const controls = document.getElementById("vimeo-controls");
-  const surfaceToggle = document.getElementById("vimeo-surface-toggle");
+  const shell = document.getElementById('cinema-vimeo-shell');
+  const iframe = document.getElementById('cinema-machina-vimeo');
+  const controls = document.getElementById('vimeo-controls');
+  const surfaceToggle = document.getElementById('vimeo-surface-toggle');
 
-  if (!shell || !iframe || !controls || typeof Vimeo === "undefined") return;
+  if (!shell || !iframe || !controls || typeof Vimeo === 'undefined') return;
 
   const player = new Vimeo.Player(iframe);
-  const playBtn = controls.querySelector(".js-vimeo-play");
-  const fsBtn = controls.querySelector(".js-vimeo-fullscreen");
-  const progress = controls.querySelector(".vimeo-progress");
-  const timeDisplay = document.getElementById("vimeo-time");
+  const playBtn = controls.querySelector('.js-vimeo-play');
+  const fsBtn = controls.querySelector('.js-vimeo-fullscreen');
+  const progress = controls.querySelector('.vimeo-progress');
+  const timeDisplay = document.getElementById('vimeo-time');
 
   let duration = 0;
   let idleTimer;
@@ -152,7 +168,7 @@ function initVimeo() {
   const formatTime = (s) => {
     const min = Math.floor(s / 60);
     const sec = Math.floor(s % 60);
-    return `${min}:${sec < 10 ? "0" : ""}${sec}`;
+    return `${min}:${sec < 10 ? '0' : ''}${sec}`;
   };
 
   const updateUI = (current, total) => {
@@ -165,14 +181,14 @@ function initVimeo() {
   };
 
   const showControls = () => {
-    shell.classList.remove("is-idle");
+    shell.classList.remove('is-idle');
     clearTimeout(idleTimer);
   };
 
   const startIdleTimer = () => {
     if (isPlaying) {
       idleTimer = setTimeout(() => {
-        shell.classList.add("is-idle");
+        shell.classList.add('is-idle');
       }, 1600); // Luxury 1600ms fade
     }
   };
@@ -182,8 +198,8 @@ function initVimeo() {
     startIdleTimer();
   };
 
-  shell.addEventListener("mousemove", poke);
-  shell.addEventListener("touchstart", poke, { passive: true });
+  shell.addEventListener('mousemove', poke);
+  shell.addEventListener('touchstart', poke, { passive: true });
 
   const handlePlayPause = async () => {
     const paused = await player.getPaused();
@@ -199,53 +215,54 @@ function initVimeo() {
   };
 
   // Listeners
-  player.on("play", () => {
+  player.on('play', () => {
     isPlaying = true;
-    shell.classList.add("is-playing");
-    shell.classList.remove("is-paused");
+    shell.classList.add('is-playing');
+    shell.classList.remove('is-paused');
     poke();
   });
 
-  player.on("pause", () => {
+  player.on('pause', () => {
     isPlaying = false;
-    shell.classList.remove("is-playing", "is-idle");
-    shell.classList.add("is-paused");
+    shell.classList.remove('is-playing', 'is-idle');
+    shell.classList.add('is-paused');
     showControls();
   });
 
-  player.on("ended", () => {
+  player.on('ended', () => {
     isPlaying = false;
-    shell.classList.remove("is-playing", "is-idle");
-    shell.classList.add("is-paused");
+    shell.classList.remove('is-playing', 'is-idle');
+    shell.classList.add('is-paused');
     showControls();
   });
 
-  player.on("timeupdate", (data) => {
+  player.on('timeupdate', (data) => {
     updateUI(data.seconds, duration);
   });
 
-  player.getDuration().then(d => {
+  player.getDuration().then((d) => {
     duration = d;
     updateUI(0, duration);
   });
 
   // Events
   if (surfaceToggle) {
-    surfaceToggle.addEventListener("click", (e) => {
+    surfaceToggle.addEventListener('click', (e) => {
       e.stopPropagation();
       handlePlayPause();
     });
   }
 
   if (playBtn) {
-    playBtn.addEventListener("click", (e) => {
+    playBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       handlePlayPause();
     });
   }
 
   const toggleFullscreen = async () => {
-    const fullscreenElement = document.fullscreenElement || document.webkitFullscreenElement;
+    const fullscreenElement =
+      document.fullscreenElement || document.webkitFullscreenElement;
 
     if (fullscreenElement) {
       if (document.exitFullscreen) {
@@ -302,7 +319,7 @@ function initVimeo() {
   };
 
   if (fsBtn) {
-    fsBtn.addEventListener("click", async (e) => {
+    fsBtn.addEventListener('click', async (e) => {
       e.stopPropagation();
       await toggleFullscreen();
       poke();
@@ -310,16 +327,16 @@ function initVimeo() {
   }
 
   if (progress) {
-    progress.addEventListener("input", () => {
+    progress.addEventListener('input', () => {
       const seek = (progress.value / 100) * duration;
       player.setCurrentTime(seek);
     });
-    progress.addEventListener("click", e => e.stopPropagation());
-    progress.addEventListener("mousedown", e => e.stopPropagation());
+    progress.addEventListener('click', (e) => e.stopPropagation());
+    progress.addEventListener('mousedown', (e) => e.stopPropagation());
   }
 
-  shell.addEventListener("click", (e) => {
-    if (e.target.closest(".vimeo-controls")) {
+  shell.addEventListener('click', (e) => {
+    if (e.target.closest('.vimeo-controls')) {
       poke();
       return;
     }
@@ -329,7 +346,7 @@ function initVimeo() {
   });
 
   // Double click for fullscreen
-  shell.addEventListener("dblclick", async () => {
+  shell.addEventListener('dblclick', async () => {
     await toggleFullscreen();
     poke();
   });
@@ -337,10 +354,12 @@ function initVimeo() {
 
 // Robust initialization for CDN availability
 function startVimeo() {
-  const vimeoRoot = document.querySelector('#cinema-vimeo-shell, #cinema-machina-vimeo');
+  const vimeoRoot = document.querySelector(
+    '#cinema-vimeo-shell, #cinema-machina-vimeo'
+  );
   if (!vimeoRoot) return;
 
-  if (typeof Vimeo !== "undefined") {
+  if (typeof Vimeo !== 'undefined') {
     initVimeo();
     return;
   }
@@ -349,19 +368,18 @@ function startVimeo() {
   let attempts = 0;
   const interval = setInterval(() => {
     attempts++;
-    if (typeof Vimeo !== "undefined") {
+    if (typeof Vimeo !== 'undefined') {
       initVimeo();
       clearInterval(interval);
     } else if (attempts > 50) {
       clearInterval(interval);
-      console.warn("Vimeo SDK failed to load within timeout.");
+      console.warn('Vimeo SDK failed to load within timeout.');
       // Last-ditch: try to find script and re-inject if needed
     }
   }, 100);
 }
 
-document.addEventListener("DOMContentLoaded", startVimeo);
-
+document.addEventListener('DOMContentLoaded', startVimeo);
 
 /* ── CONTACT FORM ───────────────────────────────────────────── */
 (function initForm() {
@@ -374,13 +392,13 @@ document.addEventListener("DOMContentLoaded", startVimeo);
 
   const originalNoteText = note ? note.textContent : '';
 
-  form.addEventListener('submit', async function(e) {
+  form.addEventListener('submit', async function (e) {
     e.preventDefault();
-    
+
     // Reset previous states
     form.classList.remove('form-touched');
     btn.classList.remove('is-success', 'is-unavailable');
-    if(note) {
+    if (note) {
       note.classList.remove('is-unavailable');
       note.textContent = originalNoteText;
     }
@@ -391,7 +409,6 @@ document.addEventListener("DOMContentLoaded", startVimeo);
       return;
     }
 
-    const originalBtnText = btn.textContent;
     btn.textContent = 'Sending Enquiry…';
     btn.disabled = true;
     btn.classList.add('is-loading');
@@ -404,27 +421,28 @@ document.addEventListener("DOMContentLoaded", startVimeo);
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
       });
 
       if (response.ok) {
         btn.classList.replace('is-loading', 'is-success');
-        btn.textContent = 'Message Sent — We\'ll be in touch';
+        btn.textContent = "Message Sent — We'll be in touch";
         form.reset();
       } else {
         throw new Error('Server returned error status');
       }
     } catch (err) {
-      console.warn("Form submission error:", err);
-      
+      console.warn('Form submission error:', err);
+
       // Truthful Premium Fallback
       btn.classList.remove('is-loading');
       btn.classList.add('is-unavailable');
       btn.textContent = 'Service Offline';
-      
+
       if (note) {
         note.classList.add('is-unavailable');
-        note.innerHTML = 'Enquiry service is currently unreachable. Please reach us via <a href="https://wa.me/971507282195" class="u-color-bronze">WhatsApp</a> or email.';
+        note.innerHTML =
+          'Enquiry service is currently unreachable. Please reach us via <a href="https://wa.me/971507282195" class="u-color-bronze">WhatsApp</a> or email.';
       }
 
       setTimeout(() => {
@@ -442,8 +460,8 @@ document.addEventListener("DOMContentLoaded", startVimeo);
 
 /* ── SMOOTH ANCHOR SCROLL ───────────────────────────────────── */
 (function initSmoothAnchors() {
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', function (e) {
       const id = this.getAttribute('href');
       if (id === '#') return;
       const target = document.querySelector(id);
