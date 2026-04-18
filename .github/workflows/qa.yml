@@ -30,10 +30,24 @@ jobs:
         run: npm ci
 
       - name: Check formatting
-        run: npm run format:check
+        run: >
+          npx prettier --check
+          index.html
+          about.html
+          services.html
+          why-setup-matters.html
+          contact.html
+          "assets/css/**/*.css"
+          "assets/js/**/*.js"
 
       - name: Lint
-        run: npm run lint
+        run: |
+          js_files=$(find assets/js -type f -name '*.js' | sort)
+          if [ -n "$js_files" ]; then
+            npx eslint $js_files
+          else
+            echo "No website JavaScript files found to lint."
+          fi
 
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
@@ -47,4 +61,5 @@ jobs:
         with:
           name: playwright-report
           path: playwright-report/
+          if-no-files-found: ignore
           retention-days: 14
