@@ -43,6 +43,8 @@
         margin: 0 auto;
         line-height: 1.04;
         overflow-wrap: break-word;
+        line-break: auto;
+        text-wrap: pretty;
         text-wrap: balance;
       }
 
@@ -114,6 +116,10 @@
 
       .location-section {
         padding: clamp(3.25rem, 6vw, 5rem) 0;
+      }
+
+      .location-section-label {
+        margin-bottom: 1.5rem;
       }
 
       .footer {
@@ -499,7 +505,7 @@
       <div class="container u-py-section">
         <div class="location-grid">
           <div class="reveal">
-            <div class="section-label" style="margin-bottom: 1.5rem">
+            <div class="section-label location-section-label">
               <span class="label">Service Area</span>
             </div>
             <h2 class="display-sm u-mb-15">By appointment across the UAE.</h2>

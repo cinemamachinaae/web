@@ -1,4 +1,5 @@
 {
-    "geminicodeassist.agentYoloMode": true,
-    "geminicodeassist.agentDebugMode": true
+  "geminicodeassist.agentYoloMode": true,
+  "geminicodeassist.agentDebugMode": true,
+  "css.lint.unknownAtRules": "ignore"
 }
