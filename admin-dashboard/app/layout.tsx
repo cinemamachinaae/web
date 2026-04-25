@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import AdminShell from "@/components/AdminShell";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,6 +23,7 @@ export default function RootLayout({
     <html lang="en" className="h-full antialiased dark">
       <body className={`${inter.className} h-full bg-[#0A0A0A] selection:bg-bronze/30 selection:text-bronze-light text-foreground`}>
         <AdminShell>{children}</AdminShell>
+        <Analytics />
       </body>
     </html>
   );
