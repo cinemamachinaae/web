@@ -36,3 +36,7 @@ venv/
 coverage/
 .cache/
 .playwright/
+
+# Playwright reports
+playwright-report/
+test-results/
